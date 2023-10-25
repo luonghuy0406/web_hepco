@@ -25,7 +25,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "translate-scanner": "i18next-scanner --config i18next-scanner.config.js src/**/*.js"
   },
   "eslintConfig": {
     "extends": [
@@ -44,5 +45,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "i18n-scanner": "^0.1.2",
+    "i18next-scanner": "^4.4.0"
   }
 }

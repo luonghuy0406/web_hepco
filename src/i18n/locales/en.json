@@ -1,6 +1,4 @@
 {
-    "translation": {
-      "home": "home",
-      "message": "Welcome to my app"
-    }
-  }
+    "home": "home",
+    "about": ""
+}
