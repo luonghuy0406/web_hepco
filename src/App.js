@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
 
-function App() {
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
+// Import your components here
+import './ckeditor.css';
+import './App.css';
+import Router from './routes';
+import { I18nextProvider } from 'react-i18next';
+import i18n from './i18n/i18n';
+import ThemeProvider from './theme';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <I18nextProvider i18n={i18n}>
+      <HelmetProvider>
+        <BrowserRouter>
+          <ThemeProvider>
+            {/* <ScrollToTop />
+            <StyledChart /> */}
+          </ThemeProvider>
+          <Router/>
+        </BrowserRouter>
+      </HelmetProvider>
+    </I18nextProvider>
   );
-}
+};
 
 export default App;
