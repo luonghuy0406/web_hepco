@@ -1,0 +1,50 @@
+:root{
+    --white: '#FFFFFF';
+    --primary-color: '#03611A',
+    --secondary-color : '#8EC542'
+    /* #AAD293 */
+    /* #8A8988 */
+    /* #D6D5DA */
+}
+body{
+    font-family: 'Quicksand', sans-serif !important;
+}
+.menu-sticky {
+    margin: 0;
+    width: 100%;
+    z-index: 1;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    transition: all .7s;
+}
+
+.menu-sticky.sticky {
+    position: fixed;
+    background: rgba(255,255,255,.9);
+    box-shadow: 0 0 20px -10px rgba(0,0,0,.8);
+    padding: 0;
+    -webkit-animation: slide-bottom .5s cubic-bezier(.25,.46,.45,.94) both;
+    animation: slide-bottom .5s cubic-bezier(.25,.46,.45,.94) both
+}
+
+
+@-webkit-keyframes slide-bottom {
+    0%,50% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0)
+    }
+}
+
+@keyframes slide-bottom {
+    50% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0)
+    }
+
+    0% {
+        -webkit-transform: translateY(80px);
+        transform: translateY(80px)
+    }
+}

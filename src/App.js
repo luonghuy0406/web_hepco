@@ -19,8 +19,8 @@ const App = () => {
           <ThemeProvider>
             {/* <ScrollToTop />
             <StyledChart /> */}
+            <Router/>
           </ThemeProvider>
-          <Router/>
         </BrowserRouter>
       </HelmetProvider>
     </I18nextProvider>
