@@ -42,7 +42,7 @@ export default function MenuNav({page, color}) {
                     },
                 }}
                 >
-                {t(page.name)}
+                {page.name}
             </Typography>
         </Link>
     </Box>

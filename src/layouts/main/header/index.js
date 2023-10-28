@@ -25,15 +25,7 @@ import { useTranslation } from 'react-i18next';
 import { styled } from '@mui/material/styles';
 import MenuNav from './MenuNav';
 
-const pages = [
-  {name: 'Trang chủ', path:'',child:[]},
-  {name: 'Giới thiệu', path:'/gioithieu',child:[]},
-  {name: 'Lĩnh vực hoạt động', path:'/linhvuc',child:[]},
-  {name: 'Tin tức & sự kiện', path:'/tintuc',child:[]},
-  {name: 'Dự án', path:'/duan',child:[]},
-  {name: 'Quan hệ cổ đông', path:'/quanhe',child:[]},
-  {name: 'Liên hệ', path:'/lienhe',child:[]}
-]
+
 
 
 const InvoiceBox = styled('div')(({ theme }) => ({
@@ -90,7 +82,15 @@ export default function Header() {
         $(window).off("scroll", handleScroll);
       };
     }, []);
-
+    const pages = [
+      {name: t('Trang chủ'), path:'',child:[]},
+      {name: t('Giới thiệu'), path:'/gioithieu',child:[]},
+      {name: t('Lĩnh vực hoạt động'), path:'/linhvuc',child:[]},
+      {name: t('Tin tức & sự kiện'), path:'/tintuc',child:[]},
+      {name: t('Dự án'), path:'/duan',child:[]},
+      {name: t('Quan hệ cổ đông'), path:'/quanhe',child:[]},
+      {name: t('Liên hệ'), path:'/lienhe',child:[]}
+    ]
     return (
       <>
       <Box
@@ -181,7 +181,8 @@ export default function Header() {
                     sm: theme.color.white, // Set background color for breakpoint `sm`
                     md: theme.color.lightBlack, // Set background color for breakpoint `md`
                   },
-                  borderRadius: { xs: '0',sm: '0', md:'5px', lg: '5px' }
+                  borderRadius: { xs: '0',sm: '0', md:'5px', lg: '5px' },
+                  boxShadow: '0 0 20px -10px rgba(0,0,0,.8)'
                 }}
               >
                 <Stack
@@ -216,7 +217,7 @@ export default function Header() {
                   direction="row"
                   sx={{display: { xs: 'flex',sm: 'flex', md:'none', lg: 'none' }}}
                 >
-                  <MenuMobile toggleDrawer={toggleDrawer} openRight={openRight}/>
+                  <MenuMobile toggleDrawer={toggleDrawer} openRight={openRight} pages={pages}/>
                 </Stack>
                 <Stack
                   alignItems="center"
@@ -281,7 +282,7 @@ export default function Header() {
               direction="row"
               sx={{display: { xs: 'flex',sm: 'flex', md:'none', lg: 'none' }}}
             >
-              <MenuMobile toggleDrawer={toggleDrawer} openRight={openRight}/>
+              <MenuMobile toggleDrawer={toggleDrawer} openRight={openRight} pages={pages}/>
             </Stack>
 
             <Stack
@@ -304,7 +305,7 @@ export default function Header() {
     );
 }
 
-function MenuMobile({toggleDrawer,openRight}){
+function MenuMobile({toggleDrawer,openRight,pages}){
   const theme = useTheme()
   return (
     <>

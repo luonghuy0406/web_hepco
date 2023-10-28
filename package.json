@@ -24,6 +24,7 @@
     "react-multi-carousel": "^2.8.4",
     "react-router-dom": "^6.17.0",
     "react-scripts": "5.0.1",
+    "semantic-ui-react": "^2.1.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -31,7 +32,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "translate-scanner": "i18next-scanner --config i18next-scanner.config.js src/**/*.js"
+    "translate-scanner": "i18next-scanner --config i18next-scanner.config.js src/**/*.js  src/**/**/*.js  src/**/**/**/*.js  src/**/**/**/**/*.js"
   },
   "eslintConfig": {
     "extends": [

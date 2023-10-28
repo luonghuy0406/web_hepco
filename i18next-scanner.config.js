@@ -1,5 +1,9 @@
 module.exports = {
     options: {
+        input: [
+            'src/**/*.js',
+            'src/layout/main/header/index.js'
+          ],
         debug: true,
         removeUnusedKeys: true,
         // read strings from functions: IllegalMoveError('KEY') or t('KEY')
