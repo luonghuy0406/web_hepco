@@ -49,13 +49,13 @@ const InvoiceBox = styled('div')(({ theme }) => ({
   [theme.breakpoints.down('md')]: {
     height: '60px', // Set height for breakpoint `xs`
     '&::before': {
-      borderBottom: '60px solid #03611A',
+      borderBottom: `60px solid ${theme.color.green1}`,
     }
   },
   [theme.breakpoints.up('md')]: {
     height: '70px', // Set height for breakpoint `md` and above
     '&::before': {
-      borderBottom: '70px solid #03611A',
+      borderBottom: `70px solid ${theme.color.gray1}`,
     }
   },
 }));
@@ -85,10 +85,11 @@ export default function Header() {
     const pages = [
       {name: t('Trang chủ'), path:'',child:[]},
       {name: t('Giới thiệu'), path:'/gioithieu',child:[]},
-      {name: t('Lĩnh vực hoạt động'), path:'/linhvuc',child:[]},
-      {name: t('Tin tức & sự kiện'), path:'/tintuc',child:[]},
+      {name: t('Dịch vụ'), path:'/dichvu',child:[]},
+      {name: t('Tin tức'), path:'/tintuc',child:[]},
       {name: t('Dự án'), path:'/duan',child:[]},
-      {name: t('Quan hệ cổ đông'), path:'/quanhe',child:[]},
+      {name: t('Cổ đông'), path:'/codong',child:[]},
+      {name: t('Câu hỏi'), path:'/cauhoi',child:[]},
       {name: t('Liên hệ'), path:'/lienhe',child:[]}
     ]
     return (
@@ -154,7 +155,7 @@ export default function Header() {
                         </Grid>
                     </Grid>
                 </Grid>
-                {/* <LanguagePopover/> */}
+                <LanguagePopover/>
               </Stack>
             </Stack>
         </Container>
@@ -179,7 +180,7 @@ export default function Header() {
                   backgroundColor: {
                     xs: theme.color.white, // Set background color for breakpoint `xs`
                     sm: theme.color.white, // Set background color for breakpoint `sm`
-                    md: theme.color.lightBlack, // Set background color for breakpoint `md`
+                    md: theme.color.green1, // Set background color for breakpoint `md`
                   },
                   borderRadius: { xs: '0',sm: '0', md:'5px', lg: '5px' },
                   boxShadow: '0 0 20px -10px rgba(0,0,0,.8)'

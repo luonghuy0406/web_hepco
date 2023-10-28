@@ -33,10 +33,10 @@ export default function MenuNav({page, color}) {
                     // fontFamily: (theme) => theme.typography.header,
                     textTransform: 'uppercase',
                     textAlign:"center",
-                    color:  (open ? ((theme) => theme.color.green1) : ((theme) => (color ? '#000': theme.color.white))),
+                    color:  (open ? ((theme) => theme.color.red) : ((theme) => (color ? '#000': theme.color.white))),
                     // textDecoration: open ? 'underline' :'none',
                     "&:hover": {
-                        color:  (theme) => theme.color.green1,
+                        color:  (theme) => theme.color.red,
                         // textDecoration: 'underline',
                         cursor:"pointer"
                     },

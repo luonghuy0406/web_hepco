@@ -25,6 +25,8 @@ export default function ThemeProvider({ children }) {
     },
     color : {
       white: '#FFFFFF',
+      black: '#000000',
+      red: '#D80027',
       green1: '#03611A',
       green2 : '#8EC542',
       green3 : '#AAD293',

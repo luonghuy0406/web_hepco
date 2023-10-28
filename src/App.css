@@ -6,6 +6,9 @@
     /* #8A8988 */
     /* #D6D5DA */
 }
+html {
+    scroll-behavior: smooth;
+}
 body{
     font-family: 'Quicksand', sans-serif !important;
 }
@@ -47,4 +50,44 @@ body{
         -webkit-transform: translateY(80px);
         transform: translateY(80px)
     }
+}
+
+.img-bounce img {
+    -webkit-animation: bounce2 4s infinite ease-in-out;
+    -o-animation: bounce2 4s infinite ease-in-out;
+    -ms-animation: bounce2 4s infinite ease-in-out;
+    -moz-animation: bounce2 4s infinite ease-in-out;
+    animation: bounce2 4s infinite ease-in-out;
+    cursor: pointer;
+}
+
+@-webkit-keyframes bounce2 {
+    0% {
+        transform: translateY(-5px)
+    }
+
+    50% {
+        transform: translateY(5px)
+    }
+
+    100% {
+        transform: translateY(-5px)
+    }
+}
+
+@keyframes bounce2 {
+    0% {
+        transform: translateY(-5px)
+    }
+
+    50% {
+        transform: translateY(5px)
+    }
+
+    100% {
+        transform: translateY(-5px)
+    }
+}
+.type-line::after{
+    content: ''
 }
