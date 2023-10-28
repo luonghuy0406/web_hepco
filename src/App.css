@@ -1,10 +1,16 @@
 :root{
-    --white: '#FFFFFF';
-    --primary-color: '#03611A',
-    --secondary-color : '#8EC542'
-    /* #AAD293 */
-    /* #8A8988 */
-    /* #D6D5DA */
+    --white: #FFFFFF;
+    --black: #000000;
+    --red: #D80027;
+    --green1: #03611A;
+    --green2 : #8EC542;
+    --green3 : #AAD293;
+    --gray1 : #8A8988;
+    --gray2 : #D6D5DA;
+    --lightBlack: #282828;
+}
+:focus-visible {
+    outline: unset !important;
 }
 html {
     scroll-behavior: smooth;
@@ -89,5 +95,34 @@ body{
     }
 }
 .type-line::after{
-    content: ''
+    content: '';
+    border: 0;
+    width: 50px;
+    height: 5px;
+    background: var(--green1);
+    display: block;
+    margin-top: 20px;
+}
+
+.our-mission-wrap:hover {
+    transform: translateY(-8px);
+}
+
+.our-mission-wrap {
+    transform: translateY(0);
+    transition: .4s;
+}
+.overly-border {
+    border: 1px solid #282828;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    transform: translateY(-50%);
+    z-index: 0;
 }

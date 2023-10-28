@@ -37,7 +37,7 @@ export default function ThemeProvider({ children }) {
     // components,
     typography : {
       fontFamily: "'Quicksand', sans-serif",
-      fontSmall: "'Mukta Mahee', sans-serif"
+      MuktaMahee: "'Mukta Mahee', sans-serif"
     }
   }
 

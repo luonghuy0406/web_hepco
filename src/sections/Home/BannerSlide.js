@@ -76,7 +76,7 @@ export function BannerSlide({executeScroll}){
                       Hepco Huế
                     </Typography>
                 </Grid>
-                <Grid item xs={5} container sx={{height:'100%'}} alignItems={"flex-end"} justifyContent={"center"}className="animate__animated animate__fadeIn">
+                <Grid item xs={5} container mt={5} sx={{height:'100%'}} alignItems={"flex-end"} justifyContent={"center"}className="animate__animated animate__fadeIn">
                     <Image src='https://rstheme.com/products/wordpress/planteo/wp-content/uploads/revslider/main-home/Layer-6241.png' style={{width:'100%', height:'auto'}}/>
                 </Grid>
               </Grid>

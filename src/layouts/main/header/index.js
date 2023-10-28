@@ -28,7 +28,7 @@ import MenuNav from './MenuNav';
 
 
 
-const InvoiceBox = styled('div')(({ theme }) => ({
+const InvoiceBox = styled('div')(({ theme, sticky }) => ({
   backgroundColor: theme.palette.green1,
   display: 'flex',
   alignItems: 'center',
@@ -55,7 +55,7 @@ const InvoiceBox = styled('div')(({ theme }) => ({
   [theme.breakpoints.up('md')]: {
     height: '70px', // Set height for breakpoint `md` and above
     '&::before': {
-      borderBottom: `70px solid ${theme.color.gray1}`,
+      borderBottom: `70px solid ${sticky ? theme.color.green1 : theme.color.gray1}`,
     }
   },
 }));
@@ -71,6 +71,7 @@ export default function Header() {
       const handleScroll = () => {
         if (window.pageYOffset > 190) {
           refSticky.current.style.display = "block";
+          refSticky.current.style.zIndex = "99999";
         }else{
           refSticky.current.style.display = "none";
         }
@@ -151,7 +152,7 @@ export default function Header() {
                           <Typography fontWeight={'bold'} sx={{fontSize:'16px'}}>{t('Hotline')}</Typography>
                         </Grid>
                         <Grid item xs={12}>
-                          <Typography sx={{fontSize:'16px',fontFamily:(theme)=>theme.typography.fontSmall}}>(0234) 3997799</Typography>
+                          <Typography sx={{fontSize:'16px',fontFamily:(theme)=>theme.typography.MuktaMahee}}>(0234) 3997799</Typography>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -292,7 +293,7 @@ export default function Header() {
               spacing={2}
               sx={{position:'relative'}}
             >
-              <InvoiceBox theme={theme}>
+              <InvoiceBox theme={theme} sticky={true}>
                   <Box sx={{zIndex:'1',position:'relative'}}>
                     <a href={'http://hepco.com.vn/hoadondientu'} target='_blank' legacyBehavior style={{textDecoration:'none'}}>  
                       <Typography fontWeight={'bold'} color={(theme)=>theme.color.white} fontSize={{xs: '13px', md:'14px', lg:'16px'}} textTransform={'uppercase'}>{t('Tra cứu hoá đơn')}</Typography>
