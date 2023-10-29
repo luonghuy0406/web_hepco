@@ -3,6 +3,9 @@ import { Box } from "@mui/material";
 import { BannerSlide } from "../sections/Home/BannerSlide";
 import { useRef } from "react";
 import { OurMission } from "../sections/Home/OurMission";
+import { CompanyInfo } from "../sections/Home/CompanyInfo";
+import { OurServices } from "../sections/Home/OurServices";
+import { FeaturedProjects } from "../sections/Home/FeaturedProjects";
 
 const Home = () => {
   const myRef = useRef(null)
@@ -11,11 +14,12 @@ const Home = () => {
   return (
     <Box>
       <BannerSlide executeScroll={executeScroll}/>
-      
-
-      <dix ref={myRef}>
+      <Box ref={myRef}>
+        <CompanyInfo/>
         <OurMission/>
-      </dix>
+        <OurServices/>
+        <FeaturedProjects/> 
+      </Box>
     </Box>
   );
 };

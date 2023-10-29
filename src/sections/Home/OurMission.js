@@ -6,6 +6,7 @@ import { faPlay } from '@fortawesome/free-solid-svg-icons'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { faFontAwesome } from '@fortawesome/free-brands-svg-icons'
+import { useTranslation } from 'react-i18next'
 
 library.add(fas, faFontAwesome, faPlay)
 
@@ -127,20 +128,21 @@ const style = {
   };
 
 export function OurMission() {
+  const {t} = useTranslation()
   const theme = useTheme()
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   return (
     <Box>
-        <Container maxWidth='xl'sx={{py:theme.spacing(15), px:0, background:"#fdfdfd"}}>
+        <Container maxWidth='xl'sx={{mt:theme.spacing(5), py: theme.spacing(5), px:0}}>
             <Grid container sx={{px:3}}>
-                <Grid item xs={12} md={7} sx={{backgroundColor: theme.color.white,boxShadow: '0 0 150px #eee',p:theme.spacing(3), py: theme.spacing(10)}}>
-                    <Typography variant='h6' color={theme.color.green1}>
-                        WELCOME TO HEPCO
-                    </Typography>
-                    <Typography variant='h3' color={theme.color.black} fontWeight={"bold"} className='type-line'>
-                        25+ Years of Experience in Gadening & Landscaping
+                <Grid item xs={12} md={7} sx={{borderRadius: "4px 0 0 4px",backgroundColor: theme.color.white,boxShadow: '0 0 150px #eee',p:theme.spacing(3), py: theme.spacing(8)}}>
+                    {/* <Typography variant='h6' color={theme.color.green1}>
+                        {t("CHÀO MỪNG ĐẾN VỚI HEPCO")}
+                    </Typography> */}
+                    <Typography variant='h4' color={theme.color.black} fontWeight={"bold"} className='type-line' pb={2}>
+                        {t('Tầm nhìn - Sứ mệnh - Giá trị cốt lõi')}
                     </Typography>
 
                     <Grid container sx={{pt: theme.spacing(4), pl: theme.spacing(4)}} className={"our-mission-wrap"}>
@@ -154,8 +156,8 @@ export function OurMission() {
                             </ServicesIcon>
                          </Grid>
                          <Grid item xs={10}>
-                            <Typography variant="h5" fontWeight={"bold"}>
-                                Our Vision
+                            <Typography variant="h5" fontWeight={"bold"}  color={theme.color.green2} pb={2}>
+                                {t('Tầm nhìn')}
                             </Typography>
                             <Typography fontFamily={theme.typography.MuktaMahee} fontWeight={400}>
                                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
@@ -173,8 +175,8 @@ export function OurMission() {
                             </ServicesIcon>
                          </Grid>
                          <Grid item xs={10}>
-                            <Typography variant="h5" fontWeight={"bold"}>
-                                Our Mission
+                            <Typography variant="h5" fontWeight={"bold"}  color={theme.color.green2} pb={2}>
+                                {t('Sứ mệnh')}
                             </Typography>
                             <Typography fontFamily={theme.typography.MuktaMahee} fontWeight={400}>
                                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
@@ -188,17 +190,18 @@ export function OurMission() {
                             <Box sx={{
                                 width:"100%", 
                                 height:"100%", 
-                                backgroundImage:`url('http://mail.hepco.com.vn/Public/Upload/images/Tintuc/01-01(5).jpg')`,
+                                backgroundImage:`url('http://www.hepco.com.vn/Public/Upload/images/Tintuc/01-01(5).jpg')`,
                                 backgroundPosition:'center',
                                 backgroundSize:'cover',
-                                backgroundRepeat:'no-repeat'
+                                backgroundRepeat:'no-repeat', 
+                                borderRadius: "0 4px 4px 0"
                             }}/>
                         </Grid>
                         <Grid item xs={6} md={5} container alignItems={"center"}>
                             <Box sx={{
                                 width:"100%", 
                                 height:{xs: "100%", md: "70%"}, 
-                                backgroundImage:`url('http://mail.hepco.com.vn/Public/Upload/images/Tintuc/01-01(5).jpg')`,
+                                backgroundImage:`url('http://www.hepco.com.vn/Public/Upload/images/Tintuc/01-01(5).jpg')`,
                                 backgroundPosition:'center',
                                 backgroundSize:'cover',
                                 backgroundRepeat:'no-repeat',
@@ -211,6 +214,35 @@ export function OurMission() {
                     </PopupVideos>
                     <PopupVideosBorder onClick={handleOpen}/>
                 </Grid>
+            </Grid>
+        </Container>
+        <Container maxWidth='xl'>
+            <Grid container sx={{p:theme.spacing(3), textAlign:"center", pt:0}} spacing={2}>
+                <Grid item xs={12}>
+                    <Typography variant="h5" fontWeight={"bold"} color={theme.color.green2} pb={2} mb={2} className="core-values" sx={{position:"relative"}}>
+                        {t('Giá trị cốt lõi')}
+                    </Typography>
+                </Grid>
+                {
+                    [1,2,3,4,5,6].map((id)=>{
+                        return(
+                            <Grid key={id} item xs={4} sm={4} md={2}>
+                                <Box sx={{backgroundColor: theme.color.white,boxShadow: '0 0 150px #eee',p:theme.spacing(5), borderRadius:"10px"}} className={"our-mission-wrap"}>
+                                    <ServicesIcon>
+                                        <IconImage
+                                            src="https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/ff.png"
+                                            alt="Rs-service"
+                                        />
+                                    </ServicesIcon>
+                                    <Typography variant="h6" fontWeight={"bold"} color={theme.color.black}>
+                                        Giá trị cốt lõi {id}
+                                    </Typography>
+                                </Box>
+                            </Grid>
+                        )
+                    })
+                }
+
             </Grid>
         </Container>
         <Modal

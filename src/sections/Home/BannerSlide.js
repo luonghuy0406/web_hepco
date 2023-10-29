@@ -2,7 +2,7 @@ import Carousel from "react-multi-carousel";
 import { Image } from "semantic-ui-react";
 import "react-multi-carousel/lib/styles.css";
 import 'animate.css';
-import { Box, Grid, IconButton, Typography, styled } from "@mui/material";
+import { Box, Grid, Typography, styled } from "@mui/material"; 
 import { useTheme } from "@emotion/react";
 const images = [
   "https://images.unsplash.com/photo-1549989476-69a92fa57c36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
@@ -27,7 +27,7 @@ const IconNext = styled('div')(({ theme }) => ({
 export function BannerSlide({executeScroll}){
   const theme = useTheme()
   return (
-    <Box sx={{position:"relative"}}>
+    <Box sx={{position:"relative"}}> 
       <Carousel
         additionalTransfrom={0}
         arrows={true}
@@ -35,7 +35,7 @@ export function BannerSlide({executeScroll}){
         autoPlaySpeed={3000}
         centerMode={false}
         className=""
-        containerClass="container"
+        containerClass="container animate__animated animate__fadeInRight"
         customTransition="all 0.5s linear"
         infinite
         responsive={{
@@ -85,7 +85,7 @@ export function BannerSlide({executeScroll}){
         })}
       </Carousel>
       <Box sx={{width: '100%', position: 'absolute', display: 'flex', alignItems: 'center',justifyContent: 'center'}}>
-        <IconNext className="img-bounce" onClick={executeScroll}>
+        <IconNext className="img-bounce animate__animated animate__zoomIn" onClick={executeScroll}>
             <Image src='https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/leaf.png' style={{width:'25px', height:'auto'}}/>
         </IconNext>
       </Box>

@@ -17,6 +17,7 @@ html {
 }
 body{
     font-family: 'Quicksand', sans-serif !important;
+    background-color: #f7f7f7 !important;
 }
 .menu-sticky {
     margin: 0;
@@ -101,8 +102,9 @@ body{
     height: 5px;
     background: var(--green1);
     display: block;
-    margin-top: 20px;
+    margin-top: 10px;
 }
+
 
 .our-mission-wrap:hover {
     transform: translateY(-8px);
