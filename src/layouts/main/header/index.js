@@ -19,7 +19,7 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 
-import { LanguagePopover } from './LanguagePopover'
+// import { LanguagePopover } from './LanguagePopover'
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { styled } from '@mui/material/styles';
@@ -156,7 +156,7 @@ export default function Header() {
                         </Grid>
                     </Grid>
                 </Grid>
-                <LanguagePopover/>
+                {/* <LanguagePopover/> */}
               </Stack>
             </Stack>
         </Container>
