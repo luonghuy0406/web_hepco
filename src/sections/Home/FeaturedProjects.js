@@ -119,7 +119,7 @@ export const FeaturedProjects = () => {
             {projects.map((id) => (
                 <Grid key={id} item xs={4} sm={4} md={4}>
                 <FeaturedProjectWrap>
-                    <FeaturedProjectImage image={"http://www.hepco.com.vn/Public/Upload/images/Tintuc/11(1).jpg"}/>
+                    <FeaturedProjectImage image={"https://scontent.fsgn2-3.fna.fbcdn.net/v/t39.30808-6/355265243_564632125875881_828254695048474631_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEsJKXZ7MhiznNCdMmAYVRNR17hoVtbJ89HXuGhW1snz5cKA-fADt4SnFt90EqjmBvsqtOUkAaVyPpn2uxpjZWC&_nc_ohc=Wup_gHhwG40AX80CrK5&_nc_ht=scontent.fsgn2-3.fna&oh=00_AfBtT0VY1lqA2kUbhOKFc6aVxBVLQvyG8dowLeI3rIIphg&oe=65432D16"}/>
                     <FeaturedProjectContent className="featured-project-content">
                     <Typography variant="h5" textAlign="center" fontWeight={700} color={theme.color.white} sx={{padding:theme.spacing(3)}}>
                         Chi tiết dự án
