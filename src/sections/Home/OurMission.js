@@ -159,7 +159,7 @@ export function OurMission() {
                             <Typography variant="h5" fontWeight={"bold"}  color={theme.color.green2} pb={2}>
                                 {t('Tầm nhìn')}
                             </Typography>
-                            <Typography fontFamily={theme.typography.MuktaMahee} fontWeight={400}>
+                            <Typography fontWeight={500}>
                                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                             </Typography>
                          </Grid>
@@ -178,7 +178,7 @@ export function OurMission() {
                             <Typography variant="h5" fontWeight={"bold"}  color={theme.color.green2} pb={2}>
                                 {t('Sứ mệnh')}
                             </Typography>
-                            <Typography fontFamily={theme.typography.MuktaMahee} fontWeight={400}>
+                            <Typography fontWeight={500}>
                                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                             </Typography>
                          </Grid>

@@ -19,6 +19,10 @@ body{
     font-family: 'Quicksand', sans-serif !important;
     background-color: #f7f7f7 !important;
 }
+a {
+    text-decoration: none;
+    color: var(--black);
+}
 .menu-sticky {
     margin: 0;
     width: 100%;
@@ -127,4 +131,36 @@ body{
     margin: 0 auto;
     transform: translateY(-50%);
     z-index: 0;
+}
+
+
+.blog-button a {
+    background: 0 0;
+    color: #212121;
+    border: none;
+    border-radius: 25px;
+    padding-right: 25px;
+    line-height: 30px;
+    display: inline-block;
+    transition: all .4s ease-in-out 0s;
+    position: relative;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+.arrow-news{
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: transform 0.5s ease;
+    line-height: 1.5rem;
+}
+.blog-button a:hover{
+    color: var(--green1)
+}
+.blog-button a:hover .arrow-news{
+    color: var(--green1);
+    transform: translateX(20%);
 }

@@ -2,6 +2,14 @@ import React from 'react';
 import { Container, Grid, Typography, Box } from '@mui/material';
 import { styled, useTheme } from '@mui/material/styles';
 import { useTranslation } from 'react-i18next';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlay } from '@fortawesome/free-solid-svg-icons'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { faFontAwesome } from '@fortawesome/free-brands-svg-icons'
+import { Link } from 'react-router-dom';
+
+library.add(fas, faFontAwesome, faPlay)
 
 const StyledContainer = styled(Container)(({ theme }) => ({
   paddingTop: theme.spacing(5),
@@ -18,11 +26,11 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
   '&:after':{
     content: "''",
     border: 0,
-    width: '100px',
+    width: '70px',
     height: '5px',
     background: theme.color.green1,
     display: 'block',
-    marginTop: '10px',
+    marginTop: '5px',
     position: 'absolute',
     left: '50%',
     right: '50%',
@@ -35,74 +43,53 @@ const StyledGrid = styled(Grid)(({ theme }) => ({
   paddingLeft: theme.spacing(4),
 }));
 
-const FeaturedProjectWrap = styled(Box)(({ theme }) => ({
+const FeaturedNewstWrap = styled(Box)(({ theme }) => ({
   position: 'relative',
   backgroundColor: theme.color.white,
   boxShadow: '0 0 15px #eee',
-  borderRadius: '10px',
-  '&:after': {
-    content: '""',
-    display: 'block',
-    background: theme.color.white,
-    position: 'absolute',
-    top: '20px',
-    left: '20px',
-    bottom: '20px',
-    right: '20px',
-    opacity: 0,
-    transform: 'rotateY(90deg)',
-    transformOrigin: '0 0',
-    transition: 'all .4s ease-in-out 0s',
-  },
-  '&:hover:after': {
-    transform: 'rotateY(0)',
-    opacity: 0.9,
-  },
-  '&:hover .featured-project-content': {
-    opacity: 1,
-    transform: 'translate(0,-50%)',
-    transitionDelay: '0.2s',
-  },
-  '&:hover .featured-project-name': {
-    opacity: 0,
-    transform: 'translate(0,-50%)',
-    transitionDelay: '0.2s',
-  },
+  borderRadius: '10px'
 }));
 
-const FeaturedProjectImage = styled(Box)(({ theme, image }) => ({
+const FeaturedNewstImage = styled(Box)(({ theme, image }) => ({
   background: `url("${image}")`,
   height: 'auto',
-  aspectRatio: 1,
+  aspectRatio: 1.6,
   width: '100%',
-  borderRadius: '6px',
+  // borderRadius: '6px',
   backgroundSize: 'cover',
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
+  position: 'relative'
 }));
-
-const FeaturedProjectContent = styled(Box)(({ theme }) => ({
-  position: 'absolute',
-  top: '50%',
-  left: '20px',
-  right: '20px',
-  opacity: 0,
-  zIndex: 1,
-  padding: '0 15px',
-  transform: 'translate(10%,-50%)',
-  transition: 'all .2s ease-out',
-}));
-
-const FeaturedProjectName = styled(Box)(({ theme }) => ({
-  width: '80%',
-  background: theme.color.white,
-  bottom: 0,
-  position: 'absolute',
-  left: '50%',
-  transform: 'translateX(-50%) translateY(50%)',
-  padding: theme.spacing(2),
-  borderRadius: '10px',
-  opacity: 1,
+const BlogButton = styled(Box)(({ theme }) => ({
+  a: {
+    color: theme.color.black,
+    background: 0,
+    border: 'none',
+    borderRadius: '25px',
+    paddingRight: '25px',
+    lineHeight: '30px',
+    display: 'inline-block',
+    transition: 'all .4s ease-in-out 0s',
+    position: 'relative',
+    fontSize: '16px',
+    fontWeight: 600,
+    textDecoration: 'none',
+    '&:hover': {
+      color: theme.color.green1,
+      '.arrow-news': {
+        color: theme.color.green1,
+        transform: 'translateX(20%)',
+      },
+    },
+  },
+  '.arrow-news': {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    transition: 'transform 0.5s ease',
+    lineHeight: '1.5rem',
+  },
 }));
 
 export const News = () => {
@@ -113,37 +100,83 @@ export const News = () => {
     <StyledContainer maxWidth="xl">
       <Grid container>
             <StyledTypography variant="h4" color={theme.color.black} fontWeight="bold">
-                Dự án nổi bật
+                {t('Tin tức nổi bật')}
             </StyledTypography>
             <StyledGrid container spacing={2}>
             {projects.map((id) => (
                 <Grid key={id} item xs={4} sm={4} md={4}>
-                <FeaturedProjectWrap>
-                    <FeaturedProjectImage image={"https://scontent.fsgn2-3.fna.fbcdn.net/v/t39.30808-6/355265243_564632125875881_828254695048474631_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEsJKXZ7MhiznNCdMmAYVRNR17hoVtbJ89HXuGhW1snz5cKA-fADt4SnFt90EqjmBvsqtOUkAaVyPpn2uxpjZWC&_nc_ohc=Wup_gHhwG40AX80CrK5&_nc_ht=scontent.fsgn2-3.fna&oh=00_AfBtT0VY1lqA2kUbhOKFc6aVxBVLQvyG8dowLeI3rIIphg&oe=65432D16"}/>
-                    <FeaturedProjectContent className="featured-project-content">
-                    <Typography variant="h5" textAlign="center" fontWeight={700} color={theme.color.green1} sx={{padding:theme.spacing(3)}}>
-                        Chi tiết dự án
-                    </Typography>
-                    <Grid container>
-                         <Grid item xs={5}><Typography variant="h6" fontWeight={700} color={theme.color.green1}>{t('Tên dự án:')}</Typography></Grid>
-                         <Grid item xs={7}><Typography variant="h6" color={theme.color.green1}>{t('Dự án 1')}</Typography></Grid>
-                         <Grid item xs={5}><Typography variant="h6" fontWeight={700} color={theme.color.green1}>{t('Chủ đầu tư:')}</Typography></Grid>
-                         <Grid item xs={7}><Typography variant="h6" color={theme.color.green1}>{t('Chủ đầu tư 1')}</Typography></Grid>
-                         <Grid item xs={5}><Typography variant="h6" fontWeight={700} color={theme.color.green1}>{t('Địa điểm:')}</Typography></Grid>
-                         <Grid item xs={7}><Typography variant="h6" color={theme.color.green1}>{t('Địa điểm 1')}</Typography></Grid>
-                                                
-                         <Grid item xs={5}><Typography variant="h6" fontWeight={700} color={theme.color.green1}>{t('Công việc:')}</Typography></Grid>
-                         <Grid item xs={7}><Typography variant="h6" color={theme.color.green1}>{t('Công việc 1')}</Typography></Grid>
-                         <Grid item xs={5}><Typography variant="h6" fontWeight={700} color={theme.color.green1}>{t('Năm thực hiện:')}</Typography></Grid>
-                         <Grid item xs={7}><Typography variant="h6" color={theme.color.green1}>{t('2022')}</Typography></Grid>
-                     </Grid>
-                    </FeaturedProjectContent>
-                    <FeaturedProjectName className="featured-project-name">
-                    <Typography variant="h5" textAlign="center" fontWeight={700} color={theme.color.green1}>
-                        Tên dự án
-                    </Typography>
-                    </FeaturedProjectName>
-                </FeaturedProjectWrap>
+                  <Link to="#">
+                    <FeaturedNewstWrap>
+                        <FeaturedNewstImage image={"https://scontent.fsgn2-3.fna.fbcdn.net/v/t39.30808-6/355265243_564632125875881_828254695048474631_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEsJKXZ7MhiznNCdMmAYVRNR17hoVtbJ89HXuGhW1snz5cKA-fADt4SnFt90EqjmBvsqtOUkAaVyPpn2uxpjZWC&_nc_ohc=Wup_gHhwG40AX80CrK5&_nc_ht=scontent.fsgn2-3.fna&oh=00_AfBtT0VY1lqA2kUbhOKFc6aVxBVLQvyG8dowLeI3rIIphg&oe=65432D16"}>
+                        <Box
+                          sx={{
+                            // width: '20%',
+                            px: theme.spacing(3),
+                            py:theme.spacing(1),
+                            background: theme.color.green1,
+                            // aspectRatio: '0.9',
+                            position: 'absolute',
+                            bottom: '0',
+                            left: '0',
+                            borderRadius: '0 4px 0 0',
+                            textAlign:'center'
+                          }}
+                        >
+                          <Typography 
+                            className='news-date' 
+                            // fontFamily={theme.typography.MuktaMahee}
+                            color={theme.color.white}
+                            fontWeight={700}
+                            variant={'h5'}
+                            pt={1}
+                          >10</Typography>
+                          <Typography 
+                            className='news-date' 
+                            // fontFamily={theme.typography.MuktaMahee}
+                            color={theme.color.white}
+                            fontWeight={700}
+                            variant={'h6'}
+                          >Nov</Typography>
+                          {/* <Typography 
+                            className='news-date' 
+                            fontFamily={theme.typography.MuktaMahee}
+                            color={theme.color.white}
+                            fontWeight={700}
+                            variant={'h6'}
+                          >2022</Typography> */}
+                        </Box>
+                        </FeaturedNewstImage>
+                        <Box
+                          sx={{padding:theme.spacing(4), boxShadow:'0 5px 20px rgba(34,34,34,.1)'}}
+                        >
+                          <Grid container spacing={1}>
+                              <Grid item xs={12} pb={1}>
+                                <Typography variant="h6" color={theme.color.green1} fontWeight={700}>Tên bài post</Typography>
+                              </Grid>
+                              <Grid item xs={12}>
+                                <Box sx={{display:'flex'}}>
+                                  <Typography paddingRight={1} color={theme.color.gray1} fontWeight={700}>Tác giả</Typography>
+                                  <Typography paddingRight={1} color={theme.color.gray1} fontWeight={700}>-</Typography>
+                                  <Typography color={theme.color.gray1} fontWeight={700} >Phân loại tin</Typography>
+                                </Box>
+                              </Grid>
+                              <Grid item xs={12}>
+                                <Box className='ck-content' sx={{overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical'}}>
+                                  <Typography fontWeight={500}>Nội dung hiển thị tối đa 3 dòng Duis eleifend molestie leo, at mollis eros rutrum sit amet. Nam venenatis enim at magna euismod congue. Fusce semper malesuada purus. Duis eleifend molestie leo, at mollis eros rutrum sit amet. Nam venenatis enim at magna euismod congue. Fusce semper malesuada purus. Duis eleifend molestie leo, at mollis eros rutrum sit amet. Nam venenatis enim at magna euismod congue. Fusce semper malesuada purus.</Typography>
+                                </Box>
+                              </Grid>
+                              <Grid item>
+                              <BlogButton>
+                                  <Link to="#">
+                                    <Typography fontWeight={700} lineHeight={'1.5rem'}>Read More</Typography>
+                                    <Typography sx={{display:'inline', pl: '5px'}} className='arrow-news'><FontAwesomeIcon icon="fa-solid fa-arrow-right-long" /></Typography>
+                                  </Link>
+                                </BlogButton>
+                              </Grid>
+                          </Grid>
+                        </Box>
+                    </FeaturedNewstWrap>
+                  </Link>
                 </Grid>
                 ))}
             </StyledGrid>

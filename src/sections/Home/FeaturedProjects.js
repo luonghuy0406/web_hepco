@@ -18,11 +18,11 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
   '&:after':{
     content: "''",
     border: 0,
-    width: '100px',
+    width: '70px',
     height: '5px',
     background: theme.color.green1,
     display: 'block',
-    marginTop: '10px',
+    marginTop: '5px',
     position: 'absolute',
     left: '50%',
     right: '50%',
@@ -113,37 +113,37 @@ export const FeaturedProjects = () => {
     <StyledContainer maxWidth="xl">
       <Grid container>
             <StyledTypography variant="h4" color={theme.color.black} fontWeight="bold">
-                Dự án nổi bật
+                {t('Dự án nổi bật')}
             </StyledTypography>
             <StyledGrid container spacing={2}>
             {projects.map((id) => (
                 <Grid key={id} item xs={4} sm={4} md={4}>
-                <FeaturedProjectWrap>
-                    <FeaturedProjectImage image={"https://scontent.fsgn2-3.fna.fbcdn.net/v/t39.30808-6/355265243_564632125875881_828254695048474631_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEsJKXZ7MhiznNCdMmAYVRNR17hoVtbJ89HXuGhW1snz5cKA-fADt4SnFt90EqjmBvsqtOUkAaVyPpn2uxpjZWC&_nc_ohc=Wup_gHhwG40AX80CrK5&_nc_ht=scontent.fsgn2-3.fna&oh=00_AfBtT0VY1lqA2kUbhOKFc6aVxBVLQvyG8dowLeI3rIIphg&oe=65432D16"}/>
-                    <FeaturedProjectContent className="featured-project-content">
-                    <Typography variant="h5" textAlign="center" fontWeight={700} color={theme.color.green1} sx={{padding:theme.spacing(3)}}>
-                        Chi tiết dự án
-                    </Typography>
-                    <Grid container>
-                         <Grid item xs={5}><Typography variant="h6" fontWeight={700} color={theme.color.green1}>{t('Tên dự án:')}</Typography></Grid>
-                         <Grid item xs={7}><Typography variant="h6" color={theme.color.green1}>{t('Dự án 1')}</Typography></Grid>
-                         <Grid item xs={5}><Typography variant="h6" fontWeight={700} color={theme.color.green1}>{t('Chủ đầu tư:')}</Typography></Grid>
-                         <Grid item xs={7}><Typography variant="h6" color={theme.color.green1}>{t('Chủ đầu tư 1')}</Typography></Grid>
-                         <Grid item xs={5}><Typography variant="h6" fontWeight={700} color={theme.color.green1}>{t('Địa điểm:')}</Typography></Grid>
-                         <Grid item xs={7}><Typography variant="h6" color={theme.color.green1}>{t('Địa điểm 1')}</Typography></Grid>
-                                                
-                         <Grid item xs={5}><Typography variant="h6" fontWeight={700} color={theme.color.green1}>{t('Công việc:')}</Typography></Grid>
-                         <Grid item xs={7}><Typography variant="h6" color={theme.color.green1}>{t('Công việc 1')}</Typography></Grid>
-                         <Grid item xs={5}><Typography variant="h6" fontWeight={700} color={theme.color.green1}>{t('Năm thực hiện:')}</Typography></Grid>
-                         <Grid item xs={7}><Typography variant="h6" color={theme.color.green1}>{t('2022')}</Typography></Grid>
-                     </Grid>
-                    </FeaturedProjectContent>
-                    <FeaturedProjectName className="featured-project-name">
-                    <Typography variant="h5" textAlign="center" fontWeight={700} color={theme.color.green1}>
-                        Tên dự án
-                    </Typography>
-                    </FeaturedProjectName>
-                </FeaturedProjectWrap>
+                  <FeaturedProjectWrap sx={{boxShadow:'0 5px 20px rgba(34,34,34,.1)'}}>
+                      <FeaturedProjectImage image={"https://scontent.fsgn2-3.fna.fbcdn.net/v/t39.30808-6/355265243_564632125875881_828254695048474631_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEsJKXZ7MhiznNCdMmAYVRNR17hoVtbJ89HXuGhW1snz5cKA-fADt4SnFt90EqjmBvsqtOUkAaVyPpn2uxpjZWC&_nc_ohc=Wup_gHhwG40AX80CrK5&_nc_ht=scontent.fsgn2-3.fna&oh=00_AfBtT0VY1lqA2kUbhOKFc6aVxBVLQvyG8dowLeI3rIIphg&oe=65432D16"}/>
+                      <FeaturedProjectContent className="featured-project-content">
+                        <Typography variant="h5" textAlign="center" fontWeight={700} color={theme.color.green1} sx={{padding:theme.spacing(3)}}>
+                            {t('Chi tiết dự án')}
+                        </Typography>
+                        <Grid container>
+                            <Grid item xs={5}><Typography variant="h6" fontWeight={700} color={theme.color.green1}>{t('Tên dự án:')}</Typography></Grid>
+                            <Grid item xs={7}><Typography variant="h6" color={theme.color.green1}>{t('Dự án 1')}</Typography></Grid>
+                            <Grid item xs={5}><Typography variant="h6" fontWeight={700} color={theme.color.green1}>{t('Chủ đầu tư:')}</Typography></Grid>
+                            <Grid item xs={7}><Typography variant="h6" color={theme.color.green1}>{t('Chủ đầu tư 1')}</Typography></Grid>
+                            <Grid item xs={5}><Typography variant="h6" fontWeight={700} color={theme.color.green1}>{t('Địa điểm:')}</Typography></Grid>
+                            <Grid item xs={7}><Typography variant="h6" color={theme.color.green1}>{t('Địa điểm 1')}</Typography></Grid>
+                                                    
+                            <Grid item xs={5}><Typography variant="h6" fontWeight={700} color={theme.color.green1}>{t('Công việc:')}</Typography></Grid>
+                            <Grid item xs={7}><Typography variant="h6" color={theme.color.green1}>{t('Công việc 1')}</Typography></Grid>
+                            <Grid item xs={5}><Typography variant="h6" fontWeight={700} color={theme.color.green1}>{t('Năm thực hiện:')}</Typography></Grid>
+                            <Grid item xs={7}><Typography variant="h6" color={theme.color.green1}>{t('2022')}</Typography></Grid>
+                        </Grid>
+                      </FeaturedProjectContent>
+                      <FeaturedProjectName className="featured-project-name">
+                        <Typography variant="h5" textAlign="center" fontWeight={700} color={theme.color.green1}>
+                            {t('Tên dự án')}
+                        </Typography>
+                      </FeaturedProjectName>
+                  </FeaturedProjectWrap>
                 </Grid>
                 ))}
             </StyledGrid>
