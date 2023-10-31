@@ -41,7 +41,7 @@ export const AdwardsAchieved = () => {
   return (
     <StyledContainer maxWidth="xl">
       <StyledTypography variant="h4" color={theme.color.black} fontWeight="bold">
-          {t('Thành tích - Khen thưởng')}
+          {t('Thành tích & Khen thưởng')}
       </StyledTypography>
       <Carousel
           additionalTransfrom={0}
