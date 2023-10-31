@@ -6,6 +6,7 @@ import { OurMission } from "../sections/Home/OurMission";
 import { CompanyInfo } from "../sections/Home/CompanyInfo";
 import { OurServices } from "../sections/Home/OurServices";
 import { FeaturedProjects } from "../sections/Home/FeaturedProjects";
+import { News } from "../sections/Home/News";
 
 const Home = () => {
   const myRef = useRef(null)
@@ -19,6 +20,7 @@ const Home = () => {
         <OurMission/>
         <OurServices/>
         <FeaturedProjects/> 
+        {/* <News/> */}
       </Box>
     </Box>
   );

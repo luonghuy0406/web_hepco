@@ -105,7 +105,7 @@ const FeaturedProjectName = styled(Box)(({ theme }) => ({
   opacity: 1,
 }));
 
-export const FeaturedProjects = () => {
+export const News = () => {
   const projects = [1, 2, 3];
   const theme = useTheme()
   const {t} = useTranslation()
