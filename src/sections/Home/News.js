@@ -8,6 +8,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { faFontAwesome } from '@fortawesome/free-brands-svg-icons'
 import { Link } from 'react-router-dom';
+import LazyLoad from 'react-lazyload';
 
 library.add(fas, faFontAwesome, faPlay)
 
@@ -107,45 +108,47 @@ export const News = () => {
                 <Grid key={id} item xs={4} sm={4} md={4}>
                   <Link to="#">
                     <FeaturedNewstWrap>
-                        <FeaturedNewstImage image={"./assets/images/1.jpg"}>
-                        <Box
-                          sx={{
-                            // width: '20%',
-                            px: theme.spacing(3),
-                            py:theme.spacing(1),
-                            background: theme.color.green1,
-                            // aspectRatio: '0.9',
-                            position: 'absolute',
-                            bottom: '0',
-                            left: '0',
-                            borderRadius: '0 4px 0 0',
-                            textAlign:'center'
-                          }}
-                        >
-                          <Typography 
-                            className='news-date' 
-                            // fontFamily={theme.typography.MuktaMahee}
-                            color={theme.color.white}
-                            fontWeight={700}
-                            variant={'h5'}
-                            pt={1}
-                          >10</Typography>
-                          <Typography 
-                            className='news-date' 
-                            // fontFamily={theme.typography.MuktaMahee}
-                            color={theme.color.white}
-                            fontWeight={700}
-                            variant={'h6'}
-                          >Nov</Typography>
-                          {/* <Typography 
-                            className='news-date' 
-                            fontFamily={theme.typography.MuktaMahee}
-                            color={theme.color.white}
-                            fontWeight={700}
-                            variant={'h6'}
-                          >2022</Typography> */}
-                        </Box>
-                        </FeaturedNewstImage>
+                        <LazyLoad height={200} offset={100}>
+                          <FeaturedNewstImage image={"./assets/images/1.jpg"}>
+                            <Box
+                              sx={{
+                                // width: '20%',
+                                px: theme.spacing(3),
+                                py:theme.spacing(1),
+                                background: theme.color.green1,
+                                // aspectRatio: '0.9',
+                                position: 'absolute',
+                                bottom: '0',
+                                left: '0',
+                                borderRadius: '0 4px 0 0',
+                                textAlign:'center'
+                              }}
+                            >
+                              <Typography 
+                                className='news-date' 
+                                // fontFamily={theme.typography.MuktaMahee}
+                                color={theme.color.white}
+                                fontWeight={700}
+                                variant={'h5'}
+                                pt={1}
+                              >10</Typography>
+                              <Typography 
+                                className='news-date' 
+                                // fontFamily={theme.typography.MuktaMahee}
+                                color={theme.color.white}
+                                fontWeight={700}
+                                variant={'h6'}
+                              >Nov</Typography>
+                              {/* <Typography 
+                                className='news-date' 
+                                fontFamily={theme.typography.MuktaMahee}
+                                color={theme.color.white}
+                                fontWeight={700}
+                                variant={'h6'}
+                              >2022</Typography> */}
+                            </Box>
+                          </FeaturedNewstImage>
+                        </LazyLoad>
                         <Box
                           sx={{padding:theme.spacing(4), boxShadow:'0 5px 20px rgba(34,34,34,.1)'}}
                         >

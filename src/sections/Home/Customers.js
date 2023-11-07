@@ -6,6 +6,7 @@ import Carousel from 'react-multi-carousel';
 import "react-multi-carousel/lib/styles.css";
 import 'animate.css';
 import { Image } from 'semantic-ui-react';
+import LazyLoad from 'react-lazyload';
 
 const StyledContainer = styled(Container)(({ theme }) => ({
   paddingTop: theme.spacing(5),
@@ -98,30 +99,48 @@ export const Customers = () => {
           slidesToSlide={2}
           swipeable
           >
+            <LazyLoad height={200} offset={100}>
               <Box sx={{p:3, display:'flex', alignItems:"center", justifyContent:"center", height:"100%"}}>
                   <Image  alt='logo' src="https://logos-world.net/wp-content/uploads/2020/09/Google-Logo.png" width="100%"/>
               </Box>
-              <Box sx={{p:3, display:'flex', alignItems:"center", justifyContent:"center", height:"100%"}}>
-                  <Image  alt='logo' src="https://logohistory.net/wp-content/uploads/2022/10/Facebook-Logo.svg" width="100%"/>
-              </Box>
-              <Box sx={{p:3, display:'flex', alignItems:"center", justifyContent:"center", height:"100%"}}>
-                  <Image  alt='logo' src="https://freelogopng.com/images/all_img/1658587597instagram-png-image.png" width="100%"/>
-              </Box>
-              <Box sx={{p:3, display:'flex', alignItems:"center", justifyContent:"center", height:"100%"}}>
-                  <Image  alt='logo' src="https://cdn.sanity.io/images/kts928pd/production/8f4940ab2b110be46a20fe7efd88e9826c801ce7-3840x2160.png" width="100%"/>
-              </Box>
+            </LazyLoad>
+            <LazyLoad height={200} offset={100}>
               <Box sx={{p:3, display:'flex', alignItems:"center", justifyContent:"center", height:"100%"}}>
                   <Image  alt='logo' src="https://logos-world.net/wp-content/uploads/2020/09/Google-Logo.png" width="100%"/>
               </Box>
+            </LazyLoad><LazyLoad height={200} offset={100}>
               <Box sx={{p:3, display:'flex', alignItems:"center", justifyContent:"center", height:"100%"}}>
-                  <Image  alt='logo' src="https://logohistory.net/wp-content/uploads/2022/10/Facebook-Logo.svg" width="100%"/>
+                  <Image  alt='logo' src="https://logos-world.net/wp-content/uploads/2020/09/Google-Logo.png" width="100%"/>
               </Box>
+            </LazyLoad><LazyLoad height={200} offset={100}>
               <Box sx={{p:3, display:'flex', alignItems:"center", justifyContent:"center", height:"100%"}}>
-                  <Image  alt='logo' src="https://freelogopng.com/images/all_img/1658587597instagram-png-image.png" width="100%"/>
+                  <Image  alt='logo' src="https://logos-world.net/wp-content/uploads/2020/09/Google-Logo.png" width="100%"/>
               </Box>
+            </LazyLoad><LazyLoad height={200} offset={100}>
               <Box sx={{p:3, display:'flex', alignItems:"center", justifyContent:"center", height:"100%"}}>
-                  <Image  alt='logo' src="https://cdn.sanity.io/images/kts928pd/production/8f4940ab2b110be46a20fe7efd88e9826c801ce7-3840x2160.png" width="100%"/>
+                  <Image  alt='logo' src="https://logos-world.net/wp-content/uploads/2020/09/Google-Logo.png" width="100%"/>
               </Box>
+            </LazyLoad><LazyLoad height={200} offset={100}>
+              <Box sx={{p:3, display:'flex', alignItems:"center", justifyContent:"center", height:"100%"}}>
+                  <Image  alt='logo' src="https://logos-world.net/wp-content/uploads/2020/09/Google-Logo.png" width="100%"/>
+              </Box>
+            </LazyLoad><LazyLoad height={200} offset={100}>
+              <Box sx={{p:3, display:'flex', alignItems:"center", justifyContent:"center", height:"100%"}}>
+                  <Image  alt='logo' src="https://logos-world.net/wp-content/uploads/2020/09/Google-Logo.png" width="100%"/>
+              </Box>
+            </LazyLoad><LazyLoad height={200} offset={100}>
+              <Box sx={{p:3, display:'flex', alignItems:"center", justifyContent:"center", height:"100%"}}>
+                  <Image  alt='logo' src="https://logos-world.net/wp-content/uploads/2020/09/Google-Logo.png" width="100%"/>
+              </Box>
+            </LazyLoad><LazyLoad height={200} offset={100}>
+              <Box sx={{p:3, display:'flex', alignItems:"center", justifyContent:"center", height:"100%"}}>
+                  <Image  alt='logo' src="https://logos-world.net/wp-content/uploads/2020/09/Google-Logo.png" width="100%"/>
+              </Box>
+            </LazyLoad><LazyLoad height={200} offset={100}>
+              <Box sx={{p:3, display:'flex', alignItems:"center", justifyContent:"center", height:"100%"}}>
+                  <Image  alt='logo' src="https://logos-world.net/wp-content/uploads/2020/09/Google-Logo.png" width="100%"/>
+              </Box>
+            </LazyLoad>
       </Carousel>
     </StyledContainer>
 )}

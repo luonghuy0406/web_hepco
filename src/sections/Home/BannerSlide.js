@@ -4,12 +4,14 @@ import "react-multi-carousel/lib/styles.css";
 import 'animate.css';
 import { Box, Grid, Typography, styled } from "@mui/material"; 
 import { useTheme } from "@emotion/react";
+
+import LazyLoad from 'react-lazyload';
 const images = [
-  "./assets/images/banner1.jpg",
-  "./assets/images/banner2.jpg",
-  "./assets/images/banner3.jpg",
-  "./assets/images/banner4.jpg",
-  "./assets/images/banner5.jpg",
+  "./assets/images/banner1.jpeg",
+  "./assets/images/banner2.jpeg",
+  "./assets/images/banner3.jpeg",
+  "./assets/images/banner4.jpeg",
+  "./assets/images/banner5.jpeg",
 ];
 
 
@@ -67,21 +69,23 @@ export function BannerSlide({executeScroll}){
       >
         {images.slice(0, 5).map(image => {
           return (
-            <Box sx={{ width: "100%", height: {xs: '300px', sm: '400px', md:'550px', lg:'700px'}, maxHeight:'700px' , backgroundImage: `url(${image})`, backgroundPosition:'center', backgroundSize:'cover',backgroundRepeat:'no-repeat'}}>
-              <Grid container sx={{height:'100%'}}>
-                <Grid item xs={7} container sx={{height:'100%'}} alignItems={"start"} justifyContent={"center"} direction={"column"}>
-                    <Typography variant="h3" pl={5} color={theme.color.white} fontWeight={"700"} className="animate__animated animate__fadeInDown">
-                      Find Professional
-                    </Typography>
-                    <Typography variant="h1" pl={5} color={theme.color.white} fontWeight={"700"} className="animate__animated animate__zoomIn">
-                      Hepco Huế
-                    </Typography>
+            <LazyLoad height={200} offset={100}>
+              <Box sx={{ width: "100%", height: {xs: '300px', sm: '400px', md:'550px', lg:'700px'}, maxHeight:'700px' , backgroundImage: `url(${image})`, backgroundPosition:'center', backgroundSize:'cover',backgroundRepeat:'no-repeat'}}>
+                <Grid container sx={{height:'100%'}}>
+                  <Grid item xs={7} container sx={{height:'100%'}} alignItems={"start"} justifyContent={"center"} direction={"column"}>
+                      <Typography variant="h3" pl={5} color={theme.color.white} fontWeight={"700"} className="animate__animated animate__fadeInDown">
+                        Find Professional
+                      </Typography>
+                      <Typography variant="h1" pl={5} color={theme.color.white} fontWeight={"700"} className="animate__animated animate__zoomIn">
+                        Hepco Huế
+                      </Typography>
+                  </Grid>
+                  {/* <Grid item xs={5} container mt={5} sx={{height:'100%'}} alignItems={"flex-end"} justifyContent={"center"}className="animate__animated animate__fadeIn">
+                      <Image src='https://rstheme.com/products/wordpress/planteo/wp-content/uploads/revslider/main-home/Layer-6241.png' style={{width:'100%', height:'auto'}}/>
+                  </Grid> */}
                 </Grid>
-                {/* <Grid item xs={5} container mt={5} sx={{height:'100%'}} alignItems={"flex-end"} justifyContent={"center"}className="animate__animated animate__fadeIn">
-                    <Image src='https://rstheme.com/products/wordpress/planteo/wp-content/uploads/revslider/main-home/Layer-6241.png' style={{width:'100%', height:'auto'}}/>
-                </Grid> */}
-              </Grid>
-            </Box>
+              </Box>
+            </LazyLoad>
           );
         })}
       </Carousel>
