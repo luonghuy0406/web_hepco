@@ -190,7 +190,7 @@ export function OurMission() {
                             <Box sx={{
                                 width:"100%", 
                                 height:"100%", 
-                                backgroundImage:`url('https://scontent.fsgn2-3.fna.fbcdn.net/v/t39.30808-6/355265243_564632125875881_828254695048474631_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEsJKXZ7MhiznNCdMmAYVRNR17hoVtbJ89HXuGhW1snz5cKA-fADt4SnFt90EqjmBvsqtOUkAaVyPpn2uxpjZWC&_nc_ohc=Wup_gHhwG40AX80CrK5&_nc_ht=scontent.fsgn2-3.fna&oh=00_AfBtT0VY1lqA2kUbhOKFc6aVxBVLQvyG8dowLeI3rIIphg&oe=65432D16')`,
+                                backgroundImage:`url('./assets/images/mission2.jpg')`,
                                 backgroundPosition:'center',
                                 backgroundSize:'cover',
                                 backgroundRepeat:'no-repeat', 
@@ -200,8 +200,8 @@ export function OurMission() {
                         <Grid item xs={6} md={5} container alignItems={"center"}>
                             <Box sx={{
                                 width:"100%", 
-                                height:{xs: "100%", md: "70%"}, 
-                                backgroundImage:`url('https://scontent.fsgn2-3.fna.fbcdn.net/v/t39.30808-6/355265243_564632125875881_828254695048474631_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEsJKXZ7MhiznNCdMmAYVRNR17hoVtbJ89HXuGhW1snz5cKA-fADt4SnFt90EqjmBvsqtOUkAaVyPpn2uxpjZWC&_nc_ohc=Wup_gHhwG40AX80CrK5&_nc_ht=scontent.fsgn2-3.fna&oh=00_AfBtT0VY1lqA2kUbhOKFc6aVxBVLQvyG8dowLeI3rIIphg&oe=65432D16')`,
+                                height:{xs: "100%", md: "80%"}, 
+                                backgroundImage:`url('./assets/images/mission.jpg')`,
                                 backgroundPosition:'center',
                                 backgroundSize:'cover',
                                 backgroundRepeat:'no-repeat',
@@ -224,9 +224,9 @@ export function OurMission() {
                     </Typography>
                 </Grid>
                 {
-                    [1,2,3,4,5,6].map((id)=>{
+                    [1,2,3,4,5].map((id)=>{
                         return(
-                            <Grid key={id} item xs={4} sm={4} md={2}>
+                            <Grid key={id} item xs={4} sm={4} md={2.4}>
                                 <Box sx={{backgroundColor: theme.color.white,boxShadow: '0 0 150px #eee',p:theme.spacing(5), borderRadius:"10px"}} className={"our-mission-wrap"}>
                                     <ServicesIcon>
                                         <IconImage

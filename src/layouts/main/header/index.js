@@ -192,7 +192,7 @@ export default function Header() {
                   px={2}
                   alignItems="center"
                   justifyContent={"center"}
-                  sx={{display: { xs: 'flex',sm: 'flex', md:'none', lg: 'none' }}}
+                  sx={{visibility: { xs: 'visible',sm: 'visible', md:'hidden', lg: 'hidden' }}}
                 >
                   <Link href={'/'} legacyBehavior>
                       <img src={'./assets/logo.png'} alt='hepco logo' width={45} height={45} />

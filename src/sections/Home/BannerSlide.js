@@ -5,10 +5,11 @@ import 'animate.css';
 import { Box, Grid, Typography, styled } from "@mui/material"; 
 import { useTheme } from "@emotion/react";
 const images = [
-  "https://images.unsplash.com/photo-1549989476-69a92fa57c36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
-  "https://images.unsplash.com/photo-1549396535-c11d5c55b9df?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
-  "https://images.unsplash.com/photo-1550133730-695473e544be?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
-  "https://images.unsplash.com/photo-1550167164-1b67c2be3973?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+  "./assets/images/banner1.jpg",
+  "./assets/images/banner2.jpg",
+  "./assets/images/banner3.jpg",
+  "./assets/images/banner4.jpg",
+  "./assets/images/banner5.jpg",
 ];
 
 
@@ -76,19 +77,19 @@ export function BannerSlide({executeScroll}){
                       Hepco Huế
                     </Typography>
                 </Grid>
-                <Grid item xs={5} container mt={5} sx={{height:'100%'}} alignItems={"flex-end"} justifyContent={"center"}className="animate__animated animate__fadeIn">
+                {/* <Grid item xs={5} container mt={5} sx={{height:'100%'}} alignItems={"flex-end"} justifyContent={"center"}className="animate__animated animate__fadeIn">
                     <Image src='https://rstheme.com/products/wordpress/planteo/wp-content/uploads/revslider/main-home/Layer-6241.png' style={{width:'100%', height:'auto'}}/>
-                </Grid>
+                </Grid> */}
               </Grid>
             </Box>
           );
         })}
       </Carousel>
-      <Box sx={{width: '100%', position: 'absolute', display: 'flex', alignItems: 'center',justifyContent: 'center'}}>
+      {/* <Box sx={{width: '100%', position: 'absolute', display: 'flex', alignItems: 'center',justifyContent: 'center'}}>
         <IconNext className="img-bounce animate__animated animate__zoomIn" onClick={executeScroll}>
             <Image src='https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/leaf.png' style={{width:'25px', height:'auto'}}/>
         </IconNext>
-      </Box>
+      </Box> */}
     </Box>
   );
 };

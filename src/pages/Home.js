@@ -18,10 +18,10 @@ const Home = () => {
     <Box>
       <BannerSlide executeScroll={executeScroll}/>
       <Box ref={myRef}>
-        <CompanyInfo/>
+        {/* <CompanyInfo/> */}
         <OurMission/>
         <OurServices/>
-        <FeaturedProjects/> 
+        {/* <FeaturedProjects/>  */}
         <News/>
         <Customers/>
         <AdwardsAchieved/>
