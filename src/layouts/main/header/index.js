@@ -178,10 +178,13 @@ export default function Header() {
                   backgroundColor: {
                     xs: theme.color.white, // Set background color for breakpoint `xs`
                     sm: theme.color.white, // Set background color for breakpoint `sm`
-                    md: theme.color.green1, // Set background color for breakpoint `md`
+                    md: '#03611ab3', // Set background color for breakpoint `md`
                   },
                   // borderRadius: { xs: '0',sm: '0', md:'5px', lg: '5px' },
-                  boxShadow: '0 0 20px -10px rgba(0,0,0,.8)'
+                  boxShadow: '0 0 20px -10px rgba(0,0,0,.8)',
+                  position:'fixed',
+                  left: '0',
+                  right:'0'
                 }}
               >
                 <Stack
@@ -231,10 +234,10 @@ export default function Header() {
 
                           </Typography> */}
                           <Grid container alignItems={"center"}>
-                            <Grid item xs={3} sx={{marginBottom:'-5px'}}>
+                            <Grid item xs={4} sx={{marginBottom:'-5px'}}>
                               <img src={'./assets/icons/ic_phone.svg'} alt='icon phone' width={35} />
                             </Grid>
-                            <Grid item xs={9} container>
+                            <Grid item xs={8} container>
                                 <Grid item xs={12}>
                                   <Typography fontWeight={'bold'} sx={{fontSize:'16px'}} color={theme.color.green1}>{t('Hotline')}</Typography>
                                 </Grid>
@@ -313,10 +316,10 @@ export default function Header() {
                       <Typography fontWeight={'bold'} color={(theme)=>theme.color.white} fontSize={{xs: '13px', md:'14px', lg:'16px'}} textTransform={'uppercase'}>{t('Tra cứu hoá đơn')}</Typography>
                     </a> */}
                     <Grid container alignItems={"center"}>
-                      <Grid item xs={3} sx={{marginBottom:'-5px'}}>
+                      <Grid item xs={4} sx={{marginBottom:'-5px'}}>
                         <img src={'./assets/icons/ic_phone_white.svg'} alt='icon phone' width={35} />
                       </Grid>
-                      <Grid item xs={9} container>
+                      <Grid item xs={8} container>
                           <Grid item xs={12}>
                             <Typography fontWeight={'bold'} sx={{fontSize:'16px'}} color={theme.color.white}>{t('Hotline')}</Typography>
                           </Grid>

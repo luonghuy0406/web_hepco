@@ -72,8 +72,8 @@ export function BannerSlide({executeScroll}){
             <LazyLoad height={200} offset={100}>
               <Box className='banner-slide-image' sx={{ 
                   width: "100%", 
-                  height: {xs: '300px', sm: '400px', md:'550px', lg:'700px'}, 
-                  maxHeight:'700px' , 
+                  height: {xs: '300px', sm: '400px', md:'550px', lg:'800px'}, 
+                  maxHeight:'800px' , 
                   backgroundImage: `url(${image})`, 
                   backgroundPosition:'center', 
                   backgroundSize:'cover',
