@@ -2,7 +2,14 @@ import React from 'react'
 import {  useTheme } from '@emotion/react'
 import { Box, Button, Container, Grid, Typography, styled } from '@mui/material'
 import { useTranslation } from 'react-i18next'
-import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlay } from '@fortawesome/free-solid-svg-icons'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { faFontAwesome } from '@fortawesome/free-brands-svg-icons'
+import { Link } from 'react-router-dom';
+
+library.add(fas, faFontAwesome, faPlay)
 
 const IconImage = styled('img')(({ theme }) => ({
     width: "70px",
@@ -28,6 +35,37 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
         transform:'translateX(-50%) translateY(50%)',
     }
 }));
+
+const BlogButton = styled(Box)(({ theme }) => ({
+    a: {
+      color: theme.color.black,
+      background: 0,
+      border: 'none',
+      borderRadius: '25px',
+      paddingRight: '25px',
+      lineHeight: '30px',
+      display: 'inline-block',
+      transition: 'all .4s ease-in-out 0s',
+      position: 'relative',
+      fontSize: '16px',
+      fontWeight: 600,
+      textDecoration: 'none',
+      '&:hover': {
+        color: theme.color.green1,
+        '.arrow-news': {
+          color: theme.color.green1,
+          transform: 'translateX(20%)',
+        },
+      },
+    },
+    '.arrow-news': {
+      position: 'absolute',
+      top: 0,
+      right: 0,
+      transition: 'transform 0.5s ease',
+      lineHeight: '1.5rem',
+    },
+  }));
 export function OurServices() {
   const {t} = useTranslation()
   const theme = useTheme()
@@ -58,39 +96,16 @@ export function OurServices() {
                             [1,2,3,4,5,6].map((id)=>{
                                 return(
                                     <Grid key={id} item xs={4} sm={4} md={4}>
-                                        <Box sx={{padding:theme.spacing(5),backgroundColor: theme.color.white,boxShadow: '0 0 15px #eee', borderRadius:"10px", height:'100%'}} className={"our-mission-wrap"}>
-                                            {/* <Box
-                                                style={{
-                                                    background:
-                                                    'url("https://scontent.fsgn2-3.fna.fbcdn.net/v/t39.30808-6/355265243_564632125875881_828254695048474631_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEsJKXZ7MhiznNCdMmAYVRNR17hoVtbJ89HXuGhW1snz5cKA-fADt4SnFt90EqjmBvsqtOUkAaVyPpn2uxpjZWC&_nc_ohc=Wup_gHhwG40AX80CrK5&_nc_ht=scontent.fsgn2-3.fna&oh=00_AfBtT0VY1lqA2kUbhOKFc6aVxBVLQvyG8dowLeI3rIIphg&oe=65432D16")',
-                                                    height: "auto",
-                                                    aspectRatio: 1,
-                                                    width: "100%",
-                                                    borderRadius: "6px 6px 0 0",
-                                                    backgroundSize: "cover",
-                                                    backgroundPosition: "center",
-                                                    backgroundRepeat: "no-repeat"
-                                                }}
-                                            />
-                                            <Typography variant="h6" fontWeight={"bold"} color={theme.color.black} textAlign={"center"} sx={{p:theme.spacing(3)}}>
-                                                Tên dịch vụ {id}
-                                            </Typography> */}
-                                            <Box
-                                                xs={{
-                                                    background:
-                                                    'url("https://scontent.fsgn2-3.fna.fbcdn.net/v/t39.30808-6/355265243_564632125875881_828254695048474631_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEsJKXZ7MhiznNCdMmAYVRNR17hoVtbJ89HXuGhW1snz5cKA-fADt4SnFt90EqjmBvsqtOUkAaVyPpn2uxpjZWC&_nc_ohc=Wup_gHhwG40AX80CrK5&_nc_ht=scontent.fsgn2-3.fna&oh=00_AfBtT0VY1lqA2kUbhOKFc6aVxBVLQvyG8dowLeI3rIIphg&oe=65432D16")',
-                                                    height: "auto",
-                                                    aspectRatio: 1,
-                                                    width: "100%",
-                                                    borderRadius: "6px 6px 0 0",
-                                                    backgroundSize: "cover",
-                                                    backgroundPosition: "center",
-                                                    backgroundRepeat: "no-repeat"
-                                                }}
-                                            >
-
-                                            </Box>
-                                            <Grid container>
+                                        <Box sx={{padding:theme.spacing(5),backgroundColor: theme.color.white,boxShadow: '0 0 15px #eee', borderRadius:"10px", height:'100%'}} className={"our-mission-wrap service-item"}>
+                                            <div
+                                            className="service__overlay bg-img"
+                                            style={{
+                                                backgroundImage: 'url("./assets/images/mission2.jpg")',
+                                                backgroundSize: "cover",
+                                                backgroundPosition: "center",
+                                                borderRadius: "10px"
+                                            }}
+                                            ></div><Grid container sx={{position:'relative', zIndex:2}}>
                                                 <Grid xs={12}>
                                                     <IconImage
                                                         src="https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/ff.png"
@@ -98,19 +113,20 @@ export function OurServices() {
                                                     />
                                                 </Grid>
                                                 <Grid xs={12}>
-                                                    <Typography variant='h5' fontWeight={700}>Tên dịch vụ Tên dịch vụ</Typography>
+                                                    <Typography variant='h5' fontWeight={700} py={theme.spacing(2)}>{"Tên dịch vụ " + id}</Typography>
                                                 </Grid>
-                                                <Grid xs={12}>
+                                                <Grid xs={12} pb={theme.spacing(2)}>
                                                     <Typography>
                                                         We have a custom cleaning service designed to help you clean when you need it,
                                                         whether we clean one time or on regular, your house will always sparkle clean
                                                     </Typography>
                                                 </Grid>
-                                                {/* <Grid xs={12}>
-                                                    <Button variant="contained" endIcon={<ArrowCircleDownIcon sx={{transform: 'rotate(-90deg)'}}/>}>
-                                                        Read more
-                                                    </Button> 
-                                                </Grid> */}
+                                                <BlogButton>
+                                                    <Link to="#">
+                                                        <Typography fontWeight={700} lineHeight={'1.5rem'}>Read More</Typography>
+                                                        <Typography sx={{display:'inline', pl: '5px'}} className='arrow-news'><FontAwesomeIcon icon="fa-solid fa-arrow-right-long" /></Typography>
+                                                    </Link>
+                                                </BlogButton>
                                             </Grid>
                                         </Box>
                                     </Grid>

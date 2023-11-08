@@ -234,13 +234,13 @@ export function OurMission() {
                                 </Typography>
                             </Grid>
                             {
-                                [1,2,3,4,5].map((id)=>{
+                                ['h','e','p','c','o'].map((id)=>{
                                     return(
                                         <Grid key={id} item xs={4} sm={4} md={ 2.4}>
-                                            <Box sx={{backgroundColor: theme.color.white,p:theme.spacing(5), borderRadius:"10px", height: '100%'}} className={"our-mission-wrap cot-loi"}>
+                                            <Box sx={{backgroundColor: theme.color.white,p:theme.spacing(5), borderRadius:"10px", height: '100%'}} className={"our-mission-wrap core-values-wrap"}>
                                                 <ServicesIcon>
                                                     <IconImage
-                                                        src="https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/ff.png"
+                                                        src={"./assets/icons/ic_"+id+".svg"}
                                                         alt="Rs-service"
                                                     />
                                                 </ServicesIcon>
@@ -248,7 +248,7 @@ export function OurMission() {
                                                     Giá trị cốt lõi {id}
                                                 </Typography>
                                                 <Typography fontWeight={500}>
-                                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took
                                                 </Typography>
                                             </Box>
                                         </Grid>

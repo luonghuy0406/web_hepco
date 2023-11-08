@@ -55,7 +55,7 @@ const InvoiceBox = styled('div')(({ theme, sticky }) => ({
   [theme.breakpoints.up('md')]: {
     height: '70px', // Set height for breakpoint `md` and above
     '&::before': {
-      borderBottom: `70px solid ${sticky ? theme.color.green1 : theme.color.green4}`,
+      borderBottom: `70px solid ${sticky ? theme.color.green1 : theme.color.white}`,
     }
   },
 }));
@@ -98,17 +98,16 @@ export default function Header() {
       <Box
           component="header"
           sx={{
-            
             backdropFilter: 'blur(6px)',
             backgroundColor: (theme)=>theme.color.white,
             position: 'relative',
             width: {lg: '100%'},
             zIndex: '1',
-            padding: { xs: '0',sm: "0" , md:"30px 0 50px", lg: "30px 0 50px" }
+            // padding: { xs: '0',sm: "0" , md:"30px 0 50px", lg: "30px 0 50px" }
           }}
         >
         {/*Header above */}
-        <Container maxWidth='xl' sx={{display: { xs: 'none',sm: 'none', md:'block', lg: 'block' }}}>
+        {/* <Container maxWidth='xl' sx={{display: { xs: 'none',sm: 'none', md:'block', lg: 'block' }}}>
             <Stack
               alignItems="center"
               direction="row"
@@ -156,21 +155,19 @@ export default function Header() {
                         </Grid>
                     </Grid>
                 </Grid>
-                {/* <LanguagePopover/> */}
+                <LanguagePopover/>
               </Stack>
             </Stack>
-        </Container>
+        </Container> */}
         {/* header below */}
         <Box
           sx={{
-            position: { xs: 'relative',sm: 'relative', md:'absolute', lg: 'absolute' },
-            width: {lg: '100%'},
-            Right: '0',
-            right: '0',
-            bottom: { xs: '0', md:'-35px',sm: '0', lg: '-35px' }
+            // position: { xs: 'relative',sm: 'relative', md:'absolute', lg: 'absolute' },
+            width: '100%',
+            // bottom: { xs: '0', md:'-35px',sm: '0', lg: '-35px' }
           }}
         >
-          <Container maxWidth={'xl'} sx={{padding: { xs: '0 !important', sm:'0 !important'}}}>
+          <Container maxWidth={'100%'} sx={{padding: { xs: '0 !important', sm:'0 !important'}}}>
               <Stack
                 alignItems="center"
                 direction="row"
@@ -183,7 +180,7 @@ export default function Header() {
                     sm: theme.color.white, // Set background color for breakpoint `sm`
                     md: theme.color.green1, // Set background color for breakpoint `md`
                   },
-                  borderRadius: { xs: '0',sm: '0', md:'5px', lg: '5px' },
+                  // borderRadius: { xs: '0',sm: '0', md:'5px', lg: '5px' },
                   boxShadow: '0 0 20px -10px rgba(0,0,0,.8)'
                 }}
               >
@@ -192,7 +189,7 @@ export default function Header() {
                   px={2}
                   alignItems="center"
                   justifyContent={"center"}
-                  sx={{visibility: { xs: 'visible',sm: 'visible', md:'hidden', lg: 'hidden' }}}
+                  // sx={{visibility: { xs: 'visible',sm: 'visible', md:'hidden', lg: 'hidden' }}}
                 >
                   <Link href={'/'} legacyBehavior>
                       <img src={'./assets/logo.png'} alt='hepco logo' width={45} height={45} />
@@ -203,13 +200,14 @@ export default function Header() {
                   px={2}
                   alignItems="center"
                   direction="row"
-                  sx={{display: { xs: 'none',sm: 'none', md:'flex', lg: 'flex' }}}
+                  // sx={{display: { xs: 'none',sm: 'none', md:'flex', lg: 'flex' }}}
                 >
                   {
                     pages.map((page)=>{
                       return <MenuNav key={page.path} page={page}/>
                     })
                   }
+                  <MenuNav key={'invoice'} page={'http://hepco.com.vn/hoadondientu'}/>
                 </Stack>
                 <Stack
                   spacing={1}
@@ -229,9 +227,24 @@ export default function Header() {
                 >
                   <InvoiceBox theme={theme}>
                       <Box sx={{zIndex:'1',position:'relative'}}>
-                        <a href={'http://hepco.com.vn/hoadondientu'} target='_blank' legacyBehavior style={{textDecoration:'none'}}>  
-                          <Typography fontWeight={'bold'} color={(theme)=>theme.color.white} fontSize={{xs: '13px', md:'14px', lg:'16px'}} textTransform={'uppercase'}>{t('Tra cứu hoá đơn')}</Typography>
-                        </a>
+                          {/* <Typography fontWeight={'bold'} color={(theme)=>theme.color.green1} fontSize={{xs: '13px', md:'14px', lg:'16px'}} >
+
+                          </Typography> */}
+                          <Grid container alignItems={"center"}>
+                            <Grid item xs={3} sx={{marginBottom:'-5px'}}>
+                              <img src={'./assets/icons/ic_phone.svg'} alt='icon phone' width={35} />
+                            </Grid>
+                            <Grid item xs={9} container>
+                                <Grid item xs={12}>
+                                  <Typography fontWeight={'bold'} sx={{fontSize:'16px'}} color={theme.color.green1}>{t('Hotline')}</Typography>
+                                </Grid>
+                                <Grid item xs={12}>
+                                  <Typography sx={{fontSize:'16px',fontFamily:(theme)=>theme.typography.MuktaMahee}} color={theme.color.green1}>(0234) 3997799</Typography>
+                                </Grid>
+                            </Grid>
+                          </Grid>
+                        {/* <a href={'http://hepco.com.vn/hoadondientu'} target='_blank' legacyBehavior style={{textDecoration:'none'}}>  
+                        </a> */}
                       </Box>
                   </InvoiceBox>
                 </Stack>
@@ -275,6 +288,7 @@ export default function Header() {
                   return <MenuNav key={page.path} page={page} color="black"/>
                 })
               }
+              <MenuNav key={'invoice'} page={'http://hepco.com.vn/hoadondientu'} color="black"/>
             </Stack>
             <Stack
               spacing={1}
@@ -295,9 +309,22 @@ export default function Header() {
             >
               <InvoiceBox theme={theme} sticky={true}>
                   <Box sx={{zIndex:'1',position:'relative'}}>
-                    <a href={'http://hepco.com.vn/hoadondientu'} target='_blank' legacyBehavior style={{textDecoration:'none'}}>  
+                    {/* <a href={'http://hepco.com.vn/hoadondientu'} target='_blank' legacyBehavior style={{textDecoration:'none'}}>  
                       <Typography fontWeight={'bold'} color={(theme)=>theme.color.white} fontSize={{xs: '13px', md:'14px', lg:'16px'}} textTransform={'uppercase'}>{t('Tra cứu hoá đơn')}</Typography>
-                    </a>
+                    </a> */}
+                    <Grid container alignItems={"center"}>
+                      <Grid item xs={3} sx={{marginBottom:'-5px'}}>
+                        <img src={'./assets/icons/ic_phone_white.svg'} alt='icon phone' width={35} />
+                      </Grid>
+                      <Grid item xs={9} container>
+                          <Grid item xs={12}>
+                            <Typography fontWeight={'bold'} sx={{fontSize:'16px'}} color={theme.color.white}>{t('Hotline')}</Typography>
+                          </Grid>
+                          <Grid item xs={12}>
+                            <Typography sx={{fontSize:'16px',fontFamily:(theme)=>theme.typography.MuktaMahee}} color={theme.color.white}>(0234) 3997799</Typography>
+                          </Grid>
+                      </Grid>
+                    </Grid>
                   </Box>
               </InvoiceBox>
             </Stack>

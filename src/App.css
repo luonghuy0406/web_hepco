@@ -2,10 +2,10 @@
     --white: #FFFFFF;
     --black: #000000;
     --red: #f45b14;
-    --green1: #009961;
+    /* --green1: #009961; */
     --green2 : #8EC542;
     --green3 : #AAD293;
-    --green4 : #03611A;
+    --green1 : #03611A;
     --gray1 : #8A8988;
     --gray2 : #D6D5DA;
     --lightBlack: #282828;
@@ -115,10 +115,10 @@ a {
     transform: translateY(-8px);
 }
 
-.cot-loi:hover {
-    background-color: var(--green1);
+/* .core-values-wrap:hover {
+    background-color: var(--green2);
     color : var(--white) !important;
-}
+} */
 
 .our-mission-wrap {
     transform: translateY(0);
@@ -174,8 +174,38 @@ a {
     content: '';
     width: 100%;
     height: 100%;
-    background-color: #0a200f61;
+    background-color: #001d0778;
     position: absolute;
     top: 0;
     left: 0;;
+}
+
+.service__overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80%;
+    height: 80%;
+    -webkit-transition: all .1s ease;
+    transition: all .1s ease;
+}
+
+.bg-img {
+    z-index: 1;
+}
+
+.service-item:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: -1px;
+    bottom: 0;
+    z-index: 2;
+    border-radius: 12px;
+    background-color: #fff;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+    -webkit-clip-path: polygon(50% 0,100% 38%,100% 100%,0 100%,0 0);
+    clip-path: polygon(50% 0,100% 38%,100% 100%,0 100%,0 0);
 }

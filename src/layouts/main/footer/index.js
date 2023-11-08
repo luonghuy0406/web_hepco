@@ -7,7 +7,9 @@ import { Image } from "semantic-ui-react";
 export default function Footer(){
     const theme = useTheme()
     return(
-        <Container maxWidth='100%' p={0} sx={{backgroundColor:theme.color.green1, py:theme.spacing(5), pb:theme.spacing(2)}}>
+        <Container maxWidth='100%' p={0} sx={{background: `url(https://rstheme.com/products/wordpress/planteo/wp-content/uploads/revslider/main-home/slider-1.jpg)`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover', py:theme.spacing(5), pb:theme.spacing(2)}}>
             <Container maxWidth='xl' sx={{padding:theme.spacing(4)}}>
                 <Grid container spacing={2}>
                     <Grid item xs={4} px={2} container  spacing={2}>
@@ -15,15 +17,15 @@ export default function Footer(){
                             Công ty Cổ phần Môi trường và Công trình Đô thị Huế - HEPCO    
                         </Typography>
                         <Grid item xs={3}><Typography fontWeight={600} color={theme.color.white}>Địa chỉ:</Typography></Grid>
-                        <Grid item xs={9}><Typography fontWeight={400} color={theme.color.white}>46 Trần Phú, Phường Phước Vĩnh, TP. Huế</Typography></Grid>
+                        <Grid item xs={9}><Typography fontWeight={500} color={theme.color.white}>46 Trần Phú, Phường Phước Vĩnh, TP. Huế</Typography></Grid>
                         <Grid item xs={3}><Typography fontWeight={600} color={theme.color.white}>Điện thoại:</Typography></Grid>
-                        <Grid item xs={9}><Typography fontWeight={400} color={theme.color.white}>(0234) 3848242 </Typography></Grid>
+                        <Grid item xs={9}><Typography fontWeight={500} color={theme.color.white}>(0234) 3848242 </Typography></Grid>
                         <Grid item xs={3}><Typography fontWeight={600} color={theme.color.white}>Fax:</Typography></Grid>
-                        <Grid item xs={9}><Typography fontWeight={400} color={theme.color.white}>(0234) 3848075</Typography></Grid>
+                        <Grid item xs={9}><Typography fontWeight={500} color={theme.color.white}>(0234) 3848075</Typography></Grid>
                         <Grid item xs={3}><Typography fontWeight={600} color={theme.color.white}>Hotline:</Typography></Grid>
-                        <Grid item xs={9}><Typography fontWeight={400} color={theme.color.white}>(0234) 3997799</Typography></Grid>
+                        <Grid item xs={9}><Typography fontWeight={500} color={theme.color.white}>(0234) 3997799</Typography></Grid>
                         <Grid item xs={3}><Typography fontWeight={600} color={theme.color.white}>Email:</Typography></Grid>
-                        <Grid item xs={9}><Typography fontWeight={400} color={theme.color.white}>info@hepco.com.vn</Typography></Grid>
+                        <Grid item xs={9}><Typography fontWeight={500} color={theme.color.white}>info@hepco.com.vn</Typography></Grid>
                         <Grid item xs={12} container  spacing={1}>
                             <Grid item><Image src='./assets/icons/ic_zalo.svg' alt="zalo icon" width="25" height="25"/></Grid>
                             <Grid item><Image src='./assets/icons/ic_facebook.svg' alt="zalo icon" width="25" height="25"/></Grid>

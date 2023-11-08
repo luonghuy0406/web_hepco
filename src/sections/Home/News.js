@@ -125,39 +125,25 @@ export const News = () => {
                                     <Box
                                       sx={{
                                         // width: '20%',
-                                        px: theme.spacing(3),
+                                        px: theme.spacing(4),
                                         py:theme.spacing(1),
                                         background: theme.color.green1,
                                         // aspectRatio: '0.9',
                                         position: 'absolute',
+                                        borderRadius: '4px',
+                                        textAlign:'center',
                                         bottom: '0',
-                                        left: '0',
-                                        borderRadius: '0 4px 0 0',
-                                        textAlign:'center'
+                                        left: '50%',
+                                        transform: 'translate(-50%, 20px)',
+                                        boxShadow:'0 5px 20px rgba(34,34,34,.1)'
                                       }}
                                     >
                                       <Typography 
                                         className='news-date' 
-                                        // fontFamily={theme.typography.MuktaMahee}
-                                        color={theme.color.white}
-                                        fontWeight={700}
-                                        variant={'h5'}
-                                        pt={1}
-                                      >10</Typography>
-                                      <Typography 
-                                        className='news-date' 
-                                        // fontFamily={theme.typography.MuktaMahee}
-                                        color={theme.color.white}
-                                        fontWeight={700}
-                                        variant={'h6'}
-                                      >Nov</Typography>
-                                      {/* <Typography 
-                                        className='news-date' 
                                         fontFamily={theme.typography.MuktaMahee}
                                         color={theme.color.white}
                                         fontWeight={700}
-                                        variant={'h6'}
-                                      >2022</Typography> */}
+                                      >20-10-2023</Typography>
                                     </Box>
                                   </FeaturedNewstImage>
                                 </LazyLoad>
@@ -181,7 +167,7 @@ export const News = () => {
                                         </Box>
                                       </Grid>
                                       <Grid item>
-                                      <BlogButton>
+                                        <BlogButton>
                                           <Link to="#">
                                             <Typography fontWeight={700} lineHeight={'1.5rem'}>Read More</Typography>
                                             <Typography sx={{display:'inline', pl: '5px'}} className='arrow-news'><FontAwesomeIcon icon="fa-solid fa-arrow-right-long" /></Typography>
