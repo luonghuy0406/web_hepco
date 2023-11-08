@@ -70,7 +70,15 @@ export function BannerSlide({executeScroll}){
         {images.slice(0, 5).map(image => {
           return (
             <LazyLoad height={200} offset={100}>
-              <Box sx={{ width: "100%", height: {xs: '300px', sm: '400px', md:'550px', lg:'700px'}, maxHeight:'700px' , backgroundImage: `url(${image})`, backgroundPosition:'center', backgroundSize:'cover',backgroundRepeat:'no-repeat'}}>
+              <Box className='banner-slide-image' sx={{ 
+                  width: "100%", 
+                  height: {xs: '300px', sm: '400px', md:'550px', lg:'700px'}, 
+                  maxHeight:'700px' , 
+                  backgroundImage: `url(${image})`, 
+                  backgroundPosition:'center', 
+                  backgroundSize:'cover',
+                  backgroundRepeat:'no-repeat'}}
+                >
                 <Grid container sx={{height:'100%'}}>
                   <Grid item xs={7} container sx={{height:'100%'}} alignItems={"start"} justifyContent={"center"} direction={"column"}>
                       <Typography variant="h3" pl={5} color={theme.color.white} fontWeight={"700"} className="animate__animated animate__fadeInDown">

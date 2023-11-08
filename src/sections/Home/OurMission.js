@@ -135,14 +135,14 @@ export function OurMission() {
   const handleClose = () => setOpen(false);
   return (
     <Box>
-        <Container maxWidth='xl'sx={{mt:theme.spacing(5), py: theme.spacing(5), px:0}}>
+        <Container maxWidth='xl'sx={{py: theme.spacing(10), px:0}}>
             <Grid container sx={{px:3}}>
                 <Grid item xs={12} md={7} sx={{borderRadius: "4px 0 0 4px",backgroundColor: theme.color.white,boxShadow: '0 0 150px #eee',p:theme.spacing(3), py: theme.spacing(8)}}>
                     {/* <Typography variant='h6' color={theme.color.green1}>
                         {t("CHÀO MỪNG ĐẾN VỚI HEPCO")}
                     </Typography> */}
-                    <Typography variant='h4' color={theme.color.black} fontWeight={"bold"} className='type-line' pb={2}>
-                        {t('Tầm nhìn - Sứ mệnh - Giá trị cốt lõi')}
+                    <Typography variant='h4' color={theme.color.black} fontSize={'42px'} fontWeight={"bold"} className='type-line' pb={2}>
+                        {t('Tầm nhìn - Sứ mệnh')}
                     </Typography>
 
                     <Grid container sx={{pt: theme.spacing(4), pl: theme.spacing(4)}} className={"our-mission-wrap"}>
@@ -156,7 +156,7 @@ export function OurMission() {
                             </ServicesIcon>
                          </Grid>
                          <Grid item xs={10}>
-                            <Typography variant="h5" fontWeight={"bold"}  color={theme.color.green2} pb={2}>
+                            <Typography variant="h5" fontSize={'30px'} fontWeight={"bold"}  color={theme.color.green1} pb={2}>
                                 {t('Tầm nhìn')}
                             </Typography>
                             <Typography fontWeight={500}>
@@ -175,7 +175,7 @@ export function OurMission() {
                             </ServicesIcon>
                          </Grid>
                          <Grid item xs={10}>
-                            <Typography variant="h5" fontWeight={"bold"}  color={theme.color.green2} pb={2}>
+                            <Typography variant="h5" fontSize={'30px'} fontWeight={"bold"}  color={theme.color.green1} pb={2}>
                                 {t('Sứ mệnh')}
                             </Typography>
                             <Typography fontWeight={500}>
@@ -216,34 +216,49 @@ export function OurMission() {
                 </Grid>
             </Grid>
         </Container>
-        <Container maxWidth='xl'>
-            <Grid container sx={{p:theme.spacing(3), textAlign:"center", pt:0}} spacing={2}>
-                <Grid item xs={12}>
-                    <Typography variant="h5" fontWeight={"bold"} color={theme.color.green2} pb={2} mb={2} className="core-values" sx={{position:"relative"}}>
-                        {t('Giá trị cốt lõi')}
-                    </Typography>
-                </Grid>
-                {
-                    [1,2,3,4,5].map((id)=>{
-                        return(
-                            <Grid key={id} item xs={4} sm={4} md={2.4}>
-                                <Box sx={{backgroundColor: theme.color.white,boxShadow: '0 0 150px #eee',p:theme.spacing(5), borderRadius:"10px"}} className={"our-mission-wrap"}>
-                                    <ServicesIcon>
-                                        <IconImage
-                                            src="https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/ff.png"
-                                            alt="Rs-service"
-                                        />
-                                    </ServicesIcon>
-                                    <Typography variant="h6" fontWeight={"bold"} color={theme.color.black}>
-                                        Giá trị cốt lõi {id}
-                                    </Typography>
-                                </Box>
+        <Container maxWidth='100%' sx={{py:theme.spacing(4), mb:theme.spacing(10),px:'0 !important'}}>
+            <Box sx={{
+                py:theme.spacing(15),
+                backgroundImage:"url(https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/bgg.jpg?id=5580) !important",
+                backgroundSize:"cover",
+                backgroundPosition:"center",
+                backgroundRepeat:"no-repeat",
+                position:"relative",
+                // height:"200px"
+                }}>
+                    <Container maxWidth='xl'>
+                        <Grid container sx={{p:theme.spacing(3), textAlign:"center", pt:0}} spacing={2}>
+                            <Grid item xs={12}>
+                                <Typography variant="h5" fontSize={'42px'} fontWeight={"bold"} mb={10} color={theme.color.white} sx={{position:"relative"}} className="core-values">
+                                    {t('Giá trị cốt lõi')}
+                                </Typography>
                             </Grid>
-                        )
-                    })
-                }
+                            {
+                                [1,2,3,4,5].map((id)=>{
+                                    return(
+                                        <Grid key={id} item xs={4} sm={4} md={ 2.4}>
+                                            <Box sx={{backgroundColor: theme.color.white,p:theme.spacing(5), borderRadius:"10px", height: '100%'}} className={"our-mission-wrap cot-loi"}>
+                                                <ServicesIcon>
+                                                    <IconImage
+                                                        src="https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/ff.png"
+                                                        alt="Rs-service"
+                                                    />
+                                                </ServicesIcon>
+                                                <Typography variant="h6" py={2} fontWeight={"bold"}>
+                                                    Giá trị cốt lõi {id}
+                                                </Typography>
+                                                <Typography fontWeight={500}>
+                                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                                </Typography>
+                                            </Box>
+                                        </Grid>
+                                    )
+                                })
+                            }
 
-            </Grid>
+                        </Grid>
+                    </Container>
+            </Box>
         </Container>
         <Modal
             open={open}

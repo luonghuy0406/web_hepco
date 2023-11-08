@@ -8,12 +8,32 @@ const IconImage = styled('img')(({ theme }) => ({
     width: "70px",
     zIndex: 2
   }))
+const StyledTypography = styled(Typography)(({ theme }) => ({
+    fontWeight: 'bold',
+    width: '100%',
+    paddingBottom: theme.spacing(2),
+    textAlign: 'center',
+    fontSize:'42px',
+    '&:after':{
+        content: "''",
+        border: 0,
+        width: '70px',
+        height: '5px',
+        background: theme.color.green1,
+        display: 'block',
+        marginTop: '5px',
+        position: 'absolute',
+        left: '50%',
+        right: '50%',
+        transform:'translateX(-50%) translateY(50%)',
+    }
+}));
 export function OurServices() {
   const {t} = useTranslation()
   const theme = useTheme()
   return (
     <Box>
-        <Container maxWidth='xl'sx={{mt:theme.spacing(5), py: theme.spacing(5), px:0}}>
+        <Container maxWidth='100%%'sx={{mt:theme.spacing(5), py: theme.spacing(5), paddingLeft : '100px !important', paddingRight : '100px !important'}}>
             <Grid container>
                 <Grid item xs={0} md={4} sx={{p:theme.spacing(3), display:{xs: 'none', md:'block'}}}>
                     <Box sx={{
@@ -29,17 +49,16 @@ export function OurServices() {
                     }}/>
                 </Grid>
                 <Grid item conntainer xs={12} md={8} sx={{position:'relative',p:theme.spacing(3)}}>
-                    <Typography variant='h4' color={theme.color.black} fontWeight={"bold"} className='type-line' pb={2}>
+                    <StyledTypography>
                         {t('Dịch vụ của chúng tôi')}
-                    </Typography>
-
+                    </StyledTypography>
                     <Box>
                     <Grid container sx={{pt: theme.spacing(4), pl: theme.spacing(4)}} spacing={2}>
                         {
                             [1,2,3,4,5,6].map((id)=>{
                                 return(
                                     <Grid key={id} item xs={4} sm={4} md={4}>
-                                        <Box sx={{padding:theme.spacing(5),backgroundColor: theme.color.white,boxShadow: '0 0 15px #eee', borderRadius:"10px"}} className={"our-mission-wrap"}>
+                                        <Box sx={{padding:theme.spacing(5),backgroundColor: theme.color.white,boxShadow: '0 0 15px #eee', borderRadius:"10px", height:'100%'}} className={"our-mission-wrap"}>
                                             {/* <Box
                                                 style={{
                                                     background:
@@ -87,11 +106,11 @@ export function OurServices() {
                                                         whether we clean one time or on regular, your house will always sparkle clean
                                                     </Typography>
                                                 </Grid>
-                                                <Grid xs={12}>
+                                                {/* <Grid xs={12}>
                                                     <Button variant="contained" endIcon={<ArrowCircleDownIcon sx={{transform: 'rotate(-90deg)'}}/>}>
                                                         Read more
                                                     </Button> 
-                                                </Grid>
+                                                </Grid> */}
                                             </Grid>
                                         </Box>
                                     </Grid>

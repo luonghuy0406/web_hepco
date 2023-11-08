@@ -1,10 +1,11 @@
 :root{
     --white: #FFFFFF;
     --black: #000000;
-    --red: #D80027;
-    --green1: #03611A;
+    --red: #f45b14;
+    --green1: #009961;
     --green2 : #8EC542;
     --green3 : #AAD293;
+    --green4 : #03611A;
     --gray1 : #8A8988;
     --gray2 : #D6D5DA;
     --lightBlack: #282828;
@@ -114,6 +115,11 @@ a {
     transform: translateY(-8px);
 }
 
+.cot-loi:hover {
+    background-color: var(--green1);
+    color : var(--white) !important;
+}
+
 .our-mission-wrap {
     transform: translateY(0);
     transition: .4s;
@@ -163,4 +169,13 @@ a {
 .blog-button a:hover .arrow-news{
     color: var(--green1);
     transform: translateX(20%);
+}
+.banner-slide-image::before{
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: #0a200f61;
+    position: absolute;
+    top: 0;
+    left: 0;;
 }

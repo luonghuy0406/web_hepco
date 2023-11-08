@@ -55,7 +55,7 @@ const InvoiceBox = styled('div')(({ theme, sticky }) => ({
   [theme.breakpoints.up('md')]: {
     height: '70px', // Set height for breakpoint `md` and above
     '&::before': {
-      borderBottom: `70px solid ${sticky ? theme.color.green1 : theme.color.gray1}`,
+      borderBottom: `70px solid ${sticky ? theme.color.green1 : theme.color.green4}`,
     }
   },
 }));
