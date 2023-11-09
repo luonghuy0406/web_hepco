@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import {  useTheme } from '@emotion/react'
-import { Box, Button, Container, Grid, Typography, styled } from '@mui/material'
+import { Box, Container, Grid, Typography, styled } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay } from '@fortawesome/free-solid-svg-icons'
@@ -8,6 +8,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { faFontAwesome } from '@fortawesome/free-brands-svg-icons'
 import { Link } from 'react-router-dom';
+import { useInView } from 'react-intersection-observer'
 
 library.add(fas, faFontAwesome, faPlay)
 
@@ -69,11 +70,28 @@ const BlogButton = styled(Box)(({ theme }) => ({
 export function OurServices() {
   const {t} = useTranslation()
   const theme = useTheme()
+  const serviceImageRef = useRef(null)
+  const serviceContentRef = useRef(null)
+    const { ref, inView } = useInView({
+        /* Optional options */
+        threshold: 0,
+        deplay: 1000
+    });
+    useEffect(() => {
+        if(inView){
+            if (serviceImageRef.current) {
+                serviceImageRef.current.classList.add('animate__animated','animate__fadeInLeft');
+            }
+            if (serviceContentRef.current) {
+                serviceContentRef.current.classList.add('animate__animated','animate__fadeInRight');
+            }
+        }
+    }, [inView]);
   return (
     <Box>
         <Container maxWidth='100%%'sx={{mt:theme.spacing(5), py: theme.spacing(5), paddingLeft : '100px !important', paddingRight : '100px !important'}}>
             <Grid container>
-                <Grid item xs={0} md={4} sx={{p:theme.spacing(3), display:{xs: 'none', md:'block'}}}>
+                <Grid ref={serviceImageRef} item xs={0} md={4} sx={{p:theme.spacing(3), display:{xs: 'none', md:'block'}}}>
                     <Box sx={{
                         p:theme.spacing(6),
                         backgroundImage:"url('./assets/images/service.jpg') !important",
@@ -86,8 +104,8 @@ export function OurServices() {
                         borderRadius: "10px"
                     }}/>
                 </Grid>
-                <Grid item conntainer xs={12} md={8} sx={{position:'relative',p:theme.spacing(3)}}>
-                    <StyledTypography>
+                <Grid ref={serviceContentRef} item conntainer xs={12} md={8} sx={{position:'relative',p:theme.spacing(3)}}>
+                    <StyledTypography ref={ref}>
                         {t('Dịch vụ của chúng tôi')}
                     </StyledTypography>
                     <Box>
@@ -95,41 +113,7 @@ export function OurServices() {
                         {
                             [1,2,3,4,5,6].map((id)=>{
                                 return(
-                                    <Grid key={id} item xs={4} sm={4} md={4}>
-                                        <Box sx={{padding:theme.spacing(5),backgroundColor: theme.color.white,boxShadow: '0 0 15px #eee', borderRadius:"10px", height:'100%'}} className={"our-mission-wrap service-item"}>
-                                            <div
-                                            className="service__overlay bg-img"
-                                            style={{
-                                                backgroundImage: 'url("./assets/images/mission2.jpg")',
-                                                backgroundSize: "cover",
-                                                backgroundPosition: "center",
-                                                borderRadius: "10px"
-                                            }}
-                                            ></div><Grid container sx={{position:'relative', zIndex:2}}>
-                                                <Grid xs={12}>
-                                                    <IconImage
-                                                        src="https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/ff.png"
-                                                        alt="Rs-service"
-                                                    />
-                                                </Grid>
-                                                <Grid xs={12}>
-                                                    <Typography variant='h5' fontWeight={700} py={theme.spacing(2)}>{"Tên dịch vụ " + id}</Typography>
-                                                </Grid>
-                                                <Grid xs={12} pb={theme.spacing(2)}>
-                                                    <Typography>
-                                                        We have a custom cleaning service designed to help you clean when you need it,
-                                                        whether we clean one time or on regular, your house will always sparkle clean
-                                                    </Typography>
-                                                </Grid>
-                                                <BlogButton>
-                                                    <Link to="#">
-                                                        <Typography fontWeight={700} lineHeight={'1.5rem'}>Read More</Typography>
-                                                        <Typography sx={{display:'inline', pl: '5px'}} className='arrow-news'><FontAwesomeIcon icon="fa-solid fa-arrow-right-long" /></Typography>
-                                                    </Link>
-                                                </BlogButton>
-                                            </Grid>
-                                        </Box>
-                                    </Grid>
+                                    <ServiceItem id={id}/>
                                 )
                             })
                         }     
@@ -140,4 +124,59 @@ export function OurServices() {
         </Container>
     </Box>
   )
+}
+
+const ServiceItem = ({id}) =>{
+
+//   const serviceRef = useRef(null)
+//     const { ref, inView } = useInView({
+//         /* Optional options */
+//         threshold: 0,
+//         deplay: 1000
+//     });
+//     useEffect(() => {
+//         if(inView){
+//             if (serviceRef.current) {
+//                 serviceRef.current.classList.add('animate__animated','animate__fadeIn');
+//             }
+//         }
+//     }, [inView]);
+    const theme = useTheme()
+    return (
+        <Grid key={id} item xs={4} sm={4} md={4}>
+            <Box sx={{padding:theme.spacing(5),backgroundColor: theme.color.white,boxShadow: '0 0 15px #eee', borderRadius:"10px", height:'100%'}} className={"our-mission-wrap service-item"}>
+                <div
+                className="service__overlay bg-img"
+                style={{
+                    backgroundImage: 'url("./assets/images/mission2.jpg")',
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    borderRadius: "10px"
+                }}
+                ></div><Grid container sx={{position:'relative', zIndex:2}}>
+                    <Grid xs={12}>
+                        <IconImage
+                            src="https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/ff.png"
+                            alt="Rs-service"
+                        />
+                    </Grid>
+                    <Grid xs={12}>
+                        <Typography variant='h5' fontWeight={700} py={theme.spacing(2)}>{"Tên dịch vụ " + id}</Typography>
+                    </Grid>
+                    <Grid xs={12} pb={theme.spacing(2)}>
+                        <Typography>
+                            We have a custom cleaning service designed to help you clean when you need it,
+                            whether we clean one time or on regular, your house will always sparkle clean
+                        </Typography>
+                    </Grid>
+                    <BlogButton>
+                        <Link to="#">
+                            <Typography fontWeight={700} lineHeight={'1.5rem'}>Read More</Typography>
+                            <Typography sx={{display:'inline', pl: '5px'}} className='arrow-news'><FontAwesomeIcon icon="fa-solid fa-arrow-right-long" /></Typography>
+                        </Link>
+                    </BlogButton>
+                </Grid>
+            </Box>
+        </Grid>
+    )
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { keyframes, useTheme } from '@emotion/react'
 import { Box, Container, Grid, Modal, Typography, styled } from '@mui/material'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -7,18 +7,31 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { faFontAwesome } from '@fortawesome/free-brands-svg-icons'
 import { useTranslation } from 'react-i18next'
+import { useInView } from 'react-intersection-observer'
+import 'animate.css';
+
 
 library.add(fas, faFontAwesome, faPlay)
 
 
 const ServicesIcon = styled('div')(({ theme }) => ({
-    position: "relative"
-  }))
+    // position: "absolute",
+    // top: '50%',
+    // left: '50%',
+    // transform: 'translate(-50%,-50%)'
+}))
 
 const IconImage = styled('img')(({ theme }) => ({
     width: "70px",
-    zIndex: 2
-  }))
+    zIndex: 2,
+    // opacity: .2
+}))
+
+const IconImageCore = styled('img')(({ theme }) => ({
+    width: "100px",
+    zIndex: 2,
+    // opacity: .2
+}))
 
 const Background = styled('div')(({ theme }) =>({
     backgroundColor: theme.color.green1,
@@ -119,6 +132,67 @@ const PopupVideosBorder = styled('div')(({theme})=>({
     }
 }));
 
+const CoreValuestWrap = styled(Box)(({ theme }) => ({
+    position: 'relative',
+    backgroundColor: theme.color.white,
+    borderRadius: '10px',
+    height: '100%',
+    '&:hover':{
+        boxShadow: '0 0 15px #eee',
+        display: 'flex',
+        alignItems:'center',
+        justifyContent:'center'
+    },
+    '&:after': {
+      borderRadius:'5px',
+      content: '""',
+      display: 'block',
+      background: theme.color.green1,
+      position: 'absolute',
+      top: '20px',
+      left: '20px',
+      bottom: '20px',
+      right: '20px',
+      opacity: 0,
+      transform: 'rotateY(90deg)',
+      transformOrigin: '0 0',
+      transition: 'all .4s ease-in-out 0s',
+    },
+    '&:hover:after': {
+      transform: 'rotateY(0)',
+      opacity: 0.85,
+
+      transition: 'all .4s ease-in-out 0s',
+    },
+    '&:hover .core-value-content': {
+      display:'flex !important',
+      transitionDelay: '0.2s',
+      color: theme.color.white,
+      zIndex: '3',
+      position: 'relative',
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: '100%',
+      height: '100%',
+      transition: 'all .4s ease-in-out 0s',
+    },
+    '&:hover .core-value-title': {
+      display: 'none',
+      transition: 'all .4s ease-in-out 0s',
+    },
+    '&:hover .core-value-image': {
+        position: "absolute",
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%,-50%)',
+    },
+    '&:hover .core-value-image img': {
+        width: '100%',
+        transition: 'all .4s ease-in-out 0s',
+    }
+    
+  }));
+
 const style = {
     position: 'absolute',
     top: '50%',
@@ -129,19 +203,39 @@ const style = {
 
 export function OurMission() {
   const {t} = useTranslation()
-  const theme = useTheme()
+  const theme= useTheme()
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const visionRef = useRef(null)
+  const missonRef = useRef(null)
+ 
+  const { ref, inView } = useInView({
+    /* Optional options */
+    threshold: 0,
+    deplay: 300
+  });
+  
+  useEffect(() => {
+    if(inView){
+        if (visionRef.current) {
+            visionRef.current.classList.add('animate__animated','animate__rotateInDownLeft');
+        }
+        if (missonRef.current) {
+            missonRef.current.classList.add('animate__animated','animate__rotateInDownRight');
+        }
+    }
+  }, [inView]);
+  
   return (
     <Box>
         <Container maxWidth='xl'sx={{py: theme.spacing(10), px:0}}>
             <Grid container sx={{px:3}}>
-                <Grid item xs={12} md={7} sx={{borderRadius: "4px 0 0 4px",backgroundColor: theme.color.white,boxShadow: '0 0 150px #eee',p:theme.spacing(3), py: theme.spacing(8)}}>
+                <Grid ref={visionRef} item xs={12} md={7} sx={{borderRadius: "4px 0 0 4px",backgroundColor: theme.color.white,boxShadow: '0 0 150px #eee',p:theme.spacing(3), py: theme.spacing(8)}}>
                     {/* <Typography variant='h6' color={theme.color.green1}>
                         {t("CHÀO MỪNG ĐẾN VỚI HEPCO")}
                     </Typography> */}
-                    <Typography variant='h4' color={theme.color.black} fontSize={'42px'} fontWeight={"bold"} className='type-line' pb={2}>
+                    <Typography ref={ref} variant='h4' color={theme.color.black} fontSize={'42px'} fontWeight={"bold"} className='type-line' pb={2}>
                         {t('Tầm nhìn - Sứ mệnh')}
                     </Typography>
 
@@ -155,12 +249,12 @@ export function OurMission() {
                                 <Background className="img-bg" />
                             </ServicesIcon>
                          </Grid>
-                         <Grid item xs={10}>
+                         <Grid item xs={10} pr={theme.spacing(2)}>
                             <Typography variant="h5" fontSize={'30px'} fontWeight={"bold"}  color={theme.color.green1} pb={2}>
                                 {t('Tầm nhìn')}
                             </Typography>
                             <Typography fontWeight={500}>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                Tạo ra giá trị bền vững cho môi trường và xã hội, mang đến một môi trường xanh – sạch – sáng cho cộng đồng là nhiệm vụ và sứ mệnh của Hepco.
                             </Typography>
                          </Grid>
                     </Grid>
@@ -174,17 +268,17 @@ export function OurMission() {
                                 <Background className="img-bg" />
                             </ServicesIcon>
                          </Grid>
-                         <Grid item xs={10}>
+                         <Grid item xs={10} pr={theme.spacing(2)}>
                             <Typography variant="h5" fontSize={'30px'} fontWeight={"bold"}  color={theme.color.green1} pb={2}>
                                 {t('Sứ mệnh')}
                             </Typography>
                             <Typography fontWeight={500}>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                            Tạo ra giá trị bền vững cho môi trường và xã hội, mang đến một môi trường xanh – sạch – sáng cho cộng đồng là nhiệm vụ và sứ mệnh của Hepco.
                             </Typography>
                          </Grid>
                     </Grid>
                 </Grid>
-                <Grid item xs={12} md={5} sx={{position:'relative'}}>
+                <Grid ref={missonRef} item xs={12} md={5} sx={{position:'relative'}}>
                     <Grid container sx={{height:{xs: "400px", md:'100%'}}}>
                         <Grid item xs={6} md={7}>
                             <Box sx={{
@@ -234,24 +328,36 @@ export function OurMission() {
                                 </Typography>
                             </Grid>
                             {
-                                ['h','e','p','c','o'].map((id)=>{
+                                [
+                                    {
+                                        key : 'h',
+                                        title: 'Honesty <br> (Trung Thực)', 
+                                        content: 'Chúng tôi cam kết đưa ra các giải pháp và dịch vụ dựa trên thông tin trung thực và minh bạch đối với khách hàng và cộng đồng.'
+                                    },
+                                    { 
+                                        key : 'e',
+                                        title: 'Environmental Responsibility <br> (Trách Nhiệm Môi Trường)', 
+                                        content: 'Chúng tôi hướng đến việc giảm thiểu tác động tiêu cực lên môi trường thông qua việc tái chế, sử dụng nguồn năng lượng tái tạo, và thúc đẩy ý thức về bảo vệ môi trường trong cộng đồng.'
+                                    },
+                                    {
+                                        key : 'p',
+                                        title: 'Professionalism <br>  (Chuyên Nghiệp)', 
+                                        content: 'Chúng tôi cam kết cung cấp dịch vụ chuyên nghiệp, với đội ngũ nhân viên được đào tạo chất lượng cao và kỹ năng chuyên môn trong lĩnh vực vệ sinh môi trường và công trình đô thị.'
+                                    },
+                                    {
+                                        key : 'c',
+                                        title: 'Community Engagement <br>  (Tương Tác Cộng Đồng)', 
+                                        content: 'Chúng tôi hợp tác chặt chẽ với cộng đồng địa phương, tăng cường nhận thức về vấn đề môi trường và tham gia vào các hoạt động xã hội và giáo dục về vệ sinh môi trường.'
+                                    },
+                                    {
+                                        key : 'o',
+                                        title: 'Optimal Solutions <br>  (Giải Pháp Tối Ưu)', 
+                                        content: 'Chúng tôi tập trung vào việc phát triển và cung cấp các giải pháp tối ưu về vệ sinh môi trường và công trình đô thị, đáp ứng nhu cầu của khách hàng một cách hiệu quả nhất.'
+                                    }
+                                    
+                                ].map((value)=>{
                                     return(
-                                        <Grid key={id} item xs={4} sm={4} md={ 2.4}>
-                                            <Box sx={{backgroundColor: theme.color.white,p:theme.spacing(5), borderRadius:"10px", height: '100%'}} className={"our-mission-wrap core-values-wrap"}>
-                                                <ServicesIcon>
-                                                    <IconImage
-                                                        src={"./assets/icons/ic_"+id+".svg"}
-                                                        alt="Rs-service"
-                                                    />
-                                                </ServicesIcon>
-                                                <Typography variant="h6" py={2} fontWeight={"bold"}>
-                                                    Giá trị cốt lõi {id}
-                                                </Typography>
-                                                <Typography fontWeight={500}>
-                                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took
-                                                </Typography>
-                                            </Box>
-                                        </Grid>
+                                        <CoreItem value={value}/>
                                     )
                                 })
                             }
@@ -281,4 +387,38 @@ export function OurMission() {
       </Modal>
     </Box>
   )
+}
+const CoreItem = ({value})=>{
+    const theme = useTheme()
+    const coreRef = useRef(null)
+    const { ref, inView } = useInView({
+        /* Optional options */
+        threshold: 0,
+        deplay: 1000
+    });
+    useEffect(() => {
+        if(inView){
+            if (coreRef.current) {
+                setTimeout(()=>{
+                    coreRef.current.classList.add('animate__animated','animate__flipInX');
+                },0)
+            }
+        }
+    }, [inView]);
+    return(
+        <Grid  key={value.key} item xs={4} sm={4} md={ 2.4}>
+            <CoreValuestWrap ref={coreRef}>
+                <Box sx={{position:'relative',backgroundColor: theme.color.white,p:theme.spacing(5), borderRadius:"10px", height: '100%'}} className={"core-values-wrap"}>
+                    <ServicesIcon className='core-value-image'>
+                        <IconImageCore
+                            src={"./assets/icons/ic_"+value.key+".svg"}
+                            alt="Rs-service"
+                        />
+                    </ServicesIcon>
+                    <Box ref={ref} className='core-value-title' fontSize={'18px'} py={2} fontWeight={"bold"} dangerouslySetInnerHTML={{__html:value.title}}/>
+                    <Box className='core-value-content' sx={{display:'none', position:'relative'}} fontWeight={500} dangerouslySetInnerHTML={{__html:value.content}}/>
+                </Box>
+            </CoreValuestWrap>
+        </Grid>
+    )
 }

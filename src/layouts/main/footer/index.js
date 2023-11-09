@@ -1,16 +1,38 @@
 
 import { useTheme } from "@emotion/react";
 import { Box, Container, Grid, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import { useInView } from "react-intersection-observer";
 import { Image } from "semantic-ui-react";
 
 export default function Footer(){
     const theme = useTheme()
+    const footerRef = useRef(null)
+    const { ref, inView } = useInView({
+        /* Optional options */
+        threshold: 0,
+        deplay: 1000
+    });
+    useEffect(() => {
+        if(inView){
+            if (footerRef.current) {
+                footerRef.current.classList.add('animate__animated','animate__fadeInDown');
+            }
+        }
+    }, [inView]);
     return(
-        <Container maxWidth='100%' p={0} sx={{background: `url(https://rstheme.com/products/wordpress/planteo/wp-content/uploads/revslider/main-home/slider-1.jpg)`,
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover', py:theme.spacing(5), pb:theme.spacing(2)}}>
-            <Container maxWidth='xl' sx={{padding:theme.spacing(4)}}>
+        <Container 
+            ref={ref}
+            maxWidth='100%' 
+            p={0} 
+            sx={{
+                background: `url(https://rstheme.com/products/wordpress/planteo/wp-content/uploads/revslider/main-home/slider-1.jpg)`,
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover', 
+                py:theme.spacing(5), pb:theme.spacing(2)
+            }}
+        >
+            <Container maxWidth='xl' sx={{padding:theme.spacing(4)}} ref={footerRef}>
                 <Grid container spacing={2}>
                     <Grid item xs={4} px={2} container  spacing={2}>
                         <Typography variant="h5" fontWeight={700} color={theme.color.white} textAlign={"center"}>
@@ -41,6 +63,7 @@ export default function Footer(){
                             allowfullscreen="" 
                             loading="lazy" 
                             referrerpolicy="no-referrer-when-downgrade"
+                            title="map"
                         />
                     </Grid>
                     <Grid item xs={4} px={2} container>

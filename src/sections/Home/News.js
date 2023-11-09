@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Container, Grid, Typography, Box } from '@mui/material';
 import { styled, useTheme } from '@mui/material/styles';
 import { useTranslation } from 'react-i18next';
@@ -9,6 +9,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import { faFontAwesome } from '@fortawesome/free-brands-svg-icons'
 import { Link } from 'react-router-dom';
 import LazyLoad from 'react-lazyload';
+import { useInView } from 'react-intersection-observer';
 
 library.add(fas, faFontAwesome, faPlay)
 
@@ -98,6 +99,23 @@ export const News = () => {
   const projects = [1, 2, 3];
   const theme = useTheme()
   const {t} = useTranslation()
+
+
+  const newsRef = useRef(null)
+  const { ref, inView } = useInView({
+      /* Optional options */
+      threshold: 0,
+      deplay: 1000
+  });
+  useEffect(() => {
+      if(inView){
+          if (newsRef.current) {
+              newsRef.current.classList.add('animate__animated','animate__fadeInDown');
+          }
+      }
+  }, [inView]);
+
+  
   return (
     <Container maxWidth='100%' sx={{py:theme.spacing(5), mb:theme.spacing(10),px:'0 !important'}}>
       <Box sx={{
@@ -111,11 +129,11 @@ export const News = () => {
           height: '600px'
           }}>
             <StyledContainer sx={{position:"absolute", bottom: "-30%", left:"50%", transform:"translateX(-50%) translateY(0%)"}}>
-              <Grid container>
-                    <StyledTypography variant="h4" color={theme.color.white} fontWeight="bold" pb={theme.spacing(5)}>
+              <Grid container >
+                    <StyledTypography ref={ref} variant="h4" color={theme.color.white} fontWeight="bold" pb={theme.spacing(5)}>
                         {t('Tin tức nổi bật')}
                     </StyledTypography>
-                    <StyledGrid container spacing={2}>
+                    <StyledGrid container spacing={2} ref={newsRef}>
                     {projects.map((id) => (
                         <Grid key={id} item xs={4} sm={4} md={4}>
                           <Link to="#">

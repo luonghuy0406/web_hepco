@@ -10,10 +10,8 @@ import {
   List,
   ListItem,
   ListItemButton,
-  ListItemText,
   Stack,
   Typography,
-  useMediaQuery,
   useTheme
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -96,6 +94,7 @@ export default function Header() {
     return (
       <>
       <Box
+          className="animate__animated animate__fadeInDown"
           component="header"
           sx={{
             backdropFilter: 'blur(6px)',

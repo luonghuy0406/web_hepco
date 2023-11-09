@@ -6,6 +6,9 @@ import { Box, Grid, Typography, styled } from "@mui/material";
 import { useTheme } from "@emotion/react";
 
 import LazyLoad from 'react-lazyload';
+import { useEffect, useState } from "react";
+import { useInView } from "react-intersection-observer";
+import { useTranslation } from "react-i18next";
 const images = [
   "./assets/images/banner1.jpeg",
   "./assets/images/banner2.jpeg",
@@ -28,7 +31,76 @@ const IconNext = styled('div')(({ theme }) => ({
 }));
 
 export function BannerSlide({executeScroll}){
+  
+  const {t} = useTranslation()
   const theme = useTheme()
+  const [years, setYears] = useState(0)
+  const [projects, setProjects] = useState(0)
+  const [customers, setCustomers] = useState(0)
+  const [members, setMembers] = useState(0)
+  const { ref, inView, entry } = useInView({
+    /* Optional options */
+    threshold: 0,
+    deplay: 100
+  });
+  useEffect(() => {
+    setYears(0)
+    setProjects(0)
+    setCustomers(0)
+    setMembers(0)
+  }, [inView]);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (years < 10) {
+        setYears(years + 1);
+      } else {
+        clearInterval(timer);
+      }
+    }, 10/1000);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, [years]);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (projects < 500) {
+        setProjects(projects + 1);
+      } else {
+        clearInterval(timer);
+      }
+    }, 500/1000);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, [projects]);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (customers < 100) {
+        setCustomers(customers + 1);
+      } else {
+        clearInterval(timer);
+      }
+    }, 100/1000);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, [customers]);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (members < 200) {
+        setMembers(members + 1);
+      } else {
+        clearInterval(timer);
+      }
+    }, 200/1000);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, [members]);
   return (
     <Box sx={{position:"relative"}}> 
       <Carousel
@@ -67,7 +139,7 @@ export function BannerSlide({executeScroll}){
         slidesToSlide={1}
         swipeable
       >
-        {images.slice(0, 5).map(image => {
+        {images.slice(0, 5).map((image, index) => {
           return (
             <LazyLoad height={200} offset={100}>
               <Box className='banner-slide-image' sx={{ 
@@ -79,15 +151,55 @@ export function BannerSlide({executeScroll}){
                   backgroundSize:'cover',
                   backgroundRepeat:'no-repeat'}}
                 >
-                <Grid container sx={{height:'100%'}}>
-                  <Grid item xs={7} container sx={{height:'100%'}} alignItems={"start"} justifyContent={"center"} direction={"column"}>
+                <Grid container sx={{height:'100%', justifyContent:'center'}}>
+                  {
+                    index == 0 &&
+                    <Grid item xs={11} ref={ref} container sx={{height:'100%', zIndex:1, alignItems:'center', justifyContent:'center'}} direction={"row"}>
+                      <Grid item xs={3}>
+                          <Typography sx={{transition:"ease-in 0.1s"}} variant="h1"  fontWeight={700} color={theme.color.white} textAlign={"center"}>
+                          {years}+
+                          </Typography>
+                          <Typography variant="h4" fontWeight={700} color={theme.color.white} textAlign={"center"}>
+                              Năm kinh nghiệm
+                          </Typography>
+                      </Grid>
+                      <Grid item xs={3}>
+                          <Typography sx={{transition:"ease-in 0.1s"}} variant="h1"  fontWeight={700} color={theme.color.white} textAlign={"center"}>
+                              {projects}+
+                          </Typography>
+                          <Typography variant="h4" fontWeight={700} color={theme.color.white} textAlign={"center"}>
+                              Dự án 
+                          </Typography>
+                      </Grid>
+                      <Grid item xs={3}>
+                          <Typography sx={{transition:"ease-in 0.1s"}} variant="h1"  fontWeight={700} color={theme.color.white} textAlign={"center"}>
+                              {customers}+
+                          </Typography>
+                          <Typography variant="h4" fontWeight={700} color={theme.color.white} textAlign={"center"}>
+                              Khách hàng
+                          </Typography>
+                      </Grid>
+                      <Grid item xs={3}>
+                          <Typography sx={{transition:"ease-in 0.1s"}} variant="h1"  fontWeight={700} color={theme.color.white} textAlign={"center"}>
+                              {members}+
+                          </Typography>
+                          <Typography variant="h4" fontWeight={700} color={theme.color.white} textAlign={"center"}>
+                              Nhân sự
+                          </Typography>
+                      </Grid>
+                  </Grid>
+                  }
+                  {
+                    index != 0 &&
+                    <Grid item xs={7} container sx={{height:'100%'}} alignItems={"start"} justifyContent={"center"} direction={"column"}>
                       <Typography variant="h3" pl={5} color={theme.color.white} fontWeight={"700"} className="animate__animated animate__fadeInDown">
                         Find Professional
                       </Typography>
                       <Typography variant="h1" pl={5} color={theme.color.white} fontWeight={"700"} className="animate__animated animate__zoomIn">
                         Hepco Huế
                       </Typography>
-                  </Grid>
+                    </Grid>
+                  }
                   {/* <Grid item xs={5} container mt={5} sx={{height:'100%'}} alignItems={"flex-end"} justifyContent={"center"}className="animate__animated animate__fadeIn">
                       <Image src='https://rstheme.com/products/wordpress/planteo/wp-content/uploads/revslider/main-home/Layer-6241.png' style={{width:'100%', height:'auto'}}/>
                   </Grid> */}
