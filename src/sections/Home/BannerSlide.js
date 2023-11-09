@@ -106,7 +106,7 @@ export function BannerSlide({executeScroll}){
       <Carousel
         additionalTransfrom={0}
         arrows={true}
-        // autoPlay
+        autoPlay
         autoPlaySpeed={3000}
         centerMode={false}
         className=""
@@ -144,53 +144,15 @@ export function BannerSlide({executeScroll}){
             <LazyLoad height={200} offset={100}>
               <Box className='banner-slide-image' sx={{ 
                   width: "100%", 
-                  height: {xs: '300px', sm: '400px', md:'550px', lg:'800px'}, 
-                  maxHeight:'800px' , 
+                  height: {xs: '300px', sm: '400px', md:'550px', lg:'calc( 100vh - 10px )'}, 
+                  maxHeight:'calc( 100vh - 10px )' , 
                   backgroundImage: `url(${image})`, 
                   backgroundPosition:'center', 
                   backgroundSize:'cover',
                   backgroundRepeat:'no-repeat'}}
                 >
                 <Grid container sx={{height:'100%', justifyContent:'center'}}>
-                  {
-                    index == 0 &&
-                    <Grid item xs={11} ref={ref} container sx={{height:'100%', zIndex:1, alignItems:'center', justifyContent:'center'}} direction={"row"}>
-                      <Grid item xs={3}>
-                          <Typography sx={{transition:"ease-in 0.1s"}} variant="h1"  fontWeight={700} color={theme.color.white} textAlign={"center"}>
-                          {years}+
-                          </Typography>
-                          <Typography variant="h4" fontWeight={700} color={theme.color.white} textAlign={"center"}>
-                              Năm kinh nghiệm
-                          </Typography>
-                      </Grid>
-                      <Grid item xs={3}>
-                          <Typography sx={{transition:"ease-in 0.1s"}} variant="h1"  fontWeight={700} color={theme.color.white} textAlign={"center"}>
-                              {projects}+
-                          </Typography>
-                          <Typography variant="h4" fontWeight={700} color={theme.color.white} textAlign={"center"}>
-                              Dự án 
-                          </Typography>
-                      </Grid>
-                      <Grid item xs={3}>
-                          <Typography sx={{transition:"ease-in 0.1s"}} variant="h1"  fontWeight={700} color={theme.color.white} textAlign={"center"}>
-                              {customers}+
-                          </Typography>
-                          <Typography variant="h4" fontWeight={700} color={theme.color.white} textAlign={"center"}>
-                              Khách hàng
-                          </Typography>
-                      </Grid>
-                      <Grid item xs={3}>
-                          <Typography sx={{transition:"ease-in 0.1s"}} variant="h1"  fontWeight={700} color={theme.color.white} textAlign={"center"}>
-                              {members}+
-                          </Typography>
-                          <Typography variant="h4" fontWeight={700} color={theme.color.white} textAlign={"center"}>
-                              Nhân sự
-                          </Typography>
-                      </Grid>
-                  </Grid>
-                  }
-                  {
-                    index != 0 &&
+                  
                     <Grid item xs={7} container sx={{height:'100%'}} alignItems={"start"} justifyContent={"center"} direction={"column"}>
                       <Typography variant="h3" pl={5} color={theme.color.white} fontWeight={"700"} className="animate__animated animate__fadeInDown">
                         Find Professional
@@ -199,7 +161,6 @@ export function BannerSlide({executeScroll}){
                         Hepco Huế
                       </Typography>
                     </Grid>
-                  }
                   {/* <Grid item xs={5} container mt={5} sx={{height:'100%'}} alignItems={"flex-end"} justifyContent={"center"}className="animate__animated animate__fadeIn">
                       <Image src='https://rstheme.com/products/wordpress/planteo/wp-content/uploads/revslider/main-home/Layer-6241.png' style={{width:'100%', height:'auto'}}/>
                   </Grid> */}
@@ -209,6 +170,40 @@ export function BannerSlide({executeScroll}){
           );
         })}
       </Carousel>
+      <Grid ref={ref} container sx={{zIndex:1, alignItems:'center', justifyContent:'center', position: 'absolute', bottom: '0', left: '0', right: '0', padding: theme.spacing(2)}} direction={"row"}>
+          <Grid item xs={3}>
+              <Typography sx={{transition:"ease-in 0.1s"}} variant="h4"  fontWeight={700} color={theme.color.white} textAlign={"center"}>
+              {years}+
+              </Typography>
+              <Typography variant="h6" fontWeight={700} color={theme.color.white} textAlign={"center"}>
+                  Năm kinh nghiệm
+              </Typography>
+          </Grid>
+          <Grid item xs={3}>
+              <Typography sx={{transition:"ease-in 0.1s"}} variant="h4"  fontWeight={700} color={theme.color.white} textAlign={"center"}>
+                  {projects}+
+              </Typography>
+              <Typography variant="h6" fontWeight={700} color={theme.color.white} textAlign={"center"}>
+                  Dự án 
+              </Typography>
+          </Grid>
+          <Grid item xs={3}>
+              <Typography sx={{transition:"ease-in 0.1s"}} variant="h4"  fontWeight={700} color={theme.color.white} textAlign={"center"}>
+                  {customers}+
+              </Typography>
+              <Typography variant="h6" fontWeight={700} color={theme.color.white} textAlign={"center"}>
+                  Khách hàng
+              </Typography>
+          </Grid>
+          <Grid item xs={3}>
+              <Typography sx={{transition:"ease-in 0.1s"}} variant="h4"  fontWeight={700} color={theme.color.white} textAlign={"center"}>
+                  {members}+
+              </Typography>
+              <Typography variant="h6" fontWeight={700} color={theme.color.white} textAlign={"center"}>
+                  Nhân sự
+              </Typography>
+          </Grid>
+      </Grid>
       {/* <Box sx={{width: '100%', position: 'absolute', display: 'flex', alignItems: 'center',justifyContent: 'center'}}>
         <IconNext className="img-bounce animate__animated animate__zoomIn" onClick={executeScroll}>
             <Image src='https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/leaf.png' style={{width:'25px', height:'auto'}}/>
