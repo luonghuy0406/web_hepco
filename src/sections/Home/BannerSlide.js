@@ -107,7 +107,8 @@ export function BannerSlide({executeScroll}){
         additionalTransfrom={0}
         arrows={true}
         autoPlay
-        autoPlaySpeed={3000}
+        pauseOnHover={false}
+        autoPlaySpeed={5000}
         centerMode={false}
         className=""
         containerClass="container animate__animated animate__fadeInRight"
