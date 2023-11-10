@@ -209,3 +209,41 @@ a {
     -webkit-clip-path: polygon(50% 0,100% 38%,100% 100%,0 100%,0 0);
     clip-path: polygon(50% 0,100% 38%,100% 100%,0 100%,0 0);
 }
+.menu-item:hover ul.sub-menu {
+    opacity: 1;
+    transform: scaleY(1);
+    visibility: visible;
+}
+.sub-menu {
+    background: #03611ab3;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 98%;
+    transform: scaleY(0);
+    transform-origin: 0 0 0;
+    transition: all .4s ease-in-out 0s;
+    width: 220px;
+    z-index: 99999!important;
+    text-align: left;
+    visibility: hidden;
+    -webkit-box-shadow: 0 7px 7px 0 rgba(48,51,50,.09);
+    -moz-box-shadow: 0 7px 7px 0 rgba(48,51,50,.09);
+    box-shadow: 0 7px 7px 0 rgba(48,51,50,.09);
+    padding: 10px 20px;
+}
+
+ul.sub-menu li {
+    float: none;
+    display: block;
+    margin: 0;
+    text-align: left;
+    line-height: 25px;
+    color: var(--white);
+    font-weight: 700;
+    line-height: 2.5rem;
+}
+
+ul.sub-menu li:hover{
+    color: var(--red)
+}

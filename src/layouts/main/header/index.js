@@ -83,10 +83,42 @@ export default function Header() {
     }, []);
     const pages = [
       {name: t('Trang chủ'), path:'',child:[]},
-      {name: t('Giới thiệu'), path:'/gioithieu',child:[]},
-      {name: t('Dịch vụ'), path:'/dichvu',child:[]},
-      {name: t('Tin tức'), path:'/tintuc',child:[]},
-      {name: t('Dự án'), path:'/duan',child:[]},
+      {
+        name: t('Giới thiệu'), 
+        path:'/gioithieu',
+        child:[
+          {name: t('Về Hepco'), path:'',child:[]},
+          {name: t('Sơ đồ tổ chức'), path:'/sodo',child:[]},
+          {name: t('Thành tựu đạt được'), path:'/thanhtuu',child:[]},
+          {name: t('Hồ sơ năng lực'), path:'/nangluc',child:[]}
+        ]
+      },
+      {
+        name: t('Dịch vụ'), 
+        path:'/dichvu',
+        child:[
+
+        ]
+      },
+      {
+        name: t('Tin tức'), 
+        path:'/tintuc',
+        child:[
+          {name: t('Hoạt động công ty'), path:'',child:[]},
+          {name: t('Đảng Đoàn thể'), path:'/dangdoan',child:[]},
+          {name: t('Pháp luật môi trường'), path:'/phapluat',child:[]},
+          {name: t('Tin tức khác'), path:'/tinkhac',child:[]},
+        ]
+      },
+      {
+        name: t('Dự án'), 
+        path:'/duan',
+        child:[
+          {name: t('Dự án đầu tư'), path:'',child:[]},
+          {name: t('Hợp tác trong nước'), path:'/trongnuoc',child:[]},
+          {name: t('Hợp tác nước ngoài'), path:'/nuocngoai',child:[]},
+        ]
+      },
       {name: t('Cổ đông'), path:'/codong',child:[]},
       {name: t('Câu hỏi'), path:'/cauhoi',child:[]},
       {name: t('Liên hệ'), path:'/lienhe',child:[]}
@@ -105,59 +137,6 @@ export default function Header() {
             // padding: { xs: '0',sm: "0" , md:"30px 0 50px", lg: "30px 0 50px" }
           }}
         >
-        {/*Header above */}
-        {/* <Container maxWidth='xl' sx={{display: { xs: 'none',sm: 'none', md:'block', lg: 'block' }}}>
-            <Stack
-              alignItems="center"
-              direction="row"
-              justifyContent="space-between"
-              spacing={2}
-              sx={{
-                minHeight: { xs: '60px',md: '60px', lg: '60px' },
-              }}
-            >
-              <Stack
-                alignItems="center"
-                direction="row"
-                spacing={2}
-              >
-                <Stack
-                  alignItems="center"
-                  justifyContent="center"
-                  spacing={1}
-                >
-                  <Link href={'/'} legacyBehavior>
-                        <img src={'./assets/logo.png'} alt='hepco logo' width={70} height={70} />
-                    </Link>
-                </Stack>
-              </Stack>
-              <Stack sx={{textAlign:'center',display:{xs:'none', md:'none', lg:'block'}}}>
-                <Typography variant='h5' fontWeight={'bold'} >
-                  {t('CÔNG TY CỔ PHẦN MÔI TRƯỜNG VÀ CÔNG TRÌNH ĐÔ THỊ HUẾ')}
-                </Typography>
-              </Stack>
-              <Stack
-                alignItems="center"
-                direction="row"
-                spacing={2}
-              >
-                <Grid container alignItems={"center"}>
-                    <Grid item xs={3} sx={{marginBottom:'-5px'}}>
-                      <img src={'./assets/icons/ic_phone.svg'} alt='icon phone' width={35} />
-                    </Grid>
-                    <Grid item xs={9} container>
-                        <Grid item xs={12}>
-                          <Typography fontWeight={'bold'} sx={{fontSize:'16px'}}>{t('Hotline')}</Typography>
-                        </Grid>
-                        <Grid item xs={12}>
-                          <Typography sx={{fontSize:'16px',fontFamily:(theme)=>theme.typography.MuktaMahee}}>(0234) 3997799</Typography>
-                        </Grid>
-                    </Grid>
-                </Grid>
-                <LanguagePopover/>
-              </Stack>
-            </Stack>
-        </Container> */}
         {/* header below */}
         <Box
           sx={{
@@ -209,7 +188,7 @@ export default function Header() {
                       return <MenuNav key={page.path} page={page}/>
                     })
                   }
-                  <MenuNav key={'invoice'} page={'http://hepco.com.vn/hoadondientu'}/>
+                  <MenuNav key={'invoice'} page={{"name":"Hoá đơn", "path": 'http://hepco.com.vn/hoadondientu', "child":[]}}/>
                 </Stack>
                 <Stack
                   spacing={1}
@@ -290,7 +269,7 @@ export default function Header() {
                   return <MenuNav key={page.path} page={page} color="black"/>
                 })
               }
-              <MenuNav key={'invoice'} page={'http://hepco.com.vn/hoadondientu'} color="black"/>
+              <MenuNav key={'invoice'} page={{name:"Hoá đơn", path: 'http://hepco.com.vn/hoadondientu', child:[]}} color="black"/>
             </Stack>
             <Stack
               spacing={1}
