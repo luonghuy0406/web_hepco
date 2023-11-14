@@ -150,11 +150,12 @@ export function Questions() {
                         {t('Câu hỏi')}
                     </StyledTypography>
                     <Grid container>
-                        <Grid ref={questionsRef} item xs={12} md={6} sx={{backgroundColor: theme.color.white, boxShadow:'0 5px 20px rgba(34,34,34,.1)'}}>
+                        <Grid ref={questionsRef} item xs={12} md={6} sx={{borderRadius: "10px 0 0 10px", backgroundColor: theme.color.white, boxShadow:'0 5px 20px rgba(34,34,34,.1)'}}>
                             <Box
                                 sx={{
                                     padding: theme.spacing(5),
-                                    height:"100%"
+                                    height:"100%",
+                                    
                                 }}
                             >
                                 <Grid container spacing={4}>
@@ -203,7 +204,8 @@ export function Questions() {
                                     backgroundPosition:"center",
                                     backgroundRepeat:"no-repeat",
                                     padding: theme.spacing(5),
-                                    height:"100%"
+                                    height:"100%",
+                                    borderRadius: "0 10px 10px 0"
                                 }}
                             >
                                 <Grid container spacing={4}>
