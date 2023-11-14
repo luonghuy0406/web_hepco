@@ -11,6 +11,7 @@ export default function News() {
     {name: t('Pháp luật môi trường'), path:'/phapluat',child:[]},
     {name: t('Tin tức khác'), path:'/tinkhac',child:[]},
   ]
+  window.scrollTo(0, 0);
   return (
     <>
       <Banner name="Tin tức" image={'https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/inner3.jpg'} path={'/tintuc'} pages={pages}/>

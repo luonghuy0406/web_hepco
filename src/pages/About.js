@@ -17,7 +17,7 @@ export default function About() {
   
   const match = useMatch(`${parentPath}/:page`);
   const pageParam = match?.params?.page || '';
-
+  window.scrollTo(0, 0);
   return (
     <>
       <Banner

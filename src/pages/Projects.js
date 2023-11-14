@@ -10,6 +10,7 @@ export default function Projects() {
     {name: t('Hợp tác trong nước'), path:'/trongnuoc',child:[]},
     {name: t('Hợp tác nước ngoài'), path:'/nuocngoai',child:[]},
   ]
+  window.scrollTo(0, 0);
   return (
     <>
       <Banner name="Dự án" image={'https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/inner3.jpg'} path={'/duan'} pages={pages}/>

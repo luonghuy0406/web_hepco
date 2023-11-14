@@ -1,12 +1,44 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import Banner from '../sections/Banner'
-import { Box, Button, Container, Grid, TextField, Typography, useTheme } from '@mui/material'
+import { Box, Button, Container, Grid, TextField, Typography, styled, useTheme } from '@mui/material'
 
+const CustomizedButton = styled(Button)(({ theme }) => ({
+  // Set background color
+  backgroundColor: theme.color.green1,
+  fontWeight:"700",
+  fontSize:"16px",
+  padding:theme.spacing(1),
+  // Set text color
+  color: theme.color.white,
+  borderColor: theme.color.green1,
+
+  // Set border styles
+  borderRadius: '4px',
+
+  // Set hover styles
+  '&:hover': {
+      backgroundColor: theme.color.green1,
+      borderColor: theme.color.green1,
+  },
+
+  // Set active styles
+  '&:active': {
+      backgroundColor: theme.color.green1,
+      borderColor: theme.color.green1,
+  },
+
+  // Set focus styles
+  '&:focus': {
+      outline: 'none', // Remove the default focus outline
+      // boxShadow: `0 0 0 3px rgba(0, 123, 255, 0.3)`, // Add a custom focus border
+  },
+}));
 export default function Contact() {
   const {t} = useTranslation()
   const theme = useTheme()
   const pages = []
+  window.scrollTo(0, 0);
   return (
     <>
       <Banner name="Liên hệ" image={'https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/inner3.jpg'} path={'/lienhe'} pages={pages}/>
@@ -57,31 +89,90 @@ export default function Contact() {
                   />
                 </Grid>
                 <Grid item xs={12}>
-                  <Button sx={{width:"100%"}} variant="contained">Gửi</Button>
+                  <CustomizedButton sx={{width:"100%"}} variant="contained">Gửi</CustomizedButton>
                 </Grid>  
               </Grid>
             </Box>
           </Grid>
         </Grid>
         <Grid container spacing={3} pt={5} pb={15}>
-          <Grid item xs={3}>
-            <Box sx={{width: "100%", height: "300px", backgroundColor:"#fafafa", borderRadius:"10px"}}>
-
+          <Grid item xs={6} md={3} >
+            <Box sx={{width: "100%", height: "300px", backgroundColor:"#fafafa", borderRadius:"10px", padding: theme.spacing(4), display:'flex', alignItems:"center",flexDirection:"column"}}>
+                <Box
+                  sx={{
+                    width:"70px",
+                    height:"70px",
+                    backgroundColor: theme.color.green1,
+                    borderRadius:"50%",
+                    display:"flex",
+                    alignItems:"center",
+                    justifyContent:"center"
+                  }}
+                >
+                  <img src={'./assets/icons/ic_mobile.svg'} alt='icon phone' width={35} />
+                </Box>
+                <Typography variant="h5" fontWeight={700} color={theme.color.green1} padding={2}>Gọi chúng tôi</Typography>
+                <Typography fontWeight={500}>(0234) 3848242</Typography>
+                <Typography fontWeight={500}>(0234) 3997799</Typography>
             </Box>
           </Grid>
-          <Grid item xs={3}>
-            <Box sx={{width: "100%", height: "300px", backgroundColor:"#fafafa", borderRadius:"10px"}}>
-
+          <Grid item xs={6} md={3} >
+            <Box sx={{width: "100%", height: "300px", backgroundColor:"#fafafa", borderRadius:"10px", padding: theme.spacing(4), display:'flex', alignItems:"center",flexDirection:"column"}}>
+              <Box
+                  sx={{
+                    width:"70px",
+                    height:"70px",
+                    backgroundColor: theme.color.green1,
+                    borderRadius:"50%",
+                    display:"flex",
+                    alignItems:"center",
+                    justifyContent:"center"
+                  }}
+                >
+                  <img src={'./assets/icons/ic_email.svg'} alt='icon phone' width={35} />
+                </Box>
+                <Typography variant="h5" fontWeight={700} color={theme.color.green1} padding={2}>Gửi email</Typography>
+                <Typography fontWeight={500}>info@hepco.com.vn</Typography>
             </Box>
           </Grid>
-          <Grid item xs={3}>
-            <Box sx={{width: "100%", height: "300px", backgroundColor:"#fafafa", borderRadius:"10px"}}>
-
+          <Grid item xs={6} md={3} >
+            <Box sx={{width: "100%", height: "300px", backgroundColor:"#fafafa", borderRadius:"10px", padding: theme.spacing(4), display:'flex', alignItems:"center",flexDirection:"column"}}>
+            <Box
+                  sx={{
+                    width:"70px",
+                    height:"70px",
+                    backgroundColor: theme.color.green1,
+                    borderRadius:"50%",
+                    display:"flex",
+                    alignItems:"center",
+                    justifyContent:"center"
+                  }}
+                >
+                  <img src={'./assets/icons/ic_open.svg'} alt='icon phone' width={35} />
+                </Box>
+                <Typography variant="h5" fontWeight={700} color={theme.color.green1} padding={2}>Giờ mở cửa</Typography>
+                <Typography fontWeight={500}>T2-T6: 7h - 11h30 và 13h - 17h</Typography>
+                <Typography fontWeight={500}>T7-CN: Không hoạt động</Typography>
             </Box>
           </Grid>
-          <Grid item xs={3}>
-            <Box sx={{width: "100%", height: "300px", backgroundColor:"#fafafa", borderRadius:"10px"}}>
-
+          <Grid item xs={6} md={3} >
+            <Box sx={{width: "100%", height: "300px", backgroundColor:"#fafafa", borderRadius:"10px", padding: theme.spacing(4), display:'flex', alignItems:"center",flexDirection:"column"}}>
+              <Box
+                  sx={{
+                    width:"70px",
+                    height:"70px",
+                    backgroundColor: theme.color.green1,
+                    borderRadius:"50%",
+                    display:"flex",
+                    alignItems:"center",
+                    justifyContent:"center"
+                  }}
+                >
+                  <img src={'./assets/icons/ic_address.svg'} alt='icon phone' width={35} />
+                </Box>
+                <Typography variant="h5" fontWeight={700} color={theme.color.green1} padding={2}>Địa chỉ</Typography>
+                <Typography fontWeight={500}>46 Trần Phú, Phường Phước Vĩnh</Typography>
+                <Typography fontWeight={500}>Thành phố Huế</Typography>
             </Box>
           </Grid>
         </Grid>

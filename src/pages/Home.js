@@ -9,11 +9,12 @@ import { FeaturedProjects } from "../sections/Home/FeaturedProjects";
 import { News } from "../sections/Home/News";
 import { Customers } from "../sections/Home/Customers";
 import { AdwardsAchieved } from "../sections/Home/AwardsAchieved";
+import { Questions } from "../sections/Home/Questions";
 
 const Home = () => {
   const myRef = useRef(null)
-
-   const executeScroll = () => myRef.current.scrollIntoView()  
+  window.scrollTo(0, 0);
+  const executeScroll = () => myRef.current.scrollIntoView()  
   return (
     <Box>
       <BannerSlide executeScroll={executeScroll}/>
@@ -25,6 +26,7 @@ const Home = () => {
         <News/>
         <Customers/>
         <AdwardsAchieved/>
+        <Questions/>
       </Box>
     </Box>
   );

@@ -16,7 +16,7 @@ export default function Footer(){
     useEffect(() => {
         if(inView){
             if (footerRef.current) {
-                footerRef.current.classList.add('animate__animated','animate__fadeInDown');
+                footerRef.current.classList.add('animate__animated','animate__fadeInUp');
             }
         }
     }, [inView]);

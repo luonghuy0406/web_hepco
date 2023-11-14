@@ -6,6 +6,7 @@ import { Box } from '@mui/material'
 export default function Services() {
   const {t} = useTranslation()
   const pages = []
+  window.scrollTo(0, 0);
   return (
     <>
       <Banner name="Dịch vụ" image={'https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/inner3.jpg'} path={'/service'} pages={pages}/>
