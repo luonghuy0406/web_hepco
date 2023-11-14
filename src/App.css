@@ -18,7 +18,7 @@ html {
 }
 body{
     font-family: 'Quicksand', sans-serif !important;
-    background-color: #f7f7f7 !important;
+    /* background-color: #f7f7f7 !important; */
 }
 a {
     text-decoration: none;

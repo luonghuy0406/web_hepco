@@ -172,7 +172,7 @@ export default function Header() {
                   justifyContent={"center"}
                   // sx={{visibility: { xs: 'visible',sm: 'visible', md:'hidden', lg: 'hidden' }}}
                 >
-                  <Link href={'/'} legacyBehavior>
+                  <Link href={'/'} legacybehavior>
                       <img src={'./assets/logo.png'} alt='hepco logo' width={45} height={45} />
                   </Link>
                 </Stack>
@@ -224,7 +224,7 @@ export default function Header() {
                                 </Grid>
                             </Grid>
                           </Grid>
-                        {/* <a href={'http://hepco.com.vn/hoadondientu'} target='_blank' legacyBehavior style={{textDecoration:'none'}}>  
+                        {/* <a href={'http://hepco.com.vn/hoadondientu'} target='_blank' legacybehavior style={{textDecoration:'none'}}>  
                         </a> */}
                       </Box>
                   </InvoiceBox>
@@ -253,7 +253,7 @@ export default function Header() {
               alignItems="center"
               justifyContent={"center"}
             >
-              <Link href={'/'} legacyBehavior>
+              <Link href={'/'} legacybehavior>
                   <img src={'./assets/logo.png'} alt='hepco logo' width={60} height={60} />
               </Link>
             </Stack>
@@ -290,7 +290,7 @@ export default function Header() {
             >
               <InvoiceBox theme={theme} sticky={true}>
                   <Box sx={{zIndex:'1',position:'relative'}}>
-                    {/* <a href={'http://hepco.com.vn/hoadondientu'} target='_blank' legacyBehavior style={{textDecoration:'none'}}>  
+                    {/* <a href={'http://hepco.com.vn/hoadondientu'} target='_blank' legacybehavior style={{textDecoration:'none'}}>  
                       <Typography fontWeight={'bold'} color={(theme)=>theme.color.white} fontSize={{xs: '13px', md:'14px', lg:'16px'}} textTransform={'uppercase'}>{t('Tra cứu hoá đơn')}</Typography>
                     </a> */}
                     <Grid container alignItems={"center"}>
