@@ -24,8 +24,17 @@ const Home = () => {
         <OurServices/>
         {/* <FeaturedProjects/>  */}
         <News/>
-        <Customers/>
-        <AdwardsAchieved/>
+        <Box 
+          sx={{
+            backgroundImage: `url(./assets/images/bg1.png)`,
+            backgroundRepeat: 'no-repeat',
+            backgroundPositionX: 'right',
+            backgroundSize: '70%',
+          }}
+        >
+          <Customers/>
+          <AdwardsAchieved/>
+        </Box>
         <Questions/>
       </Box>
     </Box>

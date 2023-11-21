@@ -23,6 +23,7 @@ const Accordion = styled((props) => (
         },
 }));
 const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
+    padding: "0px 16px 25px"
 }));
 const TextInput = styled(TextField)(({ theme }) => ({
     // Set background color
@@ -133,7 +134,7 @@ export function Questions() {
     setExpanded(newExpanded ? panel : false);
   };
   return (
-    <Container maxWidth='100%' sx={{py:theme.spacing(5), mb:theme.spacing(15),px:'0 !important'}}>
+    <Container maxWidth='100%' sx={{pb:theme.spacing(5), mb:theme.spacing(15),px:'0 !important'}}>
         <Box sx={{
           py:theme.spacing(5),
           mb: theme.spacing(15),
@@ -171,11 +172,11 @@ export function Questions() {
 
                                             return (
                                                     <Accordion key={'ques-'+id} expanded={expanded === `pannel${id}`} onChange={handleChange(`pannel${id}`)}>
-                                                        <AccordionSummary sx={{padding:'10px 0',color: expanded === `pannel${id}` ? theme.color.green1 : theme.color.black}}  expandIcon={<ExpandMoreIcon />} aria-controls={`pannel${id}d-content`} id={`pannel${id}d-header`}>
+                                                        <AccordionSummary sx={{padding:'10px 0',color: expanded === `pannel${id}` ? theme.color.red : theme.color.black}}  expandIcon={<ExpandMoreIcon />} aria-controls={`pannel${id}d-content`} id={`pannel${id}d-header`}>
                                                             <Typography fontWeight={700}>{`${id}. Lorem ipsum dolor sit amet, consectetur adipiscing elit ${id}?`} </Typography>
                                                         </AccordionSummary>
                                                         <AccordionDetails>
-                                                        <Typography fontWeight={500}>
+                                                            <Typography fontWeight={500}>
                                                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
                                                                 malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor
                                                                 sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,

@@ -79,9 +79,9 @@ const BlogButton = styled(Box)(({ theme }) => ({
     fontWeight: 600,
     textDecoration: 'none',
     '&:hover': {
-      color: theme.color.green1,
+      color: theme.color.red,
       '.arrow-news': {
-        color: theme.color.green1,
+        color: theme.color.red,
         transform: 'translateX(20%)',
       },
     },
@@ -121,7 +121,7 @@ export const News = () => {
       <Box sx={{
           py:theme.spacing(5),
           mb: theme.spacing(15),
-          backgroundImage:"url(https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/bgg.jpg?id=5580) !important",
+          backgroundImage:"url(https://html.themexriver.com/it-firm/images/background/pattern-14.png) !important",
           backgroundSize:"cover",
           backgroundPosition:"center",
           backgroundRepeat:"no-repeat",
@@ -130,7 +130,7 @@ export const News = () => {
           }}>
             <StyledContainer sx={{position:"absolute", bottom: "-30%", left:"50%", transform:"translateX(-50%) translateY(0%)"}}>
               <Grid container >
-                    <StyledTypography ref={ref} variant="h4" color={theme.color.white} fontWeight="bold" pb={theme.spacing(5)}>
+                    <StyledTypography ref={ref} variant="h4" color={theme.color.black} fontWeight="bold" pb={theme.spacing(5)}>
                         {t('Tin tức nổi bật')}
                     </StyledTypography>
                     <StyledGrid container spacing={2} ref={newsRef}>
@@ -170,7 +170,7 @@ export const News = () => {
                                 >
                                   <Grid container spacing={1}>
                                       <Grid item xs={12} pb={1}>
-                                        <Typography variant="h6" color={theme.color.green1} fontWeight={700}>Tên bài post</Typography>
+                                        <Typography variant="h6" color={theme.color.red} fontWeight={700}>Tên bài post</Typography>
                                       </Grid>
                                       <Grid item xs={12}>
                                         <Box sx={{display:'flex'}}>

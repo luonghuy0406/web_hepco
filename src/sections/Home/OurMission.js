@@ -147,7 +147,7 @@ const CoreValuestWrap = styled(Box)(({ theme }) => ({
       borderRadius:'5px',
       content: '""',
       display: 'block',
-      background: theme.color.green1,
+      background: theme.color.red,
       position: 'absolute',
       top: '20px',
       left: '20px',
@@ -160,7 +160,7 @@ const CoreValuestWrap = styled(Box)(({ theme }) => ({
     },
     '&:hover:after': {
       transform: 'rotateY(0)',
-      opacity: 0.85,
+      opacity: 0.8,
 
       transition: 'all .4s ease-in-out 0s',
     },
@@ -228,8 +228,15 @@ export function OurMission() {
   }, [inView]);
   
   return (
-    <Box>
-        <Container maxWidth='xl'sx={{py: theme.spacing(10), px:0}}>
+    <Box 
+        sx={{
+            backgroundImage: `url(https://html.themexriver.com/it-firm/images/background/pattern-19.png)`,
+            backgroundSize: '50%',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'top right'
+        }}
+    >
+        <Container maxWidth='xl' sx={{py: theme.spacing(10), px:0}}>
             <Grid container sx={{px:3}}>
                 <Grid ref={visionRef} item xs={12} md={7} sx={{borderRadius: "4px 0 0 4px",backgroundColor: theme.color.white,boxShadow: '0 0 150px #eee',p:theme.spacing(3), py: theme.spacing(8)}}>
                     {/* <Typography variant='h6' color={theme.color.green1}>
@@ -312,8 +319,8 @@ export function OurMission() {
         </Container>
         <Container maxWidth='100%' sx={{py:theme.spacing(4), mb:theme.spacing(10),px:'0 !important'}}>
             <Box sx={{
-                py:theme.spacing(15),
-                backgroundImage:"url(https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/bgg.jpg?id=5580) !important",
+                py:theme.spacing(5),
+                backgroundImage:"url(https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/quote.jpg?id=5470) !important",
                 backgroundSize:"cover",
                 backgroundPosition:"center",
                 backgroundRepeat:"no-repeat",
@@ -323,7 +330,7 @@ export function OurMission() {
                     <Container maxWidth='xl'>
                         <Grid container sx={{p:theme.spacing(3), textAlign:"center", pt:0}} spacing={2}>
                             <Grid item xs={12}>
-                                <Typography variant="h5" fontSize={'42px'} fontWeight={"bold"} mb={10} color={theme.color.white} sx={{position:"relative"}} className="core-values">
+                                <Typography variant="h5" fontSize={'42px'} fontWeight={"bold"} mb={5} mt={2} color={theme.color.white} sx={{position:"relative"}} className="core-values">
                                     {t('Giá trị cốt lõi')}
                                 </Typography>
                             </Grid>
@@ -416,7 +423,7 @@ const CoreItem = ({value})=>{
                         />
                     </ServicesIcon>
                     <Box ref={ref} className='core-value-title' fontSize={'18px'} py={2} fontWeight={"bold"} dangerouslySetInnerHTML={{__html:value.title}}/>
-                    <Box className='core-value-content' sx={{display:'none', position:'relative'}} fontWeight={500} dangerouslySetInnerHTML={{__html:value.content}}/>
+                    <Box className='core-value-content' sx={{display:'none', position:'relative'}} fontWeight={600} dangerouslySetInnerHTML={{__html:value.content}}/>
                 </Box>
             </CoreValuestWrap>
         </Grid>

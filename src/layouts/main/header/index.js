@@ -173,7 +173,7 @@ export default function Header() {
                   // sx={{visibility: { xs: 'visible',sm: 'visible', md:'hidden', lg: 'hidden' }}}
                 >
                   <Link href={'/'} legacybehavior>
-                      <img src={'./assets/logo.png'} alt='hepco logo' width={45} height={45} />
+                      <img src={'./assets/logo.png'} alt='hepco logo' width={60} height={60} />
                   </Link>
                 </Stack>
                 <Stack
@@ -217,10 +217,10 @@ export default function Header() {
                             </Grid>
                             <Grid item xs={8} container>
                                 <Grid item xs={12}>
-                                  <Typography fontWeight={'bold'} sx={{fontSize:'16px'}} color={theme.color.green1}>{t('Hotline')}</Typography>
+                                  <Typography fontWeight={'bold'} sx={{fontSize:'16px'}} color={theme.color.red}>{t('Hotline')}</Typography>
                                 </Grid>
                                 <Grid item xs={12}>
-                                  <Typography sx={{fontSize:'16px',fontFamily:(theme)=>theme.typography.MuktaMahee}} color={theme.color.green1}>(0234) 3997799</Typography>
+                                  <Typography sx={{fontSize:'16px',fontFamily:(theme)=>theme.typography.MuktaMahee}} color={theme.color.red}>(0234) 3997799</Typography>
                                 </Grid>
                             </Grid>
                           </Grid>

@@ -34,6 +34,90 @@ export function BannerSlide({executeScroll}){
   
   const {t} = useTranslation()
   const theme = useTheme()
+  return (
+    <Box sx={{position:"relative"}}> 
+      <Carousel
+        additionalTransfrom={0}
+        arrows={true}
+        autoPlay
+        pauseOnHover={false}
+        autoPlaySpeed={10000}
+        centerMode={false}
+        className=""
+        containerClass="container animate__animated animate__fadeInRight"
+        customTransition="all 0.5s linear"
+        infinite
+        responsive={{
+          desktop: {
+            breakpoint: {
+              max: 3000,
+              min: 1024
+            },
+            items: 1
+          },
+          mobile: {
+            breakpoint: {
+              max: 464,
+              min: 0
+            },
+            items: 1
+          },
+          tablet: {
+            breakpoint: {
+              max: 1024,
+              min: 464
+            },
+            items: 1
+          }
+        }}
+        slidesToSlide={1}
+        swipeable
+      >
+        {images.slice(0, 5).map((image, index) => {
+          return (
+            <LazyLoad height={200} offset={100}>
+              <Box className='banner-slide-image' sx={{ 
+                  width: "100%", 
+                  height: {xs: '300px', sm: '400px', md:'550px', lg:'calc( 100vh - 10px )'}, 
+                  maxHeight:'calc( 100vh - 10px )' , 
+                  backgroundImage: `url(${image})`, 
+                  backgroundPosition:'center', 
+                  backgroundSize:'cover',
+                  backgroundRepeat:'no-repeat'}}
+                >
+                <Grid container sx={{height:'100%', justifyContent:'center'}}>
+                  
+                    {
+                      index == 0 ? 
+                      <Grid item xs={12} container sx={{height:'100%'}} alignItems={"start"} justifyContent={"center"} direction={"column"}>
+                        <Typography variant="h2" p={30} textAlign="center" color={theme.color.white} fontWeight={"700"} className="animate__animated animate__fadeInDown">
+                          CÔNG TY CỔ PHẦN ĐÔ THỊ VÀ MÔI TRƯỜNG CÔNG CỘNG HUẾ
+                        </Typography>
+                      </Grid>
+                      :
+                      <Grid item xs={7} container sx={{height:'100%'}} alignItems={"start"} justifyContent={"center"} direction={"column"}>
+                        <Typography variant="h3" pl={5} color={theme.color.white} fontWeight={"700"} className="animate__animated animate__fadeInDown">
+                          Find Professional
+                        </Typography>
+                        <Typography variant="h1" pl={5} color={theme.color.white} fontWeight={"700"} className="animate__animated animate__zoomIn">
+                          Hepco Huế
+                        </Typography>
+                      </Grid>
+                    }
+                </Grid>
+              </Box>
+            </LazyLoad>
+          );
+        })}
+      </Carousel>
+      <Info/>
+    </Box>
+  );
+};
+
+const Info = () =>{
+  const {t} = useTranslation()
+  const theme = useTheme()
   const [years, setYears] = useState(0)
   const [projects, setProjects] = useState(0)
   const [customers, setCustomers] = useState(0)
@@ -101,77 +185,8 @@ export function BannerSlide({executeScroll}){
       clearInterval(timer);
     };
   }, [members]);
-  return (
-    <Box sx={{position:"relative"}}> 
-      <Carousel
-        additionalTransfrom={0}
-        arrows={true}
-        autoPlay
-        pauseOnHover={false}
-        autoPlaySpeed={5000}
-        centerMode={false}
-        className=""
-        containerClass="container animate__animated animate__fadeInRight"
-        customTransition="all 0.5s linear"
-        infinite
-        responsive={{
-          desktop: {
-            breakpoint: {
-              max: 3000,
-              min: 1024
-            },
-            items: 1
-          },
-          mobile: {
-            breakpoint: {
-              max: 464,
-              min: 0
-            },
-            items: 1
-          },
-          tablet: {
-            breakpoint: {
-              max: 1024,
-              min: 464
-            },
-            items: 1
-          }
-        }}
-        slidesToSlide={1}
-        swipeable
-      >
-        {images.slice(0, 5).map((image, index) => {
-          return (
-            <LazyLoad height={200} offset={100}>
-              <Box className='banner-slide-image' sx={{ 
-                  width: "100%", 
-                  height: {xs: '300px', sm: '400px', md:'550px', lg:'calc( 100vh - 10px )'}, 
-                  maxHeight:'calc( 100vh - 10px )' , 
-                  backgroundImage: `url(${image})`, 
-                  backgroundPosition:'center', 
-                  backgroundSize:'cover',
-                  backgroundRepeat:'no-repeat'}}
-                >
-                <Grid container sx={{height:'100%', justifyContent:'center'}}>
-                  
-                    <Grid item xs={7} container sx={{height:'100%'}} alignItems={"start"} justifyContent={"center"} direction={"column"}>
-                      <Typography variant="h3" pl={5} color={theme.color.white} fontWeight={"700"} className="animate__animated animate__fadeInDown">
-                        Find Professional
-                      </Typography>
-                      <Typography variant="h1" pl={5} color={theme.color.white} fontWeight={"700"} className="animate__animated animate__zoomIn">
-                        Hepco Huế
-                      </Typography>
-                    </Grid>
-                  {/* <Grid item xs={5} container mt={5} sx={{height:'100%'}} alignItems={"flex-end"} justifyContent={"center"}className="animate__animated animate__fadeIn">
-                      <Image src='https://rstheme.com/products/wordpress/planteo/wp-content/uploads/revslider/main-home/Layer-6241.png' style={{width:'100%', height:'auto'}}/>
-                  </Grid> */}
-                </Grid>
-              </Box>
-            </LazyLoad>
-          );
-        })}
-      </Carousel>
-      <Grid ref={ref} container sx={{zIndex:1, alignItems:'center', justifyContent:'center', position: 'absolute', bottom: '0', left: '0', right: '0', padding: theme.spacing(2)}} direction={"row"}>
+  return(
+    <Grid ref={ref} container sx={{zIndex:1, alignItems:'center', justifyContent:'center', position: 'absolute', bottom: '0', left: '0', right: '0', padding: theme.spacing(2)}} direction={"row"}>
           <Grid item xs={3}>
               <Typography sx={{transition:"ease-in 0.1s"}} variant="h4"  fontWeight={700} color={theme.color.white} textAlign={"center"}>
               {years}+
@@ -205,12 +220,5 @@ export function BannerSlide({executeScroll}){
               </Typography>
           </Grid>
       </Grid>
-      {/* <Box sx={{width: '100%', position: 'absolute', display: 'flex', alignItems: 'center',justifyContent: 'center'}}>
-        <IconNext className="img-bounce animate__animated animate__zoomIn" onClick={executeScroll}>
-            <Image src='https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/leaf.png' style={{width:'25px', height:'auto'}}/>
-        </IconNext>
-      </Box> */}
-    </Box>
-  );
-};
-
+  )
+}

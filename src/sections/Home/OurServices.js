@@ -27,7 +27,7 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
         border: 0,
         width: '70px',
         height: '5px',
-        background: theme.color.green1,
+        background: theme.color.red,
         display: 'block',
         marginTop: '5px',
         position: 'absolute',
@@ -52,9 +52,9 @@ const BlogButton = styled(Box)(({ theme }) => ({
       fontWeight: 600,
       textDecoration: 'none',
       '&:hover': {
-        color: theme.color.green1,
+        color: theme.color.red,
         '.arrow-news': {
-          color: theme.color.green1,
+          color: theme.color.red,
           transform: 'translateX(20%)',
         },
       },
@@ -88,7 +88,12 @@ export function OurServices() {
         }
     }, [inView]);
   return (
-    <Box>
+    <Box
+    sx={{
+        backgroundImage: `url(./assets/images/bg2.png)`,
+        backgroundRepeat: `no-repeat`,
+    }}
+    >
         <Container maxWidth='100%%'sx={{mt:theme.spacing(5), py: theme.spacing(5), paddingLeft : '100px !important', paddingRight : '100px !important'}}>
             <Grid container>
                 <Grid ref={serviceImageRef} item xs={0} md={4} sx={{p:theme.spacing(3), display:{xs: 'none', md:'block'}}}>
@@ -161,7 +166,7 @@ const ServiceItem = ({id}) =>{
                         />
                     </Grid>
                     <Grid xs={12}>
-                        <Typography variant='h5' fontWeight={700} py={theme.spacing(2)}>{"Tên dịch vụ " + id}</Typography>
+                        <Typography variant='h5' fontWeight={700} py={theme.spacing(2)} color={theme.color.red}>{"Tên dịch vụ " + id}</Typography>
                     </Grid>
                     <Grid xs={12} pb={theme.spacing(2)}>
                         <Typography>

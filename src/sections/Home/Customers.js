@@ -27,7 +27,7 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
     border: 0,
     width: '70px',
     height: '5px',
-    background: theme.color.green1,
+    background: theme.color.red,
     display: 'block',
     marginTop: '5px',
     position: 'absolute',

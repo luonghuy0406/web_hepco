@@ -105,9 +105,18 @@ a {
     border: 0;
     width: 50px;
     height: 5px;
-    background: var(--green1);
+    background: var(--red);
     display: block;
     margin-top: 10px;
+}
+.type-line2::after{
+    content: '';
+    border: 0;
+    width: 50px;
+    height: 3px;
+    background: var(--red);
+    display: block;
+    margin-top: 8px;
 }
 
 
