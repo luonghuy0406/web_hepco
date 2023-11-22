@@ -11,6 +11,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { faFontAwesome } from '@fortawesome/free-brands-svg-icons'
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 
 library.add(fas, faFontAwesome, faLocationDot, faMobile, faPhone, faFax, faEnvelope, faFacebook, faYoutube)
@@ -47,6 +48,7 @@ const CustomizedButton = styled(Button)(({ theme }) => ({
     },
 }));
 export default function Footer(){
+    const {t} = useTranslation()
     const theme = useTheme()
     const footerRef = useRef(null)
     const { ref, inView } = useInView({
@@ -79,7 +81,7 @@ export default function Footer(){
                         <Grid item xs={12}>
                             <Box sx={{display:'flex', alignItems:'center'}}>
                                 <img src={'./assets/logo.png'} alt='hepco logo' width={85} height={85} />
-                                <Typography variant="h5" pl={3} color={theme.color.white} fontWeight={"bold"}>HEPCO Huế</Typography>
+                                <Typography variant="h5" pl={3} color={theme.color.white} fontWeight={"bold"}>HEPCO</Typography>
                             </Box>
                         </Grid>
                         <Grid item xs={12}>
@@ -87,7 +89,7 @@ export default function Footer(){
                         </Grid>
                         <Grid item xs={12}>
                             <Link to='/gioithieu'>
-                                <CustomizedButton sx={{width:"150px"}} variant="contained">Giới thiệu</CustomizedButton>
+                                <CustomizedButton sx={{width:"150px"}} variant="contained">{t('Giới thiệu')}</CustomizedButton>
                             </Link>
                         </Grid>
                         
@@ -95,19 +97,21 @@ export default function Footer(){
                     <Grid item xs={4} px={2} container spacing={2}>
                         <Grid item xs={12}>
                             <Typography variant="h5" fontWeight={700} color={theme.color.white} className="type-line2">
-                                Thông tin công ty:  
+                                {t('Thông tin công ty:')}
                             </Typography>
                         </Grid>
-                        <Grid item xs={1}><Typography fontWeight={600} color={theme.color.red}><FontAwesomeIcon icon="fa-solid fa-location-dot" /></Typography></Grid>
-                        <Grid item xs={11}><Typography fontWeight={500} color={theme.color.white}>46 Trần Phú, Phường Phước Vĩnh, TP. Huế</Typography></Grid>
-                        <Grid item xs={1}><Typography fontWeight={600} color={theme.color.red}><FontAwesomeIcon icon="fa-solid fa-mobile" /></Typography></Grid>
-                        <Grid item xs={11}><Typography fontWeight={500} color={theme.color.white}>(0234) 3848242 </Typography></Grid>
-                        <Grid item xs={1}><Typography fontWeight={600} color={theme.color.red}><FontAwesomeIcon icon="fa-solid fa-fax" /></Typography></Grid>
-                        <Grid item xs={11}><Typography fontWeight={500} color={theme.color.white}>(0234) 3848075</Typography></Grid>
-                        <Grid item xs={1}><Typography fontWeight={600} color={theme.color.red}><FontAwesomeIcon icon="fa-solid fa-phone" /></Typography></Grid>
-                        <Grid item xs={11}><Typography fontWeight={500} color={theme.color.white}>(0234) 3997799</Typography></Grid>
-                        <Grid item xs={1}><Typography fontWeight={600} color={theme.color.red}><FontAwesomeIcon icon="fa-solid fa-envelope" /></Typography></Grid>
-                        <Grid item xs={11}><Typography fontWeight={500} color={theme.color.white}>info@hepco.com.vn</Typography></Grid>
+                        <Grid item xs={12}><Typography fontWeight={600} color={theme.color.white}>Công ty cổ phần đô thị và môi trường công cộng Huế</Typography></Grid>
+                        {/* <Grid item xs={3}><Typography fontWeight={600} color={theme.color.white}>Địa chỉ:</Typography></Grid> */}
+                        <Grid item xs={12}><Typography fontWeight={500} color={theme.color.white}>46 Trần Phú, Phường Phước Vĩnh, TP. Huế</Typography></Grid>
+                        {/* <Grid item xs={3}><Typography fontWeight={600} color={theme.color.white}>Điện thoại:</Typography></Grid> */}
+                        <Grid item xs={12}><Typography fontWeight={500} color={theme.color.white}>(0234) 3848242 </Typography></Grid>
+                        {/* <Grid item xs={3}><Typography fontWeight={600} color={theme.color.white}>Fax:</Typography></Grid> */}
+                        <Grid item xs={12}><Typography fontWeight={500} color={theme.color.white}>(0234) 3848075</Typography></Grid>
+                        {/* <Grid item xs={3}><Typography fontWeight={600} color={theme.color.white}>Hotline:</Typography></Grid> */}
+                        <Grid item xs={12}><Typography fontWeight={500} color={theme.color.white}>(0234) 3997799</Typography></Grid>
+                        {/* <Grid item xs={3}><Typography fontWeight={600} color={theme.color.white}>Email:</Typography></Grid> */}
+                        <Grid item xs={12}><Typography fontWeight={500} color={theme.color.white}>info@hepco.com.vn</Typography></Grid>
+
                         <Grid item xs={12} container  spacing={1}>
                             <Grid item><Image src='./assets/icons/ic_zalo.svg' alt="zalo icon" width="25" height="25"/></Grid>
                             <Grid item><Image src='./assets/icons/ic_facebook.svg' alt="zalo icon" width="25" height="25"/></Grid>
@@ -117,7 +121,7 @@ export default function Footer(){
                     <Grid item xs={4} px={2} container spacing={2}>
                         <Grid item xs={12}>
                             <Typography variant="h5" spacing={2} fontWeight={700} color={theme.color.white} className="type-line2">
-                                Thư viện ảnh:
+                                {t('Thư viện ảnh:')}
                             </Typography>
                         </Grid>
                         <Grid item xs={12} container spacing={1}>
@@ -143,13 +147,20 @@ export default function Footer(){
                     </Grid>
                 </Grid>
             </Container>
-            <Container maxWidth='100%' sx={{pt: theme.spacing(4), fontSize:'14px',padding:theme.spacing(2), color:theme.color.white, display:'flex', justifyContent:'space-between'}}>
-                <Box>
-                    Chứng nhận ISO 9001:2015 và ISO 14001:2015
-                </Box>
-                <Box>
-                    Copyright 2023 © Công ty Cổ phần Môi trường và Công trình Đô thị Huế - HEPCO
-                </Box>
+            <Container maxWidth='100%' sx={{padding:theme.spacing(2), pt: theme.spacing(10), fontSize:'14px', color:theme.color.white, display:'flex', justifyContent:'space-between'}}>
+                <Grid container>
+                    <Grid item xs={4} alignItems={"center"}>
+                        <Typography fontSize='14px' textAlign={"left"} color={theme.color.white}>{t('Chứng nhận ISO 9001:2015 và ISO 14001:2015')}</Typography>
+                    </Grid>
+                    <Grid item xs={4}>
+                        <Box onClick={()=>{window.open('http://flyaz.vn/', '_blank').focus()}} sx={{display:'flex',alignItems:'center', justifyContent:'center', cursor:'pointer'}}>
+                            {t('Thiết kế và xây dựng bởi')} <img style={{paddingLeft:'5px'}} src='./assets/flyaz.png' alt='logo flyaz' width={'auto'} height={'20'}/>
+                        </Box>
+                    </Grid>
+                    <Grid item xs={4}>
+                        <Typography fontSize='14px' textAlign={"right"} color={theme.color.white}>{t('Copyright 2023 © Công ty Cổ phần Môi trường và Công trình Đô thị Huế - HEPCO')}</Typography>
+                    </Grid>
+                </Grid>
             </Container>
         </Container>
     )

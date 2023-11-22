@@ -17,7 +17,7 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 
-// import { LanguagePopover } from './LanguagePopover'
+import { LanguagePopover } from './LanguagePopover'
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { styled } from '@mui/material/styles';
@@ -90,7 +90,8 @@ export default function Header() {
           {name: t('Về Hepco'), path:'',child:[]},
           {name: t('Sơ đồ tổ chức'), path:'/sodo',child:[]},
           {name: t('Thành tựu đạt được'), path:'/thanhtuu',child:[]},
-          {name: t('Hồ sơ năng lực'), path:'/nangluc',child:[]}
+          {name: t('Hồ sơ năng lực'), path:'/nangluc',child:[]},
+          {name: t('Thư viện ảnh'), path:'/thuvien',child:[]}
         ]
       },
       {
@@ -212,16 +213,21 @@ export default function Header() {
 
                           </Typography> */}
                           <Grid container alignItems={"center"}>
-                            <Grid item xs={4} sx={{marginBottom:'-5px'}}>
+                            <Grid item xs={3} sx={{marginBottom:'-5px'}}>
                               <img src={'./assets/icons/ic_phone.svg'} alt='icon phone' width={35} />
                             </Grid>
-                            <Grid item xs={8} container>
+                            <Grid item xs={6} container>
                                 <Grid item xs={12}>
                                   <Typography fontWeight={'bold'} sx={{fontSize:'16px'}} color={theme.color.red}>{t('Hotline')}</Typography>
                                 </Grid>
                                 <Grid item xs={12}>
                                   <Typography sx={{fontSize:'16px',fontFamily:(theme)=>theme.typography.MuktaMahee}} color={theme.color.red}>(0234) 3997799</Typography>
                                 </Grid>
+                            </Grid>
+                            <Grid item xs={3}> 
+                              <Box sx={{display:'flex', alignItems:'center', justifyContent:'end'}}>
+                                <LanguagePopover/>
+                              </Box>
                             </Grid>
                           </Grid>
                         {/* <a href={'http://hepco.com.vn/hoadondientu'} target='_blank' legacybehavior style={{textDecoration:'none'}}>  
@@ -294,16 +300,21 @@ export default function Header() {
                       <Typography fontWeight={'bold'} color={(theme)=>theme.color.white} fontSize={{xs: '13px', md:'14px', lg:'16px'}} textTransform={'uppercase'}>{t('Tra cứu hoá đơn')}</Typography>
                     </a> */}
                     <Grid container alignItems={"center"}>
-                      <Grid item xs={4} sx={{marginBottom:'-5px'}}>
+                      <Grid item xs={3} sx={{marginBottom:'-5px'}}>
                         <img src={'./assets/icons/ic_phone_white.svg'} alt='icon phone' width={35} />
                       </Grid>
-                      <Grid item xs={8} container>
+                      <Grid item xs={6} container>
                           <Grid item xs={12}>
                             <Typography fontWeight={'bold'} sx={{fontSize:'16px'}} color={theme.color.white}>{t('Hotline')}</Typography>
                           </Grid>
                           <Grid item xs={12}>
                             <Typography sx={{fontSize:'16px',fontFamily:(theme)=>theme.typography.MuktaMahee}} color={theme.color.white}>(0234) 3997799</Typography>
                           </Grid>
+                      </Grid>
+                      <Grid item xs={3}> 
+                        <Box sx={{display:'flex', alignItems:'center', justifyContent:'end'}}>
+                          <LanguagePopover/>
+                        </Box>
                       </Grid>
                     </Grid>
                   </Box>

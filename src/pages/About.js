@@ -13,6 +13,7 @@ export default function About() {
     { name: t('Sơ đồ tổ chức'), path: '/sodo', child: [] },
     { name: t('Thành tựu đạt được'), path: '/thanhtuu', child: [] },
     { name: t('Hồ sơ năng lực'), path: '/nangluc', child: [] },
+    { name: t('Thư viện ảnh'), path: '/thuvien', child: [] },
   ];
   
   const match = useMatch(`${parentPath}/:page`);

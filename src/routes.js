@@ -22,6 +22,7 @@ export default function Router() {
         { path: 'gioithieu/sodo', element: <About page='sodo'/> },
         { path: 'gioithieu/thanhtuu', element: <About page='thanhtuu'/> },
         { path: 'gioithieu/nangluc', element: <About page='nangluc'/> },
+        { path: 'gioithieu/thuvien', element: <About page='thuvien'/> },
         { path: 'dichvu', element: <Services /> },
         { path: 'duan', element: <Projects /> },
         { path: 'duan/trongnuoc', element: <Projects page='trongnuoc'/> },

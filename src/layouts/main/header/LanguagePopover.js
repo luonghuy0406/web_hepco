@@ -45,11 +45,11 @@ export function LanguagePopover() {
         onClick={handleOpen}
         sx={{
           padding: 0,
-          width: 35,
-          height: 35
+          width: 30,
+          height: 30
         }}
       >
-        <img src={LANGS[language].icon} alt={LANGS[language].label} width={35} height={35}/>
+        <img src={LANGS[language].icon} alt={LANGS[language].label} width={30} height={30}/>
       </IconButton>
 
       <Popover
