@@ -25,7 +25,7 @@ export default function MenuNav({page, color}) {
         onMouseLeave={handleClose}
     >
         
-        <Link to={page.path} style={{textDecoration:'none'}} target={page.name=='Hoá đơn' ? "_blank" : ""}>
+        <Link to={page.path} style={{textDecoration:'none'}} target={page.name==t('Hoá đơn') ? "_blank" : ""}>
             <Typography
                 key={page.path}
                 sx={{

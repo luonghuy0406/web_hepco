@@ -132,23 +132,23 @@ export default function Question() {
             <Box sx={{backgroundColor:'#fafafa', padding: theme.spacing(5), borderRadius: "10px"}}>
               <Grid container spacing={4}>
                 <Grid item xs={12}>
-                  <Typography variant="h4" textAlign={"center"} fontWeight={700}>Gửi câu hỏi</Typography>
+                  <Typography variant="h4" textAlign={"center"} fontWeight={700}>{t("Gửi câu hỏi")}</Typography>
                 </Grid>
                 <Grid item xs={6}>
-                  <TextField label="Tên" fullWidth variant="outlined" sx={{backgroundColor:"#FFF"}}/>
+                  <TextField label={t("Tên")} fullWidth variant="outlined" sx={{backgroundColor:"#FFF"}}/>
                 </Grid>
                 <Grid item xs={6}>
-                  <TextField label="Email" fullWidth variant="outlined" sx={{backgroundColor:"#FFF"}} />
+                  <TextField label={t("Email")} fullWidth variant="outlined" sx={{backgroundColor:"#FFF"}} />
                 </Grid>
                 <Grid item xs={6}>
-                  <TextField label="Số điện thoại" fullWidth variant="outlined" sx={{backgroundColor:"#FFF"}} />
+                  <TextField label={t("Số điện thoại")} fullWidth variant="outlined" sx={{backgroundColor:"#FFF"}} />
                 </Grid>
                 <Grid item xs={6}>
-                  <TextField label="Tiêu đề" fullWidth variant="outlined" sx={{backgroundColor:"#FFF"}} />
+                  <TextField label={t("Tiêu đề")} fullWidth variant="outlined" sx={{backgroundColor:"#FFF"}} />
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
-                    label="Nội dung"
+                    label={t("Nội dung")}
                     multiline
                     rows={4}
                     fullWidth
@@ -156,7 +156,7 @@ export default function Question() {
                   />
                 </Grid>
                 <Grid item xs={12}>
-                  <CustomizedButton sx={{width:"100%"}} variant="contained">Gửi</CustomizedButton>
+                  <CustomizedButton sx={{width:"100%"}} variant="contained">{t("Gửi")}</CustomizedButton>
                 </Grid>  
               </Grid>
             </Box>

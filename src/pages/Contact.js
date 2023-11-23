@@ -68,20 +68,20 @@ export default function Contact() {
                   <Typography fontWeight={500}>Suspendisse ex neque, sollicitudin in velit eu, luctus gravida nunc. Nulla pul-vinar risus sed metus euismod sodales ut sed nisi.</Typography>
                 </Grid>
                 <Grid item xs={6}>
-                  <TextField label="Tên" fullWidth variant="outlined" sx={{backgroundColor:"#FFF"}}/>
+                  <TextField label={t("Tên")} fullWidth variant="outlined" sx={{backgroundColor:"#FFF"}}/>
                 </Grid>
                 <Grid item xs={6}>
-                  <TextField label="Email" fullWidth variant="outlined" sx={{backgroundColor:"#FFF"}} />
+                  <TextField label={t("Email")} fullWidth variant="outlined" sx={{backgroundColor:"#FFF"}} />
                 </Grid>
                 <Grid item xs={6}>
-                  <TextField label="Số điện thoại" fullWidth variant="outlined" sx={{backgroundColor:"#FFF"}} />
+                  <TextField label={t("Số điện thoại")} fullWidth variant="outlined" sx={{backgroundColor:"#FFF"}} />
                 </Grid>
                 <Grid item xs={6}>
-                  <TextField label="Tiêu đề" fullWidth variant="outlined" sx={{backgroundColor:"#FFF"}} />
+                  <TextField label={t("Tiêu đề")} fullWidth variant="outlined" sx={{backgroundColor:"#FFF"}} />
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
-                    label="Nội dung"
+                    label={t("Nội dung")}
                     multiline
                     rows={4}
                     fullWidth
@@ -89,7 +89,7 @@ export default function Contact() {
                   />
                 </Grid>
                 <Grid item xs={12}>
-                  <CustomizedButton sx={{width:"100%"}} variant="contained">Gửi</CustomizedButton>
+                  <CustomizedButton sx={{width:"100%"}} variant="contained">{t("Gửi")}</CustomizedButton>
                 </Grid>  
               </Grid>
             </Box>
@@ -131,7 +131,7 @@ export default function Contact() {
                 >
                   <img src={'./assets/icons/ic_email.svg'} alt='icon phone' width={35} />
                 </Box>
-                <Typography variant="h5" fontWeight={700} color={theme.color.green1} padding={2}>Gửi email</Typography>
+                <Typography variant="h5" fontWeight={700} color={theme.color.green1} padding={2}>{t("Gửi email")}</Typography>
                 <Typography fontWeight={500}>info@hepco.com.vn</Typography>
             </Box>
           </Grid>

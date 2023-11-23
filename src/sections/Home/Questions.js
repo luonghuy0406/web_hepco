@@ -211,30 +211,30 @@ export function Questions() {
                             >
                                 <Grid container spacing={4}>
                                     <Grid item xs={12}>
-                                        <Typography variant="h4" color={theme.color.white} fontWeight={700} textAlign={"center"}>Gửi câu hỏi</Typography>
+                                        <Typography variant="h4" color={theme.color.white} fontWeight={700} textAlign={"center"}>{t("Gửi câu hỏi")}</Typography>
                                     </Grid>
                                     <Grid item xs={6}>
-                                        <TextInput  label="Tên" fullWidth variant="outlined" />
+                                        <TextInput  label={t("Tên")} fullWidth variant="outlined" />
                                     </Grid>
                                     <Grid item xs={6}>
-                                        <TextInput label="Email" fullWidth variant="outlined"  />
+                                        <TextInput label={t("Email")} fullWidth variant="outlined"  />
                                     </Grid>
                                     <Grid item xs={6}>
-                                        <TextInput label="Số điện thoại" fullWidth variant="outlined"  />
+                                        <TextInput label={t("Số điện thoại")} fullWidth variant="outlined"  />
                                     </Grid>
                                     <Grid item xs={6}>
-                                        <TextInput label="Tiêu đề" fullWidth variant="outlined"  />
+                                        <TextInput label={t("Tiêu đề")} fullWidth variant="outlined"  />
                                     </Grid>
                                     <Grid item xs={12}>
                                         <TextInput
-                                            label="Nội dung"
+                                            label={t("Nội dung")}
                                             multiline
                                             rows={4}
                                             fullWidth
                                         />
                                     </Grid>
                                     <Grid item xs={12}>
-                                        <CustomizedButton sx={{width:"100%"}} variant="contained">Gửi</CustomizedButton>
+                                        <CustomizedButton sx={{width:"100%"}} variant="contained">{t("Gửi")}</CustomizedButton>
                                     </Grid> 
                                 </Grid>
                             </Box>

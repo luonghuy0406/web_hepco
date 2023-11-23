@@ -189,7 +189,7 @@ export default function Header() {
                       return <MenuNav key={page.path} page={page}/>
                     })
                   }
-                  <MenuNav key={'invoice'} page={{"name":"Hoá đơn", "path": 'http://hepco.com.vn/hoadondientu', "child":[]}}/>
+                  <MenuNav key={'invoice'} page={{"name":t("Hoá đơn"), "path": 'http://hepco.com.vn/hoadondientu', "child":[]}}/>
                 </Stack>
                 <Stack
                   spacing={1}
@@ -275,7 +275,7 @@ export default function Header() {
                   return <MenuNav key={page.path} page={page} color="black"/>
                 })
               }
-              <MenuNav key={'invoice'} page={{name:"Hoá đơn", path: 'http://hepco.com.vn/hoadondientu', child:[]}} color="black"/>
+              <MenuNav key={'invoice'} page={{name:t("Hoá đơn"), path: 'http://hepco.com.vn/hoadondientu', child:[]}} color="black"/>
             </Stack>
             <Stack
               spacing={1}
