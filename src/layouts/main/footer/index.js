@@ -80,7 +80,7 @@ export default function Footer(){
                     <Grid item xs={4} px={2} container spacing={2}>
                         <Grid item xs={12}>
                             <Box sx={{display:'flex', alignItems:'center'}}>
-                                <img src={'./assets/logo.png'} alt='hepco logo' width={85} height={85} />
+                                <img src={'./assets/logo2.png'} alt='hepco logo' width={85} height={85} />
                                 <Typography variant="h5" pl={3} color={theme.color.white} fontWeight={"bold"}>HEPCO</Typography>
                             </Box>
                         </Grid>

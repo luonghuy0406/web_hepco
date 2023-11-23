@@ -174,7 +174,7 @@ export default function Header() {
                   // sx={{visibility: { xs: 'visible',sm: 'visible', md:'hidden', lg: 'hidden' }}}
                 >
                   <Link href={'/'} legacybehavior>
-                      <img src={'./assets/logo.png'} alt='hepco logo' width={60} height={60} />
+                      <img src={'./assets/logo2.png'} alt='hepco logo' width={55} height={55} />
                   </Link>
                 </Stack>
                 <Stack
@@ -260,7 +260,7 @@ export default function Header() {
               justifyContent={"center"}
             >
               <Link href={'/'} legacybehavior>
-                  <img src={'./assets/logo.png'} alt='hepco logo' width={60} height={60} />
+                  <img src={'./assets/logo1.png'} alt='hepco logo' width={60} height={60} />
               </Link>
             </Stack>
             <Stack
