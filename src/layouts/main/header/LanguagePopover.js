@@ -21,9 +21,10 @@ const LANGS = {
 // ----------------------------------------------------------------------
 
 export function LanguagePopover() {
-    const { i18n } = useTranslation();
+    const { t, i18n } = useTranslation();
   const [open, setOpen] = useState(null);
 
+  console.log(">>>>",i18n.language)
     
   const [language, setLanguage] = useState(i18n.language);
 

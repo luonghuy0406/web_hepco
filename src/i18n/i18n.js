@@ -21,6 +21,7 @@ i18n
   .init({
     resources,
     fallbackLng: 'vi',
+    lng: 'vi',
     debug: true,
     react: {
       wait: true,
