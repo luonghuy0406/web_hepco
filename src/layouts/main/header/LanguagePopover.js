@@ -21,16 +21,17 @@ const LANGS = {
 // ----------------------------------------------------------------------
 
 export function LanguagePopover() {
-    const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [open, setOpen] = useState(null);
-
-  console.log(">>>>",i18n.language)
-    
+  
   const [language, setLanguage] = useState(i18n.language);
-
+  const setCurrentLanguage = (language) => {
+    localStorage.setItem('language', language);
+  };
   const handleLanguageChange = (value) => {
     setLanguage(value);
     i18n.changeLanguage(value)
+    setCurrentLanguage(value)
   };
 
   const handleOpen = (event) => {

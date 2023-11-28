@@ -1,5 +1,4 @@
 import Carousel from "react-multi-carousel";
-import { Image } from "semantic-ui-react";
 import "react-multi-carousel/lib/styles.css";
 import 'animate.css';
 import { Box, Grid, Typography, styled } from "@mui/material"; 
@@ -16,19 +15,6 @@ const images = [
   "./assets/images/banner4.jpeg",
   "./assets/images/banner5.jpeg",
 ];
-
-
-const IconNext = styled('div')(({ theme }) => ({
-  width: '90px',
-  height: '90px',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  background: theme.color.green1,
-  borderRadius: '50%',
-  position: 'absolute',
-  bottom: '-45px'
-}));
 
 export function BannerSlide({executeScroll}){
   
@@ -188,35 +174,35 @@ const Info = () =>{
   return(
     <Grid ref={ref} container sx={{zIndex:1, alignItems:'center', justifyContent:'center', position: 'absolute', bottom: '0', left: '0', right: '0', padding: theme.spacing(2)}} direction={"row"}>
           <Grid item xs={3}>
-              <Typography sx={{transition:"ease-in 0.1s"}} variant="h4"  fontWeight={700} color={theme.color.white} textAlign={"center"}>
+              <Typography sx={{transition:"ease-in 0.1s", fontSize: {xs: '1.5rem', md:'2rem'}}} variant="h4"  fontWeight={700} color={theme.color.white} textAlign={"center"}>
               {years}+
               </Typography>
-              <Typography variant="h6" fontWeight={700} color={theme.color.white} textAlign={"center"}>
-                  Năm kinh nghiệm
+              <Typography variant="h6" fontWeight={700} sx={{transition:"ease-in 0.1s", fontSize: {xs: '0.8rem', md:'1.5rem'}}} color={theme.color.white} textAlign={"center"}>
+                  {t("Năm kinh nghiệm")}
               </Typography>
           </Grid>
           <Grid item xs={3}>
-              <Typography sx={{transition:"ease-in 0.1s"}} variant="h4"  fontWeight={700} color={theme.color.white} textAlign={"center"}>
+              <Typography sx={{transition:"ease-in 0.1s", fontSize: {xs: '1.5rem', md:'2rem'}}} variant="h4"  fontWeight={700} color={theme.color.white} textAlign={"center"}>
                   {projects}+
               </Typography>
-              <Typography variant="h6" fontWeight={700} color={theme.color.white} textAlign={"center"}>
-                  Dự án 
+              <Typography variant="h6" fontWeight={700} sx={{transition:"ease-in 0.1s", fontSize: {xs: '0.8rem', md:'1.5rem'}}} color={theme.color.white} textAlign={"center"}>
+                  {t("Dự án")} 
               </Typography>
           </Grid>
           <Grid item xs={3}>
-              <Typography sx={{transition:"ease-in 0.1s"}} variant="h4"  fontWeight={700} color={theme.color.white} textAlign={"center"}>
+              <Typography sx={{transition:"ease-in 0.1s", fontSize: {xs: '1.5rem', md:'2rem'}}} variant="h4"  fontWeight={700} color={theme.color.white} textAlign={"center"}>
                   {customers}+
               </Typography>
-              <Typography variant="h6" fontWeight={700} color={theme.color.white} textAlign={"center"}>
-                  Khách hàng
+              <Typography variant="h6" fontWeight={700} sx={{transition:"ease-in 0.1s", fontSize: {xs: '0.8rem', md:'1.5rem'}}} color={theme.color.white} textAlign={"center"}>
+                  {t("Khách hàng")}
               </Typography>
           </Grid>
           <Grid item xs={3}>
-              <Typography sx={{transition:"ease-in 0.1s"}} variant="h4"  fontWeight={700} color={theme.color.white} textAlign={"center"}>
+              <Typography sx={{transition:"ease-in 0.1s", fontSize: {xs: '1.5rem', md:'2rem'}}} variant="h4"  fontWeight={700} color={theme.color.white} textAlign={"center"}>
                   {members}+
               </Typography>
-              <Typography variant="h6" fontWeight={700} color={theme.color.white} textAlign={"center"}>
-                  Nhân sự
+              <Typography variant="h6" fontWeight={700} sx={{transition:"ease-in 0.1s", fontSize: {xs: '0.8rem', md:'1.5rem'}}} color={theme.color.white} textAlign={"center"}>
+                  {t("Nhân sự")}
               </Typography>
           </Grid>
       </Grid>

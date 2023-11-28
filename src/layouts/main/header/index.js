@@ -1,27 +1,27 @@
 import React, { useEffect, useRef, useState } from 'react'
 import $ from 'jquery'
 import {
+  AccordionSummary,
   Box,
   Container,
-  Divider,
   Drawer,
   Grid,
   IconButton,
-  List,
-  ListItem,
-  ListItemButton,
   Stack,
   Typography,
   useTheme
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-
 import { LanguagePopover } from './LanguagePopover'
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { styled } from '@mui/material/styles';
 import MenuNav from './MenuNav';
+import MuiAccordion from '@mui/material/Accordion';
+import MuiAccordionDetails from '@mui/material/AccordionDetails';
+
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 
 
@@ -47,7 +47,7 @@ const InvoiceBox = styled('div')(({ theme, sticky }) => ({
   [theme.breakpoints.down('md')]: {
     height: '60px', // Set height for breakpoint `xs`
     '&::before': {
-      borderBottom: `60px solid ${theme.color.green1}`,
+      borderBottom: `60px solid ${sticky ? theme.color.green1 : theme.color.white}`,
     }
   },
   [theme.breakpoints.up('md')]: {
@@ -69,7 +69,7 @@ export default function Header() {
       const handleScroll = () => {
         if (window.pageYOffset > 190) {
           refSticky.current.style.display = "block";
-          refSticky.current.style.zIndex = "99999";
+          refSticky.current.style.zIndex = "2";
         }else{
           refSticky.current.style.display = "none";
         }
@@ -154,11 +154,7 @@ export default function Header() {
                 spacing={2}
                 sx={{
                   height: { xs: '60px',sm: '60px', md:'70px'},
-                  backgroundColor: {
-                    xs: theme.color.white, // Set background color for breakpoint `xs`
-                    sm: theme.color.white, // Set background color for breakpoint `sm`
-                    md: '#03611ab3', // Set background color for breakpoint `md`
-                  },
+                  backgroundColor: '#03611ab3',
                   // borderRadius: { xs: '0',sm: '0', md:'5px', lg: '5px' },
                   boxShadow: '0 0 20px -10px rgba(0,0,0,.8)',
                   position:'fixed',
@@ -173,7 +169,7 @@ export default function Header() {
                   justifyContent={"center"}
                   // sx={{visibility: { xs: 'visible',sm: 'visible', md:'hidden', lg: 'hidden' }}}
                 >
-                  <Link href={'/'} legacybehavior>
+                  <Link to={'/'}>
                       <img src={'./assets/logo2.png'} alt='hepco logo' width={55} height={55} />
                   </Link>
                 </Stack>
@@ -182,7 +178,7 @@ export default function Header() {
                   px={2}
                   alignItems="center"
                   direction="row"
-                  // sx={{display: { xs: 'none',sm: 'none', md:'flex', lg: 'flex' }}}
+                  sx={{display: { xs: 'none',sm: 'none', md:'none', lg: 'flex' }}}
                 >
                   {
                     pages.map((page)=>{
@@ -197,7 +193,7 @@ export default function Header() {
                   justifyContent="flex-end"
                   flexGrow={1}
                   direction="row"
-                  sx={{display: { xs: 'flex',sm: 'flex', md:'none', lg: 'none' }}}
+                  sx={{display: { xs: 'flex',sm: 'flex', md:'flex', lg: 'none' }}}
                 >
                   <MenuMobile toggleDrawer={toggleDrawer} openRight={openRight} pages={pages}/>
                 </Stack>
@@ -209,29 +205,24 @@ export default function Header() {
                 >
                   <InvoiceBox theme={theme}>
                       <Box sx={{zIndex:'1',position:'relative'}}>
-                          {/* <Typography fontWeight={'bold'} color={(theme)=>theme.color.green1} fontSize={{xs: '13px', md:'14px', lg:'16px'}} >
-
-                          </Typography> */}
-                          <Grid container alignItems={"center"}>
-                            <Grid item xs={3} sx={{marginBottom:'-5px'}}>
-                              <img src={'./assets/icons/ic_phone.svg'} alt='icon phone' width={35} />
-                            </Grid>
-                            <Grid item xs={6} container>
-                                <Grid item xs={12}>
-                                  <Typography fontWeight={'bold'} sx={{fontSize:'16px'}} color={theme.color.red}>{t('Hotline')}</Typography>
-                                </Grid>
-                                <Grid item xs={12}>
-                                  <Typography sx={{fontSize:'16px',fontFamily:(theme)=>theme.typography.MuktaMahee}} color={theme.color.red}>(0234) 3997799</Typography>
-                                </Grid>
-                            </Grid>
-                            <Grid item xs={3}> 
-                              <Box sx={{display:'flex', alignItems:'center', justifyContent:'end'}}>
-                                <LanguagePopover/>
-                              </Box>
-                            </Grid>
+                        <Grid container alignItems={"center"}>
+                          <Grid item xs={0} lg={3}  sx={{display: { xs: 'none',sm: 'none', md:'none', lg: 'flex' }, marginBottom:'-5px'}}>
+                          <img src={'./assets/icons/ic_phone.svg'} alt='icon phone' width={35} />
                           </Grid>
-                        {/* <a href={'http://hepco.com.vn/hoadondientu'} target='_blank' legacybehavior style={{textDecoration:'none'}}>  
-                        </a> */}
+                          <Grid item xs={0} lg={6}  sx={{display: { xs: 'none',sm: 'none', md:'none', lg: 'flex' }}} container>
+                              <Grid item xs={12}>
+                                <Typography fontWeight={'bold'} sx={{fontSize:'16px'}} color={theme.color.red}>{t('Hotline')}</Typography>
+                              </Grid>
+                              <Grid item xs={12} >
+                                <Typography sx={{fontSize:'16px',fontFamily:(theme)=>theme.typography.MuktaMahee}} color={theme.color.red}>(0234) 3997799</Typography>
+                              </Grid>
+                          </Grid>
+                          <Grid item xs={12} lg={3}> 
+                            <Box sx={{display:'flex', alignItems:'center', justifyContent:'end'}}>
+                              <LanguagePopover/>
+                            </Box>
+                          </Grid>
+                        </Grid>
                       </Box>
                   </InvoiceBox>
                 </Stack>
@@ -241,7 +232,12 @@ export default function Header() {
       </Box>
 
       {/* header sticky */}
-      <Container ref={refSticky} maxWidth={'100%'} sx={{padding:'0 !important',position:'fixed',top:'0', display:'none'}} className='menu-sticky sticky'>
+      <Container 
+        ref={refSticky} 
+        maxWidth={'100%'} 
+        sx={{padding:'0 !important',position:'fixed',top:'0', display:'none'}} 
+        className='menu-sticky sticky'
+      >
           <Stack
             alignItems="center"
             direction="row"
@@ -259,7 +255,7 @@ export default function Header() {
               alignItems="center"
               justifyContent={"center"}
             >
-              <Link href={'/'} legacybehavior>
+              <Link to={'/'}>
                   <img src={'./assets/logo1.png'} alt='hepco logo' width={60} height={60} />
               </Link>
             </Stack>
@@ -268,7 +264,7 @@ export default function Header() {
               px={2}
               alignItems="center"
               direction="row"
-              sx={{display: { xs: 'none',sm: 'none', md:'flex', lg: 'flex' }}}
+              sx={{display: { xs: 'none',sm: 'none', md:'none', lg: 'flex' }}}
             >
               {
                 pages.map((page)=>{
@@ -283,9 +279,9 @@ export default function Header() {
               justifyContent="flex-end"
               flexGrow={1}
               direction="row"
-              sx={{display: { xs: 'flex',sm: 'flex', md:'none', lg: 'none' }}}
+              sx={{display: { xs: 'flex',sm: 'flex', md:'flex', lg: 'none' }}}
             >
-              <MenuMobile toggleDrawer={toggleDrawer} openRight={openRight} pages={pages}/>
+              <MenuMobile toggleDrawer={toggleDrawer} openRight={openRight} pages={pages} sticky={true}/>
             </Stack>
 
             <Stack
@@ -296,22 +292,19 @@ export default function Header() {
             >
               <InvoiceBox theme={theme} sticky={true}>
                   <Box sx={{zIndex:'1',position:'relative'}}>
-                    {/* <a href={'http://hepco.com.vn/hoadondientu'} target='_blank' legacybehavior style={{textDecoration:'none'}}>  
-                      <Typography fontWeight={'bold'} color={(theme)=>theme.color.white} fontSize={{xs: '13px', md:'14px', lg:'16px'}} textTransform={'uppercase'}>{t('Tra cứu hoá đơn')}</Typography>
-                    </a> */}
                     <Grid container alignItems={"center"}>
-                      <Grid item xs={3} sx={{marginBottom:'-5px'}}>
+                      <Grid item xs={0} lg={3}  sx={{display: { xs: 'none',sm: 'none', md:'none', lg: 'flex' }, marginBottom:'-5px'}}>
                         <img src={'./assets/icons/ic_phone_white.svg'} alt='icon phone' width={35} />
                       </Grid>
-                      <Grid item xs={6} container>
+                      <Grid item xs={0} lg={6}  sx={{display: { xs: 'none',sm: 'none', md:'none', lg: 'flex' }}} container>
                           <Grid item xs={12}>
                             <Typography fontWeight={'bold'} sx={{fontSize:'16px'}} color={theme.color.white}>{t('Hotline')}</Typography>
                           </Grid>
-                          <Grid item xs={12}>
+                          <Grid item xs={12} >
                             <Typography sx={{fontSize:'16px',fontFamily:(theme)=>theme.typography.MuktaMahee}} color={theme.color.white}>(0234) 3997799</Typography>
                           </Grid>
                       </Grid>
-                      <Grid item xs={3}> 
+                      <Grid item xs={12} lg={3}> 
                         <Box sx={{display:'flex', alignItems:'center', justifyContent:'end'}}>
                           <LanguagePopover/>
                         </Box>
@@ -326,16 +319,32 @@ export default function Header() {
     );
 }
 
-function MenuMobile({toggleDrawer,openRight,pages}){
+
+
+const Accordion = styled((props) => (
+  <MuiAccordion disableGutters elevation={0} square {...props} />
+  ))(({ theme }) => ({
+      border: `none`
+}));
+const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
+  padding: "0px 16px"
+}));
+
+function MenuMobile({toggleDrawer,openRight,pages,sticky}){
   const theme = useTheme()
+  const [expanded, setExpanded] = React.useState('');
+
+  const handleChange = (panel) => (event, newExpanded) => {
+    setExpanded(newExpanded ? panel : false);
+  };
   return (
     <>
     <IconButton
       size="large"
       onClick={toggleDrawer(true)}
-      sx={{ p: 0 ,display: { xs: "block",md: "block", lg: "none" ,color:(theme)=>theme.color.green1}}}
+      sx={{ p: 0 ,display: { xs: "block",md: "block", lg: "none" ,color:(theme)=>(sticky? theme.color.green1 : theme.color.white)}}}
     >
-      <MenuIcon sx={{color:(theme)=>theme.color.green1}}/>
+      <MenuIcon sx={{color:(theme)=>(sticky? theme.color.green1 : theme.color.white)}}/>
     </IconButton>
     <Drawer
       anchor={'right'}
@@ -345,42 +354,59 @@ function MenuMobile({toggleDrawer,openRight,pages}){
       <Box
         sx={{ width: 350 }}
         role="presentation"
-        onClick={toggleDrawer(false)}
+        // onClick={toggleDrawer(false)}
       >
         <IconButton
           size="large"
           onClick={toggleDrawer(false)}
         >
-          <CloseIcon sx={{color:(theme)=>theme.color.green1}}/>
+          <CloseIcon sx={{color:(theme)=>theme.color.red}}/>
         </IconButton>
-        <List>
+        <Box sx={{padding: theme.spacing(2)}}>
           {
           pages.map((page) => {
             return (
-              <Box key={page.name+"nav"} >
-                <Link to={page.path} style={{ textDecoration:"none", color: 'black'}}>
-                    <ListItem >
-                        <ListItemButton
+              <Accordion key={page.name+"nav"} expanded={expanded === `pannel${page.name}`} onChange={handleChange(`pannel${page.name}`)}>
+                  <AccordionSummary sx={{padding:'10px 0',color: expanded === `pannel${page.name}` ? theme.color.red : theme.color.black}}  expandIcon={page.child?.length > 0 ? <ExpandMoreIcon /> : <></>} aria-controls={`pannel${page.name}d-content`} id={`pannel${page.name}d-header`}>
+                     <Link onClick={toggleDrawer(false)} to={page.path} style={{ textDecoration:"none", color: 'black'}}>
+                      <Typography  
                           sx={{
+                            fontWeight: 700,
                             color: theme.color.black,
                             '&:hover': {
-                              color: theme.color.green1,
+                              color: theme.color.red,
                             },
                           }}
-                        >
+                          >
+                            {page.name} 
+                          </Typography>
+                      </Link>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                      {
+                        page.child.map((child)=>{
+                          return (
+                          <Link onClick={toggleDrawer(false)} key={`${page.path}${child.path}`} to={`${page.path}${child.path}`} style={{ textDecoration:"none", color: 'black', padding:'10px'}}>
                             <Typography  
-                            sx={{fontWeight:'700'}}
-                            >
-                              {page.name} 
-                            </Typography>
-                        </ListItemButton>
-                    </ListItem>
-                </Link>
-                <Divider sx={{boderColor:'rgb(0 0 0 / 4%)'}}/>
-              </Box>
+                                sx={{
+                                  fontWeight: 700,
+                                  color: theme.color.black,
+                                  '&:hover': {
+                                    color: theme.color.red,
+                                  },
+                                }}
+                                >
+                                  {child.name} 
+                              </Typography>
+                          </Link>
+                          )
+                        })
+                      }
+                  </AccordionDetails>
+              </Accordion>
           )})
           }
-        </List>
+        </Box>
       </Box>
     </Drawer>
     </>

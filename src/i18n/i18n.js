@@ -5,6 +5,12 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import translationEN from './locales/en.json';
 import translationVI from './locales/vi.json';
 
+// Hàm để lấy ngôn ngữ hiện tại từ localStorage
+const getCurrentLanguage = () => {
+  return localStorage.getItem('language') || 'vi'; // 'vi' là ngôn ngữ mặc định
+};
+
+const defaultLanguage = getCurrentLanguage()
 // the translations
 const resources = {
     en: {
@@ -20,8 +26,8 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    fallbackLng: 'vi',
-    lng: 'vi',
+    fallbackLng: defaultLanguage,
+    lng: defaultLanguage,
     debug: true,
     react: {
       wait: true,
