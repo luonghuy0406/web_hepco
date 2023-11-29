@@ -20,11 +20,7 @@ import { styled } from '@mui/material/styles';
 import MenuNav from './MenuNav';
 import MuiAccordion from '@mui/material/Accordion';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
-
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
-
-
 
 const InvoiceBox = styled('div')(({ theme, sticky }) => ({
   backgroundColor: theme.palette.green1,
@@ -58,7 +54,6 @@ const InvoiceBox = styled('div')(({ theme, sticky }) => ({
   },
 }));
 
-
 export default function Header() {
     const {t} = useTranslation()
     const [openRight, setOpenRight] = useState(false);
@@ -85,44 +80,44 @@ export default function Header() {
       {name: t('Trang chủ'), path:'',child:[]},
       {
         name: t('Giới thiệu'), 
-        path:'/gioithieu',
+        path:`/${t('gioithieu')}`,
         child:[
           {name: t('Về Hepco'), path:'',child:[]},
-          {name: t('Sơ đồ tổ chức'), path:'/sodo',child:[]},
-          {name: t('Thành tựu đạt được'), path:'/thanhtuu',child:[]},
-          {name: t('Hồ sơ năng lực'), path:'/nangluc',child:[]},
-          {name: t('Thư viện ảnh'), path:'/thuvien',child:[]}
+          {name: t('Sơ đồ tổ chức'), path:`/${t('sodo')}`,child:[]},
+          {name: t('Thành tựu đạt được'), path:`/${t('thanhtuu')}`,child:[]},
+          {name: t('Hồ sơ năng lực'), path:`/${t('nangluc')}`,child:[]},
+          {name: t('Thư viện ảnh'), path:`/${t('thuvien')}`,child:[]}
         ]
       },
       {
         name: t('Dịch vụ'), 
-        path:'/dichvu',
+        path:`/${t('dichvu')}`,
         child:[
 
         ]
       },
       {
         name: t('Tin tức'), 
-        path:'/tintuc',
+        path:`/${t('tintuc')}`,
         child:[
           {name: t('Hoạt động công ty'), path:'',child:[]},
-          {name: t('Đảng Đoàn thể'), path:'/dangdoan',child:[]},
-          {name: t('Pháp luật môi trường'), path:'/phapluat',child:[]},
-          {name: t('Tin tức khác'), path:'/tinkhac',child:[]},
+          {name: t('Đảng Đoàn thể'), path:`/${t('dangdoan')}`,child:[]},
+          {name: t('Pháp luật môi trường'), path:`/${t('phapluat')}`,child:[]},
+          {name: t('Tin tức khác'), path:`/${t('tinkhac')}`,child:[]},
         ]
       },
       {
         name: t('Dự án'), 
-        path:'/duan',
+        path:`/${t('duan')}`,
         child:[
           {name: t('Dự án đầu tư'), path:'',child:[]},
-          {name: t('Hợp tác trong nước'), path:'/trongnuoc',child:[]},
-          {name: t('Hợp tác nước ngoài'), path:'/nuocngoai',child:[]},
+          {name: t('Hợp tác trong nước'), path:`/${t('trongnuoc')}`,child:[]},
+          {name: t('Hợp tác nước ngoài'), path:`/${t('nuocngoai')}`,child:[]},
         ]
       },
-      {name: t('Cổ đông'), path:'/codong',child:[]},
-      {name: t('Câu hỏi'), path:'/cauhoi',child:[]},
-      {name: t('Liên hệ'), path:'/lienhe',child:[]}
+      {name: t('Cổ đông'), path:`/${t('codong')}`,child:[]},
+      {name: t('Câu hỏi'), path:`/${t('cauhoi')}`,child:[]},
+      {name: t('Liên hệ'), path:`/${t('lienhe')}`,child:[]}
     ]
     return (
       <>
@@ -135,15 +130,12 @@ export default function Header() {
             position: 'relative',
             width: {lg: '100%'},
             zIndex: '1',
-            // padding: { xs: '0',sm: "0" , md:"30px 0 50px", lg: "30px 0 50px" }
           }}
         >
         {/* header below */}
         <Box
           sx={{
-            // position: { xs: 'relative',sm: 'relative', md:'absolute', lg: 'absolute' },
-            width: '100%',
-            // bottom: { xs: '0', md:'-35px',sm: '0', lg: '-35px' }
+            width: '100%'
           }}
         >
           <Container maxWidth={'100%'} sx={{padding: { xs: '0 !important', sm:'0 !important'}}}>
@@ -155,7 +147,6 @@ export default function Header() {
                 sx={{
                   height: { xs: '60px',sm: '60px', md:'70px'},
                   backgroundColor: '#03611ab3',
-                  // borderRadius: { xs: '0',sm: '0', md:'5px', lg: '5px' },
                   boxShadow: '0 0 20px -10px rgba(0,0,0,.8)',
                   position:'fixed',
                   left: '0',
@@ -167,7 +158,6 @@ export default function Header() {
                   px={2}
                   alignItems="center"
                   justifyContent={"center"}
-                  // sx={{visibility: { xs: 'visible',sm: 'visible', md:'hidden', lg: 'hidden' }}}
                 >
                   <Link to={'/'}>
                       <img src={'./assets/logo2.png'} alt='hepco logo' width={55} height={55} />

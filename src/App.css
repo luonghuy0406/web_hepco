@@ -1,11 +1,12 @@
 :root{
     --white: #FFFFFF;
     --black: #000000;
-    --red: #f45b14;
+    --red: #F48123;
     /* --green1: #009961; */
     --green2 : #8EC542;
     --green3 : #AAD293;
     --green1 : #03611A;
+    --green4: #39A03D;
     --gray1 : #8A8988;
     --gray2 : #D6D5DA;
     --lightBlack: #282828;
@@ -24,6 +25,15 @@ a {
     text-decoration: none;
     color: var(--black);
 }
+.react-flow__handle{
+    width: 0 !important;
+    height: 0 !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    background: #3aa03d !important;
+    border: 1px solid #3aa03d !important;
+}
+
 .menu-sticky {
     margin: 0;
     width: 100%;
@@ -232,7 +242,7 @@ a {
     transform: scaleY(0);
     transform-origin: 0 0 0;
     transition: all .4s ease-in-out 0s;
-    width: 220px;
+    width: max-content;
     z-index: 99999!important;
     text-align: left;
     visibility: hidden;
@@ -255,4 +265,19 @@ ul.sub-menu li {
 
 ul.sub-menu li:hover{
     color: var(--red)
+}
+
+.line1::before{
+    content: '';
+    width: 150px;
+    display: flex;
+    margin: 0 15px;
+    border-top: 2px solid var(--green4);
+}
+.line2::before{
+    content: '';
+    width: 150px;
+    display: flex;
+    margin: 0 15px;
+    border-top: 2px dashed var(--green4);
 }

@@ -7,13 +7,13 @@ import AboutContent from '../sections/About/AboutContent';
 
 export default function About() {
   const { t } = useTranslation();
-  const parentPath = '/gioithieu';
+  const parentPath = `/${t('gioithieu')}`;
   const pages = [
-    { name: t('Về Hepco'), path: '', child: [] },
-    { name: t('Sơ đồ tổ chức'), path: '/sodo', child: [] },
-    { name: t('Thành tựu đạt được'), path: '/thanhtuu', child: [] },
-    { name: t('Hồ sơ năng lực'), path: '/nangluc', child: [] },
-    { name: t('Thư viện ảnh'), path: '/thuvien', child: [] },
+    {name: t('Về Hepco'), path:'',child:[]},
+    {name: t('Sơ đồ tổ chức'), path:`/${t('sodo')}`,child:[]},
+    {name: t('Thành tựu đạt được'), path:`/${t('thanhtuu')}`,child:[]},
+    {name: t('Hồ sơ năng lực'), path:`/${t('nangluc')}`,child:[]},
+    {name: t('Thư viện ảnh'), path:`/${t('thuvien')}`,child:[]}
   ];
   
   const match = useMatch(`${parentPath}/:page`);
@@ -22,7 +22,7 @@ export default function About() {
   return (
     <>
       <Banner
-        name="Giới thiệu"
+        name={"Giới thiệu"}
         image="https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/inner3.jpg"
         path={parentPath}
         pages={pages}

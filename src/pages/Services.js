@@ -9,7 +9,7 @@ export default function Services() {
   window.scrollTo(0, 0);
   return (
     <>
-      <Banner name="Dịch vụ" image={'https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/inner3.jpg'} path={'/service'} pages={pages}/>
+      <Banner name={t("Dịch vụ")} image={'https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/inner3.jpg'} path={`/${t('dichvu')}`} pages={pages}/>
       <Box sx={{height:'500px', width:'500px'}}>
 
       </Box>

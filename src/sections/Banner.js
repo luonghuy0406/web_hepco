@@ -35,8 +35,10 @@ export default function Banner({name, image,path,pages}) {
                         bottom: 0,
                         left: '50%',
                         transform: 'translate(-50%,50%)',
-                        // width: '200px',
-                        height: '60px',
+                        width: 'max-content',
+                        height: 'auto',
+                        minHeight:'60px',
+                        maxWidth:'100%',
                         background:theme.color.white,
                         borderRadius: '10px',
                         boxShadow: '0 7px 7px 0 rgba(48,51,50,.09)'
@@ -47,7 +49,7 @@ export default function Banner({name, image,path,pages}) {
                         divider={<Divider orientation="vertical" flexItem />}
                         spacing={2}
                         alignItems={"center"}
-                        sx={{height:'100%', padding:'10px 30px'}}
+                        sx={{height:'100%', padding:'10px 30px',minHeight:'60px'}}
                     >
                         {
                             pages.map((page)=>{

@@ -41,7 +41,7 @@ export default function Contact() {
   window.scrollTo(0, 0);
   return (
     <>
-      <Banner name="Liên hệ" image={'https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/inner3.jpg'} path={'/lienhe'} pages={pages}/>
+      <Banner name={t("Liên hệ")} image={'https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/inner3.jpg'} path={`/${t('lienhe')}`} pages={pages}/>
       <Container maxWidth='xl'>
         <Grid container spacing={3} pb={5} pt={15}>
           <Grid item xs={6}>

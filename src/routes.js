@@ -9,31 +9,32 @@ import Shareholder from './pages/Shareholder';
 import Question from './pages/Question';
 import Contact from './pages/Contact';
 import News from './pages/News';
+import { useTranslation } from 'react-i18next';
 
 export default function Router() {
-
+  const {t} = useTranslation()
   const routes = useRoutes([
     {
       path: '/',
       element: <MainLayout />,
       children: [
         { path: '', element: <Home /> },
-        { path: 'gioithieu', element: <About/> },
-        { path: 'gioithieu/sodo', element: <About page='sodo'/> },
-        { path: 'gioithieu/thanhtuu', element: <About page='thanhtuu'/> },
-        { path: 'gioithieu/nangluc', element: <About page='nangluc'/> },
-        { path: 'gioithieu/thuvien', element: <About page='thuvien'/> },
-        { path: 'dichvu', element: <Services /> },
-        { path: 'duan', element: <Projects /> },
-        { path: 'duan/trongnuoc', element: <Projects page='trongnuoc'/> },
-        { path: 'duan/nuocngoai', element: <Projects page='nuocngoai'/> },
-        { path: 'tintuc', element: <News /> },
-        { path: 'tintuc/dangdoan', element: <News page='dangdoan'/> },
-        { path: 'tintuc/phapluat', element: <News page='phapluat'/> },
-        { path: 'tintuc/tinkhac', element: <News page='tinkhac'/> },
-        { path: 'codong', element: <Shareholder /> },
-        { path: 'cauhoi', element: <Question /> },
-        { path: 'lienhe', element: <Contact /> },
+        { path: t('gioithieu'), element: <About/> },
+        { path: `${t('gioithieu')}/${t('sodo')}`, element: <About page={t('sodo')}/> },
+        { path: `${t('gioithieu')}/${t('thanhtuu')}`, element: <About page={t('thanhtuu')}/> },
+        { path: `${t('gioithieu')}/${t('nangluc')}`, element: <About page={t('nangluc')}/> },
+        { path: `${t('gioithieu')}/${t('thuvien')}`, element: <About page={t('thuvien')}/> },
+        { path: t('dichvu'), element: <Services /> },
+        { path: t('duan'), element: <Projects /> },
+        { path: `${t('duan')}/${t('trongnuoc')}`, element: <Projects page={t('trongnuoc')}/> },
+        { path: `${t('duan')}/${t('nuocngoai')}`, element: <Projects page={t('nuocngoai')}/> },
+        { path: t('tintuc'), element: <News /> },
+        { path: `${t('tintuc')}/${t('dangdoan')}`, element: <News page={t('dangdoan')}/> },
+        { path: `${t('tintuc')}/${t('phapluat')}`, element: <News page={t('phapluat')}/> },
+        { path: `${t('tintuc')}/${t('tinkhac')}`, element: <News page={t('tinkhac')}/> },
+        { path: t('codong'), element: <Shareholder /> },
+        { path: t('cauhoi'), element: <Question /> },
+        { path: t('lienhe'), element: <Contact /> },
         { path: '404', element: <Navigate to="/" /> },
         { path: '*', element: <Navigate to="/" /> },
       ],

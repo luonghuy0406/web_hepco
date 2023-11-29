@@ -1,7 +1,6 @@
 {
     "2022": "2022",
     "Hotline": "Hotline",
-    "Tra cứu hoá đơn": "Tra cứu hoá đơn",
     "Trang chủ": "Trang chủ",
     "Giới thiệu": "Giới thiệu",
     "Dự án": "Dự án",
@@ -58,5 +57,24 @@
     "Nội dung": "Nội dung",
     "Gửi": "Gửi",
     "Gửi email": "Gửi email",
-    "Gửi câu hỏi": "Gửi câu hỏi"
+    "Gửi câu hỏi": "Gửi câu hỏi",
+    "sodo": "sodo",
+    "thanhtuu": "thanhtuu",
+    "nangluc": "nangluc",
+    "thuvien": "thuvien",
+    "dangdoan": "dangdoan",
+    "phapluat": "phapluat",
+    "tinkhac": "tinkhac",
+    "trongnuoc": "trongnuoc",
+    "nuocngoai": "nuocngoai",
+    "codong": "codong",
+    "cauhoi": "cauhoi",
+    "lienhe": "lienhe",
+    "gioithieu": "gioithieu",
+    "dichvu": "dichvu",
+    "duan": "duan",
+    "tintuc": "tintuc",
+    "Năm kinh nghiệm": "Năm kinh nghiệm",
+    "Khách hàng":  "Khách hàng",
+    "Nhân sự": "Nhân sự"
 }

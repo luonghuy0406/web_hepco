@@ -41,7 +41,7 @@ export default function Question() {
   window.scrollTo(0, 0);
   return (
     <>
-      <Banner name="Câu hỏi" image={'https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/inner3.jpg'} path={'/cauhoi'} pages={pages}/>
+      <Banner name={t("Câu hỏi")} image={'https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/inner3.jpg'} path={`/${t('cauhoi')}`} pages={pages}/>
       <Container maxWidth='xl' sx={{py:theme.spacing(10)}}>
         <Grid container spacing={5}>
           <Grid item xs={12} md={6}>

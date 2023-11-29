@@ -1,7 +1,6 @@
 {
     "2022": "2022",
     "Hotline": "Hotline",
-    "Tra cứu hoá đơn": "Invoice",
     "Trang chủ": "Home",
     "Giới thiệu": "About us",
     "Dự án": "Projects",
@@ -58,5 +57,24 @@
     "Nội dung": "Subject",
     "Gửi": "Send",
     "Gửi email": "Send email",
-    "Gửi câu hỏi": "Send question"
+    "Gửi câu hỏi": "Send question",
+    "sodo": "chart",
+    "thanhtuu": "achievements",
+    "nangluc": "capacity",
+    "thuvien": "gallery",
+    "dangdoan": "party-union",
+    "phapluat": "law",
+    "tinkhac": "other-news",
+    "trongnuoc": "domestic",
+    "nuocngoai": "foreign",
+    "codong": "shareholders",
+    "cauhoi": "faq",
+    "lienhe": "contact",
+    "gioithieu": "about",
+    "dichvu": "services",
+    "duan": "projects",
+    "tintuc": "news",
+    "Năm kinh nghiệm": "Years of experience",
+    "Khách hàng": "Customers",
+    "Nhân sự": "Employees"
 }
