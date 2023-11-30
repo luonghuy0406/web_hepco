@@ -29,7 +29,6 @@ export default function About() {
         pages={pages}
       />
       <AboutContent page={pageParam} />
-      <Box sx={{ height: '500px', width: '500px' }}></Box>
     </>
   );
 }

@@ -239,12 +239,9 @@ export function OurMission() {
         <Container maxWidth='xl' sx={{py: theme.spacing(10), px:0}}>
             <Grid container sx={{px:3}}>
                 <Grid ref={visionRef} item xs={12} md={7} sx={{borderRadius: "4px 0 0 4px",backgroundColor: theme.color.white,boxShadow: '0 0 150px #eee',p:theme.spacing(3), py: theme.spacing(8)}}>
-                    {/* <Typography variant='h6' color={theme.color.green1}>
-                        {t("CHÀO MỪNG ĐẾN VỚI HEPCO")}
-                    </Typography> */}
-                    <Typography ref={ref} variant='h4' color={theme.color.black} fontSize={'42px'} fontWeight={"bold"} className='type-line' pb={2}>
+                    <Typography ref={ref} variant={'h4'} color={theme.color.black} fontSize={'42px'} fontWeight={"bold"} className='type-line' pb={2}>
                         {t('Tầm nhìn - Sứ mệnh')}
-                    </Typography>
+                    </Typography> 
 
                     <Grid container sx={{pt: theme.spacing(4), pl: theme.spacing(4)}} className={"our-mission-wrap"}>
                          <Grid item xs={2}>
