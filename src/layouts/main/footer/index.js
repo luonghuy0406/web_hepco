@@ -1,6 +1,6 @@
 
 import { useTheme } from "@emotion/react";
-import { Box, Button, Container, Grid, Typography, styled } from "@mui/material";
+import { Box, Button, Card, CardMedia, Container, Grid, Typography, styled } from "@mui/material";
 import React, { useEffect, useRef } from "react";
 import { useInView } from "react-intersection-observer";
 import { Image } from "semantic-ui-react";
@@ -77,7 +77,7 @@ export default function Footer(){
         >
             <Container maxWidth='xl' sx={{padding:theme.spacing(4)}} ref={footerRef}>
                 <Grid container spacing={2}>
-                    <Grid item xs={4} px={2} container spacing={2}>
+                    <Grid item xs={12} md={4} px={2} mb={3} container spacing={2}>
                         <Grid item xs={12}>
                             <Box sx={{display:'flex', alignItems:'center'}}>
                                 <img src={'./assets/logo2.png'} alt='hepco logo' width={85} height={85} />
@@ -94,7 +94,7 @@ export default function Footer(){
                         </Grid>
                         
                     </Grid>
-                    <Grid item xs={4} px={2} container spacing={2}>
+                    <Grid item xs={12} md={4} px={2} mb={3} container spacing={2}>
                         <Grid item xs={12}>
                             <Typography variant="h5" fontWeight={700} color={theme.color.white} className="type-line2">
                                 {t('Thông tin công ty:')}
@@ -118,7 +118,7 @@ export default function Footer(){
                             <Grid item><Image src='./assets/icons/ic_youtube.svg' alt="zalo icon" width="25" height="25"/></Grid>
                         </Grid>
                     </Grid>
-                    <Grid item xs={4} px={2} container spacing={2}>
+                    <Grid item xs={12} md={4} px={2} mb={3} container spacing={2}>
                         <Grid item xs={12}>
                             <Typography variant="h5" spacing={2} fontWeight={700} color={theme.color.white} className="type-line2">
                                 {t('Thư viện ảnh:')}

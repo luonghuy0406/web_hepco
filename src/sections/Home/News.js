@@ -15,7 +15,6 @@ library.add(fas, faFontAwesome, faPlay)
 
 const StyledContainer = styled(Container)(({ theme }) => ({
   paddingTop: theme.spacing(5),
-  paddingBottom: theme.spacing(10),
   paddingLeft: 0,
   paddingRight: 0,
 }));
@@ -25,20 +24,6 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
   width: '100%',
   paddingBottom: theme.spacing(2),
   textAlign: 'center',
-  // fontSize:'42px',
-  // '&:after':{
-  //   content: "''",
-  //   border: 0,
-  //   width: '70px',
-  //   height: '5px',
-  //   background: theme.color.green1,
-  //   display: 'block',
-  //   marginTop: '5px',
-  //   position: 'absolute',
-  //   left: '50%',
-  //   right: '50%',
-  //   transform:'translateX(-50%) translateY(50%)',
-// }
 }));
 
 const StyledGrid = styled(Grid)(({ theme }) => ({
@@ -117,25 +102,25 @@ export const News = () => {
 
   
   return (
-    <Container maxWidth='100%' sx={{py:theme.spacing(5), mb:theme.spacing(10),px:'0 !important'}}>
+    <Container maxWidth='100%' sx={{py:theme.spacing(5), mb:theme.spacing(5),px:'0 !important'}}>
       <Box sx={{
-          py:theme.spacing(5),
-          mb: theme.spacing(15),
+          py:theme.spacing(3),
+          // mb: theme.spacing(5),
           backgroundImage:"url(https://html.themexriver.com/it-firm/images/background/pattern-14.png) !important",
           backgroundSize:"cover",
           backgroundPosition:"center",
           backgroundRepeat:"no-repeat",
           position:"relative",
-          height: '600px'
+          // height: '600px'
           }}>
-            <StyledContainer sx={{position:"absolute", bottom: "-30%", left:"50%", transform:"translateX(-50%) translateY(0%)"}}>
+            <StyledContainer>
               <Grid container >
                     <StyledTypography ref={ref} variant="h4" color={theme.color.black} fontWeight="bold" pb={theme.spacing(5)}>
                         {t('Tin tức nổi bật')}
                     </StyledTypography>
-                    <StyledGrid container spacing={2} ref={newsRef}>
+                    <StyledGrid container ref={newsRef} spacing={2} sx={{justifyContent:'center', padding: theme.spacing(2)}}>
                     {projects.map((id) => (
-                        <Grid key={id} item xs={4} sm={4} md={4}>
+                        <Grid key={id} item xs={10} sm={6} md={4}>
                           <Link to="#">
                             <FeaturedNewstWrap>
                                 <LazyLoad height={200} offset={100}>

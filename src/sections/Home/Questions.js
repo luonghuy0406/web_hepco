@@ -8,6 +8,7 @@ import { useInView } from 'react-intersection-observer'
 import 'animate.css';
 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import SendMail from '../SendMail';
 
 
 
@@ -111,7 +112,7 @@ export function Questions() {
   const theme= useTheme()
   const questionsRef = useRef(null) 
   const formQuesRef = useRef(null)
- 
+  const [open, setOpen] = useState(false);
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0,
@@ -134,7 +135,7 @@ export function Questions() {
     setExpanded(newExpanded ? panel : false);
   };
   return (
-    <Container maxWidth='100%' sx={{pb:theme.spacing(5), mb:theme.spacing(15),px:'0 !important'}}>
+    <Container maxWidth='100%' sx={{pb:theme.spacing(5), mb:{xs: '0', md: theme.spacing(15)},px:'0 !important'}}>
         <Box sx={{
           py:theme.spacing(5),
           mb: theme.spacing(15),
@@ -143,7 +144,7 @@ export function Questions() {
           backgroundPosition:"center",
           backgroundRepeat:"no-repeat",
           position:"relative",
-          height: '600px'
+          height: {xs:'auto',md: '600px'}
           }}>
             <Box >
                 <Container maxWidth='xl'>
@@ -151,7 +152,16 @@ export function Questions() {
                         {t('Câu hỏi')}
                     </StyledTypography>
                     <Grid container>
-                        <Grid ref={questionsRef} item xs={12} md={6} sx={{borderRadius: "10px 0 0 10px", backgroundColor: theme.color.white, boxShadow:'0 5px 20px rgba(34,34,34,.1)'}}>
+                        <Grid 
+                            ref={questionsRef} 
+                            item xs={12} 
+                            md={6} 
+                            sx={{
+                                borderRadius: {xs: '10px' , md : "10px 0 0 10px"}, 
+                                backgroundColor: theme.color.white, 
+                                boxShadow:'0 5px 20px rgba(34,34,34,.1)'
+                            }}
+                        >
                             <Box
                                 sx={{
                                     padding: theme.spacing(5),
@@ -161,32 +171,37 @@ export function Questions() {
                             >
                                 <Grid container spacing={4}>
                                     <Grid item xs={12}>
-                                        <Typography ref={ref} variant='h4' color={theme.color.black} fontWeight={700} textAlign="center">
+                                        <Typography ref={ref} variant='h5' color={theme.color.black} fontWeight={700} textAlign="center">
                                             {t('Câu hỏi thường gặp')}
                                         </Typography>
 
                                     </Grid>
                                     <Grid item xs={12} >
-                                    {
-                                        [1,2,3,4,5].map((id)=>{
+                                        {
+                                            [1,2,3,4,5].map((id)=>{
 
-                                            return (
-                                                    <Accordion key={'ques-'+id} expanded={expanded === `pannel${id}`} onChange={handleChange(`pannel${id}`)}>
-                                                        <AccordionSummary sx={{padding:'10px 0',color: expanded === `pannel${id}` ? theme.color.red : theme.color.black}}  expandIcon={<ExpandMoreIcon />} aria-controls={`pannel${id}d-content`} id={`pannel${id}d-header`}>
-                                                            <Typography fontWeight={700}>{`${id}. Lorem ipsum dolor sit amet, consectetur adipiscing elit ${id}?`} </Typography>
-                                                        </AccordionSummary>
-                                                        <AccordionDetails>
-                                                            <Typography fontWeight={500}>
-                                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                                                                malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor
-                                                                sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                                                                sit amet blandit leo lobortis eget.
-                                                            </Typography>
-                                                        </AccordionDetails>
-                                                    </Accordion>
-                                            )
-                                        })
-                                    }
+                                                return (
+                                                        <Accordion key={'ques-'+id} expanded={expanded === `pannel${id}`} onChange={handleChange(`pannel${id}`)}>
+                                                            <AccordionSummary sx={{padding:'10px 0',color: expanded === `pannel${id}` ? theme.color.red : theme.color.black}}  expandIcon={<ExpandMoreIcon />} aria-controls={`pannel${id}d-content`} id={`pannel${id}d-header`}>
+                                                                <Typography fontWeight={700}>{`${id}. Lorem ipsum dolor sit amet, consectetur adipiscing elit ${id}?`} </Typography>
+                                                            </AccordionSummary>
+                                                            <AccordionDetails>
+                                                                <Typography fontWeight={500}>
+                                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                                                                    malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor
+                                                                    sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
+                                                                    sit amet blandit leo lobortis eget.
+                                                                </Typography>
+                                                            </AccordionDetails>
+                                                        </Accordion>
+                                                )
+                                            })
+                                        }
+
+                                        <SendMail open={open} setOpen={setOpen}/>         
+                                        <CustomizedButton onClick={()=>{setOpen(true)}} variant='contained' sx={{display:{xs:'block', md:'none', float: 'right', margin: theme.spacing(2)}}}>
+                                            {t('Gửi câu hỏi')}
+                                        </CustomizedButton>
                                     </Grid>
                                 </Grid>  
                             </Box>
@@ -194,9 +209,9 @@ export function Questions() {
                         <Grid 
                             ref={formQuesRef} 
                             item 
-                            xs={12} 
+                            xs={0} 
                             md={6} 
-                            sx={{height:"auto"}}
+                            sx={{height:"auto", display: {xs: 'none',md:'flex'}}}
                         >
                             <Box
                                 sx={{
@@ -211,7 +226,7 @@ export function Questions() {
                             >
                                 <Grid container spacing={4}>
                                     <Grid item xs={12}>
-                                        <Typography variant="h4" color={theme.color.white} fontWeight={700} textAlign={"center"}>{t("Gửi câu hỏi")}</Typography>
+                                        <Typography variant="h5" color={theme.color.white} fontWeight={700} textAlign={"center"}>{t("Gửi câu hỏi")}</Typography>
                                     </Grid>
                                     <Grid item xs={6}>
                                         <TextInput  label={t("Tên")} fullWidth variant="outlined" />
@@ -233,10 +248,10 @@ export function Questions() {
                                             fullWidth
                                         />
                                     </Grid>
+                                </Grid>
                                     <Grid item xs={12}>
                                         <CustomizedButton sx={{width:"100%"}} variant="contained">{t("Gửi")}</CustomizedButton>
                                     </Grid> 
-                                </Grid>
                             </Box>
                             
                         </Grid>

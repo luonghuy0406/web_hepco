@@ -281,3 +281,9 @@ ul.sub-menu li:hover{
     margin: 0 15px;
     border-top: 2px dashed var(--green4);
 }
+.wrap-image-dialog:hover .button-next-image{
+    opacity: 1 !important;
+}
+.button-next-image:hover{
+    opacity: 1 !important;
+}
