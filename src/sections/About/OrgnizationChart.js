@@ -517,7 +517,7 @@ const OrgnizationChart = () => {
           nodeTypes={nodeTypes}
           
         >
-          <Controls />
+          {/* <Controls /> */}
           <Box xs={{zIndex:1,background:theme.color.white}}>
             <label className='line1' style={{display:'flex',alignItems:'center', color:'var(--green4)'}}>{t('Quan hệ trực tuyến')}</label>
             <label className='line2' style={{display:'flex',alignItems:'center', color:'var(--green4)'}}>{t('Quan hệ chức năng')}</label>

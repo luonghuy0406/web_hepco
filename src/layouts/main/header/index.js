@@ -83,6 +83,7 @@ export default function Header() {
         path:`/${t('gioithieu')}`,
         child:[
           {name: t('Về Hepco'), path:'',child:[]},
+          {name: t('Chức năng hoạt động'), path:`/${t('chucnang')}`,child:[]},
           {name: t('Sơ đồ tổ chức'), path:`/${t('sodo')}`,child:[]},
           {name: t('Thành tựu đạt được'), path:`/${t('thanhtuu')}`,child:[]},
           {name: t('Hồ sơ năng lực'), path:`/${t('nangluc')}`,child:[]},
@@ -146,7 +147,7 @@ export default function Header() {
                 spacing={2}
                 sx={{
                   height: { xs: '60px',sm: '60px', md:'70px'},
-                  backgroundColor: '#03611ab3',
+                  backgroundColor: '#3aa03db3',
                   boxShadow: '0 0 20px -10px rgba(0,0,0,.8)',
                   position:'fixed',
                   left: '0',

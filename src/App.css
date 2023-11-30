@@ -5,7 +5,7 @@
     /* --green1: #009961; */
     --green2 : #8EC542;
     --green3 : #AAD293;
-    --green1 : #03611A;
+    --green1 : #39A03D;
     --green4: #39A03D;
     --gray1 : #8A8988;
     --gray2 : #D6D5DA;
@@ -234,7 +234,7 @@ a {
     visibility: visible;
 }
 .sub-menu {
-    background: #03611ab3;
+    background: #3aa03db3;
     left: 0;
     opacity: 0;
     position: absolute;

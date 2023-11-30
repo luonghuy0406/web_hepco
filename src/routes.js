@@ -21,6 +21,7 @@ export default function Router() {
         { path: '', element: <Home /> },
         { path: t('gioithieu'), element: <About/> },
         { path: `${t('gioithieu')}/${t('sodo')}`, element: <About page={t('sodo')}/> },
+        { path: `${t('gioithieu')}/${t('chucnang')}`, element: <About page={t('chucnang')}/> },
         { path: `${t('gioithieu')}/${t('thanhtuu')}`, element: <About page={t('thanhtuu')}/> },
         { path: `${t('gioithieu')}/${t('nangluc')}`, element: <About page={t('nangluc')}/> },
         { path: `${t('gioithieu')}/${t('thuvien')}`, element: <About page={t('thuvien')}/> },

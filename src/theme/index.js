@@ -27,10 +27,10 @@ export default function ThemeProvider({ children }) {
       white: '#FFFFFF',
       black: '#000000',
       red: '#F48123',
-      // green1: '#009961',
+      // green1: '#03611A',
       green2 : '#8EC542',
       green3 : '#AAD293',
-      green1: '#03611A',
+      green1: '#39A03D',
       gray1 : '#8A8988',
       gray2 : '#D6D5DA',
       lightBlack: '#282828'
