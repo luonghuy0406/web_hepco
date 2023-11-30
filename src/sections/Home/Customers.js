@@ -21,7 +21,7 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
   width: '100%',
   paddingBottom: theme.spacing(2),
   textAlign: 'center',
-  fontSize:'42px',
+  // fontSize:'42px',
   '&:after':{
     content: "''",
     border: 0,
@@ -95,7 +95,7 @@ export const Customers = () => {
                         max: 464,
                         min: 0
                     },
-                    items: 5,
+                    items: 2,
                     partialVisibilityGutter: 30
                 },
                 tablet: {
@@ -103,7 +103,7 @@ export const Customers = () => {
                         max: 1024,
                         min: 464
                     },
-                    items: 5,
+                    items: 3,
                     partialVisibilityGutter: 30
                 }
             }}

@@ -21,7 +21,7 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
     width: '100%',
     paddingBottom: theme.spacing(2),
     textAlign: 'center',
-    fontSize:'42px',
+    // fontSize:'42px',
     '&:after':{
         content: "''",
         border: 0,
@@ -94,9 +94,9 @@ export function OurServices() {
         backgroundRepeat: `no-repeat`,
     }}
     >
-        <Container maxWidth='100%%'sx={{mt:theme.spacing(5), py: theme.spacing(5), paddingLeft : '100px !important', paddingRight : '100px !important'}}>
+        <Container maxWidth='100%%'sx={{mt:theme.spacing(5), py: theme.spacing(5)}}>
             <Grid container>
-                <Grid ref={serviceImageRef} item xs={0} md={4} sx={{p:theme.spacing(3), display:{xs: 'none', md:'block'}}}>
+                <Grid ref={serviceImageRef} item xs={0} md ={0} lg={4} sx={{p:theme.spacing(3), display:{xs: 'none', md:'none', lg:'block'}}}>
                     <Box sx={{
                         p:theme.spacing(6),
                         backgroundImage:"url('./assets/images/service.jpg') !important",
@@ -109,8 +109,8 @@ export function OurServices() {
                         borderRadius: "10px"
                     }}/>
                 </Grid>
-                <Grid ref={serviceContentRef} item conntainer xs={12} md={8} sx={{position:'relative',p:theme.spacing(3)}}>
-                    <StyledTypography ref={ref}>
+                <Grid ref={serviceContentRef} item conntainer xs={12} md={0} lg={8} sx={{position:'relative',p:theme.spacing(3)}}>
+                    <StyledTypography ref={ref} variant='h4'>
                         {t('Dịch vụ của chúng tôi')}
                     </StyledTypography>
                     <Box>
@@ -132,23 +132,9 @@ export function OurServices() {
 }
 
 const ServiceItem = ({id}) =>{
-
-//   const serviceRef = useRef(null)
-//     const { ref, inView } = useInView({
-//         /* Optional options */
-//         threshold: 0,
-//         deplay: 1000
-//     });
-//     useEffect(() => {
-//         if(inView){
-//             if (serviceRef.current) {
-//                 serviceRef.current.classList.add('animate__animated','animate__fadeIn');
-//             }
-//         }
-//     }, [inView]);
     const theme = useTheme()
     return (
-        <Grid key={id} item xs={4} sm={4} md={4}>
+        <Grid key={id} item xs={12} sm={6} md={4} lg={4}>
             <Box sx={{padding:theme.spacing(5),backgroundColor: theme.color.white,boxShadow: '0 0 15px #eee', borderRadius:"10px", height:'100%'}} className={"our-mission-wrap service-item"}>
                 <div
                 className="service__overlay bg-img"

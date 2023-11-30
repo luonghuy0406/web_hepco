@@ -25,7 +25,7 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
   width: '100%',
   paddingBottom: theme.spacing(2),
   textAlign: 'center',
-  fontSize:'42px',
+  // fontSize:'42px',
   // '&:after':{
   //   content: "''",
   //   border: 0,

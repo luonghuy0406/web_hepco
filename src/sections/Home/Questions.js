@@ -71,7 +71,7 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
     width: '100%',
     paddingBottom: theme.spacing(5),
     textAlign: 'center',
-    fontSize:'42px',
+    // fontSize:'42px',
 }));
 const CustomizedButton = styled(Button)(({ theme }) => ({
     // Set background color

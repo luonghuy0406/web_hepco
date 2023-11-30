@@ -187,8 +187,8 @@ const CoreValuestWrap = styled(Box)(({ theme }) => ({
         transform: 'translate(-50%,-50%)',
     },
     '&:hover .core-value-image img': {
-        width: '100%',
-        transition: 'all .4s ease-in-out 0s',
+        // width: '100%',
+        // transition: 'all .4s ease-in-out 0s',
     }
     
   }));
@@ -239,12 +239,12 @@ export function OurMission() {
         <Container maxWidth='xl' sx={{py: theme.spacing(10), px:0}}>
             <Grid container sx={{px:3}}>
                 <Grid ref={visionRef} item xs={12} md={7} sx={{borderRadius: "4px 0 0 4px",backgroundColor: theme.color.white,boxShadow: '0 0 150px #eee',p:theme.spacing(3), py: theme.spacing(8)}}>
-                    <Typography ref={ref} variant={'h4'} color={theme.color.black} fontSize={'42px'} fontWeight={"bold"} className='type-line' pb={2}>
+                    <Typography ref={ref} variant={'h4'} color={theme.color.black} fontWeight={"bold"} className='type-line' pb={2}>
                         {t('Tầm nhìn - Sứ mệnh')}
                     </Typography> 
 
                     <Grid container sx={{pt: theme.spacing(4), pl: theme.spacing(4)}} className={"our-mission-wrap"}>
-                         <Grid item xs={2}>
+                         <Grid item xs={12} md={12} lg={2}>
                             <ServicesIcon>
                                 <IconImage
                                     src="https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/goggles.png"
@@ -253,7 +253,7 @@ export function OurMission() {
                                 <Background className="img-bg" />
                             </ServicesIcon>
                          </Grid>
-                         <Grid item xs={10} pr={theme.spacing(2)}>
+                         <Grid item xs={12} md={12} lg={12} pr={theme.spacing(2)}>
                             <Typography variant="h5" fontSize={'30px'} fontWeight={"bold"}  color={theme.color.green1} pb={2}>
                                 {t('Tầm nhìn')}
                             </Typography>
@@ -263,7 +263,7 @@ export function OurMission() {
                          </Grid>
                     </Grid>
                     <Grid container sx={{pt: theme.spacing(4),pl: theme.spacing(4)}} className={"our-mission-wrap"}>
-                         <Grid item xs={2}>
+                         <Grid item xs={12} md={12} lg={2}>
                             <ServicesIcon>
                                 <IconImage
                                     src="https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/business.png"
@@ -272,7 +272,7 @@ export function OurMission() {
                                 <Background className="img-bg" />
                             </ServicesIcon>
                          </Grid>
-                         <Grid item xs={10} pr={theme.spacing(2)}>
+                         <Grid item xs={12} md={12} lg={12} pr={theme.spacing(2)}>
                             <Typography variant="h5" fontSize={'30px'} fontWeight={"bold"}  color={theme.color.green1} pb={2}>
                                 {t('Sứ mệnh')}
                             </Typography>
@@ -325,9 +325,9 @@ export function OurMission() {
                 // height:"200px"
                 }}>
                     <Container maxWidth='xl'>
-                        <Grid container sx={{p:theme.spacing(3), textAlign:"center", pt:0}} spacing={2}>
+                        <Grid container sx={{p:theme.spacing(3), textAlign:"center", pt:0}} spacing={2} alignContent={"center"} justifyContent={'center'}>
                             <Grid item xs={12}>
-                                <Typography variant="h5" fontSize={'42px'} fontWeight={"bold"} mb={5} mt={2} color={theme.color.white} sx={{position:"relative"}} className="core-values">
+                                <Typography variant="h4" fontWeight={"bold"} mb={5} mt={2} color={theme.color.white} sx={{position:"relative"}} className="core-values">
                                     {t('Giá trị cốt lõi')}
                                 </Typography>
                             </Grid>
@@ -335,27 +335,27 @@ export function OurMission() {
                                 [
                                     {
                                         key : 'h',
-                                        title: 'Honesty <br> (Trung Thực)', 
+                                        title: t('Honesty'), 
                                         content: 'Chúng tôi cam kết đưa ra các giải pháp và dịch vụ dựa trên thông tin trung thực và minh bạch đối với khách hàng và cộng đồng.'
                                     },
                                     { 
                                         key : 'e',
-                                        title: 'Environmental Responsibility <br> (Trách Nhiệm Môi Trường)', 
+                                        title: t('Environmental Responsibility'), 
                                         content: 'Chúng tôi hướng đến việc giảm thiểu tác động tiêu cực lên môi trường thông qua việc tái chế, sử dụng nguồn năng lượng tái tạo, và thúc đẩy ý thức về bảo vệ môi trường trong cộng đồng.'
                                     },
                                     {
                                         key : 'p',
-                                        title: 'Professionalism <br>  (Chuyên Nghiệp)', 
+                                        title: t('Professionalism'), 
                                         content: 'Chúng tôi cam kết cung cấp dịch vụ chuyên nghiệp, với đội ngũ nhân viên được đào tạo chất lượng cao và kỹ năng chuyên môn trong lĩnh vực vệ sinh môi trường và công trình đô thị.'
                                     },
                                     {
                                         key : 'c',
-                                        title: 'Community Engagement <br>  (Tương Tác Cộng Đồng)', 
+                                        title: t('Community Engagement'), 
                                         content: 'Chúng tôi hợp tác chặt chẽ với cộng đồng địa phương, tăng cường nhận thức về vấn đề môi trường và tham gia vào các hoạt động xã hội và giáo dục về vệ sinh môi trường.'
                                     },
                                     {
                                         key : 'o',
-                                        title: 'Optimal Solutions <br>  (Giải Pháp Tối Ưu)', 
+                                        title: t('Optimal Solutions'), 
                                         content: 'Chúng tôi tập trung vào việc phát triển và cung cấp các giải pháp tối ưu về vệ sinh môi trường và công trình đô thị, đáp ứng nhu cầu của khách hàng một cách hiệu quả nhất.'
                                     }
                                     
@@ -410,16 +410,30 @@ const CoreItem = ({value})=>{
         }
     }, [inView]);
     return(
-        <Grid  key={value.key} item xs={4} sm={4} md={ 2.4}>
+        <Grid  key={value.key} item xs={12} sm={6} md={4} lg={ 2.4}>
             <CoreValuestWrap ref={coreRef}>
-                <Box sx={{position:'relative',backgroundColor: theme.color.white,p:theme.spacing(5), borderRadius:"10px", height: '100%'}} className={"core-values-wrap"}>
+                <Box 
+                    sx={{
+                        position:'relative',
+                        backgroundColor: theme.color.white,
+                        p:theme.spacing(5), 
+                        borderRadius:"10px", 
+                        height: '100%',
+                        minHeight: '350px',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        display: 'flex',
+                        flexDirection: 'column',
+                    }} 
+                    className={"core-values-wrap"}
+                >
                     <ServicesIcon className='core-value-image'>
                         <IconImageCore
                             src={"./assets/icons/ic_"+value.key+".svg"}
                             alt="Rs-service"
                         />
                     </ServicesIcon>
-                    <Box ref={ref} className='core-value-title' fontSize={'18px'} py={2} fontWeight={"bold"} dangerouslySetInnerHTML={{__html:value.title}}/>
+                    <Box ref={ref} className='core-value-title' fontSize={'18px'} py={2} sx={{height:'50px'}} fontWeight={"bold"} dangerouslySetInnerHTML={{__html:value.title}}/>
                     <Box className='core-value-content' sx={{display:'none', position:'relative'}} fontWeight={600} dangerouslySetInnerHTML={{__html:value.content}}/>
                 </Box>
             </CoreValuestWrap>
