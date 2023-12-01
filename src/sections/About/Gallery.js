@@ -68,120 +68,147 @@ const Gallery = () => {
         setPage(value);
     };
   return (
-    <Container 
-        maxWidth={'xl'} 
-        sx={{
-            marginTop:theme.spacing(10),
-            marginBottom:theme.spacing(10),
-        }} 
-    >
-        <Typography sx={{marginBottom:theme.spacing(4)}} variant='h4' textAlign={"center"} fontWeight={700} color={theme.color.red}>{t('Thư viện ảnh')}</Typography>
-        <Grid container spacing={2}>
-            {currentPageData.map((image, index) => (
-                <Grid key={index} item xs={6} sm={6} md={4} lg={3}>
-                    <Card 
-                        sx={{
-                            width: '100%',
-                            height: '100%',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            position:'relative'
-                        }}
-                        onClick={()=>{
-                            setOpen(true)
-                            setCurrentId(index)
-                        }}
-                    >
-                            <CardMedia 
-                                component="img"
-                                alt={`Image ${index + 1}`}
-                                height="auto"
-                                image={image.url}
-                                sx={{flex: 1,
-                                objectFit: 'cover'}}
-                            />
-                        <Box sx={{padding: theme.spacing(2),background: '#00000066',position:'absolute',left:0,right:0,bottom:0}}>
-                            <Typography 
-                                sx={{
-                                    whiteSpace: 'nowrap',
-                                    overflow: 'hidden',
-                                    textOverflow: 'ellipsis'
-                                }} 
-                                color={theme.color.white}
-                                >{image.description}</Typography>
-                        </Box>
-                    </Card>
-                </Grid>
-            ))}
-        </Grid>
-        <Box sx={{width:'100%', marginTop: theme.spacing(10), display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-            <Pagination
-                variant="outlined" 
-                color="primary"
-                count={totalPages}
-                page={page}
-                onChange={handlePageChange}
-                boundaryCount={1} 
-                siblingCount={1}
-            />
-        </Box>
-        <Dialog 
-            open={open} 
-            onClose={()=>{
-                setOpen(false)
-                setCurrentId(null)
-            }}
-            maxWidth="md"
-            fullWidth
-            
+        <Container 
+            maxWidth={'xl'} 
+            sx={{
+                marginTop:theme.spacing(10),
+                marginBottom:theme.spacing(10),
+            }} 
         >
-            <Box sx={{padding: theme.spacing(2),position:'relative'}} className='wrap-image-dialog'>
-                <LazyLoad height={200} offset={100}>
-                    <Box 
-                        sx={{
-                            textAlign: 'center',
-                            width:'100%',
-                            overflow:'hidden',
-                            height:'700px',
-                            display:'flex',
-                            alignItems:'center', 
-                            justifyContent:'center'
-                        }}
-                    >
-                            <img
-                                src={currentPageData?.[currentId]?.url}
-                                alt="Fullscreen"
-                                style={{
-                                    maxWidth: '100%',
-                                    // height: 'auto',
-                                    maxHeight:'700px',
-                                    objectFit: 'contain'
-                                }}
-                            />
-                    </Box>
-                </LazyLoad>
-                <Box sx={{padding: theme.spacing(3),background: '#00000066',position:'absolute',left:0,right:0,bottom:0}}>
-                    <Typography 
-                        color={theme.color.white}
-                        >{currentPageData?.[currentId]?.description}</Typography>
-                </Box>
-                <Box onClick={()=>{
+            <Typography sx={{marginBottom:theme.spacing(4)}} variant='h4' textAlign={"center"} fontWeight={700} color={theme.color.red}>{t('Thư viện ảnh')}</Typography>
+            <Grid container spacing={2}>
+                {currentPageData.map((image, index) => (
+                    <Grid key={index} item xs={6} sm={6} md={4} lg={3}>
+                        <Card 
+                            sx={{
+                                width: '100%',
+                                height: '100%',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                position:'relative'
+                            }}
+                            onClick={()=>{
+                                setOpen(true)
+                                setCurrentId(index)
+                            }}
+                        >
+                                <CardMedia 
+                                    component="img"
+                                    alt={`Image ${index + 1}`}
+                                    height="auto"
+                                    image={image.url}
+                                    sx={{flex: 1,
+                                    objectFit: 'cover'}}
+                                />
+                            <Box sx={{padding: theme.spacing(2),background: '#00000066',position:'absolute',left:0,right:0,bottom:0}}>
+                                <Typography 
+                                    sx={{
+                                        whiteSpace: 'nowrap',
+                                        overflow: 'hidden',
+                                        textOverflow: 'ellipsis'
+                                    }} 
+                                    color={theme.color.white}
+                                    >{image.description}</Typography>
+                            </Box>
+                        </Card>
+                    </Grid>
+                ))}
+            </Grid>
+            <Box sx={{width:'100%', marginTop: theme.spacing(10), display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                <Pagination
+                    variant="outlined" 
+                    color="primary"
+                    count={totalPages}
+                    page={page}
+                    onChange={handlePageChange}
+                    boundaryCount={1} 
+                    siblingCount={1}
+                />
+            </Box>
+            <Dialog 
+                open={open} 
+                onClose={()=>{
                     setOpen(false)
                     setCurrentId(null)
-                }} sx={{display:'flex',cursor:'pointer', alignItems:'center',justifyContent:'center', width:'30px', color:'#000', height:'30px', borderRadius:'50%', margin:'10px', position:'absolute', right:0, top:0}}>
-                    <CloseIcon/>
-                </Box>
-                <Box 
+                }}
+                maxWidth="md"
+                fullWidth
+                
+            >
+                <Box sx={{padding: theme.spacing(2),position:'relative'}} className='wrap-image-dialog'>
+                    <LazyLoad height={200} offset={100}>
+                        <Box 
+                            sx={{
+                                textAlign: 'center',
+                                width:'100%',
+                                overflow:'hidden',
+                                height:'700px',
+                                display:'flex',
+                                alignItems:'center', 
+                                justifyContent:'center'
+                            }}
+                        >
+                                <img
+                                    src={currentPageData?.[currentId]?.url}
+                                    alt="Fullscreen"
+                                    style={{
+                                        maxWidth: '100%',
+                                        // height: 'auto',
+                                        maxHeight:'700px',
+                                        objectFit: 'contain'
+                                    }}
+                                />
+                        </Box>
+                    </LazyLoad>
+                    <Box sx={{padding: theme.spacing(3),background: '#00000066',position:'absolute',left:0,right:0,bottom:0}}>
+                        <Typography 
+                            color={theme.color.white}
+                            >{currentPageData?.[currentId]?.description}</Typography>
+                    </Box>
+                    <Box onClick={()=>{
+                        setOpen(false)
+                        setCurrentId(null)
+                    }} sx={{display:'flex',cursor:'pointer', alignItems:'center',justifyContent:'center', width:'30px', color:'#000', height:'30px', borderRadius:'50%', margin:'10px', position:'absolute', right:0, top:0}}>
+                        <CloseIcon/>
+                    </Box>
+                    <Box 
+                        className='button-next-image'
+                        onClick={()=>{
+                            if(currentId - 1 >= 0){
+                                setCurrentId(currentId - 1 )
+                            }
+                        }}
+                        sx={{
+                            transition: 'all .4s ease-in-out 0s',
+                            opacity:'.3', 
+                            marginLeft:'10px', 
+                            display:'flex',
+                            cursor:'pointer', 
+                            alignItems:'center',
+                            justifyContent:'center',
+                            width:'60px', 
+                            color:'#fff', 
+                            height:'60px', 
+                            borderRadius:'50%', 
+                            background: '#00000066', 
+                            position:'absolute', 
+                            left:0, 
+                            bottom:'50%'
+                        }}
+                        >
+                        <KeyboardArrowLeftIcon/>
+                    </Box>
+                    <Box 
                     className='button-next-image'
                     onClick={()=>{
-                        if(currentId - 1 >= 0){
-                            setCurrentId(currentId - 1 )
+                        if(currentId + 1 <= images.length){
+                            setCurrentId(currentId + 1 )
                         }
                     }}
                     sx={{
                         transition: 'all .4s ease-in-out 0s',
                         opacity:'.3', 
-                        marginLeft:'10px', 
+                        marginRight:'10px', 
                         display:'flex',
                         cursor:'pointer', 
                         alignItems:'center',
@@ -192,42 +219,15 @@ const Gallery = () => {
                         borderRadius:'50%', 
                         background: '#00000066', 
                         position:'absolute', 
-                        left:0, 
+                        right:0, 
                         bottom:'50%'
-                    }}
+                        }}
                     >
-                    <KeyboardArrowLeftIcon/>
+                        <KeyboardArrowRightIcon/>
+                    </Box>
                 </Box>
-                <Box 
-                className='button-next-image'
-                onClick={()=>{
-                    if(currentId + 1 <= images.length){
-                        setCurrentId(currentId + 1 )
-                    }
-                }}
-                sx={{
-                    transition: 'all .4s ease-in-out 0s',
-                    opacity:'.3', 
-                    marginRight:'10px', 
-                    display:'flex',
-                    cursor:'pointer', 
-                    alignItems:'center',
-                    justifyContent:'center',
-                    width:'60px', 
-                    color:'#fff', 
-                    height:'60px', 
-                    borderRadius:'50%', 
-                    background: '#00000066', 
-                    position:'absolute', 
-                    right:0, 
-                    bottom:'50%'
-                    }}
-                >
-                    <KeyboardArrowRightIcon/>
-                </Box>
-            </Box>
-        </Dialog>
-    </Container>
+            </Dialog>
+        </Container>
   );
 };
 

@@ -135,34 +135,47 @@ const ServiceItem = ({id}) =>{
     const theme = useTheme()
     return (
         <Grid key={id} item xs={12} sm={6} md={4} lg={4}>
-            <Box sx={{padding:theme.spacing(5),backgroundColor: theme.color.white,boxShadow: '0 0 15px #eee', borderRadius:"10px", height:'100%'}} className={"our-mission-wrap service-item"}>
+            <Box sx={{padding:theme.spacing(5),backgroundColor: theme.color.white,boxShadow: '0 0 15px #eee', borderRadius:"10px", height:'100%'}} className={"our-service-wrap service-item"}>
                 <div
-                className="service__overlay bg-img"
-                style={{
-                    backgroundImage: 'url("./assets/images/mission2.jpg")',
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    borderRadius: "10px"
-                }}
-                ></div><Grid container sx={{position:'relative', zIndex:2}}>
-                    <Grid xs={12}>
-                        <IconImage
-                            src="https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/ff.png"
-                            alt="Rs-service"
-                        />
+                    className="service__overlay bg-img"
+                    style={{
+                        backgroundImage: 'url("./assets/images/mission2.jpg")',
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                        borderRadius: "10px"
+                    }}
+                ></div>
+                <Grid container sx={{position:'relative', zIndex:2}}>
+                    <Grid xs={12} className='service-icon'>
+                        <Box
+                            sx={{
+                                WebkitMaskBoxImage:'url(https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/ff.png)',
+                                // WebkitMaskImage: 'url(https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/ff.png)',
+                                // maskImage: 'url(https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/ff.png)',
+                                WebkitMaskSize: '70%',
+                                maskSize: '70%',
+                                WebkitMaskRepeat: 'no-repeat',
+                                maskRepeat: 'no-repeat', 
+                                width: '70px',
+                                height:'70px',
+                                backgroundColor:theme.color.green1
+                            }}
+                        >
+
+                        </Box>
                     </Grid>
-                    <Grid xs={12}>
+                    <Grid xs={12} className='text-service-title'>
                         <Typography variant='h5' fontWeight={700} py={theme.spacing(2)} color={theme.color.red}>{"Tên dịch vụ " + id}</Typography>
                     </Grid>
                     <Grid xs={12} pb={theme.spacing(2)}>
-                        <Typography>
+                        <Typography className='text-service' textAlign={'justify'}>
                             We have a custom cleaning service designed to help you clean when you need it,
                             whether we clean one time or on regular, your house will always sparkle clean
                         </Typography>
                     </Grid>
-                    <BlogButton>
+                    <BlogButton className='text-service'>
                         <Link to="#">
-                            <Typography fontWeight={700} lineHeight={'1.5rem'}>Read More</Typography>
+                            <Typography fontWeight={700} lineHeight={'1.5rem'} >Read More</Typography>
                             <Typography sx={{display:'inline', pl: '5px'}} className='arrow-news'><FontAwesomeIcon icon="fa-solid fa-arrow-right-long" /></Typography>
                         </Link>
                     </BlogButton>

@@ -130,19 +130,6 @@ a {
 }
 
 
-.our-mission-wrap:hover {
-    transform: translateY(-8px);
-}
-
-/* .core-values-wrap:hover {
-    background-color: var(--green2);
-    color : var(--white) !important;
-} */
-
-.our-mission-wrap {
-    transform: translateY(0);
-    transition: .4s;
-}
 .overly-border {
     border: 1px solid #282828;
     width: 100px;
@@ -225,9 +212,44 @@ a {
     background-color: #fff;
     -webkit-transition: all .3s ease;
     transition: all .3s ease;
-    -webkit-clip-path: polygon(50% 0,100% 38%,100% 100%,0 100%,0 0);
-    clip-path: polygon(50% 0,100% 38%,100% 100%,0 100%,0 0);
+    -webkit-clip-path: polygon(30% 0,100% 55%,100% 100%,0 100%,0 0);
+    clip-path: polygon(30% 0,100% 55%,100% 100%,0 100%,0 0);
 }
+
+.our-mission-wrap:hover {
+    transform: translateY(-8px);
+}
+
+.our-mission-wrap, .our-service-wrap {
+    transform: translateY(0);
+    transition: .4s;
+}
+.service-item:hover::before{
+    background-color: #3aa03d99;
+    -webkit-clip-path: unset;
+    clip-path: unset;
+}
+.service-item:hover .service__overlay{
+    width: 100%;
+    height: 100%;
+}
+.service-item:hover .text-service{
+    color: #fff;
+    font-weight: 500;
+}
+.service-item:hover .service-icon{
+    justify-content: center;
+    display: flex;
+}
+.service-item:hover .service-icon div{
+    background-color: #fff;
+}
+.service-item:hover .text-service-title{
+    text-align: center;
+}
+
+
+
 .menu-item:hover ul.sub-menu {
     opacity: 1;
     transform: scaleY(1);
