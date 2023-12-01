@@ -253,11 +253,11 @@ export function OurMission() {
                                 <Background className="img-bg" />
                             </ServicesIcon>
                          </Grid>
-                         <Grid item xs={12} md={12} lg={12} pr={theme.spacing(2)}>
+                         <Grid item xs={12} md={12} lg={10} pr={theme.spacing(2)}>
                             <Typography variant="h5" fontSize={'30px'} fontWeight={"bold"}  color={theme.color.green1} pb={2}>
                                 {t('Tầm nhìn')}
                             </Typography>
-                            <Typography fontWeight={500}>
+                            <Typography fontWeight={500} sx={{padding:theme.spacing(1)}}>
                                 Tạo ra giá trị bền vững cho môi trường và xã hội, mang đến một môi trường xanh – sạch – sáng cho cộng đồng là nhiệm vụ và sứ mệnh của Hepco.
                             </Typography>
                          </Grid>
@@ -272,11 +272,11 @@ export function OurMission() {
                                 <Background className="img-bg" />
                             </ServicesIcon>
                          </Grid>
-                         <Grid item xs={12} md={12} lg={12} pr={theme.spacing(2)}>
+                         <Grid item xs={12} md={12} lg={10} pr={theme.spacing(2)}>
                             <Typography variant="h5" fontSize={'30px'} fontWeight={"bold"}  color={theme.color.green1} pb={2}>
                                 {t('Sứ mệnh')}
                             </Typography>
-                            <Typography fontWeight={500}>
+                            <Typography fontWeight={500} sx={{padding:theme.spacing(1)}}>
                             Tạo ra giá trị bền vững cho môi trường và xã hội, mang đến một môi trường xanh – sạch – sáng cho cộng đồng là nhiệm vụ và sứ mệnh của Hepco.
                             </Typography>
                          </Grid>

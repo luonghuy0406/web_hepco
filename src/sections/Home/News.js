@@ -2,14 +2,14 @@ import React, { useEffect, useRef } from 'react';
 import { Container, Grid, Typography, Box } from '@mui/material';
 import { styled, useTheme } from '@mui/material/styles';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
+import LazyLoad from 'react-lazyload';
+import { useInView } from 'react-intersection-observer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay } from '@fortawesome/free-solid-svg-icons'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { faFontAwesome } from '@fortawesome/free-brands-svg-icons'
-import { Link } from 'react-router-dom';
-import LazyLoad from 'react-lazyload';
-import { useInView } from 'react-intersection-observer';
 
 library.add(fas, faFontAwesome, faPlay)
 
@@ -165,8 +165,12 @@ export const News = () => {
                                         </Box>
                                       </Grid>
                                       <Grid item xs={12}>
-                                        <Box className='ck-content' sx={{overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical'}}>
-                                          <Typography fontWeight={500}>Nội dung hiển thị tối đa 3 dòng Duis eleifend molestie leo, at mollis eros rutrum sit amet. Nam venenatis enim at magna euismod congue. Fusce semper malesuada purus. Duis eleifend molestie leo, at mollis eros rutrum sit amet. Nam venenatis enim at magna euismod congue. Fusce semper malesuada purus. Duis eleifend molestie leo, at mollis eros rutrum sit amet. Nam venenatis enim at magna euismod congue. Fusce semper malesuada purus.</Typography>
+                                        <Box 
+                                          className='ck-content' 
+                                          sx={{overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical'}}
+                                          dangerouslySetInnerHTML={{__html: `>Nội dung hiển thị tối đa 3 dòng Duis eleifend molestie leo, at mollis eros rutrum sit amet. Nam venenatis enim at magna euismod congue. Fusce semper malesuada purus. Duis eleifend molestie leo, at mollis eros rutrum sit amet. Nam venenatis enim at magna euismod congue. Fusce semper malesuada purus. Duis eleifend molestie leo, at mollis eros rutrum sit amet. Nam venenatis enim at magna euismod congue. Fusce semper malesuada purus.`}}
+                                        >
+                                          {/* <Typography fontWeight={500}>Nội dung hiển thị tối đa 3 dòng Duis eleifend molestie leo, at mollis eros rutrum sit amet. Nam venenatis enim at magna euismod congue. Fusce semper malesuada purus. Duis eleifend molestie leo, at mollis eros rutrum sit amet. Nam venenatis enim at magna euismod congue. Fusce semper malesuada purus. Duis eleifend molestie leo, at mollis eros rutrum sit amet. Nam venenatis enim at magna euismod congue. Fusce semper malesuada purus.</Typography> */}
                                         </Box>
                                       </Grid>
                                       <Grid item>

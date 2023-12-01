@@ -101,10 +101,10 @@ export default function Header() {
         name: t('Tin tức'), 
         path:`/${t('tintuc')}`,
         child:[
-          {name: t('Hoạt động công ty'), path:'',child:[]},
-          {name: t('Đảng Đoàn thể'), path:`/${t('dangdoan')}`,child:[]},
-          {name: t('Pháp luật môi trường'), path:`/${t('phapluat')}`,child:[]},
-          {name: t('Tin tức khác'), path:`/${t('tinkhac')}`,child:[]},
+          // {name: t('Hoạt động công ty'), path:'',child:[]},
+          // {name: t('Đảng Đoàn thể'), path:`/${t('dangdoan')}`,child:[]},
+          // {name: t('Pháp luật môi trường'), path:`/${t('phapluat')}`,child:[]},
+          // {name: t('Tin tức khác'), path:`/${t('tinkhac')}`,child:[]},
         ]
       },
       {

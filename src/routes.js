@@ -10,6 +10,7 @@ import Question from './pages/Question';
 import Contact from './pages/Contact';
 import News from './pages/News';
 import { useTranslation } from 'react-i18next';
+import NewsItem from './pages/NewsItem';
 
 export default function Router() {
   const {t} = useTranslation()
@@ -30,9 +31,7 @@ export default function Router() {
         { path: `${t('duan')}/${t('trongnuoc')}`, element: <Projects page={t('trongnuoc')}/> },
         { path: `${t('duan')}/${t('nuocngoai')}`, element: <Projects page={t('nuocngoai')}/> },
         { path: t('tintuc'), element: <News /> },
-        { path: `${t('tintuc')}/${t('dangdoan')}`, element: <News page={t('dangdoan')}/> },
-        { path: `${t('tintuc')}/${t('phapluat')}`, element: <News page={t('phapluat')}/> },
-        { path: `${t('tintuc')}/${t('tinkhac')}`, element: <News page={t('tinkhac')}/> },
+        { path: `${t('tintuc')}/:threadId`, element: <NewsItem/> },
         { path: t('codong'), element: <Shareholder /> },
         { path: t('cauhoi'), element: <Question /> },
         { path: t('lienhe'), element: <Contact /> },

@@ -13,7 +13,7 @@ export default function Banner({name, image,path,pages}) {
         className="animate__animated animate__fadeInDown"
         sx={{ 
             width: "100%", 
-            height: {xs: '250px', sm: '300px', md:'400px'}, 
+            height: name.length > 0 ? {xs: '250px', sm: '300px', md:'400px'} : '200px', 
             backgroundImage: `url(${image})`, 
             backgroundPosition:'center', 
             backgroundSize:'cover',
