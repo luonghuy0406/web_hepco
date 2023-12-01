@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Grid, Card, CardMedia,Container, useTheme, Typography, Box, Dialog, DialogContent } from '@mui/material';
+import { Grid, Card, CardMedia,Container, useTheme, Typography, Box, Dialog, DialogContent, Pagination } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
@@ -40,6 +40,7 @@ const images = [
   { id: 31,description: 'Bạn có thể thêm các thông tin khác tại đây Bạn có thể thêm các thông tin khác tại đâyBạn có thể thêm các thông tin khác tại đâyBạn có thể thêm các thông tin khác tại đâyBạn có thể thêm các thông tin khác tại đây',url: 'https://www.seiu1000.org/sites/main/files/imagecache/hero/main-images/camera_lense_0.jpeg'},
   { id: 32,description: 'Bạn có thể thêm các thông tin khác tại đây Bạn có thể thêm các thông tin khác tại đâyBạn có thể thêm các thông tin khác tại đâyBạn có thể thêm các thông tin khác tại đâyBạn có thể thêm các thông tin khác tại đây',url: 'https://www.seiu1000.org/sites/main/files/imagecache/hero/main-images/camera_lense_0.jpeg'},
   { id: 33,description: 'Bạn có thể thêm các thông tin khác tại đây Bạn có thể thêm các thông tin khác tại đâyBạn có thể thêm các thông tin khác tại đâyBạn có thể thêm các thông tin khác tại đâyBạn có thể thêm các thông tin khác tại đây',url: 'https://www.techsmith.com/blog/wp-content/uploads/2022/03/resize-image.png'},
+  
   // Thêm các ảnh khác vào đây
 ];
 
@@ -48,6 +49,24 @@ const Gallery = () => {
     const {t} = useTranslation()
     const [open,setOpen] = useState(false)
     const [currentId,setCurrentId] = useState(null)
+    const [page, setPage] = useState(1);
+    const itemsPerPage = 20; // Change this according to your needs
+
+    // Your data array
+    const data = [...images];
+
+    // Calculate the total number of pages
+    const totalPages = Math.ceil(data.length / itemsPerPage);
+
+    // Get the current page's data
+    const startIndex = (page - 1) * itemsPerPage;
+    const endIndex = page * itemsPerPage;
+    const currentPageData = data.slice(startIndex, endIndex);
+
+    // Handle page change
+    const handlePageChange = (event, value) => {
+        setPage(value);
+    };
   return (
     <Container 
         maxWidth={'xl'} 
@@ -58,7 +77,7 @@ const Gallery = () => {
     >
         <Typography sx={{marginBottom:theme.spacing(4)}} variant='h4' textAlign={"center"} fontWeight={700} color={theme.color.red}>{t('Thư viện ảnh')}</Typography>
         <Grid container spacing={2}>
-            {images.map((image, index) => (
+            {currentPageData.map((image, index) => (
                 <Grid key={index} item xs={6} sm={6} md={4} lg={3}>
                     <Card 
                         sx={{
@@ -95,6 +114,17 @@ const Gallery = () => {
                 </Grid>
             ))}
         </Grid>
+        <Box sx={{width:'100%', marginTop: theme.spacing(10), display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+            <Pagination
+                variant="outlined" 
+                color="primary"
+                count={totalPages}
+                page={page}
+                onChange={handlePageChange}
+                boundaryCount={1} 
+                siblingCount={1}
+            />
+        </Box>
         <Dialog 
             open={open} 
             onClose={()=>{
@@ -119,7 +149,7 @@ const Gallery = () => {
                         }}
                     >
                             <img
-                                src={images?.[currentId]?.url}
+                                src={currentPageData?.[currentId]?.url}
                                 alt="Fullscreen"
                                 style={{
                                     maxWidth: '100%',
@@ -133,7 +163,7 @@ const Gallery = () => {
                 <Box sx={{padding: theme.spacing(3),background: '#00000066',position:'absolute',left:0,right:0,bottom:0}}>
                     <Typography 
                         color={theme.color.white}
-                        >{images?.[currentId]?.description}</Typography>
+                        >{currentPageData?.[currentId]?.description}</Typography>
                 </Box>
                 <Box onClick={()=>{
                     setOpen(false)

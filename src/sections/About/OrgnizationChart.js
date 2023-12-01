@@ -503,9 +503,12 @@ const OrgnizationChart = () => {
   const {t} = useTranslation()
   const theme = useTheme()
   return (
-    <Container maxWidth='100%' sx={{marginTop:theme.spacing(7)}}>
+    <Container maxWidth='100%' sx={{
+      marginTop:theme.spacing(10),
+      marginBottom:theme.spacing(10),
+  }} >
       <Container maxWidth='xl'>
-        <Typography variant='h4' textAlign={"center"} fontWeight={700} color={theme.color.green1}>{t('Sơ đồ tổ chức')}</Typography>
+      <Typography sx={{marginBottom:theme.spacing(4)}} variant='h4' textAlign={"center"} fontWeight={700} color={theme.color.red}>{t('Sơ đồ tổ chức')}</Typography>
       </Container>
       <Box sx={{ height: '85vh', width: '100%', marginTop:'50px'}}>
         <ReactFlow

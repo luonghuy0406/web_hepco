@@ -5,6 +5,8 @@ import About from './About'
 import Chart from './Chart'
 import CompanyProfile from './CompanyProfile'
 import Gallery from './Gallery'
+import Mandates from './Mandates'
+import Achievement from './Achievement'
 
 export default function AboutContent({page}) {
   const {t} = useTranslation()
@@ -12,8 +14,12 @@ export default function AboutContent({page}) {
     return (
         <Chart/>
     )
+  }else if(page == t('chucnang')){
+    return <Mandates/>
   }else if(page == t('nangluc')){
     return <CompanyProfile/>
+  }else if(page == t('thanhtuu')){
+    return <Achievement/>
   }else if( page== t('thuvien')){
     return (
       <Gallery/>

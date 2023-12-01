@@ -83,7 +83,7 @@ export default function Header() {
         path:`/${t('gioithieu')}`,
         child:[
           {name: t('Về Hepco'), path:'',child:[]},
-          {name: t('Chức năng hoạt động'), path:`/${t('chucnang')}`,child:[]},
+          {name: t('Chức năng - Giấy phép'), path:`/${t('chucnang')}`,child:[]},
           {name: t('Sơ đồ tổ chức'), path:`/${t('sodo')}`,child:[]},
           {name: t('Thành tựu đạt được'), path:`/${t('thanhtuu')}`,child:[]},
           {name: t('Hồ sơ năng lực'), path:`/${t('nangluc')}`,child:[]},
