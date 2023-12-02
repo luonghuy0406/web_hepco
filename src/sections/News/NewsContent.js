@@ -1,5 +1,5 @@
 import { Autocomplete, Box, Card, CardMedia, Container, Grid, Pagination, TextField, Typography, styled, useTheme } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import LazyLoad from 'react-lazyload'
 import { Link } from 'react-router-dom'
@@ -119,6 +119,8 @@ export default function NewsContent({pageParam}) {
     const {t} = useTranslation()
     const [page, setPage] = useState(1);
     const [dataNews, setDataNews] = useState(news)
+    const [valueFilter, setValueFilter] = useState([])
+    const [keyword, setKeyword] = useState('')
     const newsNewest = news.slice(0, 5)
     const categories = {
         '1': {name: t('Hoạt động công ty'), value:'1'},
@@ -142,7 +144,8 @@ export default function NewsContent({pageParam}) {
     const handlePageChange = (event, value) => {
         setPage(value);
     };
-    const handleFilter = (value) =>{
+    const handleFilter = () =>{
+        let value = valueFilter.map((option)=> option.value)
         if(value?.length > 0){
             const newsFilter = news.filter((news)=>{
               return value.indexOf(news.group_id) > -1
@@ -152,7 +155,31 @@ export default function NewsContent({pageParam}) {
             setDataNews(news)
         }
         setPage(1)
-      }
+    }
+    const handleSearch = ()=>{
+        let value = valueFilter?.map((option)=> option.value)
+        let data = []
+        if(value?.length > 0){
+            const newsFilter = news.filter((news)=>{
+              return value.indexOf(news.group_id) > -1
+            })
+            data = newsFilter
+        }else{
+            data = news
+        }
+        if(keyword?.length > 0){
+            const newsSearch= data.filter((news)=>{
+              return slugify(news.title.toLowerCase()).indexOf(slugify(keyword.toLowerCase())) > -1
+            })
+            data = newsSearch
+        }
+        setDataNews(data)
+        setPage(1)
+    }
+
+    useEffect(()=>{
+        handleSearch()
+    },[keyword, valueFilter])
     return (
         <Container 
             maxWidth={'xl'} 
@@ -172,6 +199,7 @@ export default function NewsContent({pageParam}) {
                                         multiple
                                         options={Object.values(categories)}
                                         getOptionLabel={(option) => option.name}
+                                        value={valueFilter}
                                         renderInput={(params) => (
                                             <TextField
                                                 {...params}
@@ -180,14 +208,13 @@ export default function NewsContent({pageParam}) {
                                             />
                                         )}
                                         onChange={(e,value)=>{
-                                            value = value.map((option)=> option.value)
-                                            handleFilter(value)
+                                            setValueFilter(value)
                                         }}
                                     />
                                 </Grid>
                                 <Grid item xs={8}>
                                     <Typography fontWeight={500} sx={{marginBottom: theme.spacing(1)}}>{t("Tìm kiếm")}</Typography>
-                                    <TextField placeholder={t("Nhập từ khoá để tìm kiếm")} variant="outlined" fullWidth/>
+                                    <TextField placeholder={t("Nhập từ khoá để tìm kiếm")} variant="outlined" value={keyword} fullWidth onChange={(e)=>{setKeyword(e.target.value)}}/>
                                 </Grid>
                             </Grid>
                         </Box>
@@ -249,7 +276,7 @@ export default function NewsContent({pageParam}) {
                                                 <Grid item>
                                                     <BlogButton>
                                                     <Link to="#">
-                                                        <Typography fontWeight={700} lineHeight={'1.5rem'}>Read More</Typography>
+                                                        <Typography fontWeight={700} lineHeight={'1.5rem'}>{t("Read more")}</Typography>
                                                         <Typography sx={{display:'inline', pl: '5px'}} className='arrow-news'><FontAwesomeIcon icon="fa-solid fa-arrow-right-long" /></Typography>
                                                     </Link>
                                                     </BlogButton>

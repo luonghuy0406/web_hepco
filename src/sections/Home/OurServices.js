@@ -133,6 +133,7 @@ export function OurServices() {
 
 const ServiceItem = ({id}) =>{
     const theme = useTheme()
+    const {t} = useTranslation()
     return (
         <Grid key={id} item xs={12} sm={6} md={4} lg={4}>
             <Box sx={{padding:theme.spacing(5),backgroundColor: theme.color.white,boxShadow: '0 0 15px #eee', borderRadius:"10px", height:'100%'}} className={"our-service-wrap service-item"}>
@@ -175,7 +176,7 @@ const ServiceItem = ({id}) =>{
                     </Grid>
                     <BlogButton className='text-service'>
                         <Link to="#">
-                            <Typography fontWeight={700} lineHeight={'1.5rem'} >Read More</Typography>
+                            <Typography fontWeight={700} lineHeight={'1.5rem'} >{t("Read more")}</Typography>
                             <Typography sx={{display:'inline', pl: '5px'}} className='arrow-news'><FontAwesomeIcon icon="fa-solid fa-arrow-right-long" /></Typography>
                         </Link>
                     </BlogButton>

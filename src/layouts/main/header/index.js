@@ -94,7 +94,12 @@ export default function Header() {
         name: t('Dịch vụ'), 
         path:`/${t('dichvu')}`,
         child:[
-
+          {name: t('Vệ sinh, thu gom vận chuyển xử lý rác sinh hoạt'), path:'',child:[]},
+          {name: t('Vệ sinh, thu gom vận chuyển xử lý rác nguy hại'), path:`/${t('nguyhai')}`,child:[]},
+          {name: t('Cơ khí - Xây dựng'), path:`/${t('cokhi-xaydung')}`,child:[]},
+          {name: t('Thoát nước - Điện chiếu sáng'), path:`/${t('thoatnuoc-chieusang')}`,child:[]},
+          {name: t('Quản trang'), path:`/${t('quantrang')}`,child:[]},
+          {name: t('Kinh doanh khác'), path:`/${t('kinhdoanhkhac')}`,child:[]},
         ]
       },
       {

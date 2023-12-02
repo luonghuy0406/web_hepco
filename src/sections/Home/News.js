@@ -176,7 +176,7 @@ export const News = () => {
                                       <Grid item>
                                         <BlogButton>
                                           <Link to="#">
-                                            <Typography fontWeight={700} lineHeight={'1.5rem'}>Read More</Typography>
+                                            <Typography fontWeight={700} lineHeight={'1.5rem'}>{t("Read more")}</Typography>
                                             <Typography sx={{display:'inline', pl: '5px'}} className='arrow-news'><FontAwesomeIcon icon="fa-solid fa-arrow-right-long" /></Typography>
                                           </Link>
                                         </BlogButton>

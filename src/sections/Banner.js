@@ -41,7 +41,8 @@ export default function Banner({name, image,path,pages}) {
                         maxWidth:'100%',
                         background:theme.color.white,
                         borderRadius: '10px',
-                        boxShadow: '0 7px 7px 0 rgba(48,51,50,.09)'
+                        boxShadow: '0 7px 7px 0 rgba(48,51,50,.09)',
+                        display: {xs: 'none', md:'block'}
                     }}
                 >
                     <Stack

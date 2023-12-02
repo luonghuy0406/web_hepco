@@ -34,7 +34,7 @@ export default function Mandates() {
                         <Box sx={{padding: theme.spacing(2)}} >
                             <Typography sx={{marginBottom:theme.spacing(3)}} variant='h5' fontWeight={700} color={theme.color.green1}>{t('Lĩnh vực Vệ Sinh Môi Trường')}</Typography>
                             <Typography sx={{marginBottom:theme.spacing(2)}} fontWeight={500} textAlign={'justify'}>
-                                <b>Thu Gom và Vận Chuyển xử lý Chất Thải:</b> HEPCO có chức năng thu gom và vận chuyển và xử lý chất thải sinh hoạt từ các nguồn khác nhau như hộ gia đình, tổ chức, doanh nghiệp, khu công nghiệp, trường học, bệnh viện..; chất thải y tế, nguy hại, xây dựng..
+                                <b>Vệ sinh, thu gom và Vận Chuyển xử lý Chất Thải:</b> HEPCO có chức năng Vệ sinh, thu gom và vận chuyển và xử lý chất thải sinh hoạt từ các nguồn khác nhau như hộ gia đình, tổ chức, doanh nghiệp, khu công nghiệp, trường học, bệnh viện..; chất thải y tế, nguy hại, xây dựng..
                             </Typography>
                             <Typography sx={{marginBottom:theme.spacing(2)}} fontWeight={500} textAlign={'justify'}>
                                 <b>Vệ sinh công cộng:</b> Thực hiện các công tác vệ sinh đường phố, khu công nghiệp, khu đô thị..; tưới nước rửa đường; quét hút bụi..
@@ -56,7 +56,7 @@ export default function Mandates() {
                                 <b>Quản lý, duy Tu và bảo dưỡng hệ thống hạ tầng đô thị:</b> HEPCO hiện đang được chính quyền đô thị đặt hàng quản lý và duy tu bảo dưỡng hệ thống thoát nước, vỉa hè, lề đường, hệ thống điện chiếu sáng và trang trí đường phố.
                             </Typography>
                             <Typography sx={{marginBottom:theme.spacing(2)}} fontWeight={500} textAlign={'justify'}>
-                                <b>Quản Lý Nghĩa Trang Nhân dân:</b> Công ty được UBND tỉnh giao trách nhiệm nhiệm quản lý, duy tu nghĩa trang nhân dân. Hiện công ty đang thực hiện quản lý 03 Nghĩa trang…
+                                <b>Quản trang:</b> Công ty được UBND tỉnh giao trách nhiệm nhiệm quản lý, duy tu nghĩa trang nhân dân. Hiện công ty đang thực hiện quản lý 03 Nghĩa trang…
                             </Typography>
                         </Box>
                     </Grid>
@@ -103,7 +103,7 @@ export default function Mandates() {
                                 <b>Cho Thuê Nhà Vệ Sinh:</b> Hepco cung cấp các giải pháp cho việc thuê các nhà vệ sinh công cộng di động, giúp duy trì vệ sinh tại các sự kiện, công trình xây dựng hoặc các nơi công cộng.
                             </Typography>
                             <Typography sx={{marginBottom:theme.spacing(2)}} fontWeight={500} textAlign={'justify'}>
-                                <b>Bán và Cho Thuê Xuồng, Thiết Bị Thu Gom Rác, Thùng Rác:</b> Cung cấp xuồng, thiết bị thu gom rác và thùng rác chất lượng cao cho việc thu gom và vận chuyển chất thải từ các khu vực nước.
+                                <b>Bán và Cho Thuê Xuồng, Thiết Bị Vệ sinh, thu gom Rác, Thùng Rác:</b> Cung cấp xuồng, thiết bị Vệ sinh, thu gom rác và thùng rác chất lượng cao cho việc Vệ sinh, thu gom và vận chuyển chất thải từ các khu vực nước.
                             </Typography>
                             <Typography sx={{marginBottom:theme.spacing(2)}} fontWeight={500} textAlign={'justify'}>
                                 <b>Tưới Nước và Chở Xe Nước:</b> Hepco cung cấp dịch vụ tưới nước cho các khu vực cây xanh và cung cấp nước thông qua việc chở xe nước đến các địa điểm cần thiết, giúp đáp ứng nhu cầu nước của cộng đồng.
