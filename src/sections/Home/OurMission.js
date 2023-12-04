@@ -359,9 +359,9 @@ export function OurMission() {
                                         content: 'Chúng tôi tập trung vào việc phát triển và cung cấp các giải pháp tối ưu về vệ sinh môi trường và công trình đô thị, đáp ứng nhu cầu của khách hàng một cách hiệu quả nhất.'
                                     }
                                     
-                                ].map((value)=>{
+                                ].map((value,index)=>{
                                     return(
-                                        <CoreItem value={value}/>
+                                        <CoreItem value={value} key={'coreitem'+index}/>
                                     )
                                 })
                             }

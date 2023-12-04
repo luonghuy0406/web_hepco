@@ -119,10 +119,11 @@ export default function NewsContent({pageParam}) {
     const {t} = useTranslation()
     const [page, setPage] = useState(1);
     const [dataNews, setDataNews] = useState(news)
-    const [valueFilter, setValueFilter] = useState([])
+    const [valueFilter, setValueFilter] = useState([{name: t('Tất cả tin'), value:'0'}])
     const [keyword, setKeyword] = useState('')
     const newsNewest = news.slice(0, 5)
     const categories = {
+        '0': {name: t('Tất cả tin'), value:'0'},
         '1': {name: t('Hoạt động công ty'), value:'1'},
         '2': {name: t('Đảng Đoàn thể'), value:'2'},
         '3': {name: t('Pháp luật môi trường'), value:'3'},
@@ -144,22 +145,10 @@ export default function NewsContent({pageParam}) {
     const handlePageChange = (event, value) => {
         setPage(value);
     };
-    const handleFilter = () =>{
-        let value = valueFilter.map((option)=> option.value)
-        if(value?.length > 0){
-            const newsFilter = news.filter((news)=>{
-              return value.indexOf(news.group_id) > -1
-            })
-            setDataNews(newsFilter)
-        }else{
-            setDataNews(news)
-        }
-        setPage(1)
-    }
     const handleSearch = ()=>{
         let value = valueFilter?.map((option)=> option.value)
         let data = []
-        if(value?.length > 0){
+        if(value?.length > 0 && value.indexOf('0')===-1){
             const newsFilter = news.filter((news)=>{
               return value.indexOf(news.group_id) > -1
             })
@@ -190,7 +179,7 @@ export default function NewsContent({pageParam}) {
         >
             <Grid container spacing={2}>
                 <Grid item container spacing={3} xs={12} md={9}>
-                    <Grid item xs={12} spacing={2}>
+                    <Grid item xs={12}>
                         <Box sx={{padding: theme.spacing(2),backgroundColor: theme.color.white, boxShadow:'0 5px 20px rgba(34,34,34,.1)', borderRadius: '10px', height:'100%', width:'100%'}}>
                             <Grid container spacing={2}>
                                 <Grid item xs={4}>
@@ -199,10 +188,11 @@ export default function NewsContent({pageParam}) {
                                         multiple
                                         options={Object.values(categories)}
                                         getOptionLabel={(option) => option.name}
+                                        // defaultValue={[{name: t('Tất cả tin'), value:'0'}]}
                                         value={valueFilter}
                                         renderInput={(params) => (
                                             <TextField
-                                                {...params}
+                                                // {...params}
                                                 variant="outlined"
                                                 placeholder={t("Chọn loại tin tức để lọc")}
                                             />

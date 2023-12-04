@@ -55,9 +55,9 @@ export default function Banner({name, image,path,pages}) {
                         {
                             pages.map((page)=>{
                                 return(
-                                    <Stack>
+                                    <Stack key={page.path}>
                                         <Link to={`${path}${page.path}`}>
-                                            <Typography fontWeight={700} color={(home && !home.params.page && page.path == '') ||`/${current?.params?.page}` === page.path ? theme.color.red : theme.color.black}>
+                                            <Typography textAlign={"center"} fontWeight={700} color={(home && !home.params.page && page.path == '') ||`/${current?.params?.page}` === page.path ? theme.color.red : theme.color.black}>
                                                 {page.name}
                                             </Typography>
                                         </Link>

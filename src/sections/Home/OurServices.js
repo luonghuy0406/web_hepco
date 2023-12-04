@@ -116,9 +116,9 @@ export function OurServices() {
                     <Box>
                     <Grid container sx={{pt: theme.spacing(4), pl: theme.spacing(4)}} spacing={2}>
                         {
-                            [1,2,3,4,5,6].map((id)=>{
+                            [1,2,3,4,5,6].map((id,index)=>{
                                 return(
-                                    <ServiceItem id={id}/>
+                                    <ServiceItem id={id} key={'service-item'+index}/>
                                 )
                             })
                         }     

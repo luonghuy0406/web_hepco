@@ -11,6 +11,7 @@ import Contact from './pages/Contact';
 import News from './pages/News';
 import { useTranslation } from 'react-i18next';
 import NewsItem from './pages/NewsItem';
+import ShareholderItem from './pages/ShareHolderItems';
 
 export default function Router() {
   const {t} = useTranslation()
@@ -38,6 +39,7 @@ export default function Router() {
         { path: t('tintuc'), element: <News /> },
         { path: `${t('tintuc')}/:threadId`, element: <NewsItem/> },
         { path: t('codong'), element: <Shareholder /> },
+        { path: `${t('codong')}/:threadId`, element: <ShareholderItem/> },
         { path: t('cauhoi'), element: <Question /> },
         { path: t('lienhe'), element: <Contact /> },
         { path: '404', element: <Navigate to="/" /> },

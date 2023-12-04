@@ -61,7 +61,7 @@ export function BannerSlide({executeScroll}){
       >
         {images.slice(0, 5).map((image, index) => {
           return (
-            <LazyLoad height={200} offset={100}>
+            <LazyLoad height={200} offset={100} key={'banner-slide'+index}>
               <Box className='banner-slide-image' sx={{ 
                   width: "100%", 
                   height: {xs: '300px', sm: '400px', md:'550px', lg:'calc( 100vh - 10px )'}, 

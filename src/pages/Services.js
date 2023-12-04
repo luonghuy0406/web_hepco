@@ -4,7 +4,7 @@ import Banner from '../sections/Banner'
 import { Box } from '@mui/material'
 import ServicesContent from '../sections/Services/ServicesContent'
 
-export default function Services() {
+export default function Services({page}) {
   const {t} = useTranslation()
   const pages = [
     {name: t('Vệ sinh, thu gom vận chuyển xử lý rác sinh hoạt'), path:'',child:[]},
@@ -18,7 +18,7 @@ export default function Services() {
   return (
     <>
       <Banner name={t("Dịch vụ")} image={'https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/inner3.jpg'} path={`/${t('dichvu')}`} pages={pages}/>
-      <ServicesContent/>
+      <ServicesContent page={page}/>
     </>
   )
 }

@@ -5,27 +5,25 @@ import LazyLoad from 'react-lazyload'
 import { Link } from 'react-router-dom'
 import Banner from '../sections/Banner'
 import { useParams } from 'react-router-dom';
-import { news } from '../sections/News/NewsContent';
 import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 import CategoryIcon from '@mui/icons-material/Category';
 import PersonIcon from '@mui/icons-material/Person';
+import { shareholder } from '../sections/Shareholder/ShareholderContent'
 
-export default function NewsItem() {
+export default function ShareholderItem() {
   const {t} = useTranslation()
   const theme = useTheme()
   const { threadId } = useParams();
   const lastDotIndex = threadId.lastIndexOf('.');
   const idPart = threadId.substring(lastDotIndex + 1);
-  const newsNewest = news.slice(0, 3)
-  const data = news.filter((n)=> n.id == idPart)
-  const newsRelated = news.filter((n)=> n.group_id == data[0]?.group_id && n.id != data[0]?.id ).slice(0, 3)
+  const shareholderNewest = shareholder.slice(0, 3)
+  const data = shareholder.filter((n)=> n.id == idPart)
+  const shareholderRelated = shareholder.filter((n)=> n.group_id == data[0]?.group_id && n.id != data[0]?.id ).slice(0, 3)
   const categories = {
-    '0': {name: t('Tất cả tin'), value:'0'},
-    '1': {name: t('Hoạt động công ty'), value:'1'},
-    '2': {name: t('Đảng Đoàn thể'), value:'2'},
-    '3': {name: t('Pháp luật môi trường'), value:'3'},
-    '4': {name: t('Tin tức khác'), value:'4'},
-}
+        '0': {name: t('Tất cả tin'), value:'0'},
+        '1': {name: t('Thông báo'), value:'1'},
+        '2': {name: t('Báo cáo'), value:'2'},
+    }
   window.scrollTo(0, 0)
   
   return (
@@ -88,14 +86,13 @@ export default function NewsItem() {
                   <Grid item container xs={12} md={3}>
                       <Box sx={{padding: theme.spacing(3),backgroundColor: theme.color.white, boxShadow:'0 5px 20px rgba(34,34,34,.1)', borderRadius: '10px', width:'100%', height: 'fit-content'}}>
                           
-                          
                       <Typography sx={{marginBottom:theme.spacing(3), marginTop:theme.spacing(3)}} variant='h5' textAlign={"center"} fontWeight={700} color={theme.color.red}>{t('Tin liên quan')}</Typography>
                           {
-                              newsRelated.map((related)=>{
+                              shareholderRelated.map((related)=>{
                                   const normalizedTitle = related.title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
                                   return(
-                                      <Box key={'news-related'+related.id} sx={{paddingBottom: theme.spacing(3)}}>
-                                          <Link to={`/${t('tintuc')}/${normalizedTitle}.${related.id}`}>
+                                      <Box key={'shareholder-related'+related.id} sx={{paddingBottom: theme.spacing(3)}}>
+                                          <Link to={`/${t('codong')}/${normalizedTitle}.${related.id}`}>
                                               <Grid container spacing={1}>
                                                   <Grid item xs={3}>
                                                       <Card 
@@ -135,14 +132,15 @@ export default function NewsItem() {
                           }
                           <br/>
                           <Divider/>
+
                           <Typography sx={{marginBottom:theme.spacing(3)}} variant='h5' textAlign={"center"} fontWeight={700} color={theme.color.green1}>{t('Tin tức mới nhất')}</Typography>
                           {
-                              newsNewest.map((newest)=>{
+                              shareholderNewest.map((newest)=>{
                                   const normalizedTitle = newest.title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
 
                                   return(
-                                      <Box key={'news-newest'+newest.id} sx={{paddingBottom: theme.spacing(3)}}>
-                                          <Link to={`/${t('tintuc')}/${normalizedTitle}.${newest.id}`}>
+                                      <Box key={'shareholder-newest'+newest.id} sx={{paddingBottom: theme.spacing(3)}}>
+                                          <Link to={`/${t('codong')}/${normalizedTitle}.${newest.id}`}>
                                               <Grid container spacing={1}>
                                                   <Grid item xs={3}>
                                                       <Card 
