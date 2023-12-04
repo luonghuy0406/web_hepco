@@ -26,7 +26,7 @@ const Home = () => {
         <News/>
         <Box 
           sx={{
-            backgroundImage: `url(./assets/images/bg1.png)`,
+            backgroundImage: `url(/assets/images/bg1.png)`,
             backgroundRepeat: 'no-repeat',
             backgroundPositionX: 'right',
             backgroundSize: '70%',

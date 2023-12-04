@@ -124,7 +124,7 @@ export const News = () => {
                           <Link to="#">
                             <FeaturedNewstWrap>
                                 <LazyLoad height={200} offset={100}>
-                                  <FeaturedNewstImage image={"./assets/images/1.jpg"}>
+                                  <FeaturedNewstImage image={"/assets/images/1.jpg"}>
                                     <Box
                                       sx={{
                                         // width: '20%',

@@ -166,7 +166,7 @@ export default function Header() {
                   justifyContent={"center"}
                 >
                   <Link to={'/'}>
-                      <img src={'./assets/logo2.png'} alt='hepco logo' width={55} height={55} />
+                      <img src={'/assets/logo2.png'} alt='hepco logo' width={55} height={55} />
                   </Link>
                 </Stack>
                 <Stack
@@ -203,7 +203,7 @@ export default function Header() {
                       <Box sx={{zIndex:'1',position:'relative'}}>
                         <Grid container alignItems={"center"}>
                           <Grid item xs={0} lg={3}  sx={{display: { xs: 'none',sm: 'none', md:'none', lg: 'flex' }, marginBottom:'-5px'}}>
-                          <img src={'./assets/icons/ic_phone.svg'} alt='icon phone' width={35} />
+                          <img src={'/assets/icons/ic_phone.svg'} alt='icon phone' width={35} />
                           </Grid>
                           <Grid item xs={0} lg={6}  sx={{display: { xs: 'none',sm: 'none', md:'none', lg: 'flex' }}} container>
                               <Grid item xs={12}>
@@ -252,7 +252,7 @@ export default function Header() {
               justifyContent={"center"}
             >
               <Link to={'/'}>
-                  <img src={'./assets/logo1.png'} alt='hepco logo' width={60} height={60} />
+                  <img src={'/assets/logo1.png'} alt='hepco logo' width={60} height={60} />
               </Link>
             </Stack>
             <Stack
@@ -290,7 +290,7 @@ export default function Header() {
                   <Box sx={{zIndex:'1',position:'relative'}}>
                     <Grid container alignItems={"center"}>
                       <Grid item xs={0} lg={3}  sx={{display: { xs: 'none',sm: 'none', md:'none', lg: 'flex' }, marginBottom:'-5px'}}>
-                        <img src={'./assets/icons/ic_phone_white.svg'} alt='icon phone' width={35} />
+                        <img src={'/assets/icons/ic_phone_white.svg'} alt='icon phone' width={35} />
                       </Grid>
                       <Grid item xs={0} lg={6}  sx={{display: { xs: 'none',sm: 'none', md:'none', lg: 'flex' }}} container>
                           <Grid item xs={12}>

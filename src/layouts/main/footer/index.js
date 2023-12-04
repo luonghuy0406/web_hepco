@@ -80,7 +80,7 @@ export default function Footer(){
                     <Grid item xs={12} md={4} px={2} mb={3} container spacing={2}>
                         <Grid item xs={12}>
                             <Box sx={{display:'flex', alignItems:'center'}}>
-                                <img src={'./assets/logo2.png'} alt='hepco logo' width={85} height={85} />
+                                <img src={'/assets/logo2.png'} alt='hepco logo' width={85} height={85} />
                                 <Typography variant="h5" pl={3} color={theme.color.white} fontWeight={"bold"}>HEPCO</Typography>
                             </Box>
                         </Grid>
@@ -113,9 +113,9 @@ export default function Footer(){
                         <Grid item xs={12}><Typography fontWeight={500} color={theme.color.white}>info@hepco.com.vn</Typography></Grid>
 
                         <Grid item xs={12} container  spacing={1}>
-                            <Grid item><Image src='./assets/icons/ic_zalo.svg' alt="zalo icon" width="25" height="25"/></Grid>
-                            <Grid item><Image src='./assets/icons/ic_facebook.svg' alt="zalo icon" width="25" height="25"/></Grid>
-                            <Grid item><Image src='./assets/icons/ic_youtube.svg' alt="zalo icon" width="25" height="25"/></Grid>
+                            <Grid item><Image src='/assets/icons/ic_zalo.svg' alt="zalo icon" width="25" height="25"/></Grid>
+                            <Grid item><Image src='/assets/icons/ic_facebook.svg' alt="zalo icon" width="25" height="25"/></Grid>
+                            <Grid item><Image src='/assets/icons/ic_youtube.svg' alt="zalo icon" width="25" height="25"/></Grid>
                         </Grid>
                     </Grid>
                     <Grid item xs={12} md={4} px={2} mb={3} container spacing={2}>
@@ -154,7 +154,7 @@ export default function Footer(){
                     </Grid>
                     <Grid item xs={4}>
                         <Box onClick={()=>{window.open('http://flyaz.vn/', '_blank').focus()}} sx={{display:'flex',alignItems:'center', justifyContent:'center', cursor:'pointer'}}>
-                            {t('Thiết kế và xây dựng bởi')} <img style={{paddingLeft:'5px'}} src='./assets/flyaz.png' alt='logo flyaz' width={'auto'} height={'20'}/>
+                            {t('Thiết kế và xây dựng bởi')} <img style={{paddingLeft:'5px'}} src='/assets/flyaz.png' alt='logo flyaz' width={'auto'} height={'20'}/>
                         </Box>
                     </Grid>
                     <Grid item xs={4}>

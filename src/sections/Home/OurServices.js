@@ -90,7 +90,7 @@ export function OurServices() {
   return (
     <Box
     sx={{
-        backgroundImage: `url(./assets/images/bg2.png)`,
+        backgroundImage: `url(/assets/images/bg2.png)`,
         backgroundRepeat: `no-repeat`,
     }}
     >
@@ -99,7 +99,7 @@ export function OurServices() {
                 <Grid ref={serviceImageRef} item xs={0} md ={0} lg={4} sx={{p:theme.spacing(3), display:{xs: 'none', md:'none', lg:'block'}}}>
                     <Box sx={{
                         p:theme.spacing(6),
-                        backgroundImage:"url('./assets/images/service.jpg') !important",
+                        backgroundImage:"url('/assets/images/service.jpg') !important",
                         backgroundSize:"cover",
                         backgroundPosition:"center",
                         backgroundRepeat:"no-repeat",
@@ -140,7 +140,7 @@ const ServiceItem = ({id}) =>{
                 <div
                     className="service__overlay bg-img"
                     style={{
-                        backgroundImage: 'url("./assets/images/mission2.jpg")',
+                        backgroundImage: 'url("/assets/images/mission2.jpg")',
                         backgroundSize: "cover",
                         backgroundPosition: "center",
                         borderRadius: "10px"

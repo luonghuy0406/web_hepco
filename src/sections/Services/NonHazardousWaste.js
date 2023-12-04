@@ -9,7 +9,7 @@ export default function NonHazardousWaste() {
         <Container 
             maxWidth={'100%'} 
             sx={{
-                backgroundImage: `url(./assets/images/bg2.png)`,
+                backgroundImage: `url(/assets/images/bg2.png)`,
                 backgroundRepeat: `no-repeat`,
                 backgroundPosition: 'left bottom'
             }}

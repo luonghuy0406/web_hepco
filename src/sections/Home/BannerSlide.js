@@ -9,11 +9,11 @@ import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { useTranslation } from "react-i18next";
 const images = [
-  "./assets/images/banner1.jpeg",
-  "./assets/images/banner2.jpeg",
-  "./assets/images/banner3.jpeg",
-  "./assets/images/banner4.jpeg",
-  "./assets/images/banner5.jpeg",
+  "/assets/images/banner1.jpeg",
+  "/assets/images/banner2.jpeg",
+  "/assets/images/banner3.jpeg",
+  "/assets/images/banner4.jpeg",
+  "/assets/images/banner5.jpeg",
 ];
 
 export function BannerSlide({executeScroll}){

@@ -109,7 +109,7 @@ export default function Contact() {
                     justifyContent:"center"
                   }}
                 >
-                  <img src={'./assets/icons/ic_mobile.svg'} alt='icon phone' width={35} />
+                  <img src={'/assets/icons/ic_mobile.svg'} alt='icon phone' width={35} />
                 </Box>
                 <Typography variant="h5" fontWeight={700} color={theme.color.green1} padding={2}>Gọi chúng tôi</Typography>
                 <Typography fontWeight={500}>(0234) 3848242</Typography>
@@ -129,7 +129,7 @@ export default function Contact() {
                     justifyContent:"center"
                   }}
                 >
-                  <img src={'./assets/icons/ic_email.svg'} alt='icon phone' width={35} />
+                  <img src={'/assets/icons/ic_email.svg'} alt='icon phone' width={35} />
                 </Box>
                 <Typography variant="h5" fontWeight={700} color={theme.color.green1} padding={2}>{t("Gửi email")}</Typography>
                 <Typography fontWeight={500}>info@hepco.com.vn</Typography>
@@ -148,7 +148,7 @@ export default function Contact() {
                     justifyContent:"center"
                   }}
                 >
-                  <img src={'./assets/icons/ic_open.svg'} alt='icon phone' width={35} />
+                  <img src={'/assets/icons/ic_open.svg'} alt='icon phone' width={35} />
                 </Box>
                 <Typography variant="h5" fontWeight={700} color={theme.color.green1} padding={2}>Giờ mở cửa</Typography>
                 <Typography fontWeight={500}>T2-T6: 7h - 11h30 và 13h - 17h</Typography>
@@ -168,7 +168,7 @@ export default function Contact() {
                     justifyContent:"center"
                   }}
                 >
-                  <img src={'./assets/icons/ic_address.svg'} alt='icon phone' width={35} />
+                  <img src={'/assets/icons/ic_address.svg'} alt='icon phone' width={35} />
                 </Box>
                 <Typography variant="h5" fontWeight={700} color={theme.color.green1} padding={2}>Địa chỉ</Typography>
                 <Typography fontWeight={500}>46 Trần Phú, Phường Phước Vĩnh</Typography>

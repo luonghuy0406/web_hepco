@@ -288,7 +288,7 @@ export function OurMission() {
                             <Box sx={{
                                 width:"100%", 
                                 height:"100%", 
-                                backgroundImage:`url('./assets/images/mission2.jpg')`,
+                                backgroundImage:`url('/assets/images/mission2.jpg')`,
                                 backgroundPosition:'center',
                                 backgroundSize:'cover',
                                 backgroundRepeat:'no-repeat', 
@@ -299,7 +299,7 @@ export function OurMission() {
                             <Box sx={{
                                 width:"100%", 
                                 height:{xs: "100%", md: "80%"}, 
-                                backgroundImage:`url('./assets/images/mission.jpg')`,
+                                backgroundImage:`url('/assets/images/mission.jpg')`,
                                 backgroundPosition:'center',
                                 backgroundSize:'cover',
                                 backgroundRepeat:'no-repeat',
@@ -429,7 +429,7 @@ const CoreItem = ({value})=>{
                 >
                     <ServicesIcon className='core-value-image'>
                         <IconImageCore
-                            src={"./assets/icons/ic_"+value.key+".svg"}
+                            src={"/assets/icons/ic_"+value.key+".svg"}
                             alt="Rs-service"
                         />
                     </ServicesIcon>
