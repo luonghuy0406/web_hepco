@@ -145,7 +145,7 @@ export default function ShareholderContent({pageParam}) {
                     <Grid item xs={12}>
                         <Box sx={{padding: theme.spacing(2),backgroundColor: theme.color.white, boxShadow:'0 5px 20px rgba(34,34,34,.1)', borderRadius: '10px', height:'100%', width:'100%'}}>
                             <Grid container spacing={2}>
-                                <Grid item xs={4}>
+                                <Grid item xs={12} md={4}>
                                     <Typography fontWeight={500} sx={{marginBottom: theme.spacing(1)}}>{t("Loại tin tức")}</Typography>
                                     <Autocomplete
                                         multiple
@@ -164,7 +164,7 @@ export default function ShareholderContent({pageParam}) {
                                         }}
                                     />
                                 </Grid>
-                                <Grid item xs={8}>
+                                <Grid item xs={12} md={8}>
                                     <Typography fontWeight={500} sx={{marginBottom: theme.spacing(1)}}>{t("Tìm kiếm")}</Typography>
                                     <TextField placeholder={t("Nhập từ khoá để tìm kiếm")} variant="outlined" value={keyword} fullWidth onChange={(e)=>{setKeyword(e.target.value)}}/>
                                 </Grid>
