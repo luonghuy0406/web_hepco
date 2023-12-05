@@ -86,7 +86,7 @@ export default function ShareholderItem() {
                   <Grid item container xs={12} md={3}>
                       <Box sx={{padding: theme.spacing(3),backgroundColor: theme.color.white, boxShadow:'0 5px 20px rgba(34,34,34,.1)', borderRadius: '10px', width:'100%', height: 'fit-content'}}>
                           
-                      <Typography sx={{marginBottom:theme.spacing(3), marginTop:theme.spacing(3)}} variant='h5' textAlign={"center"} fontWeight={700} color={theme.color.red}>{t('Tin liên quan')}</Typography>
+                      <Typography sx={{marginBottom:theme.spacing(3)}} variant='h5' textAlign={"center"} fontWeight={700} color={theme.color.red}>{t('Tin liên quan')}</Typography>
                           {
                               shareholderRelated.map((related)=>{
                                   const normalizedTitle = related.title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
@@ -133,7 +133,7 @@ export default function ShareholderItem() {
                           <br/>
                           <Divider/>
 
-                          <Typography sx={{marginBottom:theme.spacing(3)}} variant='h5' textAlign={"center"} fontWeight={700} color={theme.color.green1}>{t('Tin tức mới nhất')}</Typography>
+                          <Typography sx={{marginBottom:theme.spacing(3), marginTop:theme.spacing(3)}} variant='h5' textAlign={"center"} fontWeight={700} color={theme.color.green1}>{t('Tin tức mới nhất')}</Typography>
                           {
                               shareholderNewest.map((newest)=>{
                                   const normalizedTitle = newest.title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');

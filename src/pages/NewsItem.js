@@ -89,7 +89,7 @@ export default function NewsItem() {
                       <Box sx={{padding: theme.spacing(3),backgroundColor: theme.color.white, boxShadow:'0 5px 20px rgba(34,34,34,.1)', borderRadius: '10px', width:'100%', height: 'fit-content'}}>
                           
                           
-                      <Typography sx={{marginBottom:theme.spacing(3), marginTop:theme.spacing(3)}} variant='h5' textAlign={"center"} fontWeight={700} color={theme.color.red}>{t('Tin liên quan')}</Typography>
+                      <Typography sx={{marginBottom:theme.spacing(3)}} variant='h5' textAlign={"center"} fontWeight={700} color={theme.color.red}>{t('Tin liên quan')}</Typography>
                           {
                               newsRelated.map((related)=>{
                                   const normalizedTitle = related.title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
@@ -135,7 +135,7 @@ export default function NewsItem() {
                           }
                           <br/>
                           <Divider/>
-                          <Typography sx={{marginBottom:theme.spacing(3)}} variant='h5' textAlign={"center"} fontWeight={700} color={theme.color.green1}>{t('Tin tức mới nhất')}</Typography>
+                          <Typography sx={{marginBottom:theme.spacing(3), marginTop:theme.spacing(3)}} variant='h5' textAlign={"center"} fontWeight={700} color={theme.color.green1}>{t('Tin tức mới nhất')}</Typography>
                           {
                               newsNewest.map((newest)=>{
                                   const normalizedTitle = newest.title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
