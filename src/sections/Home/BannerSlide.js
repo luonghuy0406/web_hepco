@@ -77,16 +77,16 @@ export function BannerSlide({executeScroll}){
                       index == 0 ? 
                       <Grid item xs={12} container sx={{height:'100%'}} alignItems={"start"} justifyContent={"center"} direction={"column"}>
                         <Typography variant="h2" p={30} textAlign="center" color={theme.color.white} fontWeight={"700"} className="animate__animated animate__fadeInDown">
-                          CÔNG TY CỔ PHẦN ĐÔ THỊ VÀ MÔI TRƯỜNG CÔNG CỘNG HUẾ
+                          CÔNG TY CỔ PHẦN MÔI TRƯỜNG VÀ CÔNG TRÌNH ĐÔ THỊ HUẾ
                         </Typography>
                       </Grid>
                       :
-                      <Grid item xs={7} container sx={{height:'100%'}} alignItems={"start"} justifyContent={"center"} direction={"column"}>
-                        <Typography variant="h3" pl={5} color={theme.color.white} fontWeight={"700"} className="animate__animated animate__fadeInDown">
-                          Find Professional
+                      <Grid item xs={12} container sx={{height:'100%'}} alignItems={"center"} justifyContent={"center"} direction={"column"}>
+                        <Typography variant="h3" textAlign={"center"} pl={5} color={theme.color.white} fontWeight={"700"} className="animate__animated animate__fadeInDown">
+                        CHUNG TAY VÌ THỪA THIÊN HUẾ 
                         </Typography>
-                        <Typography variant="h1" pl={5} color={theme.color.white} fontWeight={"700"} className="animate__animated animate__zoomIn">
-                          Hepco Huế
+                        <Typography variant="h1" textAlign={"center"} pl={5} color={theme.color.red} fontFamily={"'Great Vibes', cursive"} fontWeight={"700"} className="animate__animated animate__zoomIn">
+                        Xanh - Sạch - Sáng
                         </Typography>
                       </Grid>
                     }

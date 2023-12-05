@@ -9,10 +9,10 @@ const CustomizedButton = styled(Button)(({ theme }) => ({
   fontWeight:"700",
   fontSize:"16px",
   padding:theme.spacing(1),
+  width:"100%", 
   // Set text color
   color: theme.color.white,
   borderColor: theme.color.green1,
-
   // Set border styles
   borderRadius: '4px',
 
@@ -155,8 +155,8 @@ export default function Question() {
                     sx={{backgroundColor:"#FFF"}}
                   />
                 </Grid>
-                <Grid item xs={12}>
-                  <CustomizedButton sx={{width:"100%"}} variant="contained">{t("Gửi")}</CustomizedButton>
+                <Grid item xs={12} sx={{padding: '32px 0'}}>
+                  <CustomizedButton variant="contained">{t("Gửi")}</CustomizedButton>
                 </Grid>  
               </Grid>
             </Box>

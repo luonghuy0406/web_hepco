@@ -56,20 +56,22 @@ export default function NewsItem() {
                   
                   <Grid item container xs={12} md={9} sx={{height:'fit-content'}}>
                     <Grid item container spacing={3} xs={12} sx={{height:'fit-content'}}>
-                        <Grid item xs={1} sx={{display:'flex',justifyContent:'center'}}>
+                        {/* <Grid item xs={1} sx={{display:'flex',justifyContent:'center'}}>
                           <Box sx={{width:'5px',height:'100%', backgroundColor: theme.color.green1,borderRadius:'5px'}}/>
-                        </Grid>
-                        <Grid item xs={11}>
-                            <Typography variant="h4" fontWeight={700}>{data[0]?.title}</Typography>
-                            <Box
-                              sx={{display: 'flex',alignItems:'center', padding:theme.spacing(1)}}
-                            >
-                                <Typography fontWeight={700}><PersonIcon sx={{color:theme.color.green1}}/></Typography>
-                                <Typography fontWeight={700} sx={{margin: '0px 25px 0px 10px'}} color={theme.color.gray1}>{data[0]?.author}</Typography>
-                                <Typography fontWeight={700}><AccessTimeFilledIcon sx={{color:theme.color.green1}}/></Typography>
-                                <Typography fontWeight={700} sx={{margin: '0px 25px 0px 10px'}} color={theme.color.gray1}>{data[0]?.date}</Typography>
-                                <Typography fontWeight={700}><CategoryIcon sx={{color:theme.color.green1}}/></Typography>
-                                <Typography fontWeight={700} sx={{margin: '0px 25px 0px 10px'}} color={theme.color.gray1}>{categories?.[data[0]?.group_id]?.name}</Typography>
+                        </Grid> */}
+                        <Grid item xs={12}>
+                            <Box sx={{borderLeft: `5px solid ${theme.color.green1}`, paddingLeft:theme.spacing(2)}}>
+                                <Typography variant="h4" fontWeight={700}>{data[0]?.title}</Typography>
+                                <Box
+                                    sx={{display: 'flex',alignItems:'center', paddingTop:theme.spacing(1)}}
+                                >
+                                    <Typography fontWeight={700}><PersonIcon sx={{color:theme.color.green1}}/></Typography>
+                                    <Typography fontWeight={700} sx={{margin: '0px 25px 0px 10px'}} color={theme.color.gray1}>{data[0]?.author}</Typography>
+                                    <Typography fontWeight={700}><AccessTimeFilledIcon sx={{color:theme.color.green1}}/></Typography>
+                                    <Typography fontWeight={700} sx={{margin: '0px 25px 0px 10px'}} color={theme.color.gray1}>{data[0]?.date}</Typography>
+                                    <Typography fontWeight={700}><CategoryIcon sx={{color:theme.color.green1}}/></Typography>
+                                    <Typography fontWeight={700} sx={{margin: '0px 25px 0px 10px'}} color={theme.color.gray1}>{categories?.[data[0]?.group_id]?.name}</Typography>
+                                </Box>
                             </Box>
                         </Grid>
                           {/* <Box sx={{padding:theme.spacing(3)}}>

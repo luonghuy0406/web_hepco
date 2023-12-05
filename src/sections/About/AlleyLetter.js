@@ -45,7 +45,7 @@ export default function AlleyLetter() {
                         </Typography>
                         <br/>
                         <Typography textAlign={'justify'} fontWeight={500}>
-                            Chúng tôi trân trọng gửi lời chào trân trọng và sự biết ơn sâu sắc đến Quý khách hàng đã tin tưởng và ủng hộ Công ty Cổ Phần Môi trường và Công trình đô thị Huế (HEPCO) trong suốt thời gian qua. Với bề dày hơn 50 năm kinh nghiệm trong lĩnh vực vệ sinh môi trường và công trình đô thị, chúng tôi cam kết tiếp tục nỗ lực không ngừng để đáp ứng mọi nhu cầu của Quý khách hàng.
+                            Chúng tôi trân trọng gửi lời chào trân trọng và sự biết ơn sâu sắc đến Quý khách hàng đã tin tưởng và ủng hộ CÔNG TY CỔ PHẦN MÔI TRƯỜNG VÀ CÔNG TRÌNH ĐÔ THỊ HUẾ (HEPCO) trong suốt thời gian qua. Với bề dày hơn 50 năm kinh nghiệm trong lĩnh vực vệ sinh môi trường và công trình đô thị, chúng tôi cam kết tiếp tục nỗ lực không ngừng để đáp ứng mọi nhu cầu của Quý khách hàng.
                             <br/><br/>
                             HEPCO không chỉ là một đối tác được chính quyền đô thị địa phương tín nhiệm giao nhiệm vụ, đặt hàng và thực hiện đấu thầu trong suốt chặng đường qua mà còn là đối tác đáng tin cậy của các tổ chức, doanh nghiệp và cá nhân trong lĩnh vực thu gom, vận chuyển, và xử lý chất thải trên địa bàn tỉnh Thừa Thiên Huế. Chúng tôi tự hào với đội ngũ cán bộ, nhân viên và công nhân giỏi lành nghề, cùng với trang thiết bị, phương tiện và công nghệ hiện đại mà chúng tôi sở hữu. Điều này giúp chúng tôi đảm bảo chất lượng và hiệu quả cao trong mọi dịch vụ chúng tôi cung cấp.
                             <br/><br/>

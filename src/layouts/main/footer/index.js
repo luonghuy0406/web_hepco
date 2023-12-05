@@ -100,7 +100,7 @@ export default function Footer(){
                                 {t('Thông tin công ty:')}
                             </Typography>
                         </Grid>
-                        <Grid item xs={12}><Typography fontWeight={600} color={theme.color.white}>Công ty cổ phần đô thị và môi trường công cộng Huế</Typography></Grid>
+                        <Grid item xs={12}><Typography fontWeight={600} color={theme.color.white}>CÔNG TY CỔ PHẦN MÔI TRƯỜNG VÀ CÔNG TRÌNH ĐÔ THỊ HUẾ</Typography></Grid>
                         {/* <Grid item xs={3}><Typography fontWeight={600} color={theme.color.white}>Địa chỉ:</Typography></Grid> */}
                         <Grid item xs={12}><Typography fontWeight={500} color={theme.color.white}>46 Trần Phú, Phường Phước Vĩnh, TP. Huế</Typography></Grid>
                         {/* <Grid item xs={3}><Typography fontWeight={600} color={theme.color.white}>Điện thoại:</Typography></Grid> */}
@@ -158,7 +158,7 @@ export default function Footer(){
                         </Box>
                     </Grid>
                     <Grid item xs={4}>
-                        <Typography fontSize='14px' textAlign={"right"} color={theme.color.white}>{t('Copyright 2023 © Công ty Cổ phần Môi trường và Công trình Đô thị Huế - HEPCO')}</Typography>
+                        <Typography fontSize='14px' textAlign={"right"} color={theme.color.white}>{t('Copyright 2023 © CÔNG TY CỔ PHẦN MÔI TRƯỜNG VÀ CÔNG TRÌNH ĐÔ THỊ HUẾ - HEPCO')}</Typography>
                     </Grid>
                 </Grid>
             </Container>
