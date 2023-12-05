@@ -68,10 +68,18 @@ const BlogButton = styled(Box)(({ theme }) => ({
     },
   }));
 export function OurServices() {
-  const {t} = useTranslation()
-  const theme = useTheme()
-  const serviceImageRef = useRef(null)
-  const serviceContentRef = useRef(null)
+    const {t} = useTranslation()
+    const theme = useTheme()
+    const serviceImageRef = useRef(null)
+    const serviceContentRef = useRef(null)
+    const serviceData = [
+        {path:`/${t('dichvu')}`, icon: 'https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/ff.png',name: t('Thu gom vận chuyển xử lý rác sinh hoạt'), content: 'Hepco tự hào là đơn vị đạt tiêu chuẩn chất lượng ISO 9001:2015 trong lĩnh vực thu gom, vận chuyển và xử lý rác thải, hiện là đơn vị chủ lực cung cấp dịch vụ thu gom, vận chuyển, xử lý rác thải sinh hoạt tại các chủ nguồn thải, hộ gia đình, khu dân cư, trung tâm thương mại, cơ quan, trường học, doanh nghiệp, khu công nghiệp trên địa bàn thành phố Huế và các Huyện Thị xã trên địa  bàn tỉnh Thừa Thiên Huế. ', image: '/assets/images/mission2.jpg'},
+        {path:`/${t('dichvu')}/${t('nguyhai')}`, icon: 'https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/ff.png',name: t('Thu gom vận chuyển xử lý rác nguy hại'), content: 'Hepco là đơn vị được Bộ tài nguyên và Môi trường cấp giấy phép để thực hiện hoạt động thu gom, vận chuyển và xử lý chất thải y tế, nguy hại tại khu vực miền Trung Tây nguyên. Hiện chúng tôi đang xử lý chất thải y tế cho các bệnh viện lớn trên địa bàn tỉnh Thừa Thiên Huế: Bệnh viện TW Huế, Bệnh viện Đại Học Y…và chất thải y tế phát sinh từ hơn 300 cơ sở y tế hoạt động khám chữa bệnh, xét nghiệm, phòng khám bệnh.. ', image: '/assets/images/mission2.jpg'},
+        {path:`/${t('dichvu')}/${t('cokhi-xaydung')}`, icon: 'https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/ff.png',name: t('Xây dựng công trình hạ tầng kỹ thuật đô thị'), content: '1.	SỬA CHỮA CƠ KHÍ: Trung tâm cơ khí Hepco có năng lực sửa chữa phương tiện máy móc thiết bị phục vụ cho hoạt động sản xuất kinh doanh đồng thời cung cấp ra thị trường các loại: xe thu gom rác, xuồng chưa rác..Hepco đã không ngừng đào tạo, bồi dưỡng đội ngũ công nhân cơ khí chất lượng cao thành thạo tay nghề nhằm chủ động trong hoạt động sản xuất kinh doanh đồng thời đảm bảo đáp ứng mọi nhu cầu của khách hàng.', image: '/assets/images/mission2.jpg'},
+        {path:`/${t('dichvu')}/${t('thoatnuoc-chieusang')}`, icon: 'https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/ff.png',name: t('Dịch vụ điện chiếu sáng - thoát nước'), content: 'Với kinh nghiệm thực tiễn nhiều năm thực hiện công tác thi công, quản lý, duy tu, bảo dưỡng hệ thống thoát nước, vỉa hè, hệ thống điện chiếu sáng công cộng và trang trí đường phố, Hepco là đơn vị uy tín được giao nhiệm vụ, đặt hàng, đấu thầu từ chính quyền địa phương trong các hạng mục công ích về lĩnh vực thoát nước và điện chiếu sáng, ngoài ra còn tham gia thực hiện các công trình hạ tầng kỹ thuật đô thị lớn nhỏ trên địa bàn tỉnh Thừa Thiên Huế.', image: '/assets/images/mission2.jpg'},
+        {path:`/${t('dichvu')}/${t('quantrang')}`, icon: 'https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/ff.png',name: t('Dịch vụ quản lý nghĩa trang nhân dân'), content: '', image: '/assets/images/service.jpg'},
+        {path:`/${t('dichvu')}/${t('kinhdoanhkhac')}`, icon: 'https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/ff.png',name: t('Dịch vụ kinh doanh doanh khác'), content: 'Bên cạnh những dịch vụ chủ lực, chúng tôi còn cung cấp những dịch vụ và giải pháp giúp duy trì môi trường sạch đẹp với chất lượng và mức giá hợp lý nhất.', image: '/assets/images/mission2.jpg'},
+      ]
     const { ref, inView } = useInView({
         /* Optional options */
         threshold: 0,
@@ -87,7 +95,7 @@ export function OurServices() {
             }
         }
     }, [inView]);
-  return (
+  return (  
     <Box
     sx={{
         backgroundImage: `url(/assets/images/bg2.png)`,
@@ -116,9 +124,9 @@ export function OurServices() {
                     <Box>
                     <Grid container sx={{pt: theme.spacing(4), pl: theme.spacing(4)}} spacing={2}>
                         {
-                            [1,2,3,4,5,6].map((id,index)=>{
+                            serviceData.map((data,index)=>{
                                 return(
-                                    <ServiceItem id={id} key={'service-item'+index}/>
+                                    <ServiceItem data={data} key={'service-item'+index}/>
                                 )
                             })
                         }     
@@ -131,57 +139,65 @@ export function OurServices() {
   )
 }
 
-const ServiceItem = ({id}) =>{
+const ServiceItem = ({data}) =>{
     const theme = useTheme()
     const {t} = useTranslation()
     return (
-        <Grid key={id} item xs={12} sm={6} md={4} lg={4}>
-            <Box sx={{padding:theme.spacing(5),backgroundColor: theme.color.white,boxShadow: '0 0 15px #eee', borderRadius:"10px", height:'100%'}} className={"our-service-wrap service-item"}>
-                <div
-                    className="service__overlay bg-img"
-                    style={{
-                        backgroundImage: 'url("/assets/images/mission2.jpg")',
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
-                        borderRadius: "10px"
-                    }}
-                ></div>
-                <Grid container sx={{position:'relative', zIndex:2}}>
-                    <Grid xs={12} className='service-icon'>
-                        <Box
-                            sx={{
-                                WebkitMaskBoxImage:'url(https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/ff.png)',
-                                // WebkitMaskImage: 'url(https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/ff.png)',
-                                // maskImage: 'url(https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/ff.png)',
-                                WebkitMaskSize: '70%',
-                                maskSize: '70%',
-                                WebkitMaskRepeat: 'no-repeat',
-                                maskRepeat: 'no-repeat', 
-                                width: '70px',
-                                height:'70px',
-                                backgroundColor:theme.color.green1
-                            }}
-                        >
+        <Grid item xs={12} sm={6} md={4} lg={4}>
+            <Link to={data.path}>
+                <Box sx={{padding:theme.spacing(5),backgroundColor: theme.color.white,boxShadow: '0 0 15px #eee', borderRadius:"10px", height:'100%'}} className={"our-service-wrap service-item"}>
+                    <div
+                        className="service__overlay bg-img"
+                        style={{
+                            backgroundImage: `url("${data.image}")`,
+                            backgroundSize: "cover",
+                            backgroundPosition: "center",
+                            borderRadius: "10px"
+                        }}
+                    ></div>
+                    <Grid container sx={{position:'relative', zIndex:2}}>
+                        <Grid xs={12} className='service-icon'>
+                            <Box
+                                sx={{
+                                    WebkitMaskBoxImage:`url(${data.icon})`,
+                                    WebkitMaskSize: '70%',
+                                    maskSize: '70%',
+                                    WebkitMaskRepeat: 'no-repeat',
+                                    maskRepeat: 'no-repeat', 
+                                    width: '70px',
+                                    height:'70px',
+                                    backgroundColor:theme.color.green1
+                                }}
+                            >
 
-                        </Box>
+                            </Box>
+                        </Grid>
+                        <Grid xs={12} className='text-service-title'>
+                            <Typography variant='h5' fontWeight={700} py={theme.spacing(2)} color={theme.color.red}>{data.name}</Typography>
+                        </Grid>
+                        <Grid xs={12} pb={theme.spacing(2)}>
+                            <Box
+                                sx={{
+                                    overflow: 'hidden',
+                                    display: '-webkit-box',
+                                    WebkitLineClamp: '4',
+                                    WebkitBoxOrient: 'vertical',
+                                }}
+                            >
+                                <Typography className='text-service' textAlign={'justify'}>
+                                    {data.content}
+                                </Typography>
+                            </Box>
+                        </Grid>
+                        <BlogButton className='text-service'>
+                            <Link to={data.path}>
+                                <Typography fontWeight={700} lineHeight={'1.5rem'} >{t("Read more")}</Typography>
+                                <Typography sx={{display:'inline', pl: '5px'}} className='arrow-news'><FontAwesomeIcon icon="fa-solid fa-arrow-right-long" /></Typography>
+                            </Link>
+                        </BlogButton>
                     </Grid>
-                    <Grid xs={12} className='text-service-title'>
-                        <Typography variant='h5' fontWeight={700} py={theme.spacing(2)} color={theme.color.red}>{"Tên dịch vụ " + id}</Typography>
-                    </Grid>
-                    <Grid xs={12} pb={theme.spacing(2)}>
-                        <Typography className='text-service' textAlign={'justify'}>
-                            We have a custom cleaning service designed to help you clean when you need it,
-                            whether we clean one time or on regular, your house will always sparkle clean
-                        </Typography>
-                    </Grid>
-                    <BlogButton className='text-service'>
-                        <Link to="#">
-                            <Typography fontWeight={700} lineHeight={'1.5rem'} >{t("Read more")}</Typography>
-                            <Typography sx={{display:'inline', pl: '5px'}} className='arrow-news'><FontAwesomeIcon icon="fa-solid fa-arrow-right-long" /></Typography>
-                        </Link>
-                    </BlogButton>
-                </Grid>
-            </Box>
+                </Box>
+            </Link>
         </Grid>
     )
 }

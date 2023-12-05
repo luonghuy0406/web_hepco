@@ -80,7 +80,7 @@ export default function ShareholderItem() {
                           </Box> */}
                     </Grid>
                     <Grid item xs={12} sx={{height:'fit-content'}}>
-                      <Box className='ck-content' sx={{padding: theme.spacing(5)}} dangerouslySetInnerHTML={{__html: data[0]?.content}}>
+                      <Box className='ck-content' sx={{padding: theme.spacing(1)}} dangerouslySetInnerHTML={{__html: data[0]?.content}}>
                         
                         </Box>
                     </Grid>

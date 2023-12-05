@@ -75,34 +75,23 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
     // fontSize:'42px',
 }));
 const CustomizedButton = styled(Button)(({ theme }) => ({
-    // Set background color
     backgroundColor: "#009241",
     fontWeight:"700",
     fontSize:"16px",
     padding:theme.spacing(1),
-    // Set text color
     color: theme.color.white,
     borderColor: "#009241",
-
-    // Set border styles
     borderRadius: '4px',
-
-    // Set hover styles
     '&:hover': {
         backgroundColor: "#009241",
         borderColor: "#009241",
     },
-
-    // Set active styles
     '&:active': {
         backgroundColor: "#009241",
         borderColor: "#009241",
     },
-
-    // Set focus styles
     '&:focus': {
-        outline: 'none', // Remove the default focus outline
-        // boxShadow: `0 0 0 3px rgba(0, 123, 255, 0.3)`, // Add a custom focus border
+        outline: 'none'
     },
 }));
 
@@ -249,9 +238,7 @@ export function Questions() {
                                         />
                                     </Grid>
                                 </Grid>
-                                    <Grid item xs={12}>
-                                        <CustomizedButton sx={{width:"100%"}} variant="contained">{t("Gửi")}</CustomizedButton>
-                                    </Grid> 
+                                    <CustomizedButton sx={{width:"100%", marginTop: theme.spacing(4)}} variant="contained">{t("Gửi")}</CustomizedButton>
                             </Box>
                             
                         </Grid>

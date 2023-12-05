@@ -88,7 +88,7 @@ export default function Footer(){
                             <Typography fontWeight={500} color={theme.color.white}>We work with a passion of taking challenges and creating new ones in advertising sector.</Typography>
                         </Grid>
                         <Grid item xs={12}>
-                            <Link to='/gioithieu'>
+                            <Link to={`/${t('gioithieu')}`}>
                                 <CustomizedButton sx={{width:"150px"}} variant="contained">{t('Giới thiệu')}</CustomizedButton>
                             </Link>
                         </Grid>
