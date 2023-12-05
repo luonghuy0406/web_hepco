@@ -23,7 +23,7 @@ export default function HazardousWaste() {
                     // marginBottom:theme.spacing(10),
                 }} 
             >
-                <Typography sx={{marginBottom:theme.spacing(4)}} variant='h4' textAlign={"center"} fontWeight={700} color={theme.color.green1}>{t('Vệ sinh, thu gom vận chuyển xử lý rác nguy hại')}</Typography>
+                <Typography sx={{marginBottom:theme.spacing(4)}} variant='h4' textAlign={"center"} fontWeight={700} color={theme.color.green1}>{t('Thu gom vận chuyển xử lý rác nguy hại')}</Typography>
                 <Grid container spacing={3} sx={{marginBottom:theme.spacing(4)}}>
                     <Grid item xs={0} md={6}>
                         <Box

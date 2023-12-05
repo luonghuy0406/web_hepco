@@ -7,8 +7,8 @@ import ServicesContent from '../sections/Services/ServicesContent'
 export default function Services({page}) {
   const {t} = useTranslation()
   const pages = [
-    {name: t('Vệ sinh, thu gom vận chuyển xử lý rác sinh hoạt'), path:'',child:[]},
-    {name: t('Vệ sinh, thu gom vận chuyển xử lý rác nguy hại'), path:`/${t('nguyhai')}`,child:[]},
+    {name: t('Thu gom vận chuyển xử lý rác sinh hoạt'), path:'',child:[]},
+    {name: t('Thu gom vận chuyển xử lý rác nguy hại'), path:`/${t('nguyhai')}`,child:[]},
     {name: t('Cơ khí - Xây dựng'), path:`/${t('cokhi-xaydung')}`,child:[]},
     {name: t('Thoát nước - Điện chiếu sáng'), path:`/${t('thoatnuoc-chieusang')}`,child:[]},
     {name: t('Quản trang'), path:`/${t('quantrang')}`,child:[]},
