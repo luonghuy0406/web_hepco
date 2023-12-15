@@ -106,22 +106,29 @@ export default function Header() {
         name: t('Tin tức'), 
         path:`/${t('tintuc')}`,
         child:[
-          // {name: t('Hoạt động công ty'), path:'',child:[]},
-          // {name: t('Đảng Đoàn thể'), path:`/${t('dangdoan')}`,child:[]},
-          // {name: t('Pháp luật môi trường'), path:`/${t('phapluat')}`,child:[]},
-          // {name: t('Tin tức khác'), path:`/${t('tinkhac')}`,child:[]},
+          {name: t('Hoạt động công ty'), path:`/${t('hoatdong')}`,child:[]},
+          {name: t('Đảng Đoàn thể'), path:`/${t('dangdoan')}`,child:[]},
+          {name: t('Pháp luật môi trường'), path:`/${t('phapluat')}`,child:[]},
+          {name: t('Tin tức khác'), path:`/${t('tinkhac')}`,child:[]},
         ]
       },
       {
         name: t('Dự án'), 
         path:`/${t('duan')}`,
         child:[
-          {name: t('Dự án đầu tư'), path:'',child:[]},
+          {name: t('Dự án đầu tư'), path:`/${t('dautu')}`,child:[]},
           {name: t('Hợp tác trong nước'), path:`/${t('trongnuoc')}`,child:[]},
           {name: t('Hợp tác nước ngoài'), path:`/${t('nuocngoai')}`,child:[]},
         ]
       },
-      {name: t('Cổ đông'), path:`/${t('codong')}`,child:[]},
+      {
+        name: t('Cổ đông'), 
+        path:`/${t('codong')}`,
+        child:[
+          {name: t('Thông báo'), path:`/${t('thongbao')}`,child:[]},
+          {name: t('Báo cáo'), path:`/${t('baocao')}`,child:[]},
+        ]
+    },
       {name: t('Câu hỏi'), path:`/${t('cauhoi')}`,child:[]},
       {name: t('Liên hệ'), path:`/${t('lienhe')}`,child:[]}
     ]

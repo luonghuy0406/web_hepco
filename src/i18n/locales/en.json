@@ -83,7 +83,7 @@
     "KHEN THƯỞNG BỘ, BAN NGÀNH, HỘI NGHỀ NGHIỆP TRUNG ƯƠNG": "Awards from Central Ministries and Branches",
     "KHEN THƯỞNG CỦA UBND TỈNH VÀ CÁC CƠ QUAN CẤP TỈNH": "Awards from Provincial People's Committees and Provincial Authorities",
     "KHEN THƯỞNG CÔNG TÁC ĐẢNG - ĐOÀN THỂ": "Awards for Party and Youth Union Activities",
-    "Thư ngõ": "Mailbox",
+    "Thư ngỏ": "Mailbox",
     "Quá trình hình thành và phát triển": "Formation and Development History",
     "Chức năng hoạt động": "Functions and Activities",
     "Lĩnh vực Vệ Sinh Môi Trường": "Environmental Sanitation Areas",
@@ -152,5 +152,14 @@
     "Đội ngũ công nhân tay nghề cao, đào tạo bài bản": "Highly skilled workforce, systematic training",
     "Dịch vụ điện chiếu sáng - thoát nước": "Electrical lighting - drainage services",
     "Dịch vụ quản lý nghĩa trang nhân dân": "People's cemetery management service",
-    "Dịch vụ kinh doanh doanh khác": "Other business services"
+    "Dịch vụ kinh doanh doanh khác": "Other business services",
+    "Dự án liên quan": "Related projects",
+    "Dự án mới nhất": "Latest projects",
+    "Loại dự án": "Project Categories",
+    "Chọn loại dự án để lọc": "Select projects categories to filter",
+    "hoatdong": "activity",
+    "dautu": "investment",
+    "thongbao": "notification",
+    "baocao": "report",
+    "Tất cả dự án": "All projects"
 }

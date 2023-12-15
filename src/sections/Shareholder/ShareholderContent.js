@@ -84,16 +84,19 @@ export default function ShareholderContent({pageParam}) {
     const {t} = useTranslation()
     const [page, setPage] = useState(1);
     const [dataShareholder, setDataShareholder] = useState(shareholder)
-    const [valueFilter, setValueFilter] = useState([{name: t('Tất cả tin'), value:'0'}])
-    const [keyword, setKeyword] = useState('')
-    const shareholderNewest = shareholder.slice(0, 5)
     const categories = {
         '0': {name: t('Tất cả tin'), value:'0'},
         '1': {name: t('Thông báo'), value:'1'},
         '2': {name: t('Báo cáo'), value:'2'},
     }
+    const [valueFilter, setValueFilter] = useState([categories[pageParam]] || [categories['0']])
+    const [keyword, setKeyword] = useState('')
+    const shareholderNewest = shareholder.slice(0, 5)
+    
     const itemsPerPage = 9; // Change this according to your needs
-
+    useEffect(()=>{
+        setValueFilter([categories[pageParam]])
+    },[pageParam])
 
 
     // Calculate the total number of pages
@@ -152,6 +155,8 @@ export default function ShareholderContent({pageParam}) {
                                         options={Object.values(categories)}
                                         getOptionLabel={(option) => option.name}
                                         value={valueFilter}
+                                        id="tags-standard-filter-projects"
+                                        defaultValue={valueFilter}
                                         renderInput={(params) => (
                                             <TextField
                                                 {...params}

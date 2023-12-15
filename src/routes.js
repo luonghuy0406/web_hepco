@@ -11,6 +11,7 @@ import Contact from './pages/Contact';
 import News from './pages/News';
 import { useTranslation } from 'react-i18next';
 import NewsItem from './pages/NewsItem';
+import ProjectsItem from './pages/ProjectsItem';
 import ShareholderItem from './pages/ShareHolderItems';
 
 export default function Router() {
@@ -33,12 +34,21 @@ export default function Router() {
         { path: `${t('dichvu')}/${t('thoatnuoc-chieusang')}`, element: <Services page={t('thoatnuoc-chieusang')}/>},
         { path: `${t('dichvu')}/${t('quantrang')}`, element: <Services page={t('quantrang')}/>},
         { path: `${t('dichvu')}/${t('kinhdoanhkhac')}`, element: <Services page={t('kinhdoanhkhac')}/>},
-        { path: t('duan'), element: <Projects /> },
-        { path: `${t('duan')}/${t('trongnuoc')}`, element: <Projects page={t('trongnuoc')}/> },
-        { path: `${t('duan')}/${t('nuocngoai')}`, element: <Projects page={t('nuocngoai')}/> },
-        { path: t('tintuc'), element: <News /> },
+
+        { path: t('duan'), element: <Projects page={'0'}/> },
+        { path: `${t('duan')}/${t('dautu')}`, element: <Projects page={'1'}/> },
+        { path: `${t('duan')}/${t('trongnuoc')}`, element: <Projects page={'2'}/> },
+        { path: `${t('duan')}/${t('nuocngoai')}`, element: <Projects page={'3'}/> },
+        { path: `${t('duan')}/:threadId`, element: <ProjectsItem /> },
+        { path: t('tintuc'), element: <News page={'0'}/> },
+        { path: `${t('tintuc')}/${t('hoatdong')}`, element: <News page={'1'}/> },
+        { path: `${t('tintuc')}/${t('dangdoan')}`, element: <News page={'2'}/> },
+        { path: `${t('tintuc')}/${t('phapluat')}`, element: <News page={'3'}/> },
+        { path: `${t('tintuc')}/${t('tinkhac')}`, element: <News page={'4'}/> },
         { path: `${t('tintuc')}/:threadId`, element: <NewsItem/> },
-        { path: t('codong'), element: <Shareholder /> },
+        { path: t('codong'), element: <Shareholder  page={'0'}/> },
+        { path: `${t('codong')}/${t('thongbao')}`, element: <Shareholder page={'1'}/> },
+        { path: `${t('codong')}/${t('baocao')}`, element: <Shareholder page={'2'}/> },
         { path: `${t('codong')}/:threadId`, element: <ShareholderItem/> },
         { path: t('cauhoi'), element: <Question /> },
         { path: t('lienhe'), element: <Contact /> },
@@ -46,14 +56,6 @@ export default function Router() {
         { path: '*', element: <Navigate to="/" /> },
       ],
     },
-    // {
-    //   element: <SimpleLayout />,
-    //   children: [
-    //     { element: <Navigate to="/dashboard/app" />, index: true },
-    //     { path: '404', element: <Navigate to="/" /> },
-    //     { path: '*', element: <Navigate to="/" /> },
-    //   ],
-    // },
     {
       path: '*',
       element: <Navigate to="/" replace />,

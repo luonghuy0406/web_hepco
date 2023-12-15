@@ -12,7 +12,7 @@ import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 
 library.add(fas, faFontAwesome, faPlay)
 
-const FeaturedNewstWrap = styled(Box)(({ theme }) => ({
+const FeaturedProjectstWrap = styled(Box)(({ theme }) => ({
   position: 'relative',
   backgroundColor: theme.color.white,
   boxShadow:'0 5px 20px rgba(34,34,34,.1)', 
@@ -20,7 +20,7 @@ const FeaturedNewstWrap = styled(Box)(({ theme }) => ({
   height:'100%'
 }));
 
-const FeaturedNewstImage = styled(Box)(({ theme, image }) => ({
+const FeaturedProjectstImage = styled(Box)(({ theme, image }) => ({
   background: `url("${image}")`,
   height: 'auto',
   aspectRatio: 1.6,
@@ -47,13 +47,13 @@ const BlogButton = styled(Box)(({ theme }) => ({
     textDecoration: 'none',
     '&:hover': {
       color: theme.color.red,
-      '.arrow-news': {
+      '.arrow-project': {
         color: theme.color.red,
         transform: 'translateX(20%)',
       },
     },
   },
-  '.arrow-news': {
+  '.arrow-project': {
     position: 'absolute',
     top: 0,
     right: 0,
@@ -62,7 +62,7 @@ const BlogButton = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const news = [
+export const project = [
     {date: '30-12-2023',id : '18',author: 'Admin', image: "/assets/images/1.jpg",  group_id: '2', title :"QUY TRÌNH CẤP PHÉP ĐÀO LỀ, ĐỤC MƯƠNG, ĐỤC HỐ GA, GỬI NƯỚC THẢI SINH HOẠT", content: `<p>Vỉa hẻ, thoát nước đô thị là bộ phận của hệ thống hạ tầng kỹ thuật đô thị do Nhà nước thống nhất quản lý và có phân cấp quản lý. CÔNG TY CỔ PHẦN MÔI TRƯỜNG VÀ CÔNG TRÌNH ĐÔ THỊ HUẾ (HEPCO) đang được UBND thành phố Huế đặt hàng quản lý vận hành hệ thống thoát nước lề đường thuộc hệ thống hạ tầng kỹ thuật đô thị thành phố, là đơn vị trung gian tiếp nhận hồ sơ cấp phép tử UBND thành phố Huế.</p><p>Khi chuẩn bị tiến hành thi công công trình về đào lề, vỉa hè để lắp đặt (sửa chữa), đục mương, đục hố ga và gửi nước thải sinh hoạt, chủ đơn vị thi công phải tiến hành làm thủ tục cấp phép của cơ quan có thẩm quyền, có giải pháp để bảo đảm không ảnh hưởng đến trật tự an toàn giao thông, vệ sinh môi trường và mỹ quan đô thị. Đồng thời có cam kết bảo đảm thực hiện đúng thời hạn và bảo đảm chất lượng về việc hoàn trả lại đoạn đường đã đào.</p><p>Khách hàng có nhu cầu muốn đăng ký cấp phép về đào về đục mương hố ga, gửi nước thải sinh hoạt vui lòng liên hệ theo số hotline 0234 3823896 - 0234 3997799; hoặc trực tiếp đăng ký tại Bộ phận Giao dịch tại 46 Trần Phú, phường Vĩnh Ninh, thành phố Huế để được tư vấn và giải quyết một cách nhanh chóng nhất.HEPCO - CÔNG TY CỔ PHẦN MÔI TRƯỜNG VÀ CÔNG TRÌNH ĐÔ THỊ HUẾ</p><p><span class="image-inline ck-widget image_resized ck-widget_with-resizer" style="width:16px;" contenteditable="false"><img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t2d/1/16/1f4cd.png" alt="📍"><div class="ck ck-reset_all ck-widget__resizer ck-hidden"><div class="ck-widget__resizer__handle ck-widget__resizer__handle-top-left"></div><div class="ck-widget__resizer__handle ck-widget__resizer__handle-top-right"></div><div class="ck-widget__resizer__handle ck-widget__resizer__handle-bottom-right"></div><div class="ck-widget__resizer__handle ck-widget__resizer__handle-bottom-left"></div><div class="ck ck-size-view" style="display: none;"></div></div></span>&nbsp;46 Trần Phú - Thành phố Huế</p><p><span class="image-inline ck-widget image_resized ck-widget_with-resizer" style="width:16px;" contenteditable="false"><img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t22/1/16/260e.png" alt="☎️"><div class="ck ck-reset_all ck-widget__resizer ck-hidden"><div class="ck-widget__resizer__handle ck-widget__resizer__handle-top-left"></div><div class="ck-widget__resizer__handle ck-widget__resizer__handle-top-right"></div><div class="ck-widget__resizer__handle ck-widget__resizer__handle-bottom-right"></div><div class="ck-widget__resizer__handle ck-widget__resizer__handle-bottom-left"></div><div class="ck ck-size-view" style="display: none;"></div></div></span>&nbsp;Hotline - 02343 997799</p><figure class="image ck-widget ck-widget_selected" contenteditable="false"><img src="http://www.hepco.com.vn/Public/Upload/images/Dichvu/DaoLe.jpg">`},
     {date: '30-12-2023',id : '19',author: 'Admin', image: "/assets/images/thungo.jpeg",  group_id: '2', title :"TƯNG BỪNG NGÀY HỘI TÁI CHẾ - HUẾ 2023", content: `<p>Sáng ngày 14 tháng 5 năm 2023 – tại Trung tâm Thông tin Môi trường (46 Trần Phú, TP Huế), Dự án Huế - Đô thị giảm nhựa ở miền Trung Việt Nam (được tài trợ bởi Tổ chức quốc tế về Bảo tồn thiên nhiên (WWF) tại Việt Nam thông qua WWF-Nauy) và CÔNG TY CỔ PHẦN MÔI TRƯỜNG VÀ CÔNG TRÌNH ĐÔ THỊ HUẾ (HEPCO) tổ chức sự kiện Ngày hội tái chế Huế 2023.</p>
 
@@ -94,7 +94,7 @@ export const news = [
     
         <div class="fb-like" data-href="http://www.hepco.com.vn/" data-width="" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true">
         </div>`},
-    {date: '29-12-2023',id : '1', author: 'Admin', image: "/assets/images/thungo.jpeg", group_id: '1', title :"tin tuc so tin tuc so tin tuc so tin tuc so 1", content: `<p style=\"text-align:justify\">S&aacute;ng 17/8, C&ocirc;ng ty cổ phần M&ocirc;i trường v&agrave; C&ocirc;ng tr&igrave;nh đ&ocirc; thị Huế tổ chức lễ kh&aacute;nh th&agrave;nh Trung t&acirc;m Gi&aacute;m s&aacute;t, điều h&agrave;nh th&ocirc;ng minh về m&ocirc;i trường v&agrave; ch&iacute;nh thức triển khai th&iacute; điểm thu gom r&aacute;c thải sinh hoạt bằng xe điện. UVTV Tỉnh ủy, B&iacute; thư Th&agrave;nh ủy Huế Huỳnh Cư; Ph&oacute; Chủ tịch UBND tỉnh Phan Thi&ecirc;n Định đến dự.</p>\n\n<p style=\"text-align:justify\">Trung t&acirc;m Gi&aacute;m s&aacute;t, điều h&agrave;nh th&ocirc;ng minh của C&ocirc;ng ty cổ phần M&ocirc;i trường v&agrave; C&ocirc;ng tr&igrave;nh đ&ocirc; thị Huế l&agrave; một tổ hợp hệ thống gi&aacute;m s&aacute;t, bao gồm: Gi&aacute;m s&aacute;t, quản l&yacute; hạ tầng kỹ thuật, c&ocirc;ng t&aacute;c vệ sinh m&ocirc;i trường; gi&aacute;m s&aacute;t h&agrave;nh tr&igrave;nh phương tiện thu gom r&aacute;c v&agrave; hệ thống điện chiếu s&aacute;ng.</p>\n\n<p style=\"text-align:justify\">Th&ocirc;ng qua hệ thống camera gi&aacute;m s&aacute;t được chia sẻ từ Sở Th&ocirc;ng tin v&agrave; Truyền th&ocirc;ng v&agrave; camera gi&aacute;m s&aacute;t của&nbsp;th&agrave;nh phố&nbsp;Huế, C&ocirc;ng ty cổ phần M&ocirc;i trường v&agrave; C&ocirc;ng tr&igrave;nh đ&ocirc; thị Huế c&oacute; thể gi&aacute;m s&aacute;t được c&ocirc;ng t&aacute;c vệ sinh m&ocirc;i trường; kịp thời xử l&yacute; những vấn đề về vệ sinh m&ocirc;i trường v&agrave; vi phạm hạ tầng kỹ thuật; gi&aacute;m s&aacute;t lộ tr&igrave;nh đường đi, tốc độ v&agrave; việc chấp h&agrave;nh Luật Giao th&ocirc;ng đường bộ của c&aacute;c xe chuy&ecirc;n chở, vận chuyển r&aacute;c; quy tr&igrave;nh l&agrave;m việc, việc chấp h&agrave;nh nguy&ecirc;n tắc về an to&agrave;n lao động, chất lượng vệ sinh đường phố của người lao động; chủ động điều khiển hệ thống điện chiếu s&aacute;ng; kịp thời xử l&yacute; t&igrave;nh huống khi c&oacute; sự cố về điện&hellip;</p>\n\n<p style=\"text-align:justify\">Từ th&aacute;ng 4/2019, C&ocirc;ng ty cổ phần M&ocirc;i trường v&agrave; C&ocirc;ng tr&igrave;nh đ&ocirc; thị Huế đ&atilde; nghi&ecirc;n cứu, đổi mới c&ocirc;ng nghệ thu gom r&aacute;c. Theo đ&oacute;, đ&atilde; đưa 8 xe điện 3 b&aacute;nh v&agrave;o thử nghiệm thu gom r&aacute;c tr&ecirc;n địa b&agrave;n, bước đầu đem lại hiệu quả khả quan.</p>\n\n<p style=\"text-align:justify\"><img alt=\"\" src=\"https://thuathienhue.gov.vn/Portals/0/nam%202019/THANG%208/m_20190816_khanhthanh3.jpg\" /></p>\n\n<p style=\"text-align:justify\"><strong>Trung t&acirc;m Gi&aacute;m s&aacute;t, điều h&agrave;nh th&ocirc;ng minh của C&ocirc;ng ty cổ phần M&ocirc;i trường v&agrave; C&ocirc;ng tr&igrave;nh đ&ocirc; thị Huế<br />\n&nbsp;l&agrave; một tổ hợp hệ thống gi&aacute;m s&aacute;t</strong></p>\n\n<p style=\"text-align:justify\">Ngo&agrave;i tăng năng suất lao động, sự nặng nhọc, độc hại đối với người lao động cũng giảm đi nhiều. B&ecirc;n cạnh đ&oacute;, loại xe n&agrave;y ph&ugrave; hợp với địa h&igrave;nh, địa điểm th&agrave;nh phố du lịch v&agrave; được người d&acirc;n rất đồng t&igrave;nh, ủng hộ. Theo kế hoạch, xe điện 3 b&aacute;nh thu gom r&aacute;c sẽ được c&ocirc;ng ty nh&acirc;n rộng, với việc đưa v&agrave;o hoạt động 40 xe nữa trong thời gian tới.&nbsp;</p>\n\n<p style=\"text-align:justify\">Ph&aacute;t biểu tại lễ kh&aacute;nh th&agrave;nh, Ph&oacute; Chủ tịch UBND tỉnh Phan Thi&ecirc;n Định đ&aacute;nh gi&aacute; cao &yacute; tưởng, sự nỗ lực cố gắng của tập thể l&atilde;nh đạo, c&aacute;n bộ, c&ocirc;ng nh&acirc;n vi&ecirc;n của C&ocirc;ng ty cổ phần M&ocirc;i trường v&agrave; C&ocirc;ng tr&igrave;nh đ&ocirc; thị Huế; đồng thời khẳng định, việc ứng dụng c&ocirc;ng nghệ th&ocirc;ng tin trong lĩnh vực quản l&yacute;, điều h&agrave;nh l&agrave; một yếu tố quan trọng trong thời điểm hiện nay. Đ&acirc;y l&agrave; c&ocirc;ng tr&igrave;nh c&oacute; &yacute; nghĩa hưởng ứng đề &aacute;n &ldquo;Ng&agrave;y Chủ nhật xanh&rdquo; của UBND tỉnh; g&oacute;p phần l&agrave;m cho&nbsp;th&agrave;nh phố&nbsp;Huế ng&agrave;y c&agrave;ng &ldquo;Xanh &ndash; sạch &ndash; s&aacute;ng&rdquo; hơn.</p>\n\n<p style=\"text-align:justify\">Được biết, hiện C&ocirc;ng ty cổ phần M&ocirc;i trường v&agrave; C&ocirc;ng tr&igrave;nh đ&ocirc; thị Huế thực hiện c&ocirc;ng t&aacute;c vệ sinh tr&ecirc;n 1.830 tuyến đường kiệt; vận h&agrave;nh hơn 430km điện chiếu s&aacute;ng v&agrave; hơn 11.770 điểm s&aacute;ng, 227 trạm đ&oacute;ng cắt điện v&agrave; nhiều hệ thống điện chiếu s&aacute;ng nghệ thuật, trang tr&iacute; đường phố...</p>\n`},
+    {date: '29-12-2023',id : '1', author: 'Admin', image: "/assets/images/thungo.jpeg", group_id: '1', title :"tin tuc so tin tuc so tin tuc so tin tuc so 1", content: "content socontent socontent socontent socontent socontent so 1"},
     {date: '29-12-2023',id : '2', author: 'Huy', image: "/assets/images/thungo.jpeg", group_id: '2', title :"tin tuc so tin tuc so tin tuc so tin tuc so 2", content: "content socontent socontent socontent socontent socontent so 2"},
     {date: '29-12-2023',id : '3', author: 'Quan', image: "/assets/images/thungo.jpeg", group_id: '3', title :"tin tuc so tin tuc so tin tuc so tin tuc so 3", content: "content socontent socontent socontent socontent socontentcontent socontent socontent socontent socontent socontent so 3"},
     {date: '28-12-2023',id : '4', author: 'Dat', image: "/assets/images/thungo.jpeg", group_id: '4', title :"tin tuc so tin tuc so tin tuc so tin tuc so 4", content: "content socontent socontent socontent socontent socontentcontent socontent socontent socontent socontent socontent so 4"},
@@ -102,45 +102,38 @@ export const news = [
     {date: '28-12-2023',id : '6', author: 'Admin', image: "/assets/images/mission2.jpg", group_id: '4', title :"tin tuc so tin tuc so tin tuc so tin tuc so 6", content: "content socontent socontent socontent socontent socontentcontent socontent socontent socontent socontent socontent so 6"},
     {date: '27-12-2023',id : '7', author: 'Admin', image: "/assets/images/1.jpg", group_id: '2', title :"tin tuc so tin tuc so tin tuc so tin tuc so 7", content: "content socontent socontent socontent socontent socontent so 7"},
     {date: '27-12-2023',id : '8', author: 'Admin', image: "/assets/images/1.jpg", group_id: '1', title :"tin tuc so tin tuc so tin tuc so tin tuc so 8", content: "content socontent socontent socontent socontent socontent so 8"},
-    // {date: '26-12-2023',id : '9', author: 'Admin', image: "/assets/images/1.jpg", group_id: '1', title :"tin tuc so tin tuc so tin tuc so tin tuc so 9", content: "content socontent socontent socontent socontent socontent so 9"},
-    // {date: '26-12-2023',id : '10',author: 'Admin', image: "/assets/images/1.jpg",  group_id: '1', title :"tin tuc so tin tuc so tin tuc so tin tuc so 10", content: "content socontent socontent socontent socontent socontent so 10"},
-    // {date: '26-12-2023',id : '11',author: 'Admin', image: "/assets/images/1.jpg",  group_id: '3', title :"tin tuc so tin tuc so tin tuc so tin tuc so 11", content: "content socontent socontent socontent socontent socontent so 11"},
-    // {date: '25-12-2023',id : '12',author: 'Admin', image: "/assets/images/1.jpg",  group_id: '3', title :"tin tuc so tin tuc so tin tuc so tin tuc so 12", content: "content socontent socontent socontent socontent socontentcontent socontent socontent socontent socontent socontent so 12"},
-    // {date: '24-12-2023',id : '13',author: 'Admin', image: "/assets/images/1.jpg",  group_id: '3', title :"tin tuc so tin tuc so tin tuc so tin tuc so 13", content: "content socontent socontent socontent socontent socontentcontent socontent socontent socontent socontent socontent so 13"},
-    // {date: '24-12-2023',id : '14',author: 'Admin', image: "/assets/images/1.jpg",  group_id: '4', title :"tin tuc so tin tuc so tin tuc so tin tuc so 14", content: "content socontent socontent socontent socontent socontentcontent socontent socontent socontent socontent socontent so 14"},
-    // {date: '22-12-2023',id : '15',author: 'Admin', image: "/assets/images/1.jpg",  group_id: '1', title :"tin tuc so tin tuc so tin tuc so tin tuc so 15", content: "content socontent socontent socontent socontent socontentcontent socontent socontent socontent socontent socontent so 15"},
-    // {date: '21-12-2023',id : '16',author: 'Admin', image: "/assets/images/1.jpg",  group_id: '1', title :"tin tuc so tin tuc so tin tuc so tin tuc so 16", content: "content socontent socontent socontent socontent socontent so 16"},
-    // {date: '21-12-2023',id : '17',author: 'Admin', image: "/assets/images/1.jpg",  group_id: '1', title :"tin tuc so tin tuc so tin tuc so tin tuc so 17", content: "content socontent socontent socontent socontent socontent so 17"},
 ]
 
 
-export default function NewsContent({pageParam}) {
+export default function ProjectsContent({pageParam}) {
     const theme = useTheme()
     const {t} = useTranslation()
     const [page, setPage] = useState(1);
-    const [dataNews, setDataNews] = useState(news)
+    const [dataProjects, setDataProjects] = useState(project)
     const categories = {
-        '0': {name: t('Tất cả tin'), value:'0'},
-        '1': {name: t('Hoạt động công ty'), value:'1'},
-        '2': {name: t('Đảng Đoàn thể'), value:'2'},
-        '3': {name: t('Pháp luật môi trường'), value:'3'},
-        '4': {name: t('Tin tức khác'), value:'4'},
+        '0': {name: t('Tất cả dự án'), value:'0'},
+        '1': {name: t('Dự án đầu tư'), value:'1'},
+        '2': {name: t('Hợp tác trong nước'), value:'2'},
+        '3': {name: t('Hợp tác nước ngoài'), value:'3'}
     }
     const [valueFilter, setValueFilter] = useState([categories[pageParam]] || [categories['0']])
     const [keyword, setKeyword] = useState('')
-    const newsNewest = news.slice(0, 5)
+    const projectNewest = project.slice(0, 5)
     const itemsPerPage = 9; // Change this according to your needs
+
+    useEffect(()=>{
+        setValueFilter([categories[pageParam]])
+    },[pageParam])
+
     // Calculate the total number of pages
-    const totalPages = Math.ceil(dataNews.length / itemsPerPage);
+    const totalPages = Math.ceil(dataProjects.length / itemsPerPage);
 
     // Get the current page's data
     const startIndex = (page - 1) * itemsPerPage;
     const endIndex = page * itemsPerPage;
-    const currentPageData = dataNews.slice(startIndex, endIndex);
+    const currentPageData = dataProjects.slice(startIndex, endIndex);
 
-    
-
-
+    // Handle page change
     const handlePageChange = (event, value) => {
         setPage(value);
     };
@@ -148,26 +141,23 @@ export default function NewsContent({pageParam}) {
         let value = valueFilter?.map((option)=> option.value)
         let data = []
         if(value?.length > 0 && value.indexOf('0')===-1){
-            const newsFilter = news.filter((news)=>{
-              return value.indexOf(news.group_id) > -1
+            const projectFilter = project.filter((project)=>{
+              return value.indexOf(project.group_id) > -1
             })
-            data = newsFilter
+            data = projectFilter
         }else{
-            data = news
+            data = project
         }
         if(keyword?.length > 0){
-            const newsSearch= data.filter((news)=>{
-              return slugify(news.title.toLowerCase()).indexOf(slugify(keyword.toLowerCase())) > -1
+            const projectSearch= data.filter((project)=>{
+              return slugify(project.title.toLowerCase()).indexOf(slugify(keyword.toLowerCase())) > -1
             })
-            data = newsSearch
+            data = projectSearch
         }
-        setDataNews(data)
+        setDataProjects(data)
         setPage(1)
     }
-    // Handle page change
-    useEffect(()=>{
-        setValueFilter([categories[pageParam]])
-    },[pageParam])
+
     useEffect(()=>{
         handleSearch()
     },[keyword, valueFilter])
@@ -185,19 +175,19 @@ export default function NewsContent({pageParam}) {
                         <Box sx={{padding: theme.spacing(2),backgroundColor: theme.color.white, boxShadow:'0 5px 20px rgba(34,34,34,.1)', borderRadius: '10px', height:'100%', width:'100%'}}>
                             <Grid container spacing={2}>
                                 <Grid item xs={12} md={4}>
-                                    <Typography fontWeight={500} sx={{marginBottom: theme.spacing(1)}}>{t("Loại tin tức")}</Typography>
+                                    <Typography fontWeight={500} sx={{marginBottom: theme.spacing(1)}}>{t("Loại dự án")}</Typography>
                                     <Autocomplete
                                         multiple
                                         options={Object.values(categories)}
                                         getOptionLabel={(option) => option.name}
-                                        id="tags-standard-filter-news"
+                                        id="tags-standard-filter-projects"
                                         defaultValue={valueFilter}
                                         value={valueFilter}
                                         renderInput={(params) => (
                                             <TextField
                                                 {...params}
                                                 variant="outlined"
-                                                placeholder={t("Chọn loại tin tức để lọc")}
+                                                placeholder={t("Chọn loại dự án để lọc")}
                                             />
                                         )}
                                         onChange={(e,value)=>{
@@ -214,14 +204,14 @@ export default function NewsContent({pageParam}) {
                     </Grid>
                     {
                         
-                        currentPageData.map((news) => {
-                            const normalizedTitle = news.title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
+                        currentPageData.map((project) => {
+                            const normalizedTitle = project.title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
                             return(
-                                <Grid key={news.id} item xs={12} sm={6} md={4}>
-                                    <Link to={`/${t('tintuc')}/${normalizedTitle}.${news.id}`}>
-                                        <FeaturedNewstWrap>
+                                <Grid key={project.id} item xs={12} sm={6} md={4}>
+                                    <Link to={`/${t('duan')}/${normalizedTitle}.${project.id}`}>
+                                        <FeaturedProjectstWrap>
                                             <LazyLoad height={200} offset={100}>
-                                            <FeaturedNewstImage image={news.image}>
+                                            <FeaturedProjectstImage image={project.image}>
                                                 <Box
                                                     sx={{
                                                         // width: '20%',
@@ -239,44 +229,44 @@ export default function NewsContent({pageParam}) {
                                                     }}
                                                 >
                                                 <Typography 
-                                                    className='news-date' 
+                                                    className='project-date' 
                                                     fontFamily={theme.typography.MuktaMahee}
                                                     color={theme.color.white}
                                                     fontWeight={700}
-                                                >{news.date}</Typography>
+                                                >{project.date}</Typography>
                                                 </Box>
-                                            </FeaturedNewstImage>
+                                            </FeaturedProjectstImage>
                                             </LazyLoad>
                                             <Box
                                                 sx={{padding:theme.spacing(4)}}
                                             >
                                             <Grid container spacing={1}>
                                                 <Grid item xs={12} pb={1}>
-                                                    <Typography variant="h6" color={theme.color.red} fontWeight={700}>{news.title}</Typography>
+                                                    <Typography variant="h6" color={theme.color.red} fontWeight={700}>{project.title}</Typography>
                                                 </Grid>
                                                 <Grid item xs={12}>
                                                     <Box sx={{display:'flex'}}>
-                                                    <Typography paddingRight={1} color={theme.color.gray1} fontWeight={700}>{news.author}</Typography>
+                                                    <Typography paddingRight={1} color={theme.color.gray1} fontWeight={700}>{project.author}</Typography>
                                                     <Typography paddingRight={1} color={theme.color.gray1} fontWeight={700}>-</Typography>
-                                                    <Typography color={theme.color.gray1} fontWeight={700} >{categories?.[news.group_id]?.name}</Typography>
+                                                    <Typography color={theme.color.gray1} fontWeight={700} >{categories?.[project.group_id]?.name}</Typography>
                                                     </Box>
                                                 </Grid>
                                                 <Grid item xs={12}>
-                                                    <Box className='ck-content' dangerouslySetInnerHTML={{__html:news.content}} sx={{overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical'}}>
-                                                    {/* <Typography fontWeight={500}>{news.content}</Typography> */}
+                                                    <Box className='ck-content' dangerouslySetInnerHTML={{__html:project.content}} sx={{overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical'}}>
+                                                    {/* <Typography fontWeight={500}>{project.content}</Typography> */}
                                                     </Box>
                                                 </Grid>
                                                 <Grid item>
                                                     <BlogButton>
                                                     <Link to="#">
                                                         <Typography fontWeight={700} lineHeight={'1.5rem'}>{t("Read more")}</Typography>
-                                                        <Typography sx={{display:'inline', pl: '5px'}} className='arrow-news'><FontAwesomeIcon icon="fa-solid fa-arrow-right-long" /></Typography>
+                                                        <Typography sx={{display:'inline', pl: '5px'}} className='arrow-project'><FontAwesomeIcon icon="fa-solid fa-arrow-right-long" /></Typography>
                                                     </Link>
                                                     </BlogButton>
                                                 </Grid>
                                             </Grid>
                                             </Box>
-                                        </FeaturedNewstWrap>
+                                        </FeaturedProjectstWrap>
                                     </Link>
                                 </Grid>
                             )
@@ -297,13 +287,13 @@ export default function NewsContent({pageParam}) {
                 
                 <Grid item container xs={12} md={3}>
                     <Box sx={{padding: theme.spacing(3),backgroundColor: theme.color.white, boxShadow:'0 5px 20px rgba(34,34,34,.1)', borderRadius: '10px', width:'100%', height: 'fit-content'}}>
-                        <Typography sx={{marginBottom:theme.spacing(3)}} variant='h5' textAlign={"center"} fontWeight={700} color={theme.color.green1}>{t('Tin tức mới nhất')}</Typography>
+                        <Typography sx={{marginBottom:theme.spacing(3)}} variant='h5' textAlign={"center"} fontWeight={700} color={theme.color.green1}>{t('Dự án mới nhất')}</Typography>
                         {
-                            newsNewest.map((newest)=>{
+                            projectNewest.map((newest)=>{
                                 const normalizedTitle = newest.title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
 
                                 return(
-                                    <Box key={'news-newest'+newest.id} sx={{paddingBottom: theme.spacing(3)}}>
+                                    <Box key={'project-newest'+newest.id} sx={{paddingBottom: theme.spacing(3)}}>
                                         <Link to={`/${t('tintuc')}/${normalizedTitle}.${newest.id}`}>
                                             <Grid container spacing={1}>
                                                 <Grid item xs={3}>
@@ -367,38 +357,4 @@ function slugify (str) {
 		str = str.replace(new RegExp(map[pattern], 'g'), pattern);
 	};
 	return str;
-};
-function convertPath(str) {
-    return toSlug(str);
-  }
-  function toSlug(str) {
-      // Chuyển hết sang chữ thường
-      str = str.toLowerCase();     
-   
-      // xóa dấu
-      str = str.replace(/(à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ)/g, 'a');
-      str = str.replace(/(è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ)/g, 'e');
-      str = str.replace(/(ì|í|ị|ỉ|ĩ)/g, 'i');
-      str = str.replace(/(ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ)/g, 'o');
-      str = str.replace(/(ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ)/g, 'u');
-      str = str.replace(/(ỳ|ý|ỵ|ỷ|ỹ)/g, 'y');
-      str = str.replace(/(đ)/g, 'd');
-   
-      // Xóa ký tự đặc biệt
-      str = str.replace(/([^0-9a-z\.-\s])/g, '');
-   
-      // Xóa khoảng trắng thay bằng ký tự -
-      str = str.replace(/(\s+)/g, '-');
-      
-      // Xóa ký tự - liên tiếp
-      str = str.replace(/-+/g, '-');
-   
-      // xóa phần dự - ở đầu
-      str = str.replace(/^-+/g, '');
-   
-      // xóa phần dư - ở cuối
-      str = str.replace(/-+$/g, '');
-   
-      // return
-      return str;
-  }
+}

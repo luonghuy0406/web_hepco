@@ -38,7 +38,7 @@ export default function AlleyLetter() {
                 </Grid>
                 <Grid item xs={12} md={7} sm={12} lg={7}>
                     <Box>
-                        <Typography fontWeight={500}  variant="h2" fontFamily={"'Great Vibes', cursive"} color={theme.color.green1} textAlign={"center"}>{t('Thư ngõ')}</Typography>
+                        <Typography fontWeight={500}  variant="h2" fontFamily={"'Great Vibes', cursive"} color={theme.color.green1} textAlign={"center"}>{t('Thư ngỏ')}</Typography>
                         <br/>
                         <Typography fontWeight={500}>
                             Kính gửi Quý khách hàng,
