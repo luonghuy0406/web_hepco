@@ -1,5 +1,4 @@
 import React from 'react'
-import OrgnizationChart from './OrgnizationChart'
 import { useTranslation } from 'react-i18next'
 import About from './About'
 import Chart from './Chart'
@@ -7,6 +6,7 @@ import CompanyProfile from './CompanyProfile'
 import Gallery from './Gallery'
 import Mandates from './Mandates'
 import Achievement from './Achievement'
+import AlbumItems from './AlbumItems'
 
 export default function AboutContent({page}) {
   const {t} = useTranslation()
@@ -23,6 +23,10 @@ export default function AboutContent({page}) {
   }else if( page== t('thuvien')){
     return (
       <Gallery/>
+    )
+  }else if( page== t('album')){
+    return (
+      <AlbumItems/>
     )
   }
   return <About/>

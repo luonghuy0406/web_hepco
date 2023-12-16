@@ -28,6 +28,7 @@ export default function Router() {
         { path: `${t('gioithieu')}/${t('thanhtuu')}`, element: <About page={t('thanhtuu')}/> },
         { path: `${t('gioithieu')}/${t('nangluc')}`, element: <About page={t('nangluc')}/> },
         { path: `${t('gioithieu')}/${t('thuvien')}`, element: <About page={t('thuvien')}/> },
+        { path: `${t('gioithieu')}/${t('thuvien')}/:threadId`, element: <About page={t('album')}/> },
         { path: t('dichvu'), element: <Services /> },
         { path: `${t('dichvu')}/${t('nguyhai')}`, element: <Services page={t('nguyhai')}/>},
         { path: `${t('dichvu')}/${t('cokhi-xaydung')}`, element: <Services page={t('cokhi-xaydung')}/>},

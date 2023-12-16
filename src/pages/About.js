@@ -5,7 +5,7 @@ import { useMatch } from 'react-router-dom';
 import Banner from '../sections/Banner';
 import AboutContent from '../sections/About/AboutContent';
 
-export default function About() {
+export default function About({page}) {
   const { t } = useTranslation();
   const parentPath = `/${t('gioithieu')}`;
   const pages = [
@@ -18,7 +18,7 @@ export default function About() {
   ];
   
   const match = useMatch(`${parentPath}/:page`);
-  const pageParam = match?.params?.page || '';
+  // const pageParam = match?.params?.page || '';
   window.scrollTo(0, 0);
   return (
     <>
@@ -28,7 +28,7 @@ export default function About() {
         path={parentPath}
         pages={pages}
       />
-      <AboutContent page={pageParam} />
+      <AboutContent page={page} />
     </>
   );
 }

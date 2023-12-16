@@ -9,7 +9,7 @@ export default function Projects({page}) {
   window.scrollTo(0, 0);
   return (
     <>
-      <Banner name={t("Tin tức")} image={'https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/inner3.jpg'} path={`/${t('tintuc')}`} pages={[]}/>
+      <Banner name={t("Dự án")} image={'https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/inner3.jpg'} path={`/${t('duan')}`} pages={[]}/>
       <ProjectsContent pageParam={page}/>
     </>
   )

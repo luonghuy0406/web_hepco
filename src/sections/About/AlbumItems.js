@@ -8,7 +8,7 @@ import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import CloseIcon from '@mui/icons-material/Close';
 import LazyLoad from 'react-lazyload';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const images = [
   { album_id: '1',id: 1,description: 'ác thông tin kháccác thông tin khác tại đây',url: 'https://www.seiu1000.org/sites/main/files/imagecache/hero/main-images/camera_lense_0.jpeg'},
@@ -64,90 +64,22 @@ const album =[
    
 ]
 
-const Gallery = () => {
+const AlbumItems = () => {
     const theme = useTheme()
     const {t} = useTranslation()
+
     const [open,setOpen] = useState(false)
     const [currentId,setCurrentId] = useState(null)
-    const [page, setPage] = useState(1);
-    const [tab, setTab] = useState(0);
-
-    const handleChange = (event, newtab) => {
-        setTab(newtab);
-    };
-    
-  return (
-        <Container 
-            maxWidth={'xl'} 
-            sx={{
-                marginTop:theme.spacing(10),
-                marginBottom:theme.spacing(10),
-            }} 
-        >
-            <Typography sx={{marginBottom:theme.spacing(2)}} variant='h4' textAlign={"center"} fontWeight={700} color={theme.color.red}>{t('Thư viện ảnh')}</Typography>
-            <Box sx={{ width: '100%' }}>
-                <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                    <Tabs value={tab} onChange={handleChange} aria-label="basic tabs example">
-                    <Tab label={t("Toàn bộ ảnh")} {...a11yProps(0)} />
-                    <Tab label={t("Album ảnh")} {...a11yProps(1)} />
-                    </Tabs>
-                </Box>
-                <CustomTabPanel value={tab} index={0}>
-                    <AllPhotos/>
-                </CustomTabPanel>
-                <CustomTabPanel value={tab} index={1}>
-                    <AllAlbums/>
-                </CustomTabPanel>
-            </Box>
-        </Container>
-  );
-};
-
-export default Gallery;
-
-function CustomTabPanel(props) {
-    const { children, value, index, ...other } = props;
-  
-    return (
-      <div
-        role="tabpanel"
-        hidden={value !== index}
-        id={`simple-tabpanel-${index}`}
-        aria-labelledby={`simple-tab-${index}`}
-        {...other}
-      >
-        {value === index && (
-          <Box sx={{ p: 3 }}>
-            <Typography>{children}</Typography>
-          </Box>
-        )}
-      </div>
-    );
-}
-
-CustomTabPanel.propTypes = {
-children: PropTypes.node,
-index: PropTypes.number.isRequired,
-value: PropTypes.number.isRequired,
-};
-
-function a11yProps(index) {
-return {
-    id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
-};
-}
-
-const AllPhotos  = () =>{
-    const theme = useTheme()
-    const {t} = useTranslation()
-    const [open,setOpen] = useState(false)
-    const [currentId,setCurrentId] = useState(null)
+    const { threadId } = useParams();
+    const lastDotIndex = threadId.lastIndexOf('.');
+    const idPart = threadId.substring(lastDotIndex + 1);
+    const albumCurrent = album.filter((item)=>item.id == idPart)[0]
+    const currentImage = images.filter((image)=> image.album_id == albumCurrent.id)
     const [page, setPage] = useState(1);
     const itemsPerPage = 20; // Change this according to your needs
 
     // Your data array
-    const data = [...images];
+    const data = [...currentImage];
 
     // Calculate the total number of pages
     const totalPages = Math.ceil(data.length / itemsPerPage);
@@ -161,8 +93,17 @@ const AllPhotos  = () =>{
     const handlePageChange = (event, value) => {
         setPage(value);
     };
-    return(
-        <Box>
+    
+  return (
+        <Container 
+            maxWidth={'xl'} 
+            sx={{
+                marginTop:theme.spacing(10),
+                marginBottom:theme.spacing(10),
+            }} 
+        >
+            <Typography sx={{marginBottom:theme.spacing(4)}} variant='h5' textAlign={"center"} fontWeight={700} >{albumCurrent.name}</Typography>
+            <Box sx={{ width: '100%' }}>
             <Grid container spacing={2}>
                 {currentPageData.map((image, index) => (
                     <Grid key={index} item xs={6} sm={6} md={4} lg={3}>
@@ -306,255 +247,9 @@ const AllPhotos  = () =>{
                     </Box>
                 </Box>
             </Dialog>
-        </Box>
-    )
-}
-
-const AllAlbums  = () =>{
-    const theme = useTheme()
-    const {t} = useTranslation()
-    const [page, setPage] = useState(1);
-    const itemsPerPage = 20; // Change this according to your needs
-
-    // Your data array
-    const data = [...album];
-
-    // Calculate the total number of pages
-    const totalPages = Math.ceil(data.length / itemsPerPage);
-
-    // Get the current page's data
-    const startIndex = (page - 1) * itemsPerPage;
-    const endIndex = page * itemsPerPage;
-    const currentPageData = data.slice(startIndex, endIndex);
-
-    // Handle page change
-    const handlePageChange = (event, value) => {
-        setPage(value);
-    };
-    return(
-        <Box>
-            <Grid container spacing={2}>
-                {currentPageData.map((image, index) => {
-                    const normalizedTitle = image.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
-
-                    return (
-                        <Grid key={index} item xs={6} sm={6} md={4} lg={3}>
-                            <Link to={`/${t('gioithieu')}/${t('thuvien')}/${normalizedTitle}.${image.id}`}> 
-                                <Card 
-                                    sx={{
-                                        width: '100%',
-                                        height: 'auto',
-                                        aspectRatio: 1,
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        position:'relative'
-                                    }}
-                                >
-                                        <CardMedia 
-                                            component="img"
-                                            alt={`Image ${index + 1}`}
-                                            height="auto"
-                                            image={image.url}
-                                            sx={{flex: 1,
-                                            objectFit: 'cover'}}
-                                        />
-                                        <CardContent>
-                                            <Typography variant='h7' fontWeight={700}>{image.name}</Typography>
-                                            <Typography >{`${image.count} ${t("items")}`}</Typography>
-                                        </CardContent>
-                                </Card>
-                            </Link>
-                        </Grid>
-                    )
-                })}
-            </Grid>
-
-            <Box sx={{width:'100%', marginTop: theme.spacing(10), display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                <Pagination
-                    variant="outlined" 
-                    color="primary"
-                    count={totalPages}
-                    page={page}
-                    onChange={handlePageChange}
-                    boundaryCount={1} 
-                    siblingCount={1}
-                />
             </Box>
-        </Box>
-    )
-}
+        </Container>
+  );
+};
 
-
-const AlbumItems = () =>{
-    const theme = useTheme()
-    const {t} = useTranslation()
-    const [open,setOpen] = useState(false)
-    const [currentId,setCurrentId] = useState(null)
-    const [page, setPage] = useState(1);
-    const itemsPerPage = 20; // Change this according to your needs
-
-    // Your data array
-    const data = [...images];
-
-    // Calculate the total number of pages
-    const totalPages = Math.ceil(data.length / itemsPerPage);
-
-    // Get the current page's data
-    const startIndex = (page - 1) * itemsPerPage;
-    const endIndex = page * itemsPerPage;
-    const currentPageData = data.slice(startIndex, endIndex);
-
-    // Handle page change
-    const handlePageChange = (event, value) => {
-        setPage(value);
-    };
-    return(
-        <Box>
-            <Grid container spacing={2}>
-                {currentPageData.map((image, index) => (
-                    <Grid key={index} item xs={6} sm={6} md={4} lg={3}>
-                       <Link to={`${t('gioithieu')}/${t('thuvien')}/${image.id}`}>
-                        <Card 
-                                sx={{
-                                    width: '100%',
-                                    height: 'auto',
-                                    aspectRatio: 1,
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    position:'relative'
-                                }}
-                                onClick={()=>{
-                                    setOpen(true)
-                                    setCurrentId(index)
-                                }}
-                            >
-                                    <CardMedia 
-                                        component="img"
-                                        alt={`Image ${index + 1}`}
-                                        height="auto"
-                                        image={image.url}
-                                        sx={{flex: 1,
-                                        objectFit: 'cover'}}
-                                    />
-                            </Card>
-                       </Link>
-                    </Grid>
-                ))}
-            </Grid>
-
-            <Box sx={{width:'100%', marginTop: theme.spacing(10), display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                <Pagination
-                    variant="outlined" 
-                    color="primary"
-                    count={totalPages}
-                    page={page}
-                    onChange={handlePageChange}
-                    boundaryCount={1} 
-                    siblingCount={1}
-                />
-            </Box>
-            <Dialog 
-                open={open} 
-                onClose={()=>{
-                    setOpen(false)
-                    setCurrentId(null)
-                }}
-                maxWidth="md"
-                fullWidth
-                
-            >
-                <Box sx={{padding: theme.spacing(2),position:'relative'}} className='wrap-image-dialog'>
-                    <LazyLoad height={200} offset={100}>
-                        <Box 
-                            sx={{
-                                textAlign: 'center',
-                                width:'100%',
-                                overflow:'hidden',
-                                height:'700px',
-                                display:'flex',
-                                alignItems:'center', 
-                                justifyContent:'center'
-                            }}
-                        >
-                                <img
-                                    src={currentPageData?.[currentId]?.url}
-                                    alt="Fullscreen"
-                                    style={{
-                                        maxWidth: '100%',
-                                        // height: 'auto',
-                                        maxHeight:'700px',
-                                        objectFit: 'contain'
-                                    }}
-                                />
-                        </Box>
-                    </LazyLoad>
-                    <Box sx={{padding: theme.spacing(3),background: '#00000066',position:'absolute',left:0,right:0,bottom:0}}>
-                        <Typography 
-                            color={theme.color.white}
-                            >{currentPageData?.[currentId]?.description}</Typography>
-                    </Box>
-                    <Box onClick={()=>{
-                        setOpen(false)
-                        setCurrentId(null)
-                    }} sx={{display:'flex',cursor:'pointer', alignItems:'center',justifyContent:'center', width:'30px', color:'#000', height:'30px', borderRadius:'50%', margin:'10px', position:'absolute', right:0, top:0}}>
-                        <CloseIcon/>
-                    </Box>
-                    <Box 
-                        className='button-next-image'
-                        onClick={()=>{
-                            if(currentId - 1 >= 0){
-                                setCurrentId(currentId - 1 )
-                            }
-                        }}
-                        sx={{
-                            transition: 'all .4s ease-in-out 0s',
-                            opacity:'.3', 
-                            marginLeft:'10px', 
-                            display:'flex',
-                            cursor:'pointer', 
-                            alignItems:'center',
-                            justifyContent:'center',
-                            width:'60px', 
-                            color:'#fff', 
-                            height:'60px', 
-                            borderRadius:'50%', 
-                            background: '#00000066', 
-                            position:'absolute', 
-                            left:0, 
-                            bottom:'50%'
-                        }}
-                        >
-                        <KeyboardArrowLeftIcon/>
-                    </Box>
-                    <Box 
-                    className='button-next-image'
-                    onClick={()=>{
-                        if(currentId + 1 <= images.length){
-                            setCurrentId(currentId + 1 )
-                        }
-                    }}
-                    sx={{
-                        transition: 'all .4s ease-in-out 0s',
-                        opacity:'.3', 
-                        marginRight:'10px', 
-                        display:'flex',
-                        cursor:'pointer', 
-                        alignItems:'center',
-                        justifyContent:'center',
-                        width:'60px', 
-                        color:'#fff', 
-                        height:'60px', 
-                        borderRadius:'50%', 
-                        background: '#00000066', 
-                        position:'absolute', 
-                        right:0, 
-                        bottom:'50%'
-                        }}
-                    >
-                        <KeyboardArrowRightIcon/>
-                    </Box>
-                </Box>
-            </Dialog>
-        </Box>
-    )
-}
+export default AlbumItems;

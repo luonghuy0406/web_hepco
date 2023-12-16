@@ -10,19 +10,19 @@ export default function Banner({name, image,path,pages}) {
     const home = useMatch(path)
     return (
         <Box
-        className="animate__animated animate__fadeInDown"
-        sx={{ 
-            width: "100%", 
-            height: name.length > 0 ? {xs: '250px', sm: '300px', md:'400px'} : '200px', 
-            backgroundImage: `url(${image})`, 
-            backgroundPosition:'center', 
-            backgroundSize:'cover',
-            backgroundRepeat:'no-repeat',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center', 
-            position: 'relative'
-        }}
+            className="animate__animated animate__fadeInDown"
+            sx={{ 
+                width: "100%", 
+                height: name.length > 0 ? {xs: '250px', sm: '300px', md:'400px'} : '200px', 
+                backgroundImage: `url(${image})`, 
+                backgroundPosition:'center', 
+                backgroundSize:'cover',
+                backgroundRepeat:'no-repeat',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center', 
+                position: 'relative'
+            }}
         >
             <Typography fontSize="52px" mt={"40px"} color={theme.color.white} fontWeight={"700"} className="animate__animated animate__fadeInDown">
                 {name}
