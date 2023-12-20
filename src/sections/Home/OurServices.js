@@ -113,7 +113,7 @@ export function OurServices() {
                         backgroundRepeat:"no-repeat",
                         position:"relative",
                         height:"100%",
-                        minHeight:"500px",
+                        minHeight:"400px",
                         borderRadius: "10px"
                     }}/>
                 </Grid>
@@ -122,7 +122,7 @@ export function OurServices() {
                         {t('Dịch vụ của chúng tôi')}
                     </StyledTypography>
                     <Box>
-                    <Grid container sx={{pt: theme.spacing(4), pl: theme.spacing(4)}} spacing={2}>
+                    <Grid container sx={{pt: theme.spacing(4), pl: theme.spacing(4)}} spacing={6}>
                         {
                             serviceData.map((data,index)=>{
                                 return(
@@ -143,37 +143,29 @@ const ServiceItem = ({data}) =>{
     const theme = useTheme()
     const {t} = useTranslation()
     return (
-        <Grid item xs={12} sm={6} md={4} lg={4}>
+        <Grid item xs={12} sm={6} md={4} lg={4} sx={{padding: theme.spacing(3)}}>
             <Link to={data.path}>
-                <Box sx={{padding:theme.spacing(5),backgroundColor: theme.color.white,boxShadow: '0 0 15px #eee', borderRadius:"10px", height:'100%'}} className={"our-service-wrap service-item"}>
-                    <div
-                        className="service__overlay bg-img"
-                        style={{
-                            backgroundImage: `url("${data.image}")`,
-                            backgroundSize: "cover",
-                            backgroundPosition: "center",
-                            borderRadius: "10px"
-                        }}
-                    ></div>
+                <Box sx={{
+                        padding: theme.spacing(3),
+                        boxShadow: '0 0 15px #eee', 
+                        borderRadius: "10px", 
+                        height: '100%',
+                        backgroundImage: `linear-gradient(0deg, rgba(0,0,0,0.6) 0%, rgba(9,9,121,0.1) 70%, rgba(0,212,255,0) 100%), url("${data.image}")`, 
+                        backgroundPosition: "center", 
+                        backgroundRepeat: "no-repeat", 
+                        backgroundSize: "cover",
+                        display: "flex", 
+                        alignItems: "flex-end",
+                        minHeight: "350px",
+                        "&:hover" : {
+                            backgroundImage : `linear-gradient(0deg, #f48123 0%, rgba(9,9,121,0.1) 70%, rgba(0,212,255,0)), url("${data.image}")`
+                        }
+                    }} 
+                    className={"our-service-wrap"}
+                >
                     <Grid container sx={{position:'relative', zIndex:2}}>
-                        <Grid xs={12} className='service-icon'>
-                            <Box
-                                sx={{
-                                    WebkitMaskBoxImage:`url(${data.icon})`,
-                                    WebkitMaskSize: '70%',
-                                    maskSize: '70%',
-                                    WebkitMaskRepeat: 'no-repeat',
-                                    maskRepeat: 'no-repeat', 
-                                    width: '70px',
-                                    height:'70px',
-                                    backgroundColor:theme.color.green1
-                                }}
-                            >
-
-                            </Box>
-                        </Grid>
-                        <Grid xs={12} className='text-service-title'>
-                            <Typography variant='h5' fontWeight={700} py={theme.spacing(2)} color={theme.color.red}>{data.name}</Typography>
+                        <Grid xs={12} >
+                            <Typography variant='h5' className='text-service' fontWeight={700} py={theme.spacing(2)} color={theme.color.white}>{data.name}</Typography>
                         </Grid>
                         <Grid xs={12} pb={theme.spacing(2)}>
                             <Box
@@ -184,17 +176,11 @@ const ServiceItem = ({data}) =>{
                                     WebkitBoxOrient: 'vertical',
                                 }}
                             >
-                                <Typography className='text-service' textAlign={'justify'}>
+                                <Typography textAlign={'justify'} fontWeight={500} color={theme.color.white}>
                                     {data.content}
                                 </Typography>
                             </Box>
                         </Grid>
-                        <BlogButton className='text-service'>
-                            <Link to={data.path}>
-                                <Typography fontWeight={700} lineHeight={'1.5rem'} >{t("Read more")}</Typography>
-                                <Typography sx={{display:'inline', pl: '5px'}} className='arrow-news'><FontAwesomeIcon icon="fa-solid fa-arrow-right-long" /></Typography>
-                            </Link>
-                        </BlogButton>
                     </Grid>
                 </Box>
             </Link>

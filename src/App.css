@@ -219,12 +219,19 @@ a {
 .our-mission-wrap:hover {
     transform: translateY(-8px);
 }
+.our-service-wrap:hover {
+    transform: scale(1.1);
+}
+.our-service-wrap:hover .text-service{
+    transition: .4s;
+    text-shadow : 0px 5px 15px #000000ca;
+}
 
 .our-mission-wrap, .our-service-wrap {
     transform: translateY(0);
     transition: .4s;
 }
-.service-item:hover::before{
+/* .service-item:hover::before{
     background-color: #3aa03d99;
     -webkit-clip-path: unset;
     clip-path: unset;
@@ -246,7 +253,7 @@ a {
 }
 .service-item:hover .text-service-title{
     text-align: center;
-}
+} */
 
 
 

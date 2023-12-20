@@ -148,28 +148,11 @@ export default function ShareholderContent({pageParam}) {
                     <Grid item xs={12}>
                         <Box sx={{padding: theme.spacing(2),backgroundColor: theme.color.white, boxShadow:'0 5px 20px rgba(34,34,34,.1)', borderRadius: '10px', height:'100%', width:'100%'}}>
                             <Grid container spacing={2}>
-                                <Grid item xs={12} md={4}>
-                                    <Typography fontWeight={500} sx={{marginBottom: theme.spacing(1)}}>{t("Loại tin tức")}</Typography>
-                                    <Autocomplete
-                                        multiple
-                                        options={Object.values(categories)}
-                                        getOptionLabel={(option) => option.name}
-                                        value={valueFilter}
-                                        id="tags-standard-filter-projects"
-                                        defaultValue={valueFilter}
-                                        renderInput={(params) => (
-                                            <TextField
-                                                {...params}
-                                                variant="outlined"
-                                                placeholder={t("Chọn loại tin tức để lọc")}
-                                            />
-                                        )}
-                                        onChange={(e,value)=>{
-                                            setValueFilter(value)
-                                        }}
-                                    />
+                                <Grid item xs={12}>
+                                    <Typography variant="h4" textAlign={"center"} fontWeight={700} sx={{marginBottom: theme.spacing(1)}}>{categories?.[pageParam]?.name}</Typography>
                                 </Grid>
-                                <Grid item xs={12} md={8}>
+                                
+                                <Grid item xs={12}>
                                     <Typography fontWeight={500} sx={{marginBottom: theme.spacing(1)}}>{t("Tìm kiếm")}</Typography>
                                     <TextField placeholder={t("Nhập từ khoá để tìm kiếm")} variant="outlined" value={keyword} fullWidth onChange={(e)=>{setKeyword(e.target.value)}}/>
                                 </Grid>
