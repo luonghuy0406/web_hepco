@@ -31,7 +31,7 @@ a {
     min-width: 0 !important;
     min-height: 0 !important;
     background: #3aa03d !important;
-    border: 1px solid #3aa03d !important;
+    border: unset;
 }
 
 .menu-sticky {
@@ -301,14 +301,14 @@ ul.sub-menu li:hover{
     width: 150px;
     display: flex;
     margin: 0 15px;
-    border-top: 2px solid var(--green4);
+    border-top: 2px solid var(--red);
 }
 .line2::before{
     content: '';
     width: 150px;
     display: flex;
     margin: 0 15px;
-    border-top: 2px dashed var(--green4);
+    border-top: 2px dashed var(--red);
 }
 .wrap-image-dialog:hover .button-next-image{
     opacity: 1 !important;

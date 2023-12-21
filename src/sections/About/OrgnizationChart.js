@@ -1,507 +1,503 @@
-import React, { useCallback } from 'react';
-import ReactFlow, {Controls, MarkerType } from 'reactflow';
+import react from 'react';
+import ReactFlow, {MarkerType } from 'reactflow';
 import 'reactflow/dist/style.css';
 import CustomNode from './CustomNode';
 import CustomNode2 from './CustomNode2';
 import {Container, Box, Typography, useTheme } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 
-
-const nodeTypes = {
-    selectorNode: CustomNode,
-    customNode2: CustomNode2
-  };
-const initialNodes = [
-    {
-    id: '0',
-    targetPosition: 'left',
-    sourcePosition: 'right',
-    // type: 'input',
-    data: { },
-    position: { x: -100, y: 350 },
-    style: {width:0,padding:0}
-    }, 
-    {
-    id: '1',
-    targetPosition: 'top',
-    sourcePosition: 'bottom',
-    // type: 'input',
-    data: { label: 'BAN KIỂM SOÁT' },
-    position: { x: -500, y: 250 },
-    style: { background:'var(--green4)', color:"#fff", padding: 10, border: '1px solid var(--green4)', fontWeight:700, width:'200px' }
-  }, 
-  {
-    id: '2',
-    sourcePosition: 'left',
-    type: 'input',
-    data: { label: 'ĐẠI HỘI CỔ ĐÔNG' },
-    position: { x: -350, y: 200 },
-    style: { background:'var(--red)', color:"#fff", padding: 10, border: '1px solid var(--red)', fontWeight:700, width:'200px' }
-  },
-  {
-    id: '2a',
-    sourcePosition: 'right',
-    type: 'input',
-    data: { label: 'ĐẠI HỘI CỔ ĐÔNG' },
-    position: { x: -350, y: 200 },
-    style: { background:'var(--red)', color:"#fff", padding: 10, border: '1px solid var(--red)', fontWeight:700, width:'200px' }
-  }
-  ,
-  {
-    id: '3',
-    sourcePosition: 'right',
-    targetPosition: 'left',
-    data: { label: 'ĐẠI HỘI QUẢN TRỊ' },
-    position: { x: -350, y: 300 },
-    style: { background:'var(--red)', color:"#fff", padding: 10, border: '1px solid var(--red)', fontWeight:700, width:'200px' }
-  },
-  {
-    id: '4',
-    sourcePosition: 'right',
-    targetPosition: 'left',
-    data: { label: 'CHỦ TỊCH HỘI ĐỒNG QUẢN TRỊ' },
-    position: { x: -350, y: 400 },
-    style: { background:'var(--red)', color:"#fff", padding: 10, border: '1px solid var(--red)', fontWeight:700, width:'200px' }
-  },
-  {
-    id: '5',
-    sourcePosition: 'right',
-    // targetPosition: 'left',
-    type:'input',
-    data: { label: 'BAN TỔNG GIÁM ĐỐC' },
-    position: { x: -350, y: 500 },
-    style: { background:'var(--red)', color:"#fff", padding: 10, border: '1px solid var(--red)', fontWeight:700, width:'200px' }
-  },
-  {
-    id: '6',
-    targetPosition: 'left',
-    type: 'selectorNode',
-    data: { label: 'PHÒNG CHUYÊN MÔN' },
-    position: { x: -100, y: 0 },
-    // style: { background:'var(--green4)', color:"#fff", padding: 10, border: '1px solid var(--green4)', fontWeight:700, width:'200px' }
-  },
-  {
-    id: '6a',
-    targetPosition: 'bottom',
-    sourcePosition: 'bottom',
-    type: 'customNode2',
-    data: { label: 'PHÒNG CHUYÊN MÔN' },
-    position: { x: -100, y: 0 },
-    // style: { background:'var(--green4)', color:"#fff", padding: 10, border: '1px solid var(--green4)', fontWeight:700, width:'200px' }
-  },
-  {
-    id: '7',
-    sourcePosition: 'top',
-    type:'default',
-    targetPosition: 'left',
-    data: { label: 'BỘ PHẬN GIAO DỊCH' },
-    position: { x: -100, y: 550 },
-    style: { background:'var(--green4)', color:"#fff", padding: 10, border: '1px solid var(--green4)', fontWeight:700, width:'200px' }
-  },
-  {
-    id: '8',
-    targetPosition: 'left',
-    type:'output',
-    data: { label: 'XÍ NGHIỆP MÔI TRƯỜNG BẮC SÔNG HƯƠNG' },
-    position: { x: 400, y: 100 },
-    style: { background:'var(--green4)', color:"#fff", padding: 10, border: '1px solid var(--green4)', fontWeight:700, width:'500px' }
-  },
-
-  {
-    id: '9',
-    type:'output',
-    targetPosition: 'left',
-    data: { label: 'XÍ NGHIỆP MÔI TRƯỜNG NAM SÔNG HƯƠNG' },
-    position: { x: 400, y: 150 },
-    style: { background:'var(--green4)', color:"#fff", padding: 10, border: '1px solid var(--green4)', fontWeight:700, width:'500px' }
-  },
-  {
-    id: '10',
-    type:'output',
-    targetPosition: 'left',
-    data: { label: 'XÍ NGHIỆP THOÁT NƯỚC' },
-    position: { x: 400, y: 200 },style: { background:'var(--green4)', color:"#fff", padding: 10, border: '1px solid var(--green4)', fontWeight:700, width:'500px' }
-  },
-  {
-    id: '11',
-    type:'output',
-    targetPosition: 'left',
-    data: { label: 'XÍ NGHIỆP ĐIỆN CHIẾU SÁNG' },
-    position: { x: 400, y: 250 },
-    style: { background:'var(--green4)', color:"#fff", padding: 10, border: '1px solid var(--green4)', fontWeight:700, width:'500px' }
-  },
-  {
-    id: '12',
-    type:'output',
-    targetPosition: 'left',
-    data: { label: 'XÍ NGHIỆP XỬ LÝ CHẤT THẢI' },
-    position: { x: 400, y: 300 },
-    style: { background:'var(--green4)', color:"#fff", padding: 10, border: '1px solid var(--green4)', fontWeight:700, width:'500px' }
-  },
-  {
-    id: '13',
-    type:'output',
-    targetPosition: 'left',
-    data: { label: 'XÍ NGHIỆP CƠ KHÍ XÂY LẮP' },
-    position: { x: 400, y: 350 },
-    style: { background:'var(--green4)', color:"#fff", padding: 10, border: '1px solid var(--green4)', fontWeight:700, width:'500px' }
-  },
-  {
-    id: '14',
-    type:'output',
-    targetPosition: 'left',
-    data: { label: 'XÍ NGHIỆP XÂY DỰNG SỐ 1' },
-    position: { x: 400, y: 400 },
-    style: { background:'var(--green4)', color:"#fff", padding: 10, border: '1px solid var(--green4)', fontWeight:700, width:'500px' }
-  },
-  {
-    id: '15',
-    type:'output',
-    targetPosition: 'left',
-    data: { label: 'XÍ NGHIỆP XÂY DỰNG SỐ 2' },
-    position: { x: 400, y: 450 },
-    style: { background:'var(--green4)', color:"#fff", padding: 10, border: '1px solid var(--green4)', fontWeight:700, width:'500px' }
-  },
-  {
-    id: '16',
-    type:'output',
-    targetPosition: 'left',
-    data: { label: 'XÍ NGHIỆP MÔI TRƯỜNG LĂNG CÔ' },
-    position: { x: 400, y: 500 },
-    style: { background:'var(--green4)', color:"#fff", padding: 10, border: '1px solid var(--green4)', fontWeight:700, width:'500px' }
-  },
-  {
-    id: '17',
-    type:'output',
-    targetPosition: 'left',
-    data: { label: 'XÍ NGHIỆP MÔI TRƯỜNG HƯƠNG THUỶ' },
-    position: { x: 400, y: 550 },
-    style: { background:'var(--green4)', color:"#fff", padding: 10, border: '1px solid var(--green4)', fontWeight:700, width:'500px' }
-  },
-  {
-    id: '18',
-    type:'output',
-    targetPosition: 'left',
-    data: { label: 'XÍ NGHIỆP MÔI TRƯỜNG HƯƠNG TRÀ' },
-    position: { x: 400, y: 600 },
-    style: { background:'var(--green4)', color:"#fff", padding: 10, border: '1px solid var(--green4)', fontWeight:700, width:'500px' }
-  },
-  {
-    id: '19',
-    type:'output',
-    targetPosition: 'left',
-    data: { label: 'BAN QUẢN LÝ NGHĨA TRANG' },
-    position: { x: 400, y: 650 },
-    style: { background:'var(--green4)', color:"#fff", padding: 10, border: '1px solid var(--green4)', fontWeight:700, width:'500px' }
-  },
-];
-
-const initialEdges = [
-  {
-    id: 'e2-1',
-    source: '2',
-    type: 'smoothstep',
-    target: '1',
-    markerEnd: {
-        type: MarkerType.ArrowClosed,
-        color: '#39A03D'
-    },
-    style: { stroke: 'var(--green4)'}
-  },
-  {
-    id: 'e1-3',
-    source: '1',
-    type: 'smoothstep',
-    target: '3',
-    markerEnd: {
-        type: MarkerType.ArrowClosed,
-        color: '#39A03D'
-    },
-    style: { stroke: 'var(--green4)'}
-  },
-  {
-    id: 'e1-4',
-    source: '1',
-    type: 'smoothstep',
-    target: '4',
-    markerEnd: {
-        type: MarkerType.ArrowClosed,
-        color: '#39A03D'
-    },
-    style: { stroke: 'var(--green4)'}
-  },
-  {
-    id: 'e2a-6',
-    source: '2a',
-    type: 'smoothstep',
-    target: '6',
-    markerEnd: {
-        type: MarkerType.ArrowClosed,
-        color: '#39A03D'
-    },
-    style: { stroke: 'var(--green4)'}
-  },
-  {
-    id: 'e3-6', 
-    source: '3',
-    type: 'smoothstep',
-    target: '6',
-    markerEnd: {
-        type: MarkerType.ArrowClosed,
-        color: '#39A03D'
-    },
-    style: { stroke: 'var(--green4)'}
-  },
-  {
-    id: 'e4-6',
-    source: '4',
-    type: 'smoothstep',
-    target: '6',
-    markerEnd: {
-        type: MarkerType.ArrowClosed,
-        color: '#39A03D'
-    },
-    style: { stroke: 'var(--green4)'}
-  },
-  {
-    id: 'e5-6',
-    source: '5',
-    type: 'smoothstep',
-    target: '6',
-    markerEnd: {
-        type: MarkerType.ArrowClosed,
-        color: '#39A03D'
-    },
-    style: { stroke: 'var(--green4)'}
-  },
-  {
-    id: 'e2a-7',
-    source: '2a',
-    type: 'smoothstep',
-    target: '7',
-    markerEnd: {
-        type: MarkerType.ArrowClosed,
-        color: '#39A03D'
-    },
-    style: { stroke: 'var(--green4)'}
-  },
-  {
-    id: 'e3-7',
-    source: '3',
-    type: 'smoothstep',
-    target: '7',
-    markerEnd: {
-        type: MarkerType.ArrowClosed,
-        color: '#39A03D'
-    },
-    style: { stroke: 'var(--green4)'}
-  },
-  {
-    id: 'e4-7',
-    source: '4',
-    type: 'smoothstep',
-    target: '7',
-    markerEnd: {
-        type: MarkerType.ArrowClosed,
-        color: '#39A03D'
-    },
-    style: { stroke: 'var(--green4)'}
-  },
-  {
-    id: 'e5-7',
-    source: '5',
-    type: 'smoothstep',
-    target: '7',
-    markerEnd: {
-        type: MarkerType.ArrowClosed,
-        color: '#39A03D'
-    },
-    style: { stroke: 'var(--green4)'}
-  },
-  {
-    id: 'e6a-7',
-    source: '7',
-    type: 'smoothstep',
-    target: '6a',
-    style: { stroke: 'var(--green4)',strokeDasharray: '5 5' },
-  },
-  {
-    id: 'e0-8',
-    source: '0',
-    type: 'smoothstep',
-    target: '8',
-    markerEnd: {
-        type: MarkerType.ArrowClosed,
-        color: '#39A03D'
-    },
-    style: { stroke: 'var(--green4)'}
-  },
-  {
-    id: 'e0-9',
-    source: '0',
-    type: 'smoothstep',
-    target: '9',
-    markerEnd: {
-        type: MarkerType.ArrowClosed,
-        color: '#39A03D'
-    },
-    style: { stroke: 'var(--green4)'}
-  },
-  {
-    id: 'e0-10',
-    source: '0',
-    type: 'smoothstep',
-    target: '10',
-    markerEnd: {
-        type: MarkerType.ArrowClosed,
-        color: '#39A03D'
-    },
-    style: { stroke: 'var(--green4)'}
-  },
-  {
-    id: 'e0-11',
-    source: '0',
-    type: 'smoothstep',
-    target: '11',
-    markerEnd: {
-        type: MarkerType.ArrowClosed,
-        color: '#39A03D'
-    },
-    style: { stroke: 'var(--green4)'}
-  },
-  {
-    id: 'e0-12',
-    source: '0',
-    type: 'smoothstep',
-    target: '12',
-    markerEnd: {
-        type: MarkerType.ArrowClosed,
-        color: '#39A03D'
-    },
-    style: { stroke: 'var(--green4)'}
-  },
-  {
-    id: 'e0-13',
-    source: '0',
-    type: 'smoothstep',
-    target: '13',
-    markerEnd: {
-        type: MarkerType.ArrowClosed,
-        color: '#39A03D'
-    },
-    style: { stroke: 'var(--green4)'}
-  },
-  {
-    id: 'e0-14',
-    source: '0',
-    type: 'smoothstep',
-    target: '14',
-    markerEnd: {
-        type: MarkerType.ArrowClosed,
-        color: '#39A03D'
-    },
-    style: { stroke: 'var(--green4)'}
-  },
-  {
-    id: 'e0-15',
-    source: '0',
-    type: 'smoothstep',
-    target: '15',
-    markerEnd: {
-        type: MarkerType.ArrowClosed,
-        color: '#39A03D'
-    },
-    style: { stroke: 'var(--green4)'}
-  },
-  {
-    id: 'e0-16',
-    source: '0',
-    type: 'smoothstep',
-    target: '16',
-    markerEnd: {
-        type: MarkerType.ArrowClosed,
-        color: '#39A03D'
-    },
-    style: { stroke: 'var(--green4)'}
-  },
-  {
-    id: 'e0-17',
-    source: '0',
-    type: 'smoothstep',
-    target: '17',
-    markerEnd: {
-        type: MarkerType.ArrowClosed,
-        color: '#39A03D'
-    },
-    style: { stroke: 'var(--green4)'}
-  },
-  {
-    id: 'e0-18',
-    source: '0',
-    type: 'smoothstep',
-    target: '18',
-    markerEnd: {
-        type: MarkerType.ArrowClosed,
-        color: '#39A03D'
-    },
-    style: { stroke: 'var(--green4)'}
-  },
-  {
-    id: 'e0-19',
-    source: '0',
-    type: 'smoothstep',
-    target: '19',
-    markerEnd: {
-        type: MarkerType.ArrowClosed,
-        color: '#39A03D'
-    },
-    style: { stroke: 'var(--green4)'}
-  }
-  ,
-  {
-    id: 'e0-19',
-    source: '0',
-    type: 'smoothstep',
-    target: '19',
-    markerEnd: {
-        type: MarkerType.ArrowClosed,
-        color: '#39A03D'
-    },
-    style: { stroke: 'var(--green4)'}
-  },
-  {
-    id: 'e2a-0',
-    source: '2a',
-    type: 'smoothstep',
-    target: '0',
-    style: { stroke: 'var(--green4)'}
-  },
-  {
-    id: 'e3-0',
-    source: '3',
-    type: 'smoothstep',
-    target: '0',
-    style: { stroke: 'var(--green4)'}
-  },
-  {
-    id: 'e4-0',
-    source: '4',
-    type: 'smoothstep',
-    target: '0',
-    style: { stroke: 'var(--green4)'}
-  },
-  {
-    id: 'e5-0',
-    source: '5',
-    type: 'smoothstep',
-    target: '0',
-    style: { stroke: 'var(--green4)'}
-  }
-];
-
 const OrgnizationChart = () => {
   const {t} = useTranslation()
   const theme = useTheme()
+  const nodeTypes = {
+    selectorNode: CustomNode,
+    customNode2: CustomNode2
+  };
+  const initialNodes = [
+    {
+      id: '1',
+      sourcePosition: 'bottom',
+      type: 'input',
+      data: { label: t('ĐẠI HỘI CỔ ĐÔNG') },
+      position: { x: 300, y: 200 },
+      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'200px' }
+    },
+    {
+      id: '2',
+      sourcePosition: 'right',
+      targetPosition: 'top',
+      type: 'default',
+      data: { label: t('BAN KIỂM SOÁT') },
+      position: { x: 0, y: 350 },
+      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'200px' }
+    },
+    {
+      id: '3',
+      sourcePosition: 'right',
+      targetPosition: 'top',
+      type: 'default',
+      data: { label: t('HỘI ĐỒNG QUẢN TRỊ') },
+      position: { x: 300, y: 310 },
+      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'200px' }
+    },
+    {
+      id: '3a',
+      targetPosition: 'left',
+      type: 'output',
+      data: { label: t('HỘI ĐỒNG QUẢN TRỊ') },
+      position: { x: 300, y: 310 },
+      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'200px' }
+    },
+    {
+      id: '4',
+      sourcePosition: 'bottom',
+      targetPosition: 'right',
+      type: 'default',
+      data: { label: t('BAN TỔNG GIÁM ĐỐC') },
+      position: { x: 300, y: 390 },
+      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'200px' }
+    },
+    {
+      id: '4b',
+      data: {},
+      position: { x: 399, y: 570 },
+      style: {width:0,padding:0, borderColor:"var(--red)"}
+    },
+    {
+      id: '4c',
+      data: {},
+      position: { x: 399, y: 700 },
+      style: {width:0,padding:0, borderColor:"var(--red)"}
+    },
+    {
+      id: '4a',
+      targetPosition: 'left',
+      type: 'output',
+      data: { label: t('BAN TỔNG GIÁM ĐỐC') },
+      position: { x: 300, y: 390 },
+      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'200px' }
+    },
+    {
+      id: '5',
+      sourcePosition: 'left',
+      targetPosition: 'left',
+      type: 'default',
+      data: { label: t('CHỦ TỊCH HĐQT') },
+      position: { x: 600, y: 350 },
+      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'200px' }
+    },
+    {
+      id: '6',
+      targetPosition: 'top',
+      type: 'output',
+      data: { label: t('PHÒNG TỔ CHỨC HÀNH CHÍNH') },
+      position: { x: -250, y: 500 },
+      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'250px' }
+    },
+    {
+      id: '7',
+      targetPosition: 'top',
+      type: 'output',
+      data: { label: t('PHÒNG KẾ HOẠCH') },
+      position: { x: 100, y: 500 },
+      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'250px' }
+    },
+    {
+      id: '8',
+      targetPosition: 'top',
+      type: 'output',
+      data: { label: t('PHÒNG KỸ THUẬT') },
+      position: { x: 450, y: 500 },
+      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'250px' }
+    },
+    {
+      id: '9',
+      targetPosition: 'top',
+      type: 'output',
+      data: { label: t('PHÒNG KẾ TOÁN - TÀI VỤ') },
+      position: { x: 800, y: 500 },
+      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'250px' }
+    },
+    {
+      id: '10',
+      targetPosition: 'top',
+      type: 'output',
+      data: { label: t('XÍ NGHIỆP THOÁT NƯỚC') },
+      position: { x: -200, y: 620 },
+      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
+    },
+    {
+      id: '11',
+      targetPosition: 'top',
+      type: 'output',
+      data: { label: t('XÍ NGHIỆP CƠ KHÍ - XÂY LẮP') },
+      position: { x: 0, y: 620 },
+      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
+    },
+    {
+      id: '12',
+      targetPosition: 'top',
+      type: 'output',
+      data: { label: t('XÍ NGHIỆP MÔI TRƯỜNG BẮC SÔNG HƯƠNG') },
+      position: { x: 200, y: 620 },
+      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
+    },
+
+    {
+      id: '13',
+      targetPosition: 'top',
+      type: 'output',
+      data: { label: t('XÍ NGHIỆP MÔI TRƯỜNG NAM SÔNG HƯƠNG') },
+      position: { x: 450, y: 620 },
+      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
+    },
+    {
+      id: '14',
+      targetPosition: 'top',
+      type: 'output',
+      data: { label: t('XÍ NGHIỆP VẬN CHUYỂN - XE MÁY') },
+      position: { x: 650, y: 620 },
+      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
+    },
+    {
+      id: '15',
+      targetPosition: 'top',
+      type: 'output',
+      data: { label: t('XÍ NGHIỆP ĐIỆN CHIẾU SÁNG') },
+      position: { x: 850, y: 620 },
+      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
+    },
+    ,
+    {
+      id: '16',
+      targetPosition: 'top',
+      type: 'output',
+      data: { label: t('XÍ NGHIỆP XÂY DỰNG SỐ 2') },
+      position: { x: -275, y: 750 },
+      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
+    },
+    {
+      id: '17',
+      targetPosition: 'top',
+      type: 'output',
+      data: { label: t('XÍ NGHIỆP XÂY DỰNG SỐ 1') },
+      position: { x: -75, y: 750 },
+      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
+    },
+    {
+      id: '18',
+      targetPosition: 'top',
+      type: 'output',
+      data: { label: t('BQL NGHĨA TRANG NHÂN DÂN') },
+      position: { x: 125, y: 750 },
+      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
+    },
+
+    {
+      id: '19',
+      targetPosition: 'top',
+      type: 'output',
+      data: { label: t('XÍ NGHIỆP XỬ LÝ CHẤT THẢI') },
+      position: { x: 325, y: 750 },
+      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
+    },
+    {
+      id: '20',
+      targetPosition: 'top',
+      type: 'output',
+      data: { label: t('XÍ NGHIỆP MTĐT LĂNG CÔ') },
+      position: { x: 525, y: 750 },
+      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
+    },
+    {
+      id: '21',
+      targetPosition: 'top',
+      type: 'output',
+      data: { label: t('XÍ NGHIỆP MT&CTĐT HƯƠNG TRÀ') },
+      position: { x: 725, y: 750 },
+      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
+    },
+    {
+      id: '22',
+      targetPosition: 'top',
+      type: 'output',
+      data: { label: t('XÍ NGHIỆP MT&CTĐT HƯƠNG THUỶ') },
+      position: { x: 925, y: 750 },
+      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
+    },
+]
+const initialEdges = [
+    {
+      id: 'e1-2',
+      source: '1',
+      type: 'straight',
+      target: '2',
+      markerEnd: {
+          type: MarkerType.ArrowClosed,
+          color: '#F48123'
+      },
+      style: { stroke: 'var(--red)'},
+      label: t("(Bầu)"),
+    },
+    {
+      id: 'e1-3',
+      source: '1',
+      type: 'straight',
+      target: '3',
+      markerEnd: {
+          type: MarkerType.ArrowClosed,
+          color: '#F48123'
+      },
+      style: { stroke: 'var(--red)'},
+      label: t("(Bầu)"),
+    },
+    {
+      id: 'e2-3a',
+      source: '2',
+      type: 'straight',
+      target: '3a',
+      markerEnd: {
+          type: MarkerType.ArrowClosed,
+          color: '#F48123'
+      },
+      style: { stroke: 'var(--red)'},
+    },
+    {
+      id: 'e2-4a',
+      source: '2',
+      type: 'straight',
+      target: '4a',
+      markerEnd: {
+          type: MarkerType.ArrowClosed,
+          color: '#F48123'
+      },
+      style: { stroke: 'var(--red)',strokeDasharray: '5 5' },
+    },
+    {
+      id: 'e3-5',
+      source: '3',
+      type: 'straight',
+      target: '5',
+      markerEnd: {
+          type: MarkerType.ArrowClosed,
+          color: '#F48123'
+      },
+      style: { stroke: 'var(--red)'},
+      label: t("(Bầu)"),
+    },
+    {
+      id: 'e5-4',
+      source: '5',
+      type: 'straight',
+      target: '4',
+      markerEnd: {
+          type: MarkerType.ArrowClosed,
+          color: '#F48123'
+      },
+      style: { stroke: 'var(--red)'},
+    },
+    {
+      id: 'e4-6',
+      source: '4',
+      type: 'straight',
+      target: '6',
+      markerEnd: {
+          type: MarkerType.ArrowClosed,
+          color: '#F48123'
+      },
+      style: { stroke: 'var(--red)'},
+    },
+    {
+      id: 'e4-7',
+      source: '4',
+      type: 'straight',
+      target: '7',
+      markerEnd: {
+          type: MarkerType.ArrowClosed,
+          color: '#F48123'
+      },
+      style: { stroke: 'var(--red)'},
+    },
+    {
+      id: 'e4-8',
+      source: '4',
+      type: 'straight',
+      target: '8',
+      markerEnd: {
+          type: MarkerType.ArrowClosed,
+          color: '#F48123'
+      },
+      style: { stroke: 'var(--red)'},
+    },
+    {
+      id: 'e4-9',
+      source: '4',
+      type: 'straight',
+      target: '9',
+      markerEnd: {
+          type: MarkerType.ArrowClosed,
+          color: '#F48123'
+      },
+      style: { stroke: 'var(--red)'},
+    },
+    {
+      id: 'e4-4b',
+      source: '4',
+      type: 'straight',
+      target: '4b',
+      style: { stroke: 'var(--red)'}
+    },
+    {
+      id: 'e4b-4c',
+      source: '4b',
+      type: 'straight',
+      target: '4c',
+      style: { stroke: 'var(--red)'}
+    },
+    {
+      id: 'e4b-10',
+      source: '4b',
+      target: '10',
+      markerEnd: {
+          type: MarkerType.ArrowClosed,
+          color: '#F48123'
+      },
+      style: { stroke: 'var(--red)'},
+      type: 'smoothstep'
+    },
+    {
+      id: 'e4b-11',
+      source: '4b',
+      target: '11',
+      markerEnd: {
+          type: MarkerType.ArrowClosed,
+          color: '#F48123'
+      },
+      style: { stroke: 'var(--red)'},
+      type: 'smoothstep'
+    },
+    {
+      id: 'e4b-12',
+      source: '4b',
+      target: '12',
+      markerEnd: {
+          type: MarkerType.ArrowClosed,
+          color: '#F48123'
+      },
+      style: { stroke: 'var(--red)'},
+      type: 'smoothstep'
+    },
+    {
+      id: 'e4b-13',
+      source: '4b',
+      target: '13',
+      markerEnd: {
+          type: MarkerType.ArrowClosed,
+          color: '#F48123'
+      },
+      style: { stroke: 'var(--red)'},
+      type: 'smoothstep'
+    },
+    {
+      id: 'e4b-14',
+      source: '4b',
+      target: '14',
+      markerEnd: {
+          type: MarkerType.ArrowClosed,
+          color: '#F48123'
+      },
+      style: { stroke: 'var(--red)'},
+      type: 'smoothstep'
+    },
+    {
+      id: 'e4b-15',
+      source: '4b',
+      target: '15',
+      markerEnd: {
+          type: MarkerType.ArrowClosed,
+          color: '#F48123'
+      },
+      style: { stroke: 'var(--red)'},
+      type: 'smoothstep'
+    },
+    {
+      id: 'e4c-16',
+      source: '4c',
+      target: '16',
+      markerEnd: {
+          type: MarkerType.ArrowClosed,
+          color: '#F48123'
+      },
+      style: { stroke: 'var(--red)'},
+      type: 'smoothstep'
+    },
+    {
+      id: 'e4c-17',
+      source: '4c',
+      target: '17',
+      markerEnd: {
+          type: MarkerType.ArrowClosed,
+          color: '#F48123'
+      },
+      style: { stroke: 'var(--red)'},
+      type: 'smoothstep'
+    },
+    {
+      id: 'e4c-18',
+      source: '4c',
+      target: '18',
+      markerEnd: {
+          type: MarkerType.ArrowClosed,
+          color: '#F48123'
+      },
+      style: { stroke: 'var(--red)'},
+      type: 'smoothstep'
+    },
+    {
+      id: 'e4c-19',
+      source: '4c',
+      target: '19',
+      markerEnd: {
+          type: MarkerType.ArrowClosed,
+          color: '#F48123'
+      },
+      style: { stroke: 'var(--red)'},
+      type: 'smoothstep'
+    },
+    {
+      id: 'e4c-20',
+      source: '4c',
+      target: '20',
+      markerEnd: {
+          type: MarkerType.ArrowClosed,
+          color: '#F48123'
+      },
+      style: { stroke: 'var(--red)'},
+      type: 'smoothstep'
+    },
+    {
+      id: 'e4c-21',
+      source: '4c',
+      target: '21',
+      markerEnd: {
+          type: MarkerType.ArrowClosed,
+          color: '#F48123'
+      },
+      style: { stroke: 'var(--red)'},
+      type: 'smoothstep'
+    },
+    {
+      id: 'e4c-22',
+      source: '4c',
+      target: '22',
+      markerEnd: {
+          type: MarkerType.ArrowClosed,
+          color: '#F48123'
+      },
+      style: { stroke: 'var(--red)'},
+      type: 'smoothstep'
+    }
+]
   return (
     <Container maxWidth='100%' sx={{
       marginTop:theme.spacing(10),
