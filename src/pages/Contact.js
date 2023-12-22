@@ -97,7 +97,7 @@ export default function Contact() {
         </Grid>
         <Grid container spacing={3} pt={5} pb={15}>
           <Grid item xs={6} md={3} >
-            <Box sx={{width: "100%", height: "300px", backgroundColor:"#fafafa", borderRadius:"10px", padding: theme.spacing(4), display:'flex', alignItems:"center",flexDirection:"column"}}>
+            <Box className='our-mission-wrap' sx={{width: "100%", height: "300px", backgroundColor:"#fafafa", borderRadius:"10px", padding: theme.spacing(4), display:'flex', alignItems:"center",flexDirection:"column"}}>
                 <Box
                   sx={{
                     width:"70px",
@@ -117,7 +117,7 @@ export default function Contact() {
             </Box>
           </Grid>
           <Grid item xs={6} md={3} >
-            <Box sx={{width: "100%", height: "300px", backgroundColor:"#fafafa", borderRadius:"10px", padding: theme.spacing(4), display:'flex', alignItems:"center",flexDirection:"column"}}>
+            <Box className='our-mission-wrap' sx={{width: "100%", height: "300px", backgroundColor:"#fafafa", borderRadius:"10px", padding: theme.spacing(4), display:'flex', alignItems:"center",flexDirection:"column"}}>
               <Box
                   sx={{
                     width:"70px",
@@ -136,7 +136,7 @@ export default function Contact() {
             </Box>
           </Grid>
           <Grid item xs={6} md={3} >
-            <Box sx={{width: "100%", height: "300px", backgroundColor:"#fafafa", borderRadius:"10px", padding: theme.spacing(4), display:'flex', alignItems:"center",flexDirection:"column"}}>
+            <Box className='our-mission-wrap' sx={{width: "100%", height: "300px", backgroundColor:"#fafafa", borderRadius:"10px", padding: theme.spacing(4), display:'flex', alignItems:"center",flexDirection:"column"}}>
             <Box
                   sx={{
                     width:"70px",
@@ -151,12 +151,12 @@ export default function Contact() {
                   <img src={'/assets/icons/ic_open.svg'} alt='icon phone' width={35} />
                 </Box>
                 <Typography variant="h5" fontWeight={700} color={theme.color.green1} padding={2}>Giờ mở cửa</Typography>
-                <Typography fontWeight={500}>T2-T6: 7h - 11h30 và 13h - 17h</Typography>
+                <Typography fontWeight={500}>T2-T6: 7h30 - 11h30 và 13h - 17h</Typography>
                 <Typography fontWeight={500}>T7-CN: Không hoạt động</Typography>
             </Box>
           </Grid>
           <Grid item xs={6} md={3} >
-            <Box sx={{width: "100%", height: "300px", backgroundColor:"#fafafa", borderRadius:"10px", padding: theme.spacing(4), display:'flex', alignItems:"center",flexDirection:"column"}}>
+            <Box className='our-mission-wrap' sx={{width: "100%", height: "300px", backgroundColor:"#fafafa", borderRadius:"10px", padding: theme.spacing(4), display:'flex', alignItems:"center",flexDirection:"column"}}>
               <Box
                   sx={{
                     width:"70px",

@@ -101,15 +101,10 @@ export default function Footer(){
                             </Typography>
                         </Grid>
                         <Grid item xs={12}><Typography fontWeight={600} color={theme.color.white}>CÔNG TY CỔ PHẦN MÔI TRƯỜNG VÀ CÔNG TRÌNH ĐÔ THỊ HUẾ</Typography></Grid>
-                        {/* <Grid item xs={3}><Typography fontWeight={600} color={theme.color.white}>Địa chỉ:</Typography></Grid> */}
                         <Grid item xs={12}><Typography fontWeight={500} color={theme.color.white}>46 Trần Phú, Phường Phước Vĩnh, TP. Huế</Typography></Grid>
-                        {/* <Grid item xs={3}><Typography fontWeight={600} color={theme.color.white}>Điện thoại:</Typography></Grid> */}
                         <Grid item xs={12}><Typography fontWeight={500} color={theme.color.white}>(0234) 3848242 </Typography></Grid>
-                        {/* <Grid item xs={3}><Typography fontWeight={600} color={theme.color.white}>Fax:</Typography></Grid> */}
                         <Grid item xs={12}><Typography fontWeight={500} color={theme.color.white}>(0234) 3848075</Typography></Grid>
-                        {/* <Grid item xs={3}><Typography fontWeight={600} color={theme.color.white}>Hotline:</Typography></Grid> */}
                         <Grid item xs={12}><Typography fontWeight={500} color={theme.color.white}>(0234) 3997799</Typography></Grid>
-                        {/* <Grid item xs={3}><Typography fontWeight={600} color={theme.color.white}>Email:</Typography></Grid> */}
                         <Grid item xs={12}><Typography fontWeight={500} color={theme.color.white}>info@hepco.com.vn</Typography></Grid>
 
                         <Grid item xs={12} container  spacing={1}>

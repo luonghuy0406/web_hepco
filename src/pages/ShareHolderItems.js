@@ -21,8 +21,8 @@ export default function ShareholderItem() {
   const shareholderRelated = shareholder.filter((n)=> n.group_id == data[0]?.group_id && n.id != data[0]?.id ).slice(0, 3)
   const categories = {
         '0': {name: t('Tất cả tin'), value:'0'},
-        '1': {name: t('Thông báo'), value:'1'},
-        '2': {name: t('Báo cáo'), value:'2'},
+        '5': {name: t('Thông báo'), value:'5'},
+        '6': {name: t('Báo cáo'), value:'6'},
     }
   window.scrollTo(0, 0)
   

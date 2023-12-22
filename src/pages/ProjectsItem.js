@@ -21,9 +21,9 @@ export default function ProjectsItem() {
   const projectRelated = project.filter((n)=> n.group_id == data[0]?.group_id && n.id != data[0]?.id ).slice(0, 3)
   const categories = {
     '0': {name: t('Tất cả dự án'), value:'0'},
-    '1': {name: t('Dự án đầu tư'), value:'1'},
-    '2': {name: t('Hợp tác trong nước'), value:'2'},
-    '3': {name: t('Hợp tác nước ngoài'), value:'3'}
+    '7': {name: t('Dự án đầu tư'), value:'7'},
+    '8': {name: t('Hợp tác trong nước'), value:'8'},
+    '9': {name: t('Hợp tác nước ngoài'), value:'9'}
 }
   window.scrollTo(0, 0)
   

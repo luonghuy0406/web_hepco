@@ -86,8 +86,8 @@ export default function ShareholderContent({pageParam}) {
     const [dataShareholder, setDataShareholder] = useState(shareholder)
     const categories = {
         '0': {name: t('Tất cả tin'), value:'0'},
-        '1': {name: t('Thông báo'), value:'1'},
-        '2': {name: t('Báo cáo'), value:'2'},
+        '5': {name: t('Thông báo'), value:'5'},
+        '6': {name: t('Báo cáo'), value:'6'},
     }
     const [valueFilter, setValueFilter] = useState([categories[pageParam]] || [categories['0']])
     const [keyword, setKeyword] = useState('')

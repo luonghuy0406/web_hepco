@@ -112,9 +112,9 @@ export default function ProjectsContent({pageParam}) {
     const [dataProjects, setDataProjects] = useState(project)
     const categories = {
         '0': {name: t('Tất cả dự án'), value:'0'},
-        '1': {name: t('Dự án đầu tư'), value:'1'},
-        '2': {name: t('Hợp tác trong nước'), value:'2'},
-        '3': {name: t('Hợp tác nước ngoài'), value:'3'}
+        '7': {name: t('Dự án đầu tư'), value:'7'},
+        '8': {name: t('Hợp tác trong nước'), value:'8'},
+        '9': {name: t('Hợp tác nước ngoài'), value:'9'}
     }
     const [valueFilter, setValueFilter] = useState([categories[pageParam]] || [categories['0']])
     const [keyword, setKeyword] = useState('')
