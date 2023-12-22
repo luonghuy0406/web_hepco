@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Container, Typography, Box } from '@mui/material';
 import { styled, useTheme } from '@mui/material/styles';
 import { useTranslation } from 'react-i18next';
@@ -39,14 +39,28 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
 
 export const AdwardsAchieved = () => {
   const theme = useTheme()
-  const {t} = useTranslation()
-
+  
+  const {t, i18n} = useTranslation()
+  const currentLang = i18n.language == 'en' ? 'en' : ''
+  const [achieveData,setAchieveData] = useState([])
+  const awardData = achieveData?.slice(3) || []
+  
   const awardsRef = useRef(null)
   const { ref, inView } = useInView({
       /* Optional options */
       threshold: 0,
       deplay: 1000
   });
+
+  useEffect(()=>{
+      fetch(`${process.env.REACT_APP_HOST}/achieve/list`)
+      .then(response => response.text())
+      .then(result => {
+          const data = JSON.parse(result).result
+          setAchieveData(data)
+      })
+      .catch(error => console.log('error', error));
+  },[])
   useEffect(() => {
       if(inView){
           if (awardsRef.current) {
@@ -86,7 +100,7 @@ export const AdwardsAchieved = () => {
                         max: 3000,
                         min: 1024
                     },
-                    items: 4,
+                    items: 3,
                     partialVisibilityGutter: 40
                 },
                 mobile: {
@@ -116,21 +130,20 @@ export const AdwardsAchieved = () => {
             swipeable
             >
                 {
-                    [1,2,3,4,5,6,7,8,9].map((index)=>{
+                     awardData?.map(( award, index)=>{
                         return (
                             <Box 
-                                key={index}
+                                key={"home_award_"+index}
                                 sx={{
-                                    margin: theme.spacing(3), 
-                                    padding: theme.spacing(2),
+                                    margin: theme.spacing(2), 
                                     display:'flex', 
                                     alignItems:"center", 
-                                    justifyContent:"center", 
+                                    justifyContent:"start", 
                                     flexDirection:'column',
                                     height:"auto", 
                                     width:"85%", 
                                     aspectRatio: 1,
-                                    backgroundImage:'url(/assets/images/nen.jpeg)',
+                                    backgroundImage:'linear-gradient(0deg, #3aa03d 0%, rgba(0,212,255,0) 50%),url(/assets/images/nen.png)',
                                     backgroundPosition:'center',
                                     backgroundSize:'cover',
                                     backgroundRepeat:'no-repeat',
@@ -139,12 +152,14 @@ export const AdwardsAchieved = () => {
                                     borderRadius:'10px',
                                     position: 'relative'
                                 }}>
-                                    <Image  alt='logo' src="https://icdn.dantri.com.vn/thumb_w/680/2022/06/16/huan-chuong-lao-dong-1655346540689.png" width="150px"/>
-                                    <Box sx={{position:'absolute', left: 0, right: 0, bottom: 0, height:'50px', display:'flex', alignItems:'center',justifyContent:'center'}}>
-                                        <Typography fontWeight={700} color={theme.color.white} >TÊN HUÂN CHƯƠNG</Typography>
-                                        {/* <Typography variant="h6" fontWeight={700} color={theme.color.white} fontFamily={theme.typography.MuktaMahee}>2022</Typography> */}
+                                    <Box sx={{padding: theme.spacing(3), height: 'calc( 100% - 80px)', marginTop:'5px'}}>
+                                        <img  alt='logo' src={`${process.env.REACT_APP_HOST}/read_image/${award.image}`} width="100%"/>
                                     </Box>
-                            </Box> 
+                                    <Box sx={{position:'absolute',marginBottom:'2px', left: 0, right: 0, bottom: 0, height:'80px', display:'flex', flexDirection:'column', justifyContent:'center'}}>
+                                        <Typography className='ck-content' fontWeight={700} color={theme.color.white} dangerouslySetInnerHTML={{__html:award["name_"+currentLang] || award.name}}/>
+                                        <Typography className='ck-content' fontSize="14px" fontWeight={500} color={theme.color.white}  dangerouslySetInnerHTML={{__html:award["content_"+currentLang] || award.content}}/>
+                                    </Box>
+                            </Box>
                         )
                     })
                 }
