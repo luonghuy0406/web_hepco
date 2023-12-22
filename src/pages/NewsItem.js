@@ -1,16 +1,14 @@
-import { Box, Card, CardMedia, Container, Divider, Grid, TextField, Typography, styled, useTheme } from '@mui/material'
+import { Box, Container, Divider, Grid, Typography, useTheme } from '@mui/material'
+import { Helmet } from 'react-helmet-async';
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import LazyLoad from 'react-lazyload'
-import { Link } from 'react-router-dom'
 import Banner from '../sections/Banner'
 import { useParams } from 'react-router-dom';
-import { news } from '../sections/News/NewsContent';
 import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 import CategoryIcon from '@mui/icons-material/Category';
 import PersonIcon from '@mui/icons-material/Person';
 import { formatDateTime } from '../functions'
-import LoadingComponent from '../sections/News/LoadingComponent'
 import NewsNewest from '../sections/News/NewsNewest'
 import RelatedNews from '../sections/News/RelatedNews'
 
@@ -29,25 +27,22 @@ export default function NewsItem() {
         '4': {name: t('Tin tức khác'), value:'4'},
         }
     const [data,setData] = useState([])
-    const [isLoading, setIsLoading] = useState(true);
     useEffect(()=>{
         fetch(`${process.env.REACT_APP_HOST}/post/detail/${idPart}`)
         .then(response => response.text())
         .then(result => {
             const dtNews = JSON.parse(result).result
             setData([dtNews])
-            setIsLoading(false)
         })
         .catch(error => console.log('error', error));
     },[idPart])
 
   window.scrollTo(0, 0)
-//   if(isLoading){
-//       return (<LoadingComponent/>
-//       )
-//     }
   return (
     <>
+        <Helmet>
+          <title> {t("Tin tức")} | {t("HEPCO - CÔNG TY CỔ PHẦN MÔI TRƯỜNG VÀ CÔNG TRÌNH ĐÔ THỊ HUẾ")} </title>
+        </Helmet>
       <Banner name={''} image={'https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/inner3.jpg'} path={`/`} pages={[]}/>
       <Container 
             maxWidth={'xl'} 

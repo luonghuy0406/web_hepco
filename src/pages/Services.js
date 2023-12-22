@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import Banner from '../sections/Banner'
-import { Box } from '@mui/material'
+import { Helmet } from 'react-helmet-async';
 import ServicesContent from '../sections/Services/ServicesContent'
 
 export default function Services({page}) {
@@ -17,6 +17,9 @@ export default function Services({page}) {
   window.scrollTo(0, 0);
   return (
     <>
+    <Helmet>
+        <title> {t("Dịch vụ")} | {t("HEPCO - CÔNG TY CỔ PHẦN MÔI TRƯỜNG VÀ CÔNG TRÌNH ĐÔ THỊ HUẾ")} </title>
+     </Helmet>
       <Banner name={t("Dịch vụ")} image={'https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/inner3.jpg'} path={`/${t('dichvu')}`} pages={pages}/>
       <ServicesContent page={page}/>
     </>

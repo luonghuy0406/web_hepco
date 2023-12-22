@@ -1,4 +1,5 @@
 import React from 'react'
+import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next'
 import Banner from '../sections/Banner'
 import { Box, Button, Container, Grid, TextField, Typography, styled, useTheme } from '@mui/material'
@@ -41,6 +42,9 @@ export default function Contact() {
   window.scrollTo(0, 0);
   return (
     <>
+      <Helmet>
+          <title> {t("Liên hệ")} | {t("HEPCO - CÔNG TY CỔ PHẦN MÔI TRƯỜNG VÀ CÔNG TRÌNH ĐÔ THỊ HUẾ")} </title>
+      </Helmet>
       <Banner name={t("Liên hệ")} image={'https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/inner3.jpg'} path={`/${t('lienhe')}`} pages={pages}/>
       <Container maxWidth='xl'>
         <Grid container spacing={3} pb={5} pt={15}>

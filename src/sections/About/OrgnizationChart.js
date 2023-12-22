@@ -20,7 +20,7 @@ const OrgnizationChart = () => {
       type: 'input',
       data: { label: t('ĐẠI HỘI CỔ ĐÔNG') },
       position: { x: 300, y: 200 },
-      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'200px' }
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'200px' }
     },
     {
       id: '2',
@@ -29,7 +29,7 @@ const OrgnizationChart = () => {
       type: 'default',
       data: { label: t('BAN KIỂM SOÁT') },
       position: { x: 0, y: 350 },
-      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'200px' }
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'200px' }
     },
     {
       id: '3',
@@ -38,7 +38,7 @@ const OrgnizationChart = () => {
       type: 'default',
       data: { label: t('HỘI ĐỒNG QUẢN TRỊ') },
       position: { x: 300, y: 310 },
-      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'200px' }
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'200px' }
     },
     {
       id: '3a',
@@ -46,7 +46,7 @@ const OrgnizationChart = () => {
       type: 'output',
       data: { label: t('HỘI ĐỒNG QUẢN TRỊ') },
       position: { x: 300, y: 310 },
-      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'200px' }
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'200px' }
     },
     {
       id: '4',
@@ -55,7 +55,7 @@ const OrgnizationChart = () => {
       type: 'default',
       data: { label: t('BAN TỔNG GIÁM ĐỐC') },
       position: { x: 300, y: 390 },
-      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'200px' }
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'200px' }
     },
     {
       id: '4b',
@@ -75,7 +75,7 @@ const OrgnizationChart = () => {
       type: 'output',
       data: { label: t('BAN TỔNG GIÁM ĐỐC') },
       position: { x: 300, y: 390 },
-      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'200px' }
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'200px' }
     },
     {
       id: '5',
@@ -84,7 +84,7 @@ const OrgnizationChart = () => {
       type: 'default',
       data: { label: t('CHỦ TỊCH HĐQT') },
       position: { x: 600, y: 350 },
-      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'200px' }
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'200px' }
     },
     {
       id: '6',
@@ -92,7 +92,7 @@ const OrgnizationChart = () => {
       type: 'output',
       data: { label: t('PHÒNG TỔ CHỨC HÀNH CHÍNH') },
       position: { x: -250, y: 500 },
-      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'250px' }
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'250px' }
     },
     {
       id: '7',
@@ -100,7 +100,7 @@ const OrgnizationChart = () => {
       type: 'output',
       data: { label: t('PHÒNG KẾ HOẠCH') },
       position: { x: 100, y: 500 },
-      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'250px' }
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'250px' }
     },
     {
       id: '8',
@@ -108,7 +108,7 @@ const OrgnizationChart = () => {
       type: 'output',
       data: { label: t('PHÒNG KỸ THUẬT') },
       position: { x: 450, y: 500 },
-      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'250px' }
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'250px' }
     },
     {
       id: '9',
@@ -116,7 +116,7 @@ const OrgnizationChart = () => {
       type: 'output',
       data: { label: t('PHÒNG KẾ TOÁN - TÀI VỤ') },
       position: { x: 800, y: 500 },
-      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'250px' }
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'250px' }
     },
     {
       id: '10',
@@ -124,7 +124,7 @@ const OrgnizationChart = () => {
       type: 'output',
       data: { label: t('XÍ NGHIỆP THOÁT NƯỚC') },
       position: { x: -200, y: 620 },
-      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
     },
     {
       id: '11',
@@ -132,7 +132,7 @@ const OrgnizationChart = () => {
       type: 'output',
       data: { label: t('XÍ NGHIỆP CƠ KHÍ - XÂY LẮP') },
       position: { x: 0, y: 620 },
-      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
     },
     {
       id: '12',
@@ -140,7 +140,7 @@ const OrgnizationChart = () => {
       type: 'output',
       data: { label: t('XÍ NGHIỆP MÔI TRƯỜNG BẮC SÔNG HƯƠNG') },
       position: { x: 200, y: 620 },
-      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
     },
 
     {
@@ -149,7 +149,7 @@ const OrgnizationChart = () => {
       type: 'output',
       data: { label: t('XÍ NGHIỆP MÔI TRƯỜNG NAM SÔNG HƯƠNG') },
       position: { x: 450, y: 620 },
-      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
     },
     {
       id: '14',
@@ -157,7 +157,7 @@ const OrgnizationChart = () => {
       type: 'output',
       data: { label: t('XÍ NGHIỆP VẬN CHUYỂN - XE MÁY') },
       position: { x: 650, y: 620 },
-      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
     },
     {
       id: '15',
@@ -165,7 +165,7 @@ const OrgnizationChart = () => {
       type: 'output',
       data: { label: t('XÍ NGHIỆP ĐIỆN CHIẾU SÁNG') },
       position: { x: 850, y: 620 },
-      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
     },
     ,
     {
@@ -174,7 +174,7 @@ const OrgnizationChart = () => {
       type: 'output',
       data: { label: t('XÍ NGHIỆP XÂY DỰNG SỐ 2') },
       position: { x: -275, y: 750 },
-      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
     },
     {
       id: '17',
@@ -182,7 +182,7 @@ const OrgnizationChart = () => {
       type: 'output',
       data: { label: t('XÍ NGHIỆP XÂY DỰNG SỐ 1') },
       position: { x: -75, y: 750 },
-      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
     },
     {
       id: '18',
@@ -190,7 +190,7 @@ const OrgnizationChart = () => {
       type: 'output',
       data: { label: t('BQL NGHĨA TRANG NHÂN DÂN') },
       position: { x: 125, y: 750 },
-      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
     },
 
     {
@@ -199,7 +199,7 @@ const OrgnizationChart = () => {
       type: 'output',
       data: { label: t('XÍ NGHIỆP XỬ LÝ CHẤT THẢI') },
       position: { x: 325, y: 750 },
-      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
     },
     {
       id: '20',
@@ -207,7 +207,7 @@ const OrgnizationChart = () => {
       type: 'output',
       data: { label: t('XÍ NGHIỆP MTĐT LĂNG CÔ') },
       position: { x: 525, y: 750 },
-      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
     },
     {
       id: '21',
@@ -215,7 +215,7 @@ const OrgnizationChart = () => {
       type: 'output',
       data: { label: t('XÍ NGHIỆP MT&CTĐT HƯƠNG TRÀ') },
       position: { x: 725, y: 750 },
-      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
     },
     {
       id: '22',
@@ -223,7 +223,7 @@ const OrgnizationChart = () => {
       type: 'output',
       data: { label: t('XÍ NGHIỆP MT&CTĐT HƯƠNG THUỶ') },
       position: { x: 925, y: 750 },
-      style: { background:'var(--green1)', color:"#fff", padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
     },
 ]
 const initialEdges = [

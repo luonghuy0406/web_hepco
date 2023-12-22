@@ -138,7 +138,7 @@ export default function ProjectsContent({pageParam}) {
         setPage(value);
     };
     const handleSearch = ()=>{
-        let value = valueFilter?.map((option)=> option.value)
+        let value = valueFilter?.map((option)=> option?.value)
         let data = []
         if(value?.length > 0 && value.indexOf('0')===-1){
             const projectFilter = project.filter((project)=>{
