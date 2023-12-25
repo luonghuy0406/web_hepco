@@ -50,7 +50,8 @@ export default function OtherServices({id}) {
                             <Box
                                 sx={{
                                     width:'100%',
-                                    minHeight:'200px',                                    backgroundImage: 'url(/assets/images/thungo.jpeg)',
+                                    minHeight:'200px',                                    
+                                    backgroundImage: 'url(/assets/images/thungo.jpeg)',
                                     backgroundPosition:'center',
                                     backgroundSize:'cover',
                                     backgroundRepeat: 'no-repeat',

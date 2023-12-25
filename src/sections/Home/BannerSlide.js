@@ -63,17 +63,28 @@ export function BannerSlide({executeScroll}){
         slidesToSlide={1}
         swipeable
       >
-        {dataBanner.slice(0, 5).map((banner, index) => {
+        {dataBanner.map((banner, index) => {
           return (
             <LazyLoad height={200} offset={100} key={'banner-slide'+index}>
-              <Box className='banner-slide-image' sx={{ 
+              <Box sx={{ 
                   width: "100%", 
                   height: {xs: '300px', sm: '400px', md:'550px', lg:'calc( 100vh - 10px )'}, 
                   maxHeight:'calc( 100vh - 10px )' , 
                   backgroundImage: `url(${process.env.REACT_APP_HOST}/read_image/${banner.image})`, 
                   backgroundPosition:'center', 
                   backgroundSize:'cover',
-                  backgroundRepeat:'no-repeat'}}
+                  backgroundRepeat:'no-repeat',
+                  '&:before' : {
+                    content: '""',
+                    width: '100%',
+                    height: '100%',
+                    backgroundColor: (!banner.content_1 && !banner.content_1_en && !banner.content_2 && !banner.content_2_en) ? 'transparent':'#001d0778',
+                    position: 'absolute',
+                    top: '0',
+                    left: '0',
+                }
+                
+                }}
                 >
                 <Grid container sx={{height:'100%', justifyContent:'center'}}>
                   

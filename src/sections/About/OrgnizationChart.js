@@ -498,13 +498,18 @@ const initialEdges = [
       type: 'smoothstep'
     }
 ]
+const dataa= "<figure class=\"table\"><table class=\"ck-table-resized\"><colgroup><col style=\"width:4.72%;\"><col style=\"width:17.92%;\"><col style=\"width:7.22%;\"><col style=\"width:34.03%;\"><col style=\"width:36.11%;\"></colgroup><thead><tr><th style=\"width:34pt;\"><span style=\"color:hsl(240, 75%, 60%);\"><strong>STT</strong></span></th><th style=\"width:129pt;\"><span style=\"color:hsl(240, 75%, 60%);\"><strong>Họ và&nbsp;</strong></span></th><th style=\"width:52pt;\"><span style=\"color:hsl(240, 75%, 60%);\"><strong>Tên</strong></span></th><th style=\"width:245pt;\"><span style=\"color:hsl(240, 75%, 60%);\"><strong>Chức vụ/ Chức danh</strong></span></th><th style=\"width:260pt;\"><span style=\"color:hsl(240, 75%, 60%);\"><strong>TĐCM/Nghiệp vụ</strong></span></th></tr></thead><tbody><tr><td>1</td><td>Phan Lê</td><td>Hiến</td><td>Chủ tịch HĐQT</td><td>Kỹ sư xây dựng</td></tr><tr><td>2</td><td>Trần Quốc</td><td>Khánh</td><td>Tổng Giám đốc</td><td>Kỹ sư xây dựng</td></tr><tr><td>3</td><td>Trần Trung</td><td>Khánh</td><td>Phó Tổng Giám đốc</td><td>Cử nhân Hóa học</td></tr><tr><td>4</td><td>Trần Hữu</td><td>Ân</td><td>Phó Tổng Giám đốc</td><td>ThS Quản trị kinh doanh</td></tr><tr><td>5</td><td>Lê Vĩnh</td><td>Thắng</td><td>Phó Tổng Giám đốc</td><td>ThS Quản trị kinh doanh</td></tr><tr><td>6</td><td>Trương Thị Lan</td><td>Hương</td><td>Trưởng Ban kiểm soát</td><td>Cử nhân kinh tế</td></tr><tr><td>7</td><td>Trần Ngọc Huy&nbsp;</td><td>Vũ</td><td>Trưởng phòng Tổ chức- Hành chính</td><td>ThS Quản lý Hành chính</td></tr><tr><td>8</td><td>Hùng Hữu</td><td>Danh</td><td>Trưởng phòng Kỹ thuật</td><td>Kỹ sư điện</td></tr><tr><td>9</td><td>Hoàng Ngọc</td><td>Tú</td><td>Trưởng phòng Kế hoạch</td><td>Kỹ sư điện</td></tr><tr><td>10</td><td>Trần Thị Ngọc</td><td>Liên</td><td>Trưởng phòng Thông tin- Truyền thông</td><td>ThS Quản trị kinh doanh</td></tr><tr><td>11</td><td>Hoàng Văn</td><td>Tiến</td><td>Giám đốc Xí nghiệp Điện chiếu sáng</td><td>Cử nhân Vật lý</td></tr><tr><td>12</td><td>Văn Bảo</td><td>Lân</td><td>Giám đốc Xí nghiệp Xử lý chất thải</td><td>ThS Quản trị kinh doanh</td></tr><tr><td>13</td><td>Lê Văn</td><td>Thương</td><td>Giám đốc Xí nghiệp Xây dựng 1</td><td>Kỹ sư xây dựng</td></tr><tr><td>14</td><td>Võ Công</td><td>Đức</td><td>Giám đốc XN XD 2, Trưởng ban QLNT</td><td>CN kinh tế</td></tr><tr><td>15</td><td>Đỗ Minh</td><td>Quảng</td><td>Giám đốc XN Thoát nước</td><td>Kỹ sư xây dựng</td></tr><tr><td>16</td><td>Trần Ngọc</td><td>Vĩ</td><td>Giám đốc XN Cơ khí- Xây lắp</td><td>Cử nhân kinh tế</td></tr><tr><td>17</td><td>Nguyễn Đăng</td><td>Huy</td><td>Giám đốc XN MT Bắc Sông Hương</td><td>Cử nhân Luật</td></tr><tr><td>18</td><td>Nguyễn Trọng</td><td>Nam</td><td>Giám đốc XN MT Nam Sông Hương</td><td>Cử nhân KH địa lý</td></tr></tbody></table></figure>"
   return (
     <Container maxWidth='100%' sx={{
       marginTop:theme.spacing(10),
       marginBottom:theme.spacing(10),
   }} >
       <Container maxWidth='xl'>
-      <Typography sx={{marginBottom:theme.spacing(4)}} variant='h4' textAlign={"center"} fontWeight={700} color={theme.color.red}>{t('Sơ đồ tổ chức')}</Typography>
+        <Typography sx={{marginBottom:theme.spacing(4)}} variant='h4' textAlign={"center"} fontWeight={700} color={theme.color.green1}>{t('Giới thiệu bộ máy')}</Typography>
+        <Box className='ck-content' sx={{margin:theme.spacing(3)}} dangerouslySetInnerHTML={{__html:dataa}}>
+
+        </Box>
+        <Typography sx={{marginBottom:theme.spacing(4)}} variant='h4' textAlign={"center"} fontWeight={700} color={theme.color.red}>{t('Sơ đồ tổ chức')}</Typography>
       </Container>
       <Box sx={{ height: '85vh', width: '100%', marginTop:'50px'}}>
         <ReactFlow

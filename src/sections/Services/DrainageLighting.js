@@ -41,7 +41,7 @@ export default function DrainageLighting({id}) {
                                     width:'100%',
                                     height:'100%',
                                     minHeight:{xs: 0, md: '400px'},
-                                    backgroundImage: 'url(/assets/images/thungo.jpeg)',
+                                    backgroundImage: `url(${process.env.REACT_APP_HOST}/read_image/${data?.image})`,
                                     backgroundPosition:'70%',
                                     backgroundSize:'cover',
                                     backgroundRepeat: 'no-repeat',

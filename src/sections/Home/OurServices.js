@@ -123,7 +123,7 @@ const ServiceItem = ({data}) =>{
                         boxShadow: '0 0 15px #eee', 
                         borderRadius: "10px", 
                         height: '100%',
-                        backgroundImage: `linear-gradient(0deg, rgba(0,0,0,0.6) 0%, rgba(9,9,121,0.1) 70%, rgba(0,212,255,0) 100%), url("${process.env.REACT_APP_HOST}/read_image/${data.image}}")`, 
+                        backgroundImage: `linear-gradient(0deg, rgba(0,0,0,0.6) 0%, rgba(9,9,121,0.1) 70%, rgba(0,212,255,0) 100%), url("${process.env.REACT_APP_HOST}/read_image/${data.image}")`, 
                         backgroundPosition: "center", 
                         backgroundRepeat: "no-repeat", 
                         backgroundSize: "cover",
@@ -131,7 +131,7 @@ const ServiceItem = ({data}) =>{
                         alignItems: "flex-end",
                         minHeight: "350px",
                         "&:hover" : {
-                            backgroundImage : `linear-gradient(0deg, #f48123 0%, rgba(9,9,121,0.1) 70%, rgba(0,212,255,0)), url("${process.env.REACT_APP_HOST}/read_image/${data.image}}")`
+                            backgroundImage : `linear-gradient(0deg, #f48123 0%, rgba(9,9,121,0.1) 70%, rgba(0,212,255,0)), url("${process.env.REACT_APP_HOST}/read_image/${data.image}")`
                         }
                     }} 
                     className={"our-service-wrap"}
@@ -149,9 +149,7 @@ const ServiceItem = ({data}) =>{
                                     WebkitBoxOrient: 'vertical',
                                 }}
                             >
-                                <Typography textAlign={'justify'} fontWeight={500} color={theme.color.white}>
-                                    {data["review_"+currentLang] || data.review}
-                                </Typography>
+                                <Typography className='ck-content' textAlign={'justify'} fontWeight={500} color={theme.color.white} dangerouslySetInnerHTML={{__html: data["content_"+currentLang] || data.content}}/>
                             </Box>
                         </Grid>
                     </Grid>
