@@ -18,7 +18,7 @@ export default function RelatedNews({data}) {
     const [newsRelated,setNewsRelated] = useState([])
     useEffect(()=>{
         if(data[0]?.type_id){
-            fetch(`${process.env.REACT_APP_HOST}/post/list?c=5&type_id=${data[0]?.type_id}&title=&p=0`)
+            fetch(`${process.env.REACT_APP_HOST}/post/list?c=5&type_id=${data[0]?.type_id}&title=&p=0&lang=${currentLang || 'vi'}`)
             .then(response => response.text())
             .then(result => {
                 const data = JSON.parse(result).result

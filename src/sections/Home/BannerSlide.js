@@ -1,25 +1,29 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import 'animate.css';
-import { Box, Grid, Typography, styled } from "@mui/material"; 
+import { Box, Grid, Typography } from "@mui/material"; 
 import { useTheme } from "@emotion/react";
-
 import LazyLoad from 'react-lazyload';
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { useTranslation } from "react-i18next";
-const images = [
-  "/assets/images/banner1.jpeg",
-  "/assets/images/banner2.jpeg",
-  "/assets/images/banner3.jpeg",
-  "/assets/images/banner4.jpeg",
-  "/assets/images/banner5.jpeg",
-];
 
 export function BannerSlide({executeScroll}){
   
-  const {t} = useTranslation()
+  const {t, i18n} = useTranslation()
+  const currentLang = i18n.language == 'en' ? 'en' : ''
   const theme = useTheme()
+  const [dataBanner, setDataBanner] = useState([])
+
+  useEffect(()=>{
+    fetch(`${process.env.REACT_APP_HOST}/banner/list`)
+      .then(response => response.text())
+      .then(result => {
+          const data = JSON.parse(result).result
+          setDataBanner(data)
+      })
+      .catch(error => console.log('error', error));
+  },[])
   return (
     <Box sx={{position:"relative"}}> 
       <Carousel
@@ -59,14 +63,14 @@ export function BannerSlide({executeScroll}){
         slidesToSlide={1}
         swipeable
       >
-        {images.slice(0, 5).map((image, index) => {
+        {dataBanner.slice(0, 5).map((banner, index) => {
           return (
             <LazyLoad height={200} offset={100} key={'banner-slide'+index}>
               <Box className='banner-slide-image' sx={{ 
                   width: "100%", 
                   height: {xs: '300px', sm: '400px', md:'550px', lg:'calc( 100vh - 10px )'}, 
                   maxHeight:'calc( 100vh - 10px )' , 
-                  backgroundImage: `url(${image})`, 
+                  backgroundImage: `url(${process.env.REACT_APP_HOST}/read_image/${banner.image})`, 
                   backgroundPosition:'center', 
                   backgroundSize:'cover',
                   backgroundRepeat:'no-repeat'}}
@@ -74,21 +78,23 @@ export function BannerSlide({executeScroll}){
                 <Grid container sx={{height:'100%', justifyContent:'center'}}>
                   
                     {
-                      index == 0 ? 
-                      <Grid item xs={12} container sx={{height:'100%'}} alignItems={"start"} justifyContent={"center"} direction={"column"}>
-                        <Typography variant="h2" p={30} textAlign="center" color={theme.color.white} fontWeight={"700"} className="animate__animated animate__fadeInDown">
-                          CÔNG TY CỔ PHẦN MÔI TRƯỜNG VÀ CÔNG TRÌNH ĐÔ THỊ HUẾ
-                        </Typography>
-                      </Grid>
-                      :
-                      <Grid item xs={12} container sx={{height:'100%'}} alignItems={"center"} justifyContent={"center"} direction={"column"}>
-                        <Typography variant="h3" textAlign={"center"} pl={5} color={theme.color.white} fontWeight={"700"} className="animate__animated animate__fadeInDown">
-                        CHUNG TAY VÌ THỪA THIÊN HUẾ 
-                        </Typography>
-                        <Typography variant="h1" textAlign={"center"} pl={5} color={theme.color.red} fontFamily={"'Great Vibes', cursive"} fontWeight={"700"} className="animate__animated animate__zoomIn">
-                        Xanh - Sạch - Sáng
-                        </Typography>
-                      </Grid>
+                      (banner.content_1 || banner.content_1_en) && !(banner.content_2 || banner.content_2_en) &&
+                        <Grid item xs={12} container sx={{height:'100%'}} alignItems={"start"} justifyContent={"center"} direction={"column"}>
+                          <Typography variant="h2" p={30} textAlign="center" color={theme.color.white} fontWeight={"700"} className="animate__animated animate__fadeInDown">
+                            {banner["content_1_"+currentLang] || banner.content_1}
+                          </Typography>
+                        </Grid>
+                    }
+                    {
+                      (banner.content_1 || banner.content_1_en) && (banner.content_2 || banner.content_2_en) &&
+                        <Grid item xs={12} container sx={{height:'100%'}} alignItems={"center"} justifyContent={"center"} direction={"column"}>
+                          <Typography variant="h3" textAlign={"center"} pl={5} color={theme.color.white} fontWeight={"700"} className="animate__animated animate__fadeInDown">
+                            {banner["content_1_"+currentLang] || banner.content_1}
+                          </Typography>
+                          <Typography variant="h1" textAlign={"center"} pl={5} color={theme.color.red} fontFamily={"'Great Vibes', cursive"} fontWeight={"700"} className="animate__animated animate__zoomIn">
+                            {banner["content_2_"+currentLang] || banner.content_2}
+                          </Typography>
+                        </Grid>
                     }
                 </Grid>
               </Box>
@@ -118,7 +124,7 @@ const Info = () =>{
     setProjects(0)
     setCustomers(0)
     setMembers(0)
-  }, [inView]);
+  }, [inView])
   useEffect(() => {
     const timer = setInterval(() => {
       if (years < 10) {
@@ -131,7 +137,7 @@ const Info = () =>{
     return () => {
       clearInterval(timer);
     };
-  }, [years]);
+  }, [years])
   useEffect(() => {
     const timer = setInterval(() => {
       if (projects < 500) {
@@ -144,7 +150,7 @@ const Info = () =>{
     return () => {
       clearInterval(timer);
     };
-  }, [projects]);
+  }, [projects])
   useEffect(() => {
     const timer = setInterval(() => {
       if (customers < 100) {
@@ -157,7 +163,7 @@ const Info = () =>{
     return () => {
       clearInterval(timer);
     };
-  }, [customers]);
+  }, [customers])
   useEffect(() => {
     const timer = setInterval(() => {
       if (members < 200) {
@@ -170,7 +176,7 @@ const Info = () =>{
     return () => {
       clearInterval(timer);
     };
-  }, [members]);
+  }, [members])
   return(
     <Grid ref={ref} container sx={{zIndex:1, alignItems:'center', justifyContent:'center', position: 'absolute', bottom: '0', left: '0', right: '0', padding: theme.spacing(2)}} direction={"row"}>
           <Grid item xs={3}>

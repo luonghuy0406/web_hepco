@@ -27,7 +27,7 @@ export default function ProjectsItem() {
     }
     const [data,setData] = useState([])
     useEffect(()=>{
-        fetch(`${process.env.REACT_APP_HOST}/post/detail/${idPart}`)
+        fetch(`${process.env.REACT_APP_HOST}/project/detail/${idPart}`)
         .then(response => response.text())
         .then(result => {
             const dtProjects = JSON.parse(result).result

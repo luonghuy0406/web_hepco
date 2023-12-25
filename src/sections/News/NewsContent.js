@@ -93,7 +93,7 @@ export default function NewsContent({pageParam}) {
         const timeOutId = keyword && setTimeout(() => doneTyping(), 300);
         function doneTyping () {
             if(didMount.current){
-                fetch(`${process.env.REACT_APP_HOST}/post/list?c=${itemsPerPage}&type_id=${pageParam}&title=${keyword}&p=${page-1}`)
+                fetch(`${process.env.REACT_APP_HOST}/post/list?c=${itemsPerPage}&type_id=${pageParam}&title=${keyword}&p=${page-1}&lang=${currentLang || 'vi'}`)
                 .then(response => response.text())
                 .then(result => {
                     const data = JSON.parse(result).result
@@ -107,7 +107,7 @@ export default function NewsContent({pageParam}) {
         return () => clearTimeout(timeOutId);
       }, [keyword])
     useEffect(()=>{
-        fetch(`${process.env.REACT_APP_HOST}/post/list?c=${itemsPerPage}&type_id=${pageParam}&title=${keyword}&p=${page-1}`)
+        fetch(`${process.env.REACT_APP_HOST}/post/list?c=${itemsPerPage}&type_id=${pageParam}&title=${keyword}&p=${page-1}&lang=${currentLang || 'vi'}`)
         .then(response => response.text())
         .then(result => {
             const data = JSON.parse(result).result

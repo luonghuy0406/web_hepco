@@ -24,7 +24,7 @@ export default function ProjectsNewest() {
     }
     useEffect(()=>{
         setTimeout(()=>{
-            fetch(`${process.env.REACT_APP_HOST}/shareholder/list?c=5&type_id=0&title=&p=0`)
+            fetch(`${process.env.REACT_APP_HOST}/shareholder/list?c=5&type_id=0&title=&p=0&lang=${currentLang || 'vi'}`)
             .then(response => response.text())
             .then(result => {
                 const data = JSON.parse(result).result

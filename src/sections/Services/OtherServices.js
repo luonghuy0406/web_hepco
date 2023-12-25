@@ -1,11 +1,21 @@
-
 import { Box, Container, Grid, Typography, useTheme } from '@mui/material'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-export default function OtherServices() {
+export default function OtherServices({id}) {
     const theme = useTheme()
-    const {t} = useTranslation()
+    const {t,i18n} = useTranslation()
+    const currentLang = i18n.language == 'en' ? 'en' : ''
+    const [data,setData] = useState({})
+    useEffect(()=>{
+        fetch(`${process.env.REACT_APP_HOST}/service/detail/${id}`)
+        .then(response => response.text())
+        .then(result => {
+            const data = JSON.parse(result).result
+            setData(data)
+        })
+        .catch(error => console.log('error', error));
+    })
     return (
         <Container 
             maxWidth={'100%'} 
@@ -22,12 +32,10 @@ export default function OtherServices() {
                     marginBottom:theme.spacing(10),
                 }} 
             >
-                <Typography sx={{marginBottom:theme.spacing(4)}} variant='h4' textAlign={"center"} fontWeight={700} color={theme.color.green1}>{t('Kinh doanh khác')}</Typography>
+                <Typography sx={{marginBottom:theme.spacing(4)}} variant='h4' textAlign={"center"} fontWeight={700} color={theme.color.green1}>{data["name_"+currentLang] || data.name}</Typography>
                 <Grid container spacing={5}>
                     <Grid item xs={12}>
-                        <Typography sx={{marginBottom:theme.spacing(2)}} fontWeight={500} textAlign={'justify'}>
-                            Bên cạnh những dịch vụ chủ lực, chúng tôi còn cung cấp những dịch vụ và giải pháp giúp duy trì môi trường sạch đẹp với chất lượng và mức giá hợp lý nhất. 
-                        </Typography>
+                        <Box sx={{padding: theme.spacing(2)}} className='ck-content' dangerouslySetInnerHTML={{__html:data["content_"+currentLang] || data.content}}/>
                     </Grid>
                     <Grid item container spacing={2} xs={12} md={6}>
                         <Grid item xs={6} >

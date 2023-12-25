@@ -113,7 +113,7 @@ export const News = () => {
     .then(response => response.text())
     .then(result => {
         const data = JSON.parse(result).data
-        setNews(data)
+        setNews(data.slice(0,3))
     })
     .catch(error => console.log('error', error));
   },[])
@@ -141,7 +141,7 @@ export const News = () => {
                               <Link to={`/${t('tintuc')}/${normalizedTitle}.${data.id_post}`}>
                                   <FeaturedNewstWrap>
                                       <LazyLoad height={200} offset={100}>
-                                      <FeaturedNewstImage image={data.image}>
+                                      <FeaturedNewstImage image={`${process.env.REACT_APP_HOST}/read_image/${data.image}`}>
                                           <Box
                                               sx={{
                                                   px: theme.spacing(4),
@@ -160,7 +160,7 @@ export const News = () => {
                                               fontFamily={theme.typography.MuktaMahee}
                                               color={theme.color.white}
                                               fontWeight={700}
-                                          >{formatDateTime(data.date_cre,'%d-%m-%Y')}</Typography>
+                                          >{formatDateTime(data.cre_date,'%d-%m-%Y')}</Typography>
                                           </Box>
                                       </FeaturedNewstImage>
                                       </LazyLoad>

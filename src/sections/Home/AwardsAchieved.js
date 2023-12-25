@@ -6,7 +6,6 @@ import Carousel from 'react-multi-carousel';
 import "react-multi-carousel/lib/styles.css";
 import 'animate.css';
 import { useInView } from 'react-intersection-observer';
-import { Image } from 'semantic-ui-react';
 
 const StyledContainer = styled(Container)(({ theme }) => ({
   paddingTop: theme.spacing(5),

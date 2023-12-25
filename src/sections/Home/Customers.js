@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Container, Typography, Box } from '@mui/material';
 import { styled, useTheme } from '@mui/material/styles';
 import { useTranslation } from 'react-i18next';
@@ -41,7 +41,7 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
 export const Customers = () => {
   const theme = useTheme()
   const {t} = useTranslation()
-
+  const [customer, setCustomer] = useState([])
   const customersRef = useRef(null)
   const { ref, inView } = useInView({
       /* Optional options */
@@ -54,7 +54,17 @@ export const Customers = () => {
               customersRef.current.classList.add('animate__animated','animate__fadeInDown');
           }
       }
-  }, [inView]);
+  }, [inView])
+  
+  useEffect(()=>{
+    fetch(`${process.env.REACT_APP_HOST}/customer/list`)
+    .then(response => response.text())
+    .then(result => {
+        const data = JSON.parse(result).data
+        setCustomer(data)
+    })
+    .catch(error => console.log('error', error));
+},[])
   return (
     <StyledContainer maxWidth="xl">
       <StyledTypography ref={ref} variant="h4" color={theme.color.black} fontWeight="bold">
@@ -116,48 +126,18 @@ export const Customers = () => {
             slidesToSlide={2}
             swipeable
             >
-              <LazyLoad height={200} offset={100}>
-                <Box sx={{p:3, display:'flex', alignItems:"center", justifyContent:"center", height:"100%"}}>
-                    <Image  alt='logo' src="https://logos-world.net/wp-content/uploads/2020/09/Google-Logo.png" width="100%"/>
-                </Box>
-              </LazyLoad>
-              <LazyLoad height={200} offset={100}>
-                <Box sx={{p:3, display:'flex', alignItems:"center", justifyContent:"center", height:"100%"}}>
-                    <Image  alt='logo' src="https://logos-world.net/wp-content/uploads/2020/09/Google-Logo.png" width="100%"/>
-                </Box>
-              </LazyLoad><LazyLoad height={200} offset={100}>
-                <Box sx={{p:3, display:'flex', alignItems:"center", justifyContent:"center", height:"100%"}}>
-                    <Image  alt='logo' src="https://logos-world.net/wp-content/uploads/2020/09/Google-Logo.png" width="100%"/>
-                </Box>
-              </LazyLoad><LazyLoad height={200} offset={100}>
-                <Box sx={{p:3, display:'flex', alignItems:"center", justifyContent:"center", height:"100%"}}>
-                    <Image  alt='logo' src="https://logos-world.net/wp-content/uploads/2020/09/Google-Logo.png" width="100%"/>
-                </Box>
-              </LazyLoad><LazyLoad height={200} offset={100}>
-                <Box sx={{p:3, display:'flex', alignItems:"center", justifyContent:"center", height:"100%"}}>
-                    <Image  alt='logo' src="https://logos-world.net/wp-content/uploads/2020/09/Google-Logo.png" width="100%"/>
-                </Box>
-              </LazyLoad><LazyLoad height={200} offset={100}>
-                <Box sx={{p:3, display:'flex', alignItems:"center", justifyContent:"center", height:"100%"}}>
-                    <Image  alt='logo' src="https://logos-world.net/wp-content/uploads/2020/09/Google-Logo.png" width="100%"/>
-                </Box>
-              </LazyLoad><LazyLoad height={200} offset={100}>
-                <Box sx={{p:3, display:'flex', alignItems:"center", justifyContent:"center", height:"100%"}}>
-                    <Image  alt='logo' src="https://logos-world.net/wp-content/uploads/2020/09/Google-Logo.png" width="100%"/>
-                </Box>
-              </LazyLoad><LazyLoad height={200} offset={100}>
-                <Box sx={{p:3, display:'flex', alignItems:"center", justifyContent:"center", height:"100%"}}>
-                    <Image  alt='logo' src="https://logos-world.net/wp-content/uploads/2020/09/Google-Logo.png" width="100%"/>
-                </Box>
-              </LazyLoad><LazyLoad height={200} offset={100}>
-                <Box sx={{p:3, display:'flex', alignItems:"center", justifyContent:"center", height:"100%"}}>
-                    <Image  alt='logo' src="https://logos-world.net/wp-content/uploads/2020/09/Google-Logo.png" width="100%"/>
-                </Box>
-              </LazyLoad><LazyLoad height={200} offset={100}>
-                <Box sx={{p:3, display:'flex', alignItems:"center", justifyContent:"center", height:"100%"}}>
-                    <Image  alt='logo' src="https://logos-world.net/wp-content/uploads/2020/09/Google-Logo.png" width="100%"/>
-                </Box>
-              </LazyLoad>
+              {
+                customer.map((cus,index)=>{
+                  return(
+                    <LazyLoad key={"cus"+index} height={200} offset={100}>
+                      <Box sx={{p:3, display:'flex', alignItems:"center", justifyContent:"center", height:"100%"}}>
+                          <Image  alt={cus.name} src={`${process.env.REACT_APP_HOST}/read_image/${cus.image}`} width="100%"/>
+                      </Box>
+                    </LazyLoad>
+                  )
+                })
+              }
+              
         </Carousel>
       </Box>  
     </StyledContainer>

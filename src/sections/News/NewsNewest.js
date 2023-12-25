@@ -26,7 +26,7 @@ export default function NewsNewest() {
     }
     useEffect(()=>{
         setTimeout(()=>{
-            fetch(`${process.env.REACT_APP_HOST}/post/list?c=5&type_id=0&title=&p=0`)
+            fetch(`${process.env.REACT_APP_HOST}/post/list?c=5&type_id=0&title=&p=0&lang=${currentLang || 'vi'}`)
             .then(response => response.text())
             .then(result => {
                 const data = JSON.parse(result).result

@@ -11,18 +11,18 @@ export default function ServicesContent({page}) {
   const {t} = useTranslation()
   if(page == t('nguyhai')){
     return (
-        <HazardousWaste/>
+        <HazardousWaste id={'ser_02'}/>
     )
   }else if(page == t('cokhi-xaydung')){
-    return <MechanicsConstruction/>
+    return <MechanicsConstruction id={'ser_03'}/>
   }else if(page == t('thoatnuoc-chieusang')){
-    return <DrainageLighting/>
+    return <DrainageLighting id={'ser_04'}/>
   }else if(page == t('quantrang')){
-    return <CemeteryManagement/>
+    return <CemeteryManagement id={'ser_05'}/>
   }else if( page== t('kinhdoanhkhac')){
     return (
-      <OtherServices/>
+      <OtherServices id={'ser_06'}/>
     )
   }
-  return <NonHazardousWaste/>
+  return <NonHazardousWaste id={'ser_01'}/>
 }
