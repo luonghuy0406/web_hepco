@@ -97,11 +97,13 @@ const CustomizedButton = styled(Button)(({ theme }) => ({
 
 export function Questions() {
 
-  const {t} = useTranslation()
+  const {t, i18n} = useTranslation()
+  const currentLang = i18n.language == 'en' ? 'en' : ''
   const theme= useTheme()
   const questionsRef = useRef(null) 
   const formQuesRef = useRef(null)
   const [open, setOpen] = useState(false);
+  const [ques, setQues] = useState([])
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0,
@@ -117,23 +119,32 @@ export function Questions() {
             formQuesRef.current.classList.add('animate__animated','animate__rotateInDownRight');
         }
     }
-  }, [inView]);
+  }, [inView])
+  
+  useEffect(()=>{
+    fetch(`${process.env.REACT_APP_HOST}/qna/highlight`)
+    .then(response => response.text())
+    .then(result => {
+        const data = JSON.parse(result).data
+        setQues(data.slice(0,5))
+    })
+    .catch(error => console.log('error', error));
+  },[])
   const [expanded, setExpanded] = React.useState('panel1');
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
   return (
-    <Container maxWidth='100%' sx={{pb:theme.spacing(5), mb:{xs: '0', md: theme.spacing(15)},px:'0 !important'}}>
+    <Container maxWidth='100%' sx={{pb:theme.spacing(5),px:'0 !important'}}>
         <Box sx={{
           py:theme.spacing(5),
-          mb: theme.spacing(15),
           backgroundImage:"url(https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/bgg.jpg?id=5580) !important",
           backgroundSize:"cover",
           backgroundPosition:"center",
           backgroundRepeat:"no-repeat",
           position:"relative",
-          height: {xs:'auto',md: '600px'}
+        //   height: {xs:'auto',md: '600px'}
           }}>
             <Box >
                 <Container maxWidth='xl'>
@@ -167,20 +178,15 @@ export function Questions() {
                                     </Grid>
                                     <Grid item xs={12} >
                                         {
-                                            [1,2,3,4,5].map((id)=>{
+                                            ques.map((q,id)=>{
 
                                                 return (
-                                                        <Accordion key={'ques-'+id} expanded={expanded === `pannel${id}`} onChange={handleChange(`pannel${id}`)}>
-                                                            <AccordionSummary sx={{padding:'10px 0',color: expanded === `pannel${id}` ? theme.color.red : theme.color.black}}  expandIcon={<ExpandMoreIcon />} aria-controls={`pannel${id}d-content`} id={`pannel${id}d-header`}>
-                                                                <Typography fontWeight={700}>{`${id}. Lorem ipsum dolor sit amet, consectetur adipiscing elit ${id}?`} </Typography>
+                                                        <Accordion key={'ques-'+q.id_qna} expanded={expanded === `pannel${q.id_qna}`} onChange={handleChange(`pannel${q.id_qna}`)}>
+                                                            <AccordionSummary sx={{padding:'10px 0',color: expanded === `pannel${q.id_qna}` ? theme.color.red : theme.color.black}}  expandIcon={<ExpandMoreIcon />} aria-controls={`pannel${q.id_qna}d-content`} id={`pannel${q.id_qna}d-header`}>
+                                                                <Typography fontWeight={700}>{q["question_"+currentLang] || q.question} </Typography>
                                                             </AccordionSummary>
                                                             <AccordionDetails>
-                                                                <Typography fontWeight={500}>
-                                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                                                                    malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor
-                                                                    sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                                                                    sit amet blandit leo lobortis eget.
-                                                                </Typography>
+                                                                <Typography fontWeight={500} className='ck-content' dangerouslySetInnerHTML={{__html: q["answer_"+currentLang] || q.answer}}/>
                                                             </AccordionDetails>
                                                         </Accordion>
                                                 )

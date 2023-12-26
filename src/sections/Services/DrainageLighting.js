@@ -15,7 +15,7 @@ export default function DrainageLighting({id}) {
             setData(data)
         })
         .catch(error => console.log('error', error));
-    })
+    },[])
     return (
         <Container 
             maxWidth={'100%'} 

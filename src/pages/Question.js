@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next'
 import Banner from '../sections/Banner'
@@ -37,10 +37,22 @@ const CustomizedButton = styled(Button)(({ theme }) => ({
   },
 }));
 export default function Question() {
-  const {t} = useTranslation()
+  
+  const {t, i18n} = useTranslation()
+  const [ques, setQues] = useState([])
   const pages = []
   const theme = useTheme()
   window.scrollTo(0, 0)
+
+  useEffect(()=>{
+    fetch(`${process.env.REACT_APP_HOST}/qna/list?p=0&c=100`)
+    .then(response => response.text())
+    .then(result => {
+        const data = JSON.parse(result).result.data
+        setQues(data)
+    })
+    .catch(error => console.log('error', error));
+  },[])
   return (
     <>
       <Helmet>
@@ -50,9 +62,9 @@ export default function Question() {
       <Container maxWidth='xl' sx={{py:theme.spacing(10)}}>
         <Grid container spacing={5}>
           {
-          [1,2,3,4,5,6,7,8,9,10].map((index)=>{
+          ques.map((q,index)=>{
             return(
-              <QuestionItem key={"question-"+index} index={index}/>
+              <QuestionItem key={"question-"+index} index={index} q={q}/>
             )
           })
           }
@@ -95,7 +107,10 @@ export default function Question() {
   )
 }
 
-const QuestionItem = ({index})=>{
+const QuestionItem = ({index, q})=>{
+  
+  const {t, i18n} = useTranslation()
+  const currentLang = i18n.language == 'en' ? 'en' : ''
   const theme = useTheme()
   const item = useRef(null)
     const { ref, inView } = useInView({
@@ -107,9 +122,9 @@ const QuestionItem = ({index})=>{
         if(inView){
             if (item.current) {
               if(index%2==0){
-                item.current.classList.add('animate__animated','animate__fadeInRight')
-              }else{
                 item.current.classList.add('animate__animated','animate__fadeInLeft')
+              }else{
+                item.current.classList.add('animate__animated','animate__fadeInRight')
               }
             }
         }
@@ -121,11 +136,9 @@ const QuestionItem = ({index})=>{
         sx={{border: '1px solid #eee',height: '100%',borderRadius: '5px', padding: theme.spacing(3)}}
       >
         <Typography variant='h5' fontWeight={700} pb={theme.spacing(2)} ref={ref}>
-          Chi phí sử dụng Google One là bao nhiêu?
+          {q["question_"+currentLang] || q.question}
         </Typography>
-        <Typography px={theme.spacing(1)}>
-          Google One cung cấp rất nhiều gói khác nhau, do đó, bạn có thể tìm một gói phù hợp với mình nhất. Mỗi quốc gia lại có các gói khác nhau. Vì vậy, bạn hãy tham khảo biểu giá dành cho quốc gia của mình. Google One cung cấp rất nhiều gói khác nhau, do đó, bạn có thể tìm một gói phù hợp với mình nhất. Mỗi quốc gia lại có các gói khác nhau. Vì vậy, bạn hãy tham khảo biểu giá dành cho quốc gia của mình.
-        </Typography>
+        <Typography px={theme.spacing(1)} className='ck-content' dangerouslySetInnerHTML={{__html: q["answer_"+currentLang] || q.answer}}/>
       </Box>
     </Grid>
   )

@@ -90,7 +90,7 @@ export default function NewsContent({pageParam}) {
         setPage(1)
     };
     useEffect(() => {
-        const timeOutId = keyword && setTimeout(() => doneTyping(), 300);
+        const timeOutId = setTimeout(() => doneTyping(), 300);
         function doneTyping () {
             if(didMount.current){
                 fetch(`${process.env.REACT_APP_HOST}/post/list?c=${itemsPerPage}&type_id=${pageParam}&title=${keyword}&p=${page-1}&lang=${currentLang || 'vi'}`)

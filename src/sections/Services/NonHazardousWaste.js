@@ -15,7 +15,7 @@ export default function NonHazardousWaste({id}) {
             setData(data)
         })
         .catch(error => console.log('error', error));
-    })
+    },[])
     return (
         <>
          <Container 
