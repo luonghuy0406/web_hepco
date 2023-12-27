@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Grid, Card, CardMedia,Container, useTheme, Typography, Box, Dialog, DialogContent, Pagination, CardContent } from '@mui/material';
+import { Grid, Card, CardMedia,Container, useTheme, Typography, Box, Dialog, Pagination, CardContent } from '@mui/material';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -325,11 +325,11 @@ const AllAlbums  = ({tab}) =>{
                                             alt={image?.["name_"+currentLang] || image?.name}
                                             height="auto"
                                             image={`${process.env.REACT_APP_HOST}/read_image/${image.avatar}`}
-                                            sx={{flex: 1,objectFit: 'cover'}}
+                                            sx={{flex: 1,objectFit: 'cover', maxHeight:"200px"}}
                                         />
                                         <CardContent>
                                             <Typography variant='h7' fontWeight={700}>{image?.["name_"+currentLang] || image?.name}</Typography>
-                                            <Typography >{`${image.count} ${t("items")}`}</Typography>
+                                            <Typography >{`${image.num_image} ${t("items")}`}</Typography>
                                         </CardContent>
                                 </Card>
                             </Link>

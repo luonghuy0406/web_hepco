@@ -34,7 +34,7 @@ const AlbumItems = () => {
         fetch(`${process.env.REACT_APP_HOST}/album/detail/${idPart}`)
         .then(response => response.text())
         .then(result => {
-            const data = JSON.parse(result).result.album
+            const data = JSON.parse(result).result
             setAlbumDetail(data)
         })
         .catch(error => console.log('error', error));
@@ -50,7 +50,9 @@ const AlbumItems = () => {
         })
         .catch(error => console.log('error', error));
     },[page, idPart])
-    
+if(!albumDetail){
+    return <></>
+}
   return (
         <Container 
             maxWidth={'xl'} 
@@ -60,7 +62,7 @@ const AlbumItems = () => {
             }} 
         >
             <Typography  variant='h5' textAlign={"center"} fontWeight={700} >{albumDetail?.["name_"+currentLang] || albumDetail?.name}</Typography>
-            <Typography sx={{marginBottom:theme.spacing(4)}} textAlign={"center"} fontWeight={600} fontSize={'13px'} color={theme.color.gray1}>{`${formatDateTime(albumDetail.cre_date, '%d-%m-%Y')} - ${images?.length} ${t("items")}`}</Typography>
+            <Typography sx={{marginBottom:theme.spacing(4)}} textAlign={"center"} fontWeight={600} fontSize={'13px'} color={theme.color.gray1}>{`${formatDateTime(albumDetail?.cre_date, '%d-%m-%Y')} - ${images?.length} ${t("items")}`}</Typography>
             <Typography sx={{marginBottom:theme.spacing(4), padding:theme.spacing(4)}} >{albumDetail?.["des_"+currentLang] || albumDetail?.des}</Typography>
             <Box>
             <Grid container spacing={2}>
