@@ -129,7 +129,7 @@ export const Customers = () => {
               {
                 customer.map((cus,index)=>{
                   return(
-                    <LazyLoad key={"cus"+index} height={200} offset={100}>
+                    <LazyLoad key={"cus"+index} offset={100} style={{height:"100%"}}>
                       <Box sx={{p:3, display:'flex', alignItems:"center", justifyContent:"center", height:"100%"}}>
                           <Image  alt={cus.name} src={`${process.env.REACT_APP_HOST}/read_image/${cus.logo}`} width="100%"/>
                       </Box>

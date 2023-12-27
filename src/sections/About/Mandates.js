@@ -10,7 +10,7 @@ export default function Mandates() {
     const [license, setLicense] = useState([])
     const [mandates, setMandates] = useState([])
     useEffect(()=>{
-        fetch(`${process.env.REACT_APP_HOST}/achieve/list`)
+        fetch(`${process.env.REACT_APP_HOST}/certificate/list`)
         .then(response => response.text())
         .then(result => {
             const data = JSON.parse(result).result
@@ -126,6 +126,7 @@ const MandatesItem = ({mandate, reverse}) =>{
             }
         }
     }, [inView]);
+    
     return(
         <Grid item xs={12} container spacing={2} sx={{marginBottom:theme.spacing(4), flexDirection: reverse ? "row-reverse" : "row"}}>
             <Grid item xs={0} md={6} >
@@ -145,7 +146,7 @@ const MandatesItem = ({mandate, reverse}) =>{
             </Grid>
             <Grid item xs={12} md={6} ref={item2}>
                 <Box sx={{padding: theme.spacing(2)}} >
-                    <Typography ref={ref} sx={{marginBottom:theme.spacing(3)}} variant='h5' fontWeight={700} color={theme.color.green1}>{t('Lĩnh vực Vệ Sinh Môi Trường')}</Typography>
+                    <Typography ref={ref} sx={{marginBottom:theme.spacing(3)}} variant='h5' fontWeight={700} color={theme.color.green1}>{mandate?.["name_"+currentLang] || mandate?.name}</Typography>
                     <Box className='ck-content' dangerouslySetInnerHTML={{__html:mandate?.["content_"+currentLang] || mandate?.content}}/>
                             
                 </Box>
