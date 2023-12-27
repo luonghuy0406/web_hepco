@@ -16,6 +16,17 @@ export default function DrainageLighting({id}) {
         })
         .catch(error => console.log('error', error));
     },[])
+
+    const [dataChild,setDataChild] = useState(null)
+    useEffect(()=>{
+        fetch(`${process.env.REACT_APP_HOST}/sharedtable/father/19`)
+        .then(response => response.text())
+        .then(result => {
+            const data = JSON.parse(result).result
+            setDataChild(data)
+        })
+        .catch(error => console.log('error', error));
+    },[])
     return (
         <Container 
             maxWidth={'100%'} 
@@ -52,148 +63,63 @@ export default function DrainageLighting({id}) {
                         <Grid item xs={12} md={6} >
                             <Box sx={{padding: theme.spacing(2)}} className='ck-content' dangerouslySetInnerHTML={{__html:data["content_"+currentLang] || data.content}}/>
                         </Grid>
-                        <Grid item xs={6} md={6}>
-                            <Box sx={{padding: theme.spacing(2), display: 'flex', flexDirection: 'column', height: '100%'}}> 
-                                <Box sx={{flexGrow:1,padding: `${theme.spacing(1)} ${theme.spacing(2)}`,margin: theme.spacing(2),marginLeft: 0, borderRadius: '20px 0', backgroundColor:theme.color.red, width: 'fit-content'}}>
-                                    <Typography variant="h6" color={theme.color.white} fontWeight={700}>{t('Dịch vụ thi công, sửa chữa, bảo dưỡng hệ thống điện chiếu sáng')}</Typography>
-                                </Box>
-                                <Grid container spacing={2}>
-                                    <Grid item xs={6}>
-                                        <Box
-                                            sx={{
-                                                width:'100%',
-                                                minHeight:{xs: '250px', md: '300px'},
-                                                backgroundImage: 'url(/assets/images/thungo.jpeg)',
-                                                backgroundPosition:'center',
-                                                backgroundSize:'cover',
-                                                backgroundRepeat: 'no-repeat',
-                                                borderRadius:'0 20px'
-                                            }}
-                                        />
-                                    </Grid>
-                                    <Grid item xs={6}>
-                                        <Box
-                                            sx={{
-                                                width:'100%',
-                                                minHeight:{xs: '250px', md: '300px'},
-                                                backgroundImage: 'url(/assets/images/thungo.jpeg)',
-                                                backgroundPosition:'center',
-                                                backgroundSize:'cover',
-                                                backgroundRepeat: 'no-repeat',
-                                                borderRadius:'0 20px'
-                                            }}
-                                        />
-                                    </Grid>
-                                </Grid>
-                            </Box>
-                        </Grid>
-                        <Grid item xs={6} md={6}>
-                            <Box sx={{padding: theme.spacing(2), display: 'flex', flexDirection: 'column', height: '100%'}}> 
-                                <Box sx={{flexGrow:1,padding: `${theme.spacing(1)} ${theme.spacing(2)}`,margin: theme.spacing(2),marginLeft: 0, borderRadius: '20px 0', backgroundColor:theme.color.green1, width: 'fit-content'}}>
-                                    <Typography variant="h6" color={theme.color.white} fontWeight={700}>{t('Dịch vụ thi công, sửa chữa, bảo dưỡng hệ thống thoát nước')}</Typography>
-                                </Box>
-                                <Grid container spacing={2}>
-                                    <Grid item xs={6}>
-                                        <Box
-                                            sx={{
-                                                width:'100%',
-                                                minHeight:{xs: '250px', md: '300px'},
-                                                backgroundImage: 'url(/assets/images/thungo.jpeg)',
-                                                backgroundPosition:'center',
-                                                backgroundSize:'cover',
-                                                backgroundRepeat: 'no-repeat',
-                                                borderRadius:'0 20px'
-                                            }}
-                                        />
-                                    </Grid>
-                                    <Grid item xs={6}>
-                                        <Box
-                                            sx={{
-                                                width:'100%',
-                                                minHeight:{xs: '250px', md: '300px'},
-                                                backgroundImage: 'url(/assets/images/thungo.jpeg)',
-                                                backgroundPosition:'center',
-                                                backgroundSize:'cover',
-                                                backgroundRepeat: 'no-repeat',
-                                                borderRadius:'0 20px'
-                                            }}
-                                        />
-                                    </Grid>
-                                </Grid>
-                            </Box>
-                        </Grid>
-                        <Grid item xs={6} md={6}>
-                            <Box sx={{padding: theme.spacing(2), display: 'flex', flexDirection: 'column', height: '100%'}}> 
-                                <Box sx={{flexGrow:1,padding: `${theme.spacing(1)} ${theme.spacing(2)}`,margin: theme.spacing(2),marginLeft: 0, borderRadius: '20px 0', backgroundColor:theme.color.green1, width: 'fit-content'}}>
-                                    <Typography variant="h6" color={theme.color.white} fontWeight={700}>{t('Trung tâm thông tin')}</Typography>
-                                </Box>
-                                <Grid container spacing={2}>
-                                    <Grid item xs={6}>
-                                        <Box
-                                            sx={{
-                                                width:'100%',
-                                                minHeight:{xs: '250px', md: '300px'},
-                                                backgroundImage: 'url(/assets/images/thungo.jpeg)',
-                                                backgroundPosition:'center',
-                                                backgroundSize:'cover',
-                                                backgroundRepeat: 'no-repeat',
-                                                borderRadius:'0 20px'
-                                            }}
-                                        />
-                                    </Grid>
-                                    <Grid item xs={6}>
-                                        <Box
-                                            sx={{
-                                                width:'100%',
-                                                minHeight:{xs: '250px', md: '300px'},
-                                                backgroundImage: 'url(/assets/images/thungo.jpeg)',
-                                                backgroundPosition:'center',
-                                                backgroundSize:'cover',
-                                                backgroundRepeat: 'no-repeat',
-                                                borderRadius:'0 20px'
-                                            }}
-                                        />
-                                    </Grid>
-                                </Grid>
-                            </Box>
-                        </Grid>
-                        <Grid item xs={6} md={6}>
-                            <Box sx={{padding: theme.spacing(2), display: 'flex', flexDirection: 'column', height: '100%'}}> 
-                                <Box sx={{flexGrow:1,padding: `${theme.spacing(1)} ${theme.spacing(2)}`,margin: theme.spacing(2),marginLeft: 0, borderRadius: '20px 0', backgroundColor:theme.color.red, width: 'fit-content'}}>
-                                    <Typography variant="h6" color={theme.color.white} fontWeight={700}>{t('Xe chuyên dụng hiện đại')}</Typography>
-                                </Box>
-                                <Grid container spacing={2}>
-                                    <Grid item xs={6}>
-                                        <Box
-                                            sx={{
-                                                width:'100%',
-                                                minHeight:{xs: '250px', md: '300px'},
-                                                backgroundImage: 'url(/assets/images/thungo.jpeg)',
-                                                backgroundPosition:'center',
-                                                backgroundSize:'cover',
-                                                backgroundRepeat: 'no-repeat',
-                                                borderRadius:'0 20px'
-                                            }}
-                                        />
-                                    </Grid>
-                                    <Grid item xs={6}>
-                                        <Box
-                                            sx={{
-                                                width:'100%',
-                                                minHeight:{xs: '250px', md: '300px'},
-                                                backgroundImage: 'url(/assets/images/thungo.jpeg)',
-                                                backgroundPosition:'center',
-                                                backgroundSize:'cover',
-                                                backgroundRepeat: 'no-repeat',
-                                                borderRadius:'0 20px'
-                                            }}
-                                        />
-                                    </Grid>
-                                </Grid>
-                            </Box>
-                        </Grid>
                     </Grid>
                 </Grid>
+            </Container>
+
+            <Container 
+                maxWidth={'100%'} 
+                sx={{
+                    backgroundImage: `url(/assets/images/bg2.png)`,
+                    backgroundRepeat: `no-repeat`,
+                    backgroundPosition: 'left bottom'
+                }}
+            >
+                <Container 
+                    maxWidth={'xl'} 
+                    sx={{
+                        marginTop:theme.spacing(4),
+                        marginBottom:theme.spacing(10),
+                    }} 
+                >
+                    <Grid container spacing={2}>
+                        <Grid item xs={12} container spacing={3} sx={{marginBottom:theme.spacing(4)}}>
+                            {
+                                dataChild?.map((dataC, index)=>{
+                                    return(
+                                        <Grid key={'chieusang'+index} item xs={12} md={6}>
+                                            <Box sx={{padding: theme.spacing(2), display: 'flex', flexDirection: 'column', height: '100%'}}> 
+                                                <Box 
+                                                    sx={{
+                                                        flexGrow:1,
+                                                        padding: `${theme.spacing(1)} ${theme.spacing(2)}`,
+                                                        margin: theme.spacing(2),
+                                                        marginLeft: 0, 
+                                                        borderRadius: '20px 0', 
+                                                        backgroundColor:index%2 ==0 ? theme.color.green1 : theme.color.red, 
+                                                        width: 'fit-content'
+                                                    }}>
+                                                    <Typography variant="h6" color={theme.color.white} fontWeight={700}>{dataC["name_"+currentLang] || dataC.name}</Typography>
+                                                </Box>
+                                                <Box
+                                                    sx={{
+                                                        width:'100%',
+                                                        minHeight:{xs: '250px', md: '400px'},
+                                                        backgroundImage: `url(${process.env.REACT_APP_HOST}/read_image/${dataC.image})`,
+                                                        backgroundPosition:'center',
+                                                        backgroundSize:'cover',
+                                                        backgroundRepeat: 'no-repeat',
+                                                        borderRadius:'0 20px'
+                                                    }}
+                                                />
+                                            </Box>
+                                        </Grid>
+                                    )
+                                })
+                            }
+                        </Grid>
+                    </Grid>
+                </Container>
             </Container>
         </Container>
     )

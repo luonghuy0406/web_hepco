@@ -35,11 +35,14 @@ const CustomizedButton = styled(Button)(({ theme }) => ({
       // boxShadow: `0 0 0 3px rgba(0, 123, 255, 0.3)`, // Add a custom focus border
   },
 }));
-export default function Contact() {
-  const {t} = useTranslation()
+export default function Contact({data}) {
+  
+  const {t,i18n} = useTranslation()
+  const currentLang = i18n.language == 'en' ? 'en' : ''
   const theme = useTheme()
   const pages = []
   window.scrollTo(0, 0);
+  const info = data.company_data
   return (
     <>
       <Helmet>
@@ -67,9 +70,6 @@ export default function Contact() {
               <Grid container spacing={4}>
                 <Grid item xs={12}>
                   <Typography variant="h4" className='type-line' fontWeight={700}>Liên lạc</Typography>
-                </Grid>
-                <Grid item xs={12}>
-                  <Typography fontWeight={500}>Suspendisse ex neque, sollicitudin in velit eu, luctus gravida nunc. Nulla pul-vinar risus sed metus euismod sodales ut sed nisi.</Typography>
                 </Grid>
                 <Grid item xs={6}>
                   <TextField label={t("Tên")} fullWidth variant="outlined" sx={{backgroundColor:"#FFF"}}/>
@@ -115,9 +115,9 @@ export default function Contact() {
                 >
                   <img src={'/assets/icons/ic_mobile.svg'} alt='icon phone' width={35} />
                 </Box>
-                <Typography variant="h5" fontWeight={700} color={theme.color.green1} padding={2}>Gọi chúng tôi</Typography>
-                <Typography fontWeight={500}>(0234) 3848242</Typography>
-                <Typography fontWeight={500}>(0234) 3997799</Typography>
+                <Typography variant="h5" fontWeight={700} color={theme.color.green1} padding={2}>{t("Gọi chúng tôi")}</Typography>
+                <Typography textAlign="center" fontWeight={500}>{info?.[5].data}</Typography>
+                <Typography textAlign="center" fontWeight={500}>{info?.[6].data}</Typography>
             </Box>
           </Grid>
           <Grid item xs={6} md={3} >
@@ -136,7 +136,7 @@ export default function Contact() {
                   <img src={'/assets/icons/ic_email.svg'} alt='icon phone' width={35} />
                 </Box>
                 <Typography variant="h5" fontWeight={700} color={theme.color.green1} padding={2}>{t("Gửi email")}</Typography>
-                <Typography fontWeight={500}>info@hepco.com.vn</Typography>
+                <Typography textAlign="center" fontWeight={500}>{info?.[10].data}</Typography>
             </Box>
           </Grid>
           <Grid item xs={6} md={3} >
@@ -155,8 +155,7 @@ export default function Contact() {
                   <img src={'/assets/icons/ic_open.svg'} alt='icon phone' width={35} />
                 </Box>
                 <Typography variant="h5" fontWeight={700} color={theme.color.green1} padding={2}>Giờ mở cửa</Typography>
-                <Typography fontWeight={500}>T2-T6: 7h30 - 11h30 và 13h - 17h</Typography>
-                <Typography fontWeight={500}>T7-CN: Không hoạt động</Typography>
+                <Typography textAlign="center" fontWeight={500} dangerouslySetInnerHTML={{__html: info?.[9]["data_"+currentLang] || info?.[9]?.data}}></Typography>
             </Box>
           </Grid>
           <Grid item xs={6} md={3} >
@@ -174,9 +173,8 @@ export default function Contact() {
                 >
                   <img src={'/assets/icons/ic_address.svg'} alt='icon phone' width={35} />
                 </Box>
-                <Typography variant="h5" fontWeight={700} color={theme.color.green1} padding={2}>Địa chỉ</Typography>
-                <Typography fontWeight={500}>46 Trần Phú, Phường Phước Vĩnh</Typography>
-                <Typography fontWeight={500}>Thành phố Huế</Typography>
+                <Typography variant="h5" fontWeight={700} color={theme.color.green1} padding={2}>{t("Địa chỉ")}</Typography>
+                <Typography textAlign="center" fontWeight={500} dangerouslySetInnerHTML={{__html: info?.[4]["data_"+currentLang] || info?.[4]?.data}}/>
             </Box>
           </Grid>
         </Grid>

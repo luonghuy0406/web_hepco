@@ -1,5 +1,5 @@
 import { Box, Container, Grid, Typography, useTheme } from '@mui/material'
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useInView } from 'react-intersection-observer'
 import 'animate.css';
@@ -7,6 +7,25 @@ import 'animate.css';
 export default function Mandates() {
     const theme = useTheme()
     const {t} = useTranslation()
+    const [license, setLicense] = useState([])
+    const [mandates, setMandates] = useState([])
+    useEffect(()=>{
+        fetch(`${process.env.REACT_APP_HOST}/achieve/list`)
+        .then(response => response.text())
+        .then(result => {
+            const data = JSON.parse(result).result
+            setLicense(data)
+        })
+        .catch(error => console.log('error', error));
+
+        fetch(`${process.env.REACT_APP_HOST}/sharedtable/father/14`)
+        .then(response => response.text())
+        .then(result => {
+            const data = JSON.parse(result).result
+            setMandates(data)
+        })
+        .catch(error => console.log('error', error));
+    },[])
     return (
         <Container 
             maxWidth={'xl'} 
@@ -18,9 +37,9 @@ export default function Mandates() {
             <Typography sx={{marginBottom:theme.spacing(4)}} variant='h4' textAlign={"center"} fontWeight={700} color={theme.color.red}>{t('Chức năng hoạt động')}</Typography>
             <Grid container spacing={2}>
                 {
-                [1,2,3].map((id)=>{
+                mandates.map((mandate,id)=>{
                     return(
-                        <MandatesItem key={"MandatesItem"+id} reverse={id%2==0}/>
+                        <MandatesItem key={"MandatesItem"+id} mandate={mandate} reverse={id%2==0}/>
                     )
                 })
                 }
@@ -29,8 +48,8 @@ export default function Mandates() {
         
             <Grid container spacing={2}>
                 {
-                    [1,2,3,4,5,6].map((index)=>{
-                        return <License key={"License"+index} index={index}/>
+                    license.map((data,index)=>{
+                        return <License key={"License"+index} index={index} data={data}/>
                     })
                 }
             </Grid>
@@ -38,7 +57,7 @@ export default function Mandates() {
     )
 }
 
-const License = ({index})=>{
+const License = ({index, data})=>{
     const item = useRef(null)
     const { ref, inView } = useInView({
         threshold: 0,
@@ -60,20 +79,24 @@ const License = ({index})=>{
                 ref={item}
                 sx={{
                     width:'100%',
-                    height:'100%',
-                    borderRadius:'10px'
+                    // height:'100%',
+                    borderRadius:'10px',
+                    height:'350px',
+                    backgroundImage: `url(${process.env.REACT_APP_HOST}/read_image/${data.image})`,
+                    backgroundRepeat:'no-repeat',
+                    backgroundSize:'cover',
+                    backgroundPosition:'center'
                 }}
-            >
-                <img src='/assets/images/iso1.jpeg' width={'100%'} alt='giay phep 1'/>
-            </Box>
+            />
         </Grid>
     )
 }
 
-const MandatesItem = ({reverse}) =>{
+const MandatesItem = ({mandate, reverse}) =>{
     const theme = useTheme()
-    const {t} = useTranslation()
+    const {t,i18n} = useTranslation()
 
+    const currentLang = i18n.language == 'en' ? 'en' : ''
 
     const item1 = useRef(null)
     const item2 = useRef(null)
@@ -112,7 +135,7 @@ const MandatesItem = ({reverse}) =>{
                         width:'100%',
                         height:'100%',
                         minHeight:{xs: 0, md: '400px'},
-                        backgroundImage: 'url(/assets/images/thungo.jpeg)',
+                        backgroundImage: `url(${process.env.REACT_APP_HOST}/read_image/${mandate.image})`,
                         backgroundPosition:'70%',
                         backgroundSize:'cover',
                         backgroundRepeat: 'no-repeat',
@@ -123,12 +146,8 @@ const MandatesItem = ({reverse}) =>{
             <Grid item xs={12} md={6} ref={item2}>
                 <Box sx={{padding: theme.spacing(2)}} >
                     <Typography ref={ref} sx={{marginBottom:theme.spacing(3)}} variant='h5' fontWeight={700} color={theme.color.green1}>{t('Lĩnh vực Vệ Sinh Môi Trường')}</Typography>
-                    <Typography sx={{marginBottom:theme.spacing(2)}} fontWeight={500} textAlign={'justify'}>
-                        <b>Vệ sinh, thu gom và Vận Chuyển xử lý Chất Thải:</b> HEPCO có chức năng Vệ sinh, thu gom và vận chuyển và xử lý chất thải sinh hoạt từ các nguồn khác nhau như hộ gia đình, tổ chức, doanh nghiệp, khu công nghiệp, trường học, bệnh viện..; chất thải y tế, nguy hại, xây dựng..
-                    </Typography>
-                    <Typography sx={{marginBottom:theme.spacing(2)}} fontWeight={500} textAlign={'justify'}>
-                        <b>Vệ sinh công cộng:</b> Thực hiện các công tác vệ sinh đường phố, khu công nghiệp, khu đô thị..; tưới nước rửa đường; quét hút bụi..
-                    </Typography>
+                    <Box className='ck-content' dangerouslySetInnerHTML={{__html:mandate?.["content_"+currentLang] || mandate?.content}}/>
+                            
                 </Box>
             </Grid>
         </Grid>

@@ -8,22 +8,12 @@ import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { useTranslation } from "react-i18next";
 
-export function BannerSlide({executeScroll}){
+export function BannerSlide({executeScroll,banner,info}){
   
   const {t, i18n} = useTranslation()
   const currentLang = i18n.language == 'en' ? 'en' : ''
   const theme = useTheme()
-  const [dataBanner, setDataBanner] = useState([])
-
-  useEffect(()=>{
-    fetch(`${process.env.REACT_APP_HOST}/banner/list`)
-      .then(response => response.text())
-      .then(result => {
-          const data = JSON.parse(result).result
-          setDataBanner(data)
-      })
-      .catch(error => console.log('error', error));
-  },[])
+  const dataBanner = banner
   return (
     <Box sx={{position:"relative"}}> 
       <Carousel
@@ -113,12 +103,12 @@ export function BannerSlide({executeScroll}){
           );
         })}
       </Carousel>
-      <Info/>
+      <Info info={info}/>
     </Box>
   );
 };
 
-const Info = () =>{
+const Info = ({info}) =>{
   const {t} = useTranslation()
   const theme = useTheme()
   const [years, setYears] = useState(0)
@@ -138,12 +128,12 @@ const Info = () =>{
   }, [inView])
   useEffect(() => {
     const timer = setInterval(() => {
-      if (years < 10) {
+      if (years < info[0].data) {
         setYears(years + 1);
       } else {
         clearInterval(timer);
       }
-    }, 10/1000);
+    }, info[0].data/1000);
 
     return () => {
       clearInterval(timer);
@@ -151,12 +141,12 @@ const Info = () =>{
   }, [years])
   useEffect(() => {
     const timer = setInterval(() => {
-      if (projects < 500) {
+      if (projects < info[1].data) {
         setProjects(projects + 1);
       } else {
         clearInterval(timer);
       }
-    }, 500/1000);
+    }, info[1].data/1000);
 
     return () => {
       clearInterval(timer);
@@ -164,12 +154,12 @@ const Info = () =>{
   }, [projects])
   useEffect(() => {
     const timer = setInterval(() => {
-      if (customers < 100) {
+      if (customers < info[2].data) {
         setCustomers(customers + 1);
       } else {
         clearInterval(timer);
       }
-    }, 100/1000);
+    }, info[2].data/1000);
 
     return () => {
       clearInterval(timer);
@@ -177,12 +167,12 @@ const Info = () =>{
   }, [customers])
   useEffect(() => {
     const timer = setInterval(() => {
-      if (members < 200) {
+      if (members < info[3].data) {
         setMembers(members + 1);
       } else {
         clearInterval(timer);
       }
-    }, 200/1000);
+    }, info[3].data/1000);
 
     return () => {
       clearInterval(timer);

@@ -13,7 +13,7 @@ import { AdwardsAchieved } from "../sections/Home/AwardsAchieved";
 import { Questions } from "../sections/Home/Questions";
 import { useTranslation } from "react-i18next";
 
-const Home = () => {
+const Home = ({data}) => {
   const myRef = useRef(null)
   const {t} = useTranslation()
   window.scrollTo(0, 0);
@@ -23,7 +23,7 @@ const Home = () => {
       <Helmet>
           <title> {t("Trang chủ")} | {t("HEPCO - CÔNG TY CỔ PHẦN MÔI TRƯỜNG VÀ CÔNG TRÌNH ĐÔ THỊ HUẾ")} </title>
       </Helmet>
-      <BannerSlide executeScroll={executeScroll}/>
+      <BannerSlide executeScroll={executeScroll} banner={data.banner} info={data.company_data}/>
       <Box ref={myRef}>
         {/* <CompanyInfo/> */}
         <OurMission/>

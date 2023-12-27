@@ -34,7 +34,7 @@ const AlbumItems = () => {
         fetch(`${process.env.REACT_APP_HOST}/album/detail/${idPart}`)
         .then(response => response.text())
         .then(result => {
-            const data = JSON.parse(result).result
+            const data = JSON.parse(result).result.album
             setAlbumDetail(data)
         })
         .catch(error => console.log('error', error));

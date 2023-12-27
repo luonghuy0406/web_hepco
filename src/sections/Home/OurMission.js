@@ -15,22 +15,16 @@ library.add(fas, faFontAwesome, faPlay)
 
 
 const ServicesIcon = styled('div')(({ theme }) => ({
-    // position: "absolute",
-    // top: '50%',
-    // left: '50%',
-    // transform: 'translate(-50%,-50%)'
 }))
 
 const IconImage = styled('img')(({ theme }) => ({
     width: "70px",
     zIndex: 2,
-    // opacity: .2
 }))
 
 const IconImageCore = styled('img')(({ theme }) => ({
     width: "100px",
     zIndex: 2,
-    // opacity: .2
 }))
 
 const Background = styled('div')(({ theme }) =>({
@@ -202,13 +196,15 @@ const style = {
   };
 
 export function OurMission() {
-  const {t} = useTranslation()
+    const {t, i18n} = useTranslation()
+    const currentLang = i18n.language == 'en' ? 'en' : ''
   const theme= useTheme()
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const visionRef = useRef(null)
   const missonRef = useRef(null)
+  const [videoLink,setVideoLink] = useState('')
  
   const { ref, inView } = useInView({
     /* Optional options */
@@ -227,6 +223,28 @@ export function OurMission() {
     }
   }, [inView]);
   
+  const [data,setData] = useState(null)
+  
+  useEffect(()=>{
+    fetch(`${process.env.REACT_APP_HOST}/sharedtable/father/12`)
+    .then(response => response.text())
+    .then(result => {
+        const data = JSON.parse(result).result
+        setData(data)
+    })
+    .catch(error => console.log('error', error));
+
+    fetch(`${process.env.REACT_APP_HOST}/company_data/detail/15`)
+    .then(response => response.text())
+    .then(result => {
+        const data = JSON.parse(result).result.data
+        setVideoLink(data)
+    })
+    .catch(error => console.log('error', error));
+},[])
+  if(!data){
+      return <></>
+  }
   return (
     <Box 
         sx={{
@@ -257,8 +275,7 @@ export function OurMission() {
                             <Typography variant="h5" fontSize={'30px'} fontWeight={"bold"}  color={theme.color.green1} pb={2}>
                                 {t('Tầm nhìn')}
                             </Typography>
-                            <Typography fontWeight={500} sx={{padding:theme.spacing(1)}}>
-                                Tạo ra giá trị bền vững cho môi trường và xã hội, mang đến một môi trường xanh – sạch – sáng cho cộng đồng là nhiệm vụ và sứ mệnh của Hepco.
+                            <Typography fontWeight={500} sx={{padding:theme.spacing(1)}} className='ck-content' dangerouslySetInnerHTML={{__html:data[0]?.["content_"+currentLang] || data[0]?.content}}>
                             </Typography>
                          </Grid>
                     </Grid>
@@ -276,9 +293,9 @@ export function OurMission() {
                             <Typography variant="h5" fontSize={'30px'} fontWeight={"bold"}  color={theme.color.green1} pb={2}>
                                 {t('Sứ mệnh')}
                             </Typography>
-                            <Typography fontWeight={500} sx={{padding:theme.spacing(1)}}>
-                            Tạo ra giá trị bền vững cho môi trường và xã hội, mang đến một môi trường xanh – sạch – sáng cho cộng đồng là nhiệm vụ và sứ mệnh của Hepco.
+                            <Typography fontWeight={500} sx={{padding:theme.spacing(1)}} className='ck-content' dangerouslySetInnerHTML={{__html:data[1]?.["content_"+currentLang] || data[1]?.content}}>
                             </Typography>
+                            
                          </Grid>
                     </Grid>
                 </Grid>
@@ -288,7 +305,7 @@ export function OurMission() {
                             <Box sx={{
                                 width:"100%", 
                                 height:"100%", 
-                                backgroundImage:`url('/assets/images/mission2.jpg')`,
+                                backgroundImage:`url(${process.env.REACT_APP_HOST}/read_image/${data[0].image})`,
                                 backgroundPosition:'center',
                                 backgroundSize:'cover',
                                 backgroundRepeat:'no-repeat', 
@@ -299,7 +316,7 @@ export function OurMission() {
                             <Box sx={{
                                 width:"100%", 
                                 height:{xs: "100%", md: "80%"}, 
-                                backgroundImage:`url('/assets/images/mission.jpg')`,
+                                backgroundImage:`url(${process.env.REACT_APP_HOST}/read_image/${data[1].image})`,
                                 backgroundPosition:'center',
                                 backgroundSize:'cover',
                                 backgroundRepeat:'no-repeat',
@@ -314,62 +331,7 @@ export function OurMission() {
                 </Grid>
             </Grid>
         </Container>
-        <Container maxWidth='100%' sx={{py:theme.spacing(4), mb:theme.spacing(10),px:'0 !important'}}>
-            <Box sx={{
-                py:theme.spacing(5),
-                backgroundImage:"url(https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/quote.jpg?id=5470) !important",
-                backgroundSize:"cover",
-                backgroundPosition:"center",
-                backgroundRepeat:"no-repeat",
-                position:"relative",
-                // height:"200px"
-                }}>
-                    <Container maxWidth='xl'>
-                        <Grid container sx={{p:theme.spacing(3), textAlign:"center", pt:0}} spacing={2} alignContent={"center"} justifyContent={'center'}>
-                            <Grid item xs={12}>
-                                <Typography variant="h4" fontWeight={"bold"} mb={5} mt={2} color={theme.color.white} sx={{position:"relative"}} className="core-values">
-                                    {t('Giá trị cốt lõi')}
-                                </Typography>
-                            </Grid>
-                            {
-                                [
-                                    {
-                                        key : 'h',
-                                        title: t('Honesty'), 
-                                        content: 'Chúng tôi cam kết đưa ra các giải pháp và dịch vụ dựa trên thông tin trung thực và minh bạch đối với khách hàng và cộng đồng.'
-                                    },
-                                    { 
-                                        key : 'e',
-                                        title: t('Environmental Responsibility'), 
-                                        content: 'Chúng tôi hướng đến việc giảm thiểu tác động tiêu cực lên môi trường thông qua việc tái chế, sử dụng nguồn năng lượng tái tạo, và thúc đẩy ý thức về bảo vệ môi trường trong cộng đồng.'
-                                    },
-                                    {
-                                        key : 'p',
-                                        title: t('Professionalism'), 
-                                        content: 'Chúng tôi cam kết cung cấp dịch vụ chuyên nghiệp, với đội ngũ nhân viên được đào tạo chất lượng cao và kỹ năng chuyên môn trong lĩnh vực vệ sinh môi trường và công trình đô thị.'
-                                    },
-                                    {
-                                        key : 'c',
-                                        title: t('Community Engagement'), 
-                                        content: 'Chúng tôi hợp tác chặt chẽ với cộng đồng địa phương, tăng cường nhận thức về vấn đề môi trường và tham gia vào các hoạt động xã hội và giáo dục về vệ sinh môi trường.'
-                                    },
-                                    {
-                                        key : 'o',
-                                        title: t('Optimal Solutions'), 
-                                        content: 'Chúng tôi tập trung vào việc phát triển và cung cấp các giải pháp tối ưu về vệ sinh môi trường và công trình đô thị, đáp ứng nhu cầu của khách hàng một cách hiệu quả nhất.'
-                                    }
-                                    
-                                ].map((value,index)=>{
-                                    return(
-                                        <CoreItem value={value} key={'coreitem'+index}/>
-                                    )
-                                })
-                            }
-
-                        </Grid>
-                    </Container>
-            </Box>
-        </Container>
+        <CoreValue/>
         <Modal
             open={open}
             onClose={handleClose}
@@ -380,7 +342,7 @@ export function OurMission() {
             <iframe
                 width={900}
                 height={600}
-                src="https://www.youtube.com/embed/CjH1MlfZ4OU"
+                src={videoLink}
                 title="THẦM LẶNG NỮ CÔNG NHÂN VỆ SINH MÔI TRƯỜNG"
                 frameBorder={0}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -392,7 +354,62 @@ export function OurMission() {
     </Box>
   )
 }
-const CoreItem = ({value})=>{
+
+const CoreValue = () =>{
+    const {t} = useTranslation()
+    const theme= useTheme()
+    const [data,setData] = useState(null)
+    useEffect(()=>{
+        fetch(`${process.env.REACT_APP_HOST}/sharedtable/father/13`)
+        .then(response => response.text())
+        .then(result => {
+            const data = JSON.parse(result).result
+            setData(data)
+        })
+        .catch(error => console.log('error', error));
+    },[])
+    if(!data){
+        return <></>
+    }
+
+    return(
+        <Container maxWidth='100%' sx={{py:theme.spacing(4), mb:theme.spacing(10),px:'0 !important'}}>
+                <Box sx={{
+                    py:theme.spacing(5),
+                    backgroundImage:"url(https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/quote.jpg?id=5470) !important",
+                    backgroundSize:"cover",
+                    backgroundPosition:"center",
+                    backgroundRepeat:"no-repeat",
+                    position:"relative",
+                    // height:"200px"
+                    }}>
+                        <Container maxWidth='xl'>
+                            <Grid container sx={{p:theme.spacing(3), textAlign:"center", pt:0}} spacing={2} alignContent={"center"} justifyContent={'center'}>
+                                <Grid item xs={12}>
+                                    <Typography variant="h4" fontWeight={"bold"} mb={5} mt={2} color={theme.color.white} sx={{position:"relative"}} className="core-values">
+                                        {t('Giá trị cốt lõi')}
+                                    </Typography>
+                                </Grid>
+                                {
+                                    data.map((value,index)=>{
+                                        return(
+                                            <CoreItem value={value} key={'coreitem'+index} index={index}/>
+                                        )
+                                    })
+                                }
+
+                            </Grid>
+                        </Container>
+                </Box>
+        </Container>
+    )
+}
+
+const CoreItem = ({value, index})=>{
+    const {t, i18n} = useTranslation()
+    const currentLang = i18n.language == 'en' ? 'en' : ''
+
+    const key = ['h','e','p','c','o']
     const theme = useTheme()
     const coreRef = useRef(null)
     const { ref, inView } = useInView({
@@ -410,7 +427,7 @@ const CoreItem = ({value})=>{
         }
     }, [inView]);
     return(
-        <Grid  key={value.key} item xs={12} sm={6} md={4} lg={ 2.4}>
+        <Grid item xs={12} sm={6} md={4} lg={ 2.4}>
             <CoreValuestWrap ref={coreRef}>
                 <Box 
                     sx={{
@@ -429,12 +446,12 @@ const CoreItem = ({value})=>{
                 >
                     <ServicesIcon className='core-value-image'>
                         <IconImageCore
-                            src={"/assets/icons/ic_"+value.key+".svg"}
+                            src={"/assets/icons/ic_"+key[index]+".svg"}
                             alt="Rs-service"
                         />
                     </ServicesIcon>
-                    <Box ref={ref} className='core-value-title' fontSize={'18px'} py={2} sx={{height:'50px'}} fontWeight={"bold"} dangerouslySetInnerHTML={{__html:value.title}}/>
-                    <Box className='core-value-content' sx={{display:'none', position:'relative'}} fontWeight={600} dangerouslySetInnerHTML={{__html:value.content}}/>
+                    <Box ref={ref} className='core-value-title' fontSize={'18px'} py={2} sx={{height:'50px'}} fontWeight={"bold"} dangerouslySetInnerHTML={{__html:value?.["name_"+currentLang] || value?.name}}/>
+                    <Box className='core-value-content' sx={{display:'none', position:'relative'}} fontWeight={600} dangerouslySetInnerHTML={{__html:value?.["content_"+currentLang] || value?.content}}/>
                 </Box>
             </CoreValuestWrap>
         </Grid>

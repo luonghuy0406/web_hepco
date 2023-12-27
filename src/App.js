@@ -11,7 +11,7 @@ import { I18nextProvider } from 'react-i18next';
 import i18n from './i18n/i18n';
 import ThemeProvider from './theme';
 
-const App = () => {
+const App = (data) => {
   return (
     <I18nextProvider i18n={i18n}>
       <HelmetProvider>
@@ -19,7 +19,7 @@ const App = () => {
           <ThemeProvider>
             {/* <ScrollToTop />
             <StyledChart /> */}
-            <Router/>
+            <Router data={data}/>
           </ThemeProvider>
         </BrowserRouter>
       </HelmetProvider>

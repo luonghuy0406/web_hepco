@@ -54,7 +54,7 @@ const InvoiceBox = styled('div')(({ theme, sticky }) => ({
   },
 }));
 
-export default function Header() {
+export default function Header({company_data}) {
     const {t} = useTranslation()
     const [openRight, setOpenRight] = useState(false);
     const toggleDrawer = (open) => (event) => {setOpenRight(open);};
@@ -217,7 +217,7 @@ export default function Header() {
                                 <Typography fontWeight={'bold'} sx={{fontSize:'16px'}} color={theme.color.red}>{t('Hotline')}</Typography>
                               </Grid>
                               <Grid item xs={12} >
-                                <Typography sx={{fontSize:'16px',fontFamily:(theme)=>theme.typography.MuktaMahee}} color={theme.color.red}>(0234) 3997799</Typography>
+                                <Typography sx={{fontSize:'16px',fontFamily:(theme)=>theme.typography.MuktaMahee}} color={theme.color.red}>{company_data[6].data}</Typography>
                               </Grid>
                           </Grid>
                           <Grid item xs={12} lg={3}> 
@@ -304,7 +304,7 @@ export default function Header() {
                             <Typography fontWeight={'bold'} sx={{fontSize:'16px'}} color={theme.color.white}>{t('Hotline')}</Typography>
                           </Grid>
                           <Grid item xs={12} >
-                            <Typography sx={{fontSize:'16px',fontFamily:(theme)=>theme.typography.MuktaMahee}} color={theme.color.white}>(0234) 3997799</Typography>
+                            <Typography sx={{fontSize:'16px',fontFamily:(theme)=>theme.typography.MuktaMahee}} color={theme.color.white}>{company_data[6].data}</Typography>
                           </Grid>
                       </Grid>
                       <Grid item xs={12} lg={3}> 

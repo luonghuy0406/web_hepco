@@ -1,7 +1,7 @@
 
 import { useTheme } from "@emotion/react";
 import { Box, Button, Card, CardMedia, Container, Grid, Typography, styled } from "@mui/material";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { Image } from "semantic-ui-react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -47,8 +47,9 @@ const CustomizedButton = styled(Button)(({ theme }) => ({
         // boxShadow: `0 0 0 3px rgba(0, 123, 255, 0.3)`, // Add a custom focus border
     },
 }));
-export default function Footer(){
-    const {t} = useTranslation()
+export default function Footer({company_data}){
+    const {t, i18n} = useTranslation()
+    const currentLang = i18n.language == 'en' ? 'en' : ''
     const theme = useTheme()
     const footerRef = useRef(null)
     const { ref, inView } = useInView({
@@ -101,16 +102,31 @@ export default function Footer(){
                             </Typography>
                         </Grid>
                         <Grid item xs={12}><Typography fontWeight={600} color={theme.color.white}>CÔNG TY CỔ PHẦN MÔI TRƯỜNG VÀ CÔNG TRÌNH ĐÔ THỊ HUẾ</Typography></Grid>
-                        <Grid item xs={12}><Typography fontWeight={500} color={theme.color.white}>46 Trần Phú, Phường Phước Vĩnh, TP. Huế</Typography></Grid>
-                        <Grid item xs={12}><Typography fontWeight={500} color={theme.color.white}>(0234) 3848242 </Typography></Grid>
-                        <Grid item xs={12}><Typography fontWeight={500} color={theme.color.white}>(0234) 3848075</Typography></Grid>
-                        <Grid item xs={12}><Typography fontWeight={500} color={theme.color.white}>(0234) 3997799</Typography></Grid>
-                        <Grid item xs={12}><Typography fontWeight={500} color={theme.color.white}>info@hepco.com.vn</Typography></Grid>
+                        <Grid item xs={12}><Typography fontWeight={500} color={theme.color.white}>{company_data[4]?.["data_"+currentLang] || company_data[4].data}</Typography></Grid>
+                        <Grid item xs={12}><Typography fontWeight={500} color={theme.color.white}>{company_data[5]?.["data_"+currentLang] || company_data[5].data} </Typography></Grid>
+                        <Grid item xs={12}><Typography fontWeight={500} color={theme.color.white}>{company_data[6]?.["data_"+currentLang] || company_data[6].data}</Typography></Grid>
+                        <Grid item xs={12}><Typography fontWeight={500} color={theme.color.white}>{company_data[7]?.["data_"+currentLang] || company_data[7].data}</Typography></Grid>
+                        <Grid item xs={12}><Typography fontWeight={500} color={theme.color.white}>{company_data[10]?.["data_"+currentLang] || company_data[10].data}</Typography></Grid>
 
                         <Grid item xs={12} container  spacing={1}>
-                            <Grid item><Image src='/assets/icons/ic_zalo.svg' alt="zalo icon" width="25" height="25"/></Grid>
-                            <Grid item><Image src='/assets/icons/ic_facebook.svg' alt="zalo icon" width="25" height="25"/></Grid>
-                            <Grid item><Image src='/assets/icons/ic_youtube.svg' alt="zalo icon" width="25" height="25"/></Grid>
+                            
+                            
+                            
+                            <Grid item>
+                                <Link to={company_data[13]?.data} style={{textDecoration:'none'}} target={"_blank"}>
+                                    <Image src='/assets/icons/ic_zalo.svg' alt="zalo icon" width="25" height="25"/>
+                                </Link> 
+                            </Grid>
+                            <Grid item>
+                                <Link to={company_data[11]?.data} style={{textDecoration:'none'}} target={"_blank"}>
+                                    <Image src='/assets/icons/ic_facebook.svg' alt="zalo icon" width="25" height="25"/>
+                                </Link>
+                            </Grid>
+                            <Grid item>
+                                <Link to={company_data[12]?.data} style={{textDecoration:'none'}} target={"_blank"}>
+                                    <Image src='/assets/icons/ic_youtube.svg' alt="zalo icon" width="25" height="25"/>
+                                </Link>
+                            </Grid>
                         </Grid>
                     </Grid>
                     <Grid item xs={12} md={4} px={2} mb={3} container spacing={2}>
@@ -120,24 +136,7 @@ export default function Footer(){
                             </Typography>
                         </Grid>
                         <Grid item xs={12} container spacing={1}>
-                            {[1,2,3,4,5,6,7,8].map((id)=>{
-                                return(
-                                   <Grid item xs={3} key={'gallery-'+id}>
-                                    <Box 
-                                    sx={{
-                                        width:"100%", 
-                                        height:"auto", 
-                                        aspectRatio:"1", 
-                                        backgroundImage:"url(https://www.seiu1000.org/sites/main/files/imagecache/hero/main-images/camera_lense_0.jpeg)",
-                                        backgroundSize:"cover",
-                                        backgroundPosition:"center",
-                                        backgroundRepeat:"no-repeat"
-                                    }}>
-
-                                    </Box>
-                                    </Grid> 
-                                )
-                            })}
+                            <MiniGallery/>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -145,7 +144,7 @@ export default function Footer(){
             <Container maxWidth='100%' sx={{padding:theme.spacing(2), pt: theme.spacing(10), fontSize:'14px', color:theme.color.white, display:'flex', justifyContent:'space-between'}}>
                 <Grid container>
                     <Grid item xs={4} alignItems={"center"}>
-                        <Typography fontSize='14px' textAlign={"left"} color={theme.color.white}>{t('Chứng nhận ISO 9001:2015 và ISO 14001:2015')}</Typography>
+                        <Typography fontSize='14px' textAlign={"left"} color={theme.color.white}>{company_data[8]?.["data_"+currentLang] || company_data[8].data}</Typography>
                     </Grid>
                     <Grid item xs={4}>
                         <Box onClick={()=>{window.open('http://flyaz.vn/', '_blank').focus()}} sx={{display:'flex',alignItems:'center', justifyContent:'center', cursor:'pointer'}}>
@@ -158,5 +157,41 @@ export default function Footer(){
                 </Grid>
             </Container>
         </Container>
+    )
+}
+
+const MiniGallery = ()=>{
+    const {t} = useTranslation()
+    const [images, setImages] = useState([])
+    useEffect(()=>{
+        fetch(`${process.env.REACT_APP_HOST}/library/list?p=0&c=8&id_album=0`)
+        .then(response => response.text())
+        .then(result => {
+            const data = JSON.parse(result).result
+            setImages(data.data)
+        })
+        .catch(error => console.log('error', error));
+    },[])
+    return(
+        images.map((image,id)=>{
+            return(
+               <Grid item xs={3} key={'gallery-'+id}>
+                <Link to={`/${t('gioithieu')}/${t("thuvien")}`}>
+                    <Box 
+                    sx={{
+                        width:"100%", 
+                        height:"auto", 
+                        aspectRatio:"1", 
+                        backgroundImage:`url(${process.env.REACT_APP_HOST}/read_image/${image.link})`,
+                        backgroundSize:"cover",
+                        backgroundPosition:"center",
+                        backgroundRepeat:"no-repeat"
+                    }}>
+
+                    </Box>
+                </Link>
+                </Grid> 
+            )
+        })
     )
 }

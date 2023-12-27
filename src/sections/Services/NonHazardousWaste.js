@@ -16,6 +16,17 @@ export default function NonHazardousWaste({id}) {
         })
         .catch(error => console.log('error', error));
     },[])
+
+    const [dataChild,setDataChild] = useState(null)
+    useEffect(()=>{
+        fetch(`${process.env.REACT_APP_HOST}/sharedtable/father/16`)
+        .then(response => response.text())
+        .then(result => {
+            const data = JSON.parse(result).result
+            setDataChild(data)
+        })
+        .catch(error => console.log('error', error));
+    },[])
     return (
         <>
          <Container 
@@ -73,97 +84,39 @@ export default function NonHazardousWaste({id}) {
             >
                 <Grid container spacing={2}>
                     <Grid item xs={12} container spacing={3} sx={{marginBottom:theme.spacing(4)}}>
-                        <Grid item xs={12} md={6}>
-                            <Box sx={{padding: theme.spacing(2), display: 'flex', flexDirection: 'column', height: '100%'}}> 
-                                <Box sx={{flexGrow:1,padding: `${theme.spacing(1)} ${theme.spacing(2)}`,margin: theme.spacing(2),marginLeft: 0, borderRadius: '20px 0', backgroundColor:{xs: theme.color.green1, md: theme.color.red}, width: 'fit-content'}}>
-                                    <Typography variant="h6" color={theme.color.white} fontWeight={700}>{t('Dịch vụ vệ sinh công cộng')}</Typography>
-                                </Box>
-                                <Box
-                                    sx={{
-                                        width:'100%',
-                                        minHeight:{xs: '250px', md: '400px'},
-                                        backgroundImage: 'url(/assets/images/thungo.jpeg)',
-                                        backgroundPosition:'center',
-                                        backgroundSize:'cover',
-                                        backgroundRepeat: 'no-repeat',
-                                        borderRadius:'0 20px'
-                                    }}
-                                />
-                            </Box>
-                        </Grid>
-                        <Grid item xs={12} md={6}>
-                            <Box sx={{padding: theme.spacing(2), display: 'flex', flexDirection: 'column', height: '100%'}}> 
-                                <Box sx={{flexGrow:1,padding: `${theme.spacing(1)} ${theme.spacing(2)}`,margin: theme.spacing(2),marginLeft: 0, borderRadius: '20px 0', backgroundColor:theme.color.red, width: 'fit-content'}}>
-                                    <Typography variant="h6" color={theme.color.white} fontWeight={700}>{t('Dịch vụ thu gom, vận chuyển, xử lý rác thải sinh hoạt')}</Typography>
-                                </Box>
-                                <Box
-                                    sx={{
-                                        width:'100%',
-                                        minHeight:{xs: '250px', md: '400px'},
-                                        backgroundImage: 'url(/assets/images/thungo.jpeg)',
-                                        backgroundPosition:'center',
-                                        backgroundSize:'cover',
-                                        backgroundRepeat: 'no-repeat',
-                                        borderRadius:'0 20px'
-                                    }}
-                                />
-                            </Box>
-                        </Grid>
-                        <Grid item xs={12} md={4}>
-                            <Box sx={{padding: theme.spacing(2), display: 'flex', flexDirection: 'column', height: '100%'}}> 
-                                <Box sx={{flexGrow: 1,padding: `${theme.spacing(1)} ${theme.spacing(2)}`,margin: theme.spacing(2),marginLeft: 0, borderRadius: '20px 0', backgroundColor:theme.color.green1, width: 'fit-content'}}>
-                                    <Typography variant="h6" color={theme.color.white} fontWeight={700}>{t('Dịch vụ thu gom, vận chuyển, xử lý rác cồng kềnh')}</Typography>
-                                </Box>
-                                <Box
-                                    sx={{
-                                        width:'100%',
-                                        minHeight:{xs: '250px', md: '400px'},
-                                        backgroundImage: 'url(/assets/images/thungo.jpeg)',
-                                        backgroundPosition:'center',
-                                        backgroundSize:'cover',
-                                        backgroundRepeat: 'no-repeat',
-                                        borderRadius:'0 20px'
-                                    }}
-                                />
-                            </Box>
-                        </Grid>
-                        <Grid item xs={12} md={4}>
-                            <Box sx={{padding: theme.spacing(2), display: 'flex', flexDirection: 'column', height: '100%'}}> 
-                                <Box sx={{ flexGrow: 1,padding: `${theme.spacing(1)} ${theme.spacing(2)}`,margin: theme.spacing(2),marginLeft: 0, borderRadius: '20px 0', backgroundColor:theme.color.red, width: 'fit-content'}}>
-                                    <Typography variant="h6" color={theme.color.white} fontWeight={700}>{t('Dịch vụ thu gom, vận chuyển rác xây dựng')}</Typography>
-                                </Box>
-                                <Box
-                                    sx={{
-                                        width:'100%',
-                                        minHeight:{xs: '250px', md: '400px'},
-                                    
-                                        backgroundImage: 'url(/assets/images/thungo.jpeg)',
-                                        backgroundPosition:'center',
-                                        backgroundSize:'cover',
-                                        backgroundRepeat: 'no-repeat',
-                                        borderRadius:'0 20px'
-                                    }}
-                                />
-                            </Box>
-                        </Grid>
-                        <Grid item xs={12} md={4}>
-                            <Box sx={{padding: theme.spacing(2), display: 'flex', flexDirection: 'column', height: '100%'}}> 
-                                <Box sx={{flexGrow: 1,padding: `${theme.spacing(1)} ${theme.spacing(2)}`,margin: theme.spacing(2),marginLeft: 0, borderRadius: '20px 0', backgroundColor:theme.color.green1, width: 'fit-content'}}>
-                                    <Typography variant="h6" color={theme.color.white} fontWeight={700}>{t('Dịch vụ thu gom, vận chuyển, xử lý rác công nghiệp thông thường')}</Typography>
-                                </Box>
-                                <Box
-                                    sx={{
-                                        width:'100%',
-                                        minHeight:{xs: '250px', md: '400px'},
-                                        backgroundImage: 'url(/assets/images/thungo.jpeg)',
-                                        backgroundPosition:'center',
-                                        backgroundSize:'cover',
-                                        backgroundRepeat: 'no-repeat',
-                                        borderRadius:'0 20px'
-                                    }}
-                                />
-                            </Box>
-                        </Grid>
+                        {
+                            dataChild?.map((dataC, index)=>{
+                                return(
+                                    <Grid key={'khongnguyhai'+index} item xs={12} md={index <=1 ? 6 : 4}>
+                                        <Box sx={{padding: theme.spacing(2), display: 'flex', flexDirection: 'column', height: '100%'}}> 
+                                            <Box 
+                                                sx={{
+                                                    flexGrow:1,
+                                                    padding: `${theme.spacing(1)} ${theme.spacing(2)}`,
+                                                    margin: theme.spacing(2),
+                                                    marginLeft: 0, 
+                                                    borderRadius: '20px 0', 
+                                                    backgroundColor:index%2 ==0 ? theme.color.green1 : theme.color.red, 
+                                                    width: 'fit-content'
+                                                }}>
+                                                <Typography variant="h6" color={theme.color.white} fontWeight={700}>{dataC["name_"+currentLang] || dataC.name}</Typography>
+                                            </Box>
+                                            <Box
+                                                sx={{
+                                                    width:'100%',
+                                                    minHeight:{xs: '250px', md: '400px'},
+                                                    backgroundImage: `url(${process.env.REACT_APP_HOST}/read_image/${dataC.image})`,
+                                                    backgroundPosition:'center',
+                                                    backgroundSize:'cover',
+                                                    backgroundRepeat: 'no-repeat',
+                                                    borderRadius:'0 20px'
+                                                }}
+                                            />
+                                        </Box>
+                                    </Grid>
+                                )
+                            })
+                        }
                     </Grid>
                 </Grid>
             </Container>

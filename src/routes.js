@@ -14,14 +14,14 @@ import NewsItem from './pages/NewsItem';
 import ProjectsItem from './pages/ProjectsItem';
 import ShareholderItem from './pages/ShareHolderItems';
 
-export default function Router() {
+export default function Router({data}) {
   const {t} = useTranslation()
   const routes = useRoutes([
     {
       path: '/',
-      element: <MainLayout />,
+      element: <MainLayout data={data}/>,
       children: [
-        { path: '', element: <Home /> },
+        { path: '', element: <Home data={data}/> },
         { path: t('gioithieu'), element: <About/> },
         { path: `${t('gioithieu')}/${t('sodo')}`, element: <About page={t('sodo')}/> },
         { path: `${t('gioithieu')}/${t('chucnang')}`, element: <About page={t('chucnang')}/> },
@@ -52,7 +52,7 @@ export default function Router() {
         { path: `${t('codong')}/${t('baocao')}`, element: <Shareholder page={'6'}/> },
         { path: `${t('codong')}/:threadId`, element: <ShareholderItem/> },
         { path: t('cauhoi'), element: <Question /> },
-        { path: t('lienhe'), element: <Contact /> },
+        { path: t('lienhe'), element: <Contact data={data}/> },
         { path: '404', element: <Navigate to="/" /> },
         { path: '*', element: <Navigate to="/" /> },
       ],
