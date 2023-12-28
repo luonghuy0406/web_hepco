@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useTheme } from '@emotion/react'
-import { AccordionSummary, Box, Button, Container, Grid, TextField, Typography, styled } from '@mui/material'
+import { AccordionSummary, Alert, Box, Button, Container, Grid, Snackbar, TextField, Typography, styled } from '@mui/material'
 import MuiAccordion from '@mui/material/Accordion';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import { useTranslation } from 'react-i18next'
@@ -104,12 +104,76 @@ export function Questions() {
   const formQuesRef = useRef(null)
   const [open, setOpen] = useState(false);
   const [ques, setQues] = useState([])
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [sbContent, setSbContent] = useState({type:"info", content:t("Đang gửi email")})
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpenSnackbar(false);
+  };
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0,
     deplay: 300
   });
+  const [contentMail,setContentMail] = useState({name:"",email:"",phone:"",subject:"",content:""})
+
+
+  const handleChangeContent = (key,value)=>{
+    const data = { ...contentMail }; // Shallow copy
+    data[key] = value;
+    setContentMail(data);
+  }
   
+const handleSendMail = (data, setContentMail, setSbContent, setOpenSnackbar) => {
+    
+    let content = `
+        Dear Mr/Ms,<br>Some clients has contact in website<br>
+        Below is their infomation:<br>
+        Name: ${data.name},<br>
+        Email: ${data.email},<br>
+        Phone number: ${data.phone},<br>
+        Message: ${data.content}<br>
+        Please reply them asap.<br>regard!!
+    `
+    let raw = JSON.stringify({
+    "content": content
+    });
+    let myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+    let requestOptions = {
+        method: 'POST',
+        body: raw,
+        headers: myHeaders,
+        redirect: 'follow'
+    };
+
+    fetch(`${process.env.REACT_APP_HOST}/sendmail`, requestOptions)
+    .then(response => response.json())
+    .then(result => {
+        setOpenSnackbar(true)
+        if(result.status == 'success'){
+            setContentMail({name:"",email:"",phone:"",subject:"",content:""})
+        }
+        setSbContent({type:result.status, content: result.msg})
+        setTimeout(()=>{
+            setSbContent({type:"info", content:t("Đang gửi email")})
+        },2000)
+    })
+    .catch(error => {
+        setOpenSnackbar(true)
+        setSbContent({type:'error', content: error})
+        setTimeout(()=>{
+            setSbContent({type:"info", content:t("Đang gửi email")})
+        },2000)
+    });
+}
+ 
+    
+
   useEffect(() => {
     if(inView){
         if (questionsRef.current) {
@@ -224,16 +288,40 @@ export function Questions() {
                                         <Typography variant="h5" color={theme.color.white} fontWeight={700} textAlign={"center"}>{t("Gửi câu hỏi")}</Typography>
                                     </Grid>
                                     <Grid item xs={6}>
-                                        <TextInput  label={t("Tên")} fullWidth variant="outlined" />
+                                        <TextInput  
+                                            label={t("Tên")} 
+                                            fullWidth 
+                                            variant="outlined" 
+                                            value = {contentMail["name"] || ""}
+                                            onChange={(e)=>{handleChangeContent("name",e.target.value)}}
+                                        />
                                     </Grid>
                                     <Grid item xs={6}>
-                                        <TextInput label={t("Email")} fullWidth variant="outlined"  />
+                                        <TextInput 
+                                            label={t("Email")} 
+                                            fullWidth 
+                                            variant="outlined"  
+                                            value = {contentMail["email"] || ""}
+                                            onChange = {(e)=>{handleChangeContent("email",e.target.value)}}
+                                        />
                                     </Grid>
                                     <Grid item xs={6}>
-                                        <TextInput label={t("Số điện thoại")} fullWidth variant="outlined"  />
+                                        <TextInput 
+                                            label={t("Số điện thoại")} 
+                                            fullWidth 
+                                            variant="outlined"  
+                                            value = {contentMail["phone"] || ""}
+                                            onChange={(e)=>{handleChangeContent("phone",e.target.value)}}
+                                        />
                                     </Grid>
                                     <Grid item xs={6}>
-                                        <TextInput label={t("Tiêu đề")} fullWidth variant="outlined"  />
+                                        <TextInput 
+                                            label={t("Tiêu đề")} 
+                                            fullWidth 
+                                            variant="outlined"  
+                                            value = {contentMail["subject"] || ""}
+                                            onChange={(e)=>{handleChangeContent("subject",e.target.value)}}
+                                        />
                                     </Grid>
                                     <Grid item xs={12}>
                                         <TextInput
@@ -241,10 +329,21 @@ export function Questions() {
                                             multiline
                                             rows={4}
                                             fullWidth
+                                            value = {contentMail["content"] || ""}
+                                            onChange={(e)=>{handleChangeContent("content",e.target.value)}}
                                         />
                                     </Grid>
                                 </Grid>
-                                    <CustomizedButton sx={{width:"100%", marginTop: theme.spacing(4)}} variant="contained">{t("Gửi")}</CustomizedButton>
+                                    <CustomizedButton 
+                                        sx={{width:"100%", marginTop: theme.spacing(4)}} 
+                                        variant="contained" 
+                                        onClick={()=>{
+                                            setOpenSnackbar(true)
+                                            handleSendMail(contentMail, setContentMail, setSbContent, setOpenSnackbar)
+                                        }}
+                                    >
+                                        {t("Gửi")}
+                                    </CustomizedButton>
                             </Box>
                             
                         </Grid>
@@ -252,6 +351,30 @@ export function Questions() {
                 </Container>
             </Box>
         </Box>
+        {
+            sbContent.type == "info" &&
+            <Snackbar open={openSnackbar} autoHideDuration={3000} onClose={handleClose}>
+                <Alert severity="info" sx={{ width: '100%' }}>
+                    {sbContent.content}
+                </Alert>
+            </Snackbar>
+        }
+        {
+            sbContent.type == "success" &&
+            <Snackbar open={openSnackbar} autoHideDuration={3000} onClose={handleClose}>
+                <Alert severity="success" sx={{ width: '100%' }}>
+                    {sbContent.content}
+                </Alert>
+            </Snackbar>
+        }
+        {
+            sbContent.type == "error" &&
+            <Snackbar open={openSnackbar} autoHideDuration={3000} onClose={handleClose}>
+                <Alert severity="error" sx={{ width: '100%' }}>
+                    {sbContent.content}
+                </Alert>
+            </Snackbar>
+        }
     </Container>
   )
 }
