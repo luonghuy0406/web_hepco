@@ -99,6 +99,12 @@ export function Questions() {
 
   const {t, i18n} = useTranslation()
   const currentLang = i18n.language == 'en' ? 'en' : ''
+
+  const { ref, inView } = useInView({
+    /* Optional options */
+    threshold: 0,
+    deplay: 300
+  });
   const theme= useTheme()
   const questionsRef = useRef(null) 
   const formQuesRef = useRef(null)
@@ -114,11 +120,7 @@ export function Questions() {
 
     setOpenSnackbar(false);
   };
-  const { ref, inView } = useInView({
-    /* Optional options */
-    threshold: 0,
-    deplay: 300
-  });
+
   const [contentMail,setContentMail] = useState({name:"",email:"",phone:"",subject:"",content:""})
 
 
@@ -128,49 +130,49 @@ export function Questions() {
     setContentMail(data);
   }
   
-const handleSendMail = (data, setContentMail, setSbContent, setOpenSnackbar) => {
-    
-    let content = `
-        Dear Mr/Ms,<br>Some clients has contact in website<br>
-        Below is their infomation:<br>
-        Name: ${data.name},<br>
-        Email: ${data.email},<br>
-        Phone number: ${data.phone},<br>
-        Message: ${data.content}<br>
-        Please reply them asap.<br>regard!!
-    `
-    let raw = JSON.stringify({
-    "content": content
-    });
-    let myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-    let requestOptions = {
-        method: 'POST',
-        body: raw,
-        headers: myHeaders,
-        redirect: 'follow'
-    };
+    const handleSendMail = (data, setContentMail, setSbContent, setOpenSnackbar) => {
+        
+        let content = `
+            Dear Mr/Ms,<br>Some clients has contact in website<br>
+            Below is their infomation:<br>
+            Name: ${data.name},<br>
+            Email: ${data.email},<br>
+            Phone number: ${data.phone},<br>
+            Message: ${data.content}<br>
+            Please reply them asap.<br>regard!!
+        `
+        let raw = JSON.stringify({
+        "content": content
+        });
+        let myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+        let requestOptions = {
+            method: 'POST',
+            body: raw,
+            headers: myHeaders,
+            redirect: 'follow'
+        };
 
-    fetch(`${process.env.REACT_APP_HOST}/sendmail`, requestOptions)
-    .then(response => response.json())
-    .then(result => {
-        setOpenSnackbar(true)
-        if(result.status == 'success'){
-            setContentMail({name:"",email:"",phone:"",subject:"",content:""})
-        }
-        setSbContent({type:result.status, content: result.msg})
-        setTimeout(()=>{
-            setSbContent({type:"info", content:t("Đang gửi email")})
-        },2000)
-    })
-    .catch(error => {
-        setOpenSnackbar(true)
-        setSbContent({type:'error', content: error})
-        setTimeout(()=>{
-            setSbContent({type:"info", content:t("Đang gửi email")})
-        },2000)
-    });
-}
+        fetch(`${process.env.REACT_APP_HOST}/sendmail`, requestOptions)
+        .then(response => response.json())
+        .then(result => {
+            setOpenSnackbar(true)
+            if(result.status == 'success'){
+                setContentMail({name:"",email:"",phone:"",subject:"",content:""})
+            }
+            setSbContent({type:result.status, content: result.msg})
+            setTimeout(()=>{
+                setSbContent({type:"info", content:t("Đang gửi email")})
+            },4000)
+        })
+        .catch(error => {
+            setOpenSnackbar(true)
+            setSbContent({type:'error', content: error})
+            setTimeout(()=>{
+                setSbContent({type:"info", content:t("Đang gửi email")})
+            },4000)
+        });
+    }
  
     
 

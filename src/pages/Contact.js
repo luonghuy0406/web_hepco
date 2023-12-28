@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next'
 import Banner from '../sections/Banner'
-import { Box, Button, Container, Grid, TextField, Typography, styled, useTheme } from '@mui/material'
+import { Alert, Box, Button, Container, Grid, Snackbar, TextField, Typography, styled, useTheme } from '@mui/material'
 
 const CustomizedButton = styled(Button)(({ theme }) => ({
   // Set background color
@@ -43,6 +43,68 @@ export default function Contact({data}) {
   const pages = []
   window.scrollTo(0, 0);
   const info = data.company_data
+
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [sbContent, setSbContent] = useState({type:"info", content:t("Đang gửi email")})
+  const handleCloseSnack = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpenSnackbar(false);
+  };
+
+  const [contentMail,setContentMail] = useState({name:"",email:"",phone:"",subject:"",content:""})
+
+
+  const handleChangeContent = (key,value)=>{
+    const data = { ...contentMail }; // Shallow copy
+    data[key] = value;
+    setContentMail(data);
+  }
+  
+    const handleSendMail = (data, setContentMail, setSbContent, setOpenSnackbar) => {
+        
+        let content = `
+            Dear Mr/Ms,<br>Some clients has contact in website<br>
+            Below is their infomation:<br>
+            Name: ${data.name},<br>
+            Email: ${data.email},<br>
+            Phone number: ${data.phone},<br>
+            Message: ${data.content}<br>
+            Please reply them asap.<br>regard!!
+        `
+        let raw = JSON.stringify({
+        "content": content
+        });
+        let myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+        let requestOptions = {
+            method: 'POST',
+            body: raw,
+            headers: myHeaders,
+            redirect: 'follow'
+        };
+
+        fetch(`${process.env.REACT_APP_HOST}/sendmail`, requestOptions)
+        .then(response => response.json())
+        .then(result => {
+            setOpenSnackbar(true)
+            if(result.status == 'success'){
+                setContentMail({name:"",email:"",phone:"",subject:"",content:""})
+            }
+            setSbContent({type:result.status, content: result.msg})
+            setTimeout(()=>{
+                setSbContent({type:"info", content:t("Đang gửi email")})
+            },4000)
+        })
+        .catch(error => {
+            setOpenSnackbar(true)
+            setSbContent({type:'error', content: error})
+            setTimeout(()=>{
+                setSbContent({type:"info", content:t("Đang gửi email")})
+            },4000)
+        });
+    }
   return (
     <>
       <Helmet>
@@ -68,34 +130,66 @@ export default function Contact({data}) {
           <Grid item xs={6}>
             <Box sx={{backgroundColor:'#fafafa', padding: theme.spacing(5), borderRadius: "10px"}}>
               <Grid container spacing={4}>
-                <Grid item xs={12}>
+              <Grid item xs={12}>
                   <Typography variant="h4" className='type-line' fontWeight={700}>Liên lạc</Typography>
                 </Grid>
                 <Grid item xs={6}>
-                  <TextField label={t("Tên")} fullWidth variant="outlined" sx={{backgroundColor:"#FFF"}}/>
+                      <TextField  
+                          label={t("Tên")} 
+                          fullWidth 
+                          variant="outlined" 
+                          value = {contentMail["name"] || ""}
+                          onChange={(e)=>{handleChangeContent("name",e.target.value)}}
+                      />
+                  </Grid>
+                  <Grid item xs={6}>
+                      <TextField 
+                          label={t("Email")} 
+                          fullWidth 
+                          variant="outlined"  
+                          value = {contentMail["email"] || ""}
+                          onChange = {(e)=>{handleChangeContent("email",e.target.value)}}
+                      />
+                  </Grid>
+                  <Grid item xs={6}>
+                      <TextField 
+                          label={t("Số điện thoại")} 
+                          fullWidth 
+                          variant="outlined"  
+                          value = {contentMail["phone"] || ""}
+                          onChange={(e)=>{handleChangeContent("phone",e.target.value)}}
+                      />
+                  </Grid>
+                  <Grid item xs={6}>
+                      <TextField 
+                          label={t("Tiêu đề")} 
+                          fullWidth 
+                          variant="outlined"  
+                          value = {contentMail["subject"] || ""}
+                          onChange={(e)=>{handleChangeContent("subject",e.target.value)}}
+                      />
+                  </Grid>
+                  <Grid item xs={12}>
+                      <TextField
+                          label={t("Nội dung")}
+                          multiline
+                          rows={4}
+                          fullWidth
+                          value = {contentMail["content"] || ""}
+                          onChange={(e)=>{handleChangeContent("content",e.target.value)}}
+                      />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <CustomizedButton 
+                      sx={{width:"100%"}} 
+                      variant="contained"
+                      onClick={()=>{
+                        setOpenSnackbar(true)
+                        handleSendMail(contentMail, setContentMail, setSbContent, setOpenSnackbar)
+                    }}
+                    >{t("Gửi")}</CustomizedButton>
+                  </Grid>  
                 </Grid>
-                <Grid item xs={6}>
-                  <TextField label={t("Email")} fullWidth variant="outlined" sx={{backgroundColor:"#FFF"}} />
-                </Grid>
-                <Grid item xs={6}>
-                  <TextField label={t("Số điện thoại")} fullWidth variant="outlined" sx={{backgroundColor:"#FFF"}} />
-                </Grid>
-                <Grid item xs={6}>
-                  <TextField label={t("Tiêu đề")} fullWidth variant="outlined" sx={{backgroundColor:"#FFF"}} />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    label={t("Nội dung")}
-                    multiline
-                    rows={4}
-                    fullWidth
-                    sx={{backgroundColor:"#FFF"}}
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <CustomizedButton sx={{width:"100%"}} variant="contained">{t("Gửi")}</CustomizedButton>
-                </Grid>  
-              </Grid>
             </Box>
           </Grid>
         </Grid>
@@ -178,6 +272,30 @@ export default function Contact({data}) {
             </Box>
           </Grid>
         </Grid>
+        {
+            sbContent.type == "info" &&
+            <Snackbar open={openSnackbar} autoHideDuration={3000} onClose={handleCloseSnack}>
+                <Alert severity="info" sx={{ width: '100%' }}>
+                    {sbContent.content}
+                </Alert>
+            </Snackbar>
+        }
+        {
+            sbContent.type == "success" &&
+            <Snackbar open={openSnackbar} autoHideDuration={3000} onClose={handleCloseSnack}>
+                <Alert severity="success" sx={{ width: '100%' }}>
+                    {sbContent.content}
+                </Alert>
+            </Snackbar>
+        }
+        {
+            sbContent.type == "error" &&
+            <Snackbar open={openSnackbar} autoHideDuration={3000} onClose={handleCloseSnack}>
+                <Alert severity="error" sx={{ width: '100%' }}>
+                    {sbContent.content}
+                </Alert>
+            </Snackbar>
+        }
       </Container>
     </>
   )
