@@ -12,7 +12,7 @@ export default function Projects({page}) {
      <Helmet>
       <title> {t("Dự án")} | {t("HEPCO - CÔNG TY CỔ PHẦN MÔI TRƯỜNG VÀ CÔNG TRÌNH ĐÔ THỊ HUẾ")} </title>
      </Helmet>
-      <Banner name={t("Dự án")} image={'/assets/images/bg4.jpeg'} path={`/${t('duan')}`} pages={[]}/>
+      <Banner name={t("Dự án")} image={'/assets/images/bg4.jpg'} path={`/${t('duan')}`} pages={[]}/>
       <ProjectsContent pageParam={page}/>
     </>
   )

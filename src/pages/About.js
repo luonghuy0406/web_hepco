@@ -24,7 +24,7 @@ export default function About({page}) {
       </Helmet>
       <Banner
         name={"Giới thiệu"}
-        image="/assets/images/bg4.jpeg"
+        image="/assets/images/bg4.jpg"
         path={parentPath}
         pages={pages}
       />

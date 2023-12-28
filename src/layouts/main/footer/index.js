@@ -70,7 +70,7 @@ export default function Footer({company_data}){
             maxWidth='100%' 
             p={0} 
             sx={{
-                background: `url(/assets/images/bg3.jpeg)`,
+                background: `url(/assets/images/bg3.jpg)`,
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover', 
                 py:theme.spacing(5), pb:theme.spacing(2)

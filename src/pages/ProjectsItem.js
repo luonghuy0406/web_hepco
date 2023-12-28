@@ -42,7 +42,7 @@ export default function ProjectsItem() {
         <Helmet>
           <title> {t("Dự án")} | {t("HEPCO - CÔNG TY CỔ PHẦN MÔI TRƯỜNG VÀ CÔNG TRÌNH ĐÔ THỊ HUẾ")} </title>
         </Helmet>
-      <Banner name={''} image={'/assets/images/bg4.jpeg'} path={`/`} pages={[]}/>
+      <Banner name={''} image={'/assets/images/bg4.jpg'} path={`/`} pages={[]}/>
       <Container 
             maxWidth={'xl'} 
             sx={{

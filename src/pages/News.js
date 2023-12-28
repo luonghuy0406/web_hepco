@@ -12,7 +12,7 @@ export default function News({page}) {
       <Helmet>
           <title> {t("Tin tức")} | {t("HEPCO - CÔNG TY CỔ PHẦN MÔI TRƯỜNG VÀ CÔNG TRÌNH ĐÔ THỊ HUẾ")} </title>
       </Helmet>
-      <Banner name={t("Tin tức")} image={'/assets/images/bg4.jpeg'} path={`/${t('tintuc')}`} pages={[]}/>
+      <Banner name={t("Tin tức")} image={'/assets/images/bg4.jpg'} path={`/${t('tintuc')}`} pages={[]}/>
       <NewsContent pageParam={page}/>
     </>
   )

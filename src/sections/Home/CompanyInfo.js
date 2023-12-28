@@ -79,7 +79,7 @@ export function CompanyInfo() {
       <Box sx={{
           py:theme.spacing(3),
           pt:theme.spacing(6),
-          backgroundImage:"url(/assets/images/bg2.jpeg) !important",
+          backgroundImage:"url(/assets/images/bg2.jpg) !important",
           backgroundSize:"cover",
           backgroundPosition:"center",
           backgroundRepeat:"no-repeat",

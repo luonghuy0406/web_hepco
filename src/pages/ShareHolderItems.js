@@ -41,7 +41,7 @@ export default function ShareholderItem() {
         <Helmet>
           <title> {t("Cổ đông")} | {t("HEPCO - CÔNG TY CỔ PHẦN MÔI TRƯỜNG VÀ CÔNG TRÌNH ĐÔ THỊ HUẾ")} </title>
         </Helmet>
-      <Banner name={''} image={'/assets/images/bg4.jpeg'} path={`/`} pages={[]}/>
+      <Banner name={''} image={'/assets/images/bg4.jpg'} path={`/`} pages={[]}/>
       <Container 
             maxWidth={'xl'} 
             sx={{

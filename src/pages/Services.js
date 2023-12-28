@@ -20,7 +20,7 @@ export default function Services({page}) {
     <Helmet>
         <title> {t("Dịch vụ")} | {t("HEPCO - CÔNG TY CỔ PHẦN MÔI TRƯỜNG VÀ CÔNG TRÌNH ĐÔ THỊ HUẾ")} </title>
      </Helmet>
-      <Banner name={t("Dịch vụ")} image={'/assets/images/bg4.jpeg'} path={`/${t('dichvu')}`} pages={pages}/>
+      <Banner name={t("Dịch vụ")} image={'/assets/images/bg4.jpg'} path={`/${t('dichvu')}`} pages={pages}/>
       <ServicesContent page={page}/>
     </>
   )
