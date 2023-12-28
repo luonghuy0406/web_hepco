@@ -6,7 +6,6 @@ import { useRef } from "react";
 import { OurMission } from "../sections/Home/OurMission";
 import { CompanyInfo } from "../sections/Home/CompanyInfo";
 import { OurServices } from "../sections/Home/OurServices";
-import { FeaturedProjects } from "../sections/Home/FeaturedProjects";
 import { News } from "../sections/Home/News";
 import { Customers } from "../sections/Home/Customers";
 import { AdwardsAchieved } from "../sections/Home/AwardsAchieved";
@@ -25,10 +24,8 @@ const Home = ({data}) => {
       </Helmet>
       <BannerSlide executeScroll={executeScroll} banner={data.banner} info={data.company_data}/>
       <Box ref={myRef}>
-        {/* <CompanyInfo/> */}
-        <OurMission/>
+        <OurMission mission={data.mission} video={data.video} coreVal={data.coreVal}/>
         <OurServices/>
-        {/* <FeaturedProjects/>  */}
         <News/>
         <Box 
           sx={{

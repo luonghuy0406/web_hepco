@@ -195,53 +195,37 @@ const style = {
     border: 'unset'
   };
 
-export function OurMission() {
+export function OurMission({mission,video, coreVal}) {
     const {t, i18n} = useTranslation()
     const currentLang = i18n.language == 'en' ? 'en' : ''
-  const theme= useTheme()
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-  const visionRef = useRef(null)
-  const missonRef = useRef(null)
-  const [videoLink,setVideoLink] = useState('')
+    const theme= useTheme()
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+    const visionRef = useRef(null)
+    const missonRef = useRef(null)
+    const videoLink = video
  
-  const { ref, inView } = useInView({
-    /* Optional options */
-    threshold: 0,
-    deplay: 300
-  });
-  
-  useEffect(() => {
-    if(inView){
-        if (visionRef.current) {
-            visionRef.current.classList.add('animate__animated','animate__rotateInDownLeft');
-        }
-        if (missonRef.current) {
-            missonRef.current.classList.add('animate__animated','animate__rotateInDownRight');
-        }
-    }
-  }, [inView]);
-  
-  const [data,setData] = useState(null)
-  
-  useEffect(()=>{
-    fetch(`${process.env.REACT_APP_HOST}/sharedtable/father/12`)
-    .then(response => response.text())
-    .then(result => {
-        const data = JSON.parse(result).result
-        setData(data)
-    })
-    .catch(error => console.log('error', error));
+    const data = mission
 
-    fetch(`${process.env.REACT_APP_HOST}/company_data/detail/15`)
-    .then(response => response.text())
-    .then(result => {
-        const data = JSON.parse(result).result.data
-        setVideoLink(data)
+    const { ref, inView } = useInView({
+        /* Optional options */
+        threshold: 0,
+        deplay: 300
     })
-    .catch(error => console.log('error', error));
-},[])
+  
+    useEffect(() => {
+        if(inView){
+            if (visionRef.current) {
+                visionRef.current.classList.add('animate__animated','animate__rotateInDownLeft');
+            }
+            if (missonRef.current) {
+                missonRef.current.classList.add('animate__animated','animate__rotateInDownRight');
+            }
+        }
+    }, [inView])
+  
+  
   if(!data){
       return <></>
   }
@@ -331,7 +315,7 @@ export function OurMission() {
                 </Grid>
             </Grid>
         </Container>
-        <CoreValue/>
+        <CoreValue coreVal={coreVal}/>
         <Modal
             open={open}
             onClose={handleClose}
@@ -355,52 +339,43 @@ export function OurMission() {
   )
 }
 
-const CoreValue = () =>{
+const CoreValue = ({coreVal}) =>{
     const {t} = useTranslation()
     const theme= useTheme()
-    const [data,setData] = useState(null)
-    useEffect(()=>{
-        fetch(`${process.env.REACT_APP_HOST}/sharedtable/father/13`)
-        .then(response => response.text())
-        .then(result => {
-            const data = JSON.parse(result).result
-            setData(data)
-        })
-        .catch(error => console.log('error', error));
-    },[])
+    const data = coreVal
     if(!data){
         return <></>
     }
 
     return(
         <Container maxWidth='100%' sx={{py:theme.spacing(4), mb:theme.spacing(10),px:'0 !important'}}>
-                <Box sx={{
-                    py:theme.spacing(5),
-                    backgroundImage:"url(/assets/images/bg1.jpeg) !important",
-                    backgroundSize:"cover",
-                    backgroundPosition:"center",
-                    backgroundRepeat:"no-repeat",
-                    position:"relative",
-                    // height:"200px"
-                    }}>
-                        <Container maxWidth='xl'>
-                            <Grid container sx={{p:theme.spacing(3), textAlign:"center", pt:0}} spacing={2} alignContent={"center"} justifyContent={'center'}>
-                                <Grid item xs={12}>
-                                    <Typography variant="h4" fontWeight={"bold"} mb={5} mt={2} color={theme.color.white} sx={{position:"relative"}} className="core-values">
-                                        {t('Giá trị cốt lõi')}
-                                    </Typography>
-                                </Grid>
-                                {
-                                    data.map((value,index)=>{
-                                        return(
-                                            <CoreItem value={value} key={'coreitem'+index} index={index}/>
-                                        )
-                                    })
-                                }
-
+            <Box sx={{
+                py:theme.spacing(5),
+                backgroundImage:"url(/assets/images/bg1.jpeg) !important",
+                backgroundSize:"cover",
+                backgroundPosition:"center",
+                backgroundRepeat:"no-repeat",
+                position:"relative",
+                // height:"200px"
+                }}>
+                    <Container maxWidth='xl'>
+                        <Grid container sx={{p:theme.spacing(3), textAlign:"center", pt:0}} spacing={2} alignContent={"center"} justifyContent={'center'}>
+                            <Grid item xs={12}>
+                                <Typography variant="h4" fontWeight={"bold"} mb={5} mt={2} color={theme.color.white} sx={{position:"relative"}} className="core-values">
+                                    {t('Giá trị cốt lõi')}
+                                </Typography>
                             </Grid>
-                        </Container>
-                </Box>
+                            {
+                                data.map((value,index)=>{
+                                    return(
+                                        <CoreItem value={value} key={'coreitem'+index} index={index}/>
+                                    )
+                                })
+                            }
+
+                        </Grid>
+                    </Container>
+            </Box>
         </Container>
     )
 }
