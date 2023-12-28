@@ -13,7 +13,7 @@ export default function Shareholder({page}) {
       <Helmet>
           <title> {t("Cổ đông")} | {t("HEPCO - CÔNG TY CỔ PHẦN MÔI TRƯỜNG VÀ CÔNG TRÌNH ĐÔ THỊ HUẾ")} </title>
       </Helmet>
-      <Banner name={t("Cổ đông")} image={'https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/inner3.jpg'} path={`/${t('codong')}`} pages={pages}/>
+      <Banner name={t("Cổ đông")} image={'/assets/images/bg4.jpeg'} path={`/${t('codong')}`} pages={pages}/>
       <ShareholderContent pageParam={page}/>
     </>
   )

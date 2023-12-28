@@ -70,7 +70,7 @@ export default function Footer({company_data}){
             maxWidth='100%' 
             p={0} 
             sx={{
-                background: `url(https://rstheme.com/products/wordpress/planteo/wp-content/uploads/revslider/main-home/slider-1.jpg)`,
+                background: `url(/assets/images/bg3.jpeg)`,
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover', 
                 py:theme.spacing(5), pb:theme.spacing(2)

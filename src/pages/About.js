@@ -24,7 +24,7 @@ export default function About({page}) {
       </Helmet>
       <Banner
         name={"Giới thiệu"}
-        image="https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/inner3.jpg"
+        image="/assets/images/bg4.jpeg"
         path={parentPath}
         pages={pages}
       />

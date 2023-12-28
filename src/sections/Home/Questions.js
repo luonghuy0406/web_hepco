@@ -205,7 +205,7 @@ export function Questions() {
     <Container maxWidth='100%' sx={{pb:theme.spacing(5),px:'0 !important'}}>
         <Box sx={{
           py:theme.spacing(5),
-          backgroundImage:"url(https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/bgg.jpg?id=5580) !important",
+          backgroundImage:"url(/assets/images/bg2.jpeg) !important",
           backgroundSize:"cover",
           backgroundPosition:"center",
           backgroundRepeat:"no-repeat",
@@ -276,7 +276,7 @@ export function Questions() {
                         >
                             <Box
                                 sx={{
-                                    backgroundImage:"url(https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/quote.jpg?id=5470) !important",
+                                    backgroundImage:"url(/assets/images/bg1.jpeg) !important",
                                     backgroundSize:"cover",
                                     backgroundPosition:"center",
                                     backgroundRepeat:"no-repeat",

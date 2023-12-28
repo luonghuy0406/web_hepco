@@ -79,7 +79,7 @@ export function CompanyInfo() {
       <Box sx={{
           py:theme.spacing(3),
           pt:theme.spacing(6),
-          backgroundImage:"url(https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/bgg.jpg?id=5580) !important",
+          backgroundImage:"url(/assets/images/bg2.jpeg) !important",
           backgroundSize:"cover",
           backgroundPosition:"center",
           backgroundRepeat:"no-repeat",

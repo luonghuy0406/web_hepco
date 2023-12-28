@@ -265,7 +265,7 @@ export function OurMission() {
                          <Grid item xs={12} md={12} lg={2}>
                             <ServicesIcon>
                                 <IconImage
-                                    src="https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/goggles.png"
+                                    src="/assets/images/ic1.png"
                                     alt="Rs-service"
                                 />
                                 <Background className="img-bg" />
@@ -283,7 +283,7 @@ export function OurMission() {
                          <Grid item xs={12} md={12} lg={2}>
                             <ServicesIcon>
                                 <IconImage
-                                    src="https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/business.png"
+                                    src="/assets/images/ic2.png"
                                     alt="Rs-service"
                                 />
                                 <Background className="img-bg" />
@@ -376,7 +376,7 @@ const CoreValue = () =>{
         <Container maxWidth='100%' sx={{py:theme.spacing(4), mb:theme.spacing(10),px:'0 !important'}}>
                 <Box sx={{
                     py:theme.spacing(5),
-                    backgroundImage:"url(https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/quote.jpg?id=5470) !important",
+                    backgroundImage:"url(/assets/images/bg1.jpeg) !important",
                     backgroundSize:"cover",
                     backgroundPosition:"center",
                     backgroundRepeat:"no-repeat",

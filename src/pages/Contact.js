@@ -110,7 +110,7 @@ export default function Contact({data}) {
       <Helmet>
           <title> {t("Liên hệ")} | {t("HEPCO - CÔNG TY CỔ PHẦN MÔI TRƯỜNG VÀ CÔNG TRÌNH ĐÔ THỊ HUẾ")} </title>
       </Helmet>
-      <Banner name={t("Liên hệ")} image={'https://rstheme.com/products/wordpress/planteo/wp-content/uploads/2019/12/inner3.jpg'} path={`/${t('lienhe')}`} pages={pages}/>
+      <Banner name={t("Liên hệ")} image={'/assets/images/bg4.jpeg'} path={`/${t('lienhe')}`} pages={pages}/>
       <Container maxWidth='xl'>
         <Grid container spacing={3} pb={5} pt={15}>
           <Grid item xs={6}>
