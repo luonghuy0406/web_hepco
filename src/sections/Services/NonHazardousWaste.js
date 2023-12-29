@@ -33,9 +33,10 @@ export default function NonHazardousWaste({id}) {
             maxWidth={'100%'} 
             sx={{
                 padding:0,
-                backgroundImage: 'url(https://html.themexriver.com/it-firm/images/background/pattern-19.png)',
+                backgroundImage: 'url(/assets/images/bgg6.svg)',
                 backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'right center'
+                backgroundPosition: '100% 100%',
+                backgroundSize:'12%'
             }}
         >
             <Container 
@@ -62,7 +63,7 @@ export default function NonHazardousWaste({id}) {
                         />
                     </Grid>
                     <Grid item xs={12} md={6} >
-                        <Box sx={{padding: theme.spacing(2)}} className='ck-content' dangerouslySetInnerHTML={{__html:data["content_"+currentLang] || data.content}}/>
+                        <Box sx={{padding: theme.spacing(2), backgroundColor: '#ffffff7d',fontWeight: '500'}} className='ck-content' dangerouslySetInnerHTML={{__html:data["content_"+currentLang] || data.content}}/>
                     </Grid>
                 </Grid>
             </Container>

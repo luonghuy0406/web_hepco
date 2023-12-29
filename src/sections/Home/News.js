@@ -131,7 +131,7 @@ const type = {
     <Container maxWidth='100%' sx={{py:theme.spacing(5), mb:theme.spacing(5),px:'0 !important'}}>
       <Box sx={{
           py:theme.spacing(3),
-          backgroundImage:"url(https://html.themexriver.com/it-firm/images/background/pattern-14.png) !important",
+          backgroundImage:"url(/assets/images/bgg5.png) !important",
           backgroundSize:"cover",
           backgroundPosition:"center",
           backgroundRepeat:"no-repeat",

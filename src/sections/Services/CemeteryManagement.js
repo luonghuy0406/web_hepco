@@ -22,9 +22,10 @@ export default function CemeteryManagement({id}) {
             maxWidth={'100%'} 
             sx={{
                 padding:0,
-                backgroundImage: 'url(https://html.themexriver.com/it-firm/images/background/pattern-19.png)',
+                backgroundImage: 'url(/assets/images/bgg1.svg)',
                 backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'right center'
+                backgroundPosition: 'bottom right',
+                backgroundSize:'30%'
             }}
         >
             <Container 
@@ -51,7 +52,7 @@ export default function CemeteryManagement({id}) {
                         />
                     </Grid>
                     <Grid item xs={12} md={6} >
-                        <Box sx={{padding: theme.spacing(2)}} className='ck-content' dangerouslySetInnerHTML={{__html:data["content_"+currentLang] || data.content}}/>
+                        <Box sx={{padding: theme.spacing(2), backgroundColor: '#ffffff7d',fontWeight: '500'}} className='ck-content' dangerouslySetInnerHTML={{__html:data["content_"+currentLang] || data.content}}/>
                     </Grid>
                 </Grid>
             </Container>

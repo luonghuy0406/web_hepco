@@ -69,9 +69,17 @@ export default function Footer({company_data}){
             maxWidth='100%' 
             p={0} 
             sx={{
-                background: `url(/assets/images/bg3.jpg)`,
+                backgroundColor: "#009241",
+            }}
+        >
+            <Container 
+            maxWidth='100%' 
+            p={0} 
+            sx={{
+                backgroundImage: `url(/assets/images/bg0.png)`,
                 backgroundRepeat: 'no-repeat',
-                backgroundSize: 'cover', 
+                backgroundSize: 'cover',
+                backgroundPosition: 'bottom',
                 py:theme.spacing(5), pb:theme.spacing(2)
             }}
         >
@@ -152,6 +160,7 @@ export default function Footer({company_data}){
                     </Grid>
                 </Grid>
             </Container>
+        </Container>
         </Container>
     )
 }

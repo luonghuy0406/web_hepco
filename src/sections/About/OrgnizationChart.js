@@ -504,10 +504,16 @@ const OrgnizationChart = () => {
     .catch(error => console.log('error', error));
 },[])
   return (
-    <Container maxWidth='100%' sx={{
-      marginTop:theme.spacing(10),
-      marginBottom:theme.spacing(10),
-  }} >
+    <Container 
+      maxWidth='100%' 
+      sx={{
+          marginTop:theme.spacing(10),
+          marginBottom:theme.spacing(10),
+          backgroundImage: `url(/assets/images/bg2.png)`,
+          backgroundRepeat: `no-repeat`,
+          backgroundPosition: 'left bottom'
+      }} 
+    >
       <Container maxWidth='xl'>
         <Typography sx={{marginBottom:theme.spacing(4)}} variant='h4' textAlign={"center"} fontWeight={700} color={theme.color.green1}>{t('Giới thiệu bộ máy')}</Typography>
         <Box className='ck-content' sx={{margin:theme.spacing(3)}} dangerouslySetInnerHTML={{__html:data?.["content_"+currentLang] || data?.content}}>

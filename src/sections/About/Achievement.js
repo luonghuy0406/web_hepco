@@ -32,32 +32,42 @@ export default function Achievement() {
         }
     }, [inView])
     return (
-        <Container 
-            maxWidth={'xl'} 
+        <Container
+            maxWidth='100%'
             sx={{
-                marginTop:theme.spacing(10),
-                marginBottom:theme.spacing(10),
-            }} 
+                padding:0,
+                backgroundImage: `url(/assets/images/bg2.png)`,
+                backgroundRepeat: `no-repeat`,
+                backgroundPosition: 'left center',
+            }}
         >
-            <Typography sx={{marginBottom:theme.spacing(4)}} variant='h4' textAlign={"center"} fontWeight={700} color={theme.color.red}>{t('Thành tựu đạt được')}</Typography>
-            <Typography sx={{marginBottom:theme.spacing(4)}} variant='h5' textAlign={"center"} fontWeight={700} color={theme.color.green1}>{t('KHEN THƯỞNG CẤP NHÀ NƯỚC')}</Typography>
-            
-            <Grid container>
-                {
-                    awardData?.map(( award, index)=>{
-                        return(
-                            <AchieveItem key={"award-"+index} award={award} currentLang={currentLang}/>
-                        )
-                    })
-                }
-            </Grid>
-            <Container maxWidth='lg' ref={item}>
-                <Typography ref={ref} sx={{marginBottom:theme.spacing(4), marginTop:theme.spacing(4)}} variant='h5' textAlign={"center"} fontWeight={700} color={theme.color.green1}>{t('KHEN THƯỞNG BỘ, BAN NGÀNH, HỘI NGHỀ NGHIỆP TRUNG ƯƠNG')}</Typography>
-                <Box className='ck-content' dangerouslySetInnerHTML={{__html:achieveData?.[0]?.["content_"+currentLang] || achieveData?.[0]?.content}}/>
-                <Typography sx={{marginBottom:theme.spacing(4), marginTop:theme.spacing(4)}} variant='h5' textAlign={"center"} fontWeight={700} color={theme.color.green1}>{t('KHEN THƯỞNG CỦA UBND TỈNH VÀ CÁC CƠ QUAN CẤP TỈNH')}</Typography>
-                <Box className='ck-content' dangerouslySetInnerHTML={{__html:achieveData?.[1]?.["content_"+currentLang] || achieveData?.[1]?.content}}/>
-                <Typography sx={{marginBottom:theme.spacing(4), marginTop:theme.spacing(4)}} variant='h5' textAlign={"center"} fontWeight={700} color={theme.color.green1}>{t('KHEN THƯỞNG CÔNG TÁC ĐẢNG - ĐOÀN THỂ')}</Typography>
-                <Box className='ck-content' dangerouslySetInnerHTML={{__html:achieveData?.[2]?.["content_"+currentLang] || achieveData?.[2]?.content}}/>
+            <Container 
+                maxWidth={'xl'} 
+                sx={{
+                    marginTop:theme.spacing(10),
+                    marginBottom:theme.spacing(10)
+                }} 
+            >
+                <Typography sx={{marginBottom:theme.spacing(4)}} variant='h4' textAlign={"center"} fontWeight={700} color={theme.color.red}>{t('Thành tựu đạt được')}</Typography>
+                <Typography sx={{marginBottom:theme.spacing(4)}} variant='h5' textAlign={"center"} fontWeight={700} color={theme.color.green1}>{t('KHEN THƯỞNG CẤP NHÀ NƯỚC')}</Typography>
+                
+                <Grid container>
+                    {
+                        awardData?.map(( award, index)=>{
+                            return(
+                                <AchieveItem key={"award-"+index} award={award} currentLang={currentLang}/>
+                            )
+                        })
+                    }
+                </Grid>
+                <Container maxWidth='lg' ref={item}>
+                    <Typography ref={ref} sx={{marginBottom:theme.spacing(4), marginTop:theme.spacing(4)}} variant='h5' textAlign={"center"} fontWeight={700} color={theme.color.green1}>{t('KHEN THƯỞNG BỘ, BAN NGÀNH, HỘI NGHỀ NGHIỆP TRUNG ƯƠNG')}</Typography>
+                    <Box className='ck-content' dangerouslySetInnerHTML={{__html:achieveData?.[0]?.["content_"+currentLang] || achieveData?.[0]?.content}}/>
+                    <Typography sx={{marginBottom:theme.spacing(4), marginTop:theme.spacing(4)}} variant='h5' textAlign={"center"} fontWeight={700} color={theme.color.green1}>{t('KHEN THƯỞNG CỦA UBND TỈNH VÀ CÁC CƠ QUAN CẤP TỈNH')}</Typography>
+                    <Box className='ck-content' dangerouslySetInnerHTML={{__html:achieveData?.[1]?.["content_"+currentLang] || achieveData?.[1]?.content}}/>
+                    <Typography sx={{marginBottom:theme.spacing(4), marginTop:theme.spacing(4)}} variant='h5' textAlign={"center"} fontWeight={700} color={theme.color.green1}>{t('KHEN THƯỞNG CÔNG TÁC ĐẢNG - ĐOÀN THỂ')}</Typography>
+                    <Box className='ck-content' dangerouslySetInnerHTML={{__html:achieveData?.[2]?.["content_"+currentLang] || achieveData?.[2]?.content}}/>
+                </Container>
             </Container>
         </Container>
   )

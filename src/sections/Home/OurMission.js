@@ -230,91 +230,94 @@ export function OurMission({mission,video, coreVal}) {
       return <></>
   }
   return (
-    <Box 
-        sx={{
-            backgroundImage: `url(https://html.themexriver.com/it-firm/images/background/pattern-19.png)`,
-            backgroundSize: '50%',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'top right'
-        }}
-    >
-        <Container maxWidth='xl' sx={{py: theme.spacing(10), px:0}}>
-            <Grid container sx={{px:3}}>
-                <Grid ref={visionRef} item xs={12} md={7} sx={{borderRadius: "4px 0 0 4px",backgroundColor: theme.color.white,boxShadow: '0 0 150px #eee',p:theme.spacing(3), py: theme.spacing(8)}}>
-                    <Typography ref={ref} variant={'h4'} color={theme.color.black} fontWeight={"bold"} className='type-line' pb={2}>
-                        {t('Tầm nhìn - Sứ mệnh')}
-                    </Typography> 
+    <Box>
+        <Box 
+            sx={{
+                backgroundImage: `url(/assets/images/bgg4.svg)`,
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'top'
+            }}
+        >
+            <Container maxWidth='xl' sx={{py: theme.spacing(10), px:0}}>
+                <Grid container sx={{px:3}}>
+                    <Grid ref={visionRef} item xs={12} md={7} sx={{borderRadius: "4px 0 0 4px",backgroundColor: theme.color.white,boxShadow: '0 0 150px #eee',p:theme.spacing(3), py: theme.spacing(8)}}>
+                        <Typography ref={ref} variant={'h4'} color={theme.color.black} fontWeight={"bold"} className='type-line' pb={2}>
+                            {t('Tầm nhìn - Sứ mệnh')}
+                        </Typography> 
 
-                    <Grid container sx={{pt: theme.spacing(4), pl: theme.spacing(4)}} className={"our-mission-wrap"}>
-                         <Grid item xs={12} md={12} lg={2}>
-                            <ServicesIcon>
-                                <IconImage
-                                    src="/assets/images/ic1.png"
-                                    alt="Rs-service"
-                                />
-                                <Background className="img-bg" />
-                            </ServicesIcon>
-                         </Grid>
-                         <Grid item xs={12} md={12} lg={10} pr={theme.spacing(2)}>
-                            <Typography variant="h5" fontSize={'30px'} fontWeight={"bold"}  color={theme.color.green1} pb={2}>
-                                {t('Tầm nhìn')}
-                            </Typography>
-                            <Typography fontWeight={500} sx={{padding:theme.spacing(1)}} className='ck-content' dangerouslySetInnerHTML={{__html:data[0]?.["content_"+currentLang] || data[0]?.content}}>
-                            </Typography>
-                         </Grid>
-                    </Grid>
-                    <Grid container sx={{pt: theme.spacing(4),pl: theme.spacing(4)}} className={"our-mission-wrap"}>
-                         <Grid item xs={12} md={12} lg={2}>
-                            <ServicesIcon>
-                                <IconImage
-                                    src="/assets/images/ic2.png"
-                                    alt="Rs-service"
-                                />
-                                <Background className="img-bg" />
-                            </ServicesIcon>
-                         </Grid>
-                         <Grid item xs={12} md={12} lg={10} pr={theme.spacing(2)}>
-                            <Typography variant="h5" fontSize={'30px'} fontWeight={"bold"}  color={theme.color.green1} pb={2}>
-                                {t('Sứ mệnh')}
-                            </Typography>
-                            <Typography fontWeight={500} sx={{padding:theme.spacing(1)}} className='ck-content' dangerouslySetInnerHTML={{__html:data[1]?.["content_"+currentLang] || data[1]?.content}}>
-                            </Typography>
-                            
-                         </Grid>
-                    </Grid>
-                </Grid>
-                <Grid ref={missonRef} item xs={12} md={5} sx={{position:'relative'}}>
-                    <Grid container sx={{height:{xs: "400px", md:'100%'}}}>
-                        <Grid item xs={6} md={7}>
-                            <Box sx={{
-                                width:"100%", 
-                                height:"100%", 
-                                backgroundImage:`url(${process.env.REACT_APP_HOST}/read_image/${data[0].image})`,
-                                backgroundPosition:'center',
-                                backgroundSize:'cover',
-                                backgroundRepeat:'no-repeat', 
-                                borderRadius: "0 4px 4px 0"
-                            }}/>
+                        <Grid container sx={{pt: theme.spacing(4), pl: theme.spacing(4)}} className={"our-mission-wrap"}>
+                            <Grid item xs={12} md={12} lg={2}>
+                                <ServicesIcon>
+                                    <IconImage
+                                        src="/assets/images/ic1.png"
+                                        alt="Rs-service"
+                                    />
+                                    <Background className="img-bg" />
+                                </ServicesIcon>
+                            </Grid>
+                            <Grid item xs={12} md={12} lg={10} pr={theme.spacing(2)}>
+                                <Typography variant="h5" fontSize={'30px'} fontWeight={"bold"}  color={theme.color.green1} pb={2}>
+                                    {t('Tầm nhìn')}
+                                </Typography>
+                                <Typography fontWeight={500} sx={{padding:theme.spacing(1)}} className='ck-content' dangerouslySetInnerHTML={{__html:data[0]?.["content_"+currentLang] || data[0]?.content}}>
+                                </Typography>
+                            </Grid>
                         </Grid>
-                        <Grid item xs={6} md={5} container alignItems={"center"}>
-                            <Box sx={{
-                                width:"100%", 
-                                height:{xs: "100%", md: "80%"}, 
-                                backgroundImage:`url(${process.env.REACT_APP_HOST}/read_image/${data[1].image})`,
-                                backgroundPosition:'center',
-                                backgroundSize:'cover',
-                                backgroundRepeat:'no-repeat',
-                                borderRadius: '0 4px 4px 0'
-                            }}/>
+                        <Grid container sx={{pt: theme.spacing(4),pl: theme.spacing(4)}} className={"our-mission-wrap"}>
+                            <Grid item xs={12} md={12} lg={2}>
+                                <ServicesIcon>
+                                    <IconImage
+                                        src="/assets/images/ic2.png"
+                                        alt="Rs-service"
+                                    />
+                                    <Background className="img-bg" />
+                                </ServicesIcon>
+                            </Grid>
+                            <Grid item xs={12} md={12} lg={10} pr={theme.spacing(2)}>
+                                <Typography variant="h5" fontSize={'30px'} fontWeight={"bold"}  color={theme.color.green1} pb={2}>
+                                    {t('Sứ mệnh')}
+                                </Typography>
+                                <Typography fontWeight={500} sx={{padding:theme.spacing(1)}} className='ck-content' dangerouslySetInnerHTML={{__html:data[1]?.["content_"+currentLang] || data[1]?.content}}>
+                                </Typography>
+                                
+                            </Grid>
                         </Grid>
                     </Grid>
-                    <PopupVideos>
-                        <FontAwesomeIcon icon="fa-solid fa-play" style={{color:"white", fontSize:"1.7rem", marginLeft:"4px"}}/>
-                    </PopupVideos>
-                    <PopupVideosBorder onClick={handleOpen}/>
+                    <Grid ref={missonRef} item xs={12} md={5} sx={{position:'relative'}}>
+                        <Grid container sx={{height:{xs: "400px", md:'100%'}}}>
+                            <Grid item xs={6} md={7}>
+                                <Box sx={{
+                                    width:"100%", 
+                                    height:"100%", 
+                                    backgroundImage:`url(${process.env.REACT_APP_HOST}/read_image/${data[0].image})`,
+                                    backgroundPosition:'center',
+                                    backgroundSize:'cover',
+                                    backgroundRepeat:'no-repeat', 
+                                    borderRadius: "0 4px 4px 0"
+                                }}/>
+                            </Grid>
+                            <Grid item xs={6} md={5} container alignItems={"center"}>
+                                <Box sx={{
+                                    width:"100%", 
+                                    height:{xs: "100%", md: "80%"}, 
+                                    backgroundImage:`url(${process.env.REACT_APP_HOST}/read_image/${data[1].image})`,
+                                    backgroundPosition:'center',
+                                    backgroundSize:'cover',
+                                    backgroundRepeat:'no-repeat',
+                                    borderRadius: '0 4px 4px 0'
+                                }}/>
+                            </Grid>
+                        </Grid>
+                        <PopupVideos>
+                            <FontAwesomeIcon icon="fa-solid fa-play" style={{color:"white", fontSize:"1.7rem", marginLeft:"4px"}}/>
+                        </PopupVideos>
+                        <PopupVideosBorder onClick={handleOpen}/>
+                    </Grid>
                 </Grid>
-            </Grid>
-        </Container>
+            </Container>
+        </Box>
+
         <CoreValue coreVal={coreVal}/>
         <Modal
             open={open}

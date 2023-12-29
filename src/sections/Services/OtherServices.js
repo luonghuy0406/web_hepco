@@ -31,9 +31,10 @@ export default function OtherServices({id}) {
         <Container 
             maxWidth={'100%'} 
             sx={{
-                backgroundImage: `url(/assets/images/bg2.png)`,
-                backgroundRepeat: `no-repeat`,
-                backgroundPosition: 'left bottom'
+                backgroundImage: 'url(/assets/images/bgg4.svg)',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'bottom right',
+                backgroundSize:'100%'
             }}
         >
             <Container 

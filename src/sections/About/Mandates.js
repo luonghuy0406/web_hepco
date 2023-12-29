@@ -27,32 +27,42 @@ export default function Mandates() {
         .catch(error => console.log('error', error));
     },[])
     return (
-        <Container 
-            maxWidth={'xl'} 
+        <Container
+            maxWidth='100%'
             sx={{
-                marginTop:theme.spacing(10),
-                marginBottom:theme.spacing(10),
-            }} 
+                padding:0,
+                backgroundImage: `url(/assets/images/bg2.png)`,
+                backgroundRepeat: `no-repeat`,
+                backgroundPosition: 'left center',
+            }}
         >
-            <Typography sx={{marginBottom:theme.spacing(4)}} variant='h4' textAlign={"center"} fontWeight={700} color={theme.color.red}>{t('Chức năng hoạt động')}</Typography>
-            <Grid container spacing={2}>
-                {
-                mandates.map((mandate,id)=>{
-                    return(
-                        <MandatesItem key={"MandatesItem"+id} mandate={mandate} reverse={id%2==0}/>
-                    )
-                })
-                }
-            </Grid>
-            <Typography sx={{marginBottom:theme.spacing(4), marginTop:theme.spacing(4)}} variant='h4' textAlign={"center"} fontWeight={700} color={theme.color.red}>{t('Giấy phép - Chứng nhận')}</Typography>
-        
-            <Grid container spacing={2}>
-                {
-                    license.map((data,index)=>{
-                        return <License key={"License"+index} index={index} data={data}/>
+            <Container 
+                maxWidth={'xl'} 
+                sx={{
+                    marginTop:theme.spacing(10),
+                    marginBottom:theme.spacing(10)
+                }} 
+            >
+                <Typography sx={{marginBottom:theme.spacing(4)}} variant='h4' textAlign={"center"} fontWeight={700} color={theme.color.red}>{t('Chức năng hoạt động')}</Typography>
+                <Grid container spacing={2}>
+                    {
+                    mandates.map((mandate,id)=>{
+                        return(
+                            <MandatesItem key={"MandatesItem"+id} mandate={mandate} reverse={id%2==0}/>
+                        )
                     })
-                }
-            </Grid>
+                    }
+                </Grid>
+                <Typography sx={{marginBottom:theme.spacing(4), marginTop:theme.spacing(4)}} variant='h4' textAlign={"center"} fontWeight={700} color={theme.color.red}>{t('Giấy phép - Chứng nhận')}</Typography>
+            
+                <Grid container spacing={2}>
+                    {
+                        license.map((data,index)=>{
+                            return <License key={"License"+index} index={index} data={data}/>
+                        })
+                    }
+                </Grid>
+            </Container>
         </Container>
     )
 }
