@@ -30,37 +30,7 @@ const FeaturedNewstImage = styled(Box)(({ theme, image }) => ({
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
   position: 'relative'
-}));
-const BlogButton = styled(Box)(({ theme }) => ({
-  a: {
-    color: theme.color.black,
-    background: 0,
-    border: 'none',
-    borderRadius: '25px',
-    paddingRight: '25px',
-    lineHeight: '30px',
-    display: 'inline-block',
-    transition: 'all .4s ease-in-out 0s',
-    position: 'relative',
-    fontSize: '16px',
-    fontWeight: 600,
-    textDecoration: 'none',
-    '&:hover': {
-      color: theme.color.red,
-      '.arrow-news': {
-        color: theme.color.red,
-        transform: 'translateX(20%)',
-      },
-    },
-  },
-  '.arrow-news': {
-    position: 'absolute',
-    top: 0,
-    right: 0,
-    transition: 'transform 0.5s ease',
-    lineHeight: '1.5rem',
-  },
-}));
+}))
 
 
 export default function NewsContent({pageParam}) {
@@ -116,7 +86,6 @@ export default function NewsContent({pageParam}) {
         })
         .catch(error => console.log('error', error));
     },[pageParam,page])
-    
     return (
         <Container 
             maxWidth={'xl'} 
@@ -156,15 +125,11 @@ export default function NewsContent({pageParam}) {
                                         <FeaturedNewstWrap>
                                             <LazyLoad height={200} offset={100}>
                                             <FeaturedNewstImage image={`${process.env.REACT_APP_HOST}/read_image/${news.image}`}>
-                                            {/* <FeaturedNewstImage image={`https://t4.ftcdn.net/jpg/04/73/25/49/360_F_473254957_bxG9yf4ly7OBO5I0O5KABlN930GwaMQz.jpg`}> */}
-                                            
-                                                <Box
+                                            <Box
                                                     sx={{
-                                                        // width: '20%',
                                                         px: theme.spacing(4),
                                                         py:theme.spacing(1),
                                                         background: theme.color.green1,
-                                                        // aspectRatio: '0.9',
                                                         position: 'absolute',
                                                         borderRadius: '4px',
                                                         textAlign:'center',
@@ -201,14 +166,6 @@ export default function NewsContent({pageParam}) {
                                                     <Box className='ck-content' dangerouslySetInnerHTML={{__html:news["content_"+currentLang] || news.content}} sx={{overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical'}}>
                                                     </Box>
                                                 </Grid>
-                                                {/* <Grid item>
-                                                    <BlogButton>
-                                                    <Link to={`/${t('tintuc')}/${normalizedTitle}.${news.id_post}`}>
-                                                        <Typography fontWeight={700} lineHeight={'1.5rem'}>{t("Read more")}</Typography>
-                                                        <Typography sx={{display:'inline', pl: '5px'}} className='arrow-news'><FontAwesomeIcon icon="fa-solid fa-arrow-right-long" /></Typography>
-                                                    </Link>
-                                                    </BlogButton>
-                                                </Grid> */}
                                             </Grid>
                                             </Box>
                                         </FeaturedNewstWrap>

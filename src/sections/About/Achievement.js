@@ -40,14 +40,13 @@ export default function Achievement() {
             }} 
         >
             <Typography sx={{marginBottom:theme.spacing(4)}} variant='h4' textAlign={"center"} fontWeight={700} color={theme.color.red}>{t('Thành tựu đạt được')}</Typography>
-            
             <Typography sx={{marginBottom:theme.spacing(4)}} variant='h5' textAlign={"center"} fontWeight={700} color={theme.color.green1}>{t('KHEN THƯỞNG CẤP NHÀ NƯỚC')}</Typography>
             
             <Grid container>
                 {
                     awardData?.map(( award, index)=>{
                         return(
-                            <AchieveItem key={"award-"+index} award={award} index={index} currentLang={currentLang}/>
+                            <AchieveItem key={"award-"+index} award={award} currentLang={currentLang}/>
                         )
                     })
                 }
@@ -64,8 +63,7 @@ export default function Achievement() {
   )
 }
 
-const AchieveItem = ({award, index, currentLang})=>{
-
+const AchieveItem = ({award, currentLang})=>{
     const theme = useTheme()
     const item = useRef(null)
     const { ref, inView } = useInView({

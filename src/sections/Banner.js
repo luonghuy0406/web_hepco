@@ -1,11 +1,9 @@
 import { Box, Divider, Stack, Typography, useTheme } from '@mui/material'
 import React from 'react'
-import { useTranslation } from 'react-i18next'
 import { Link, useMatch } from 'react-router-dom'
 
 export default function Banner({name, image,path,pages}) {
     const theme = useTheme()
-    const {t} = useTranslation()
     const current = useMatch(`${path}/:page`)
     const home = useMatch(path)
     return (

@@ -5,13 +5,12 @@ import { useInView } from 'react-intersection-observer'
 import 'animate.css';
 
 export default function AlleyLetter() {
-    
     const {t, i18n} = useTranslation()
     const currentLang = i18n.language == 'en' ? 'en' : ''
     const theme = useTheme()
-
     const alleyLetter1 = useRef(null)
     const alleyLetter2 = useRef(null)
+    const [data,setData] = useState(null)
     const { ref, inView } = useInView({
         /* Optional options */
         threshold: 0,
@@ -29,13 +28,11 @@ export default function AlleyLetter() {
         }
     }, [inView])
 
-    const [data,setData] = useState(null)
     useEffect(()=>{
         fetch(`${process.env.REACT_APP_HOST}/sharedtable/detail/1`)
         .then(response => response.text())
         .then(result => {
             const data = JSON.parse(result).result
-            // setTotalPages(Math.ceil(data.num_image/itemsPerPage))
             setData(data)
         })
         .catch(error => console.log('error', error));
@@ -64,7 +61,7 @@ export default function AlleyLetter() {
                             sx={{
                                 width:'100%',
                                 height:'100%',
-                                backgroundImage: `${process.env.REACT_APP_HOST}/read_image/${data.image}`,
+                                backgroundImage: data.image? `url(${process.env.REACT_APP_HOST}/read_image/${data.image})` : 'url(/assets/images/thungo.jpeg)',
                                 backgroundPosition:'70%',
                                 backgroundSize:'cover',
                                 backgroundRepeat: 'no-repeat',

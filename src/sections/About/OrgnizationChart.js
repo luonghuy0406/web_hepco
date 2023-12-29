@@ -1,8 +1,6 @@
 import react, { useEffect, useState } from 'react';
 import ReactFlow, {MarkerType } from 'reactflow';
 import 'reactflow/dist/style.css';
-import CustomNode from './CustomNode';
-import CustomNode2 from './CustomNode2';
 import {Container, Box, Typography, useTheme } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 
@@ -10,10 +8,6 @@ const OrgnizationChart = () => {
   const {t, i18n} = useTranslation()
   const currentLang = i18n.language == 'en' ? 'en' : ''
   const theme = useTheme()
-  const nodeTypes = {
-    selectorNode: CustomNode,
-    customNode2: CustomNode2
-  };
   const initialNodes = [
     {
       id: '1',
@@ -528,10 +522,8 @@ const OrgnizationChart = () => {
           fitView
           attributionPosition="bottom-left"
           selectNodesOnDrag={false}
-          nodeTypes={nodeTypes}
           
         >
-          {/* <Controls /> */}
           <Box xs={{zIndex:1,background:theme.color.white}}>
             <label className='line1' style={{display:'flex',alignItems:'center', color:'var(--green4)'}}>{t('Quan hệ trực tuyến')}</label>
             <label className='line2' style={{display:'flex',alignItems:'center', color:'var(--green4)'}}>{t('Quan hệ chức năng')}</label>

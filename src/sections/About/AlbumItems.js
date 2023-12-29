@@ -12,7 +12,6 @@ import { formatDateTime } from '../../functions';
 
 const AlbumItems = () => {
     const theme = useTheme()
-    
     const {t, i18n} = useTranslation()
     const currentLang = i18n.language == 'en' ? 'en' : ''
     const [open,setOpen] = useState(false)
@@ -50,68 +49,69 @@ const AlbumItems = () => {
         })
         .catch(error => console.log('error', error));
     },[page, idPart])
-if(!albumDetail){
-    return <></>
-}
-  return (
-        <Container 
-            maxWidth={'xl'} 
-            sx={{
-                marginTop:theme.spacing(10),
-                marginBottom:theme.spacing(10),
-            }} 
-        >
-            <Typography  variant='h5' textAlign={"center"} fontWeight={700} >{albumDetail?.["name_"+currentLang] || albumDetail?.name}</Typography>
-            <Typography sx={{marginBottom:theme.spacing(4)}} textAlign={"center"} fontWeight={600} fontSize={'13px'} color={theme.color.gray1}>{`${formatDateTime(albumDetail?.cre_date, '%d-%m-%Y')} - ${images?.length} ${t("items")}`}</Typography>
-            <Typography sx={{marginBottom:theme.spacing(4), padding:theme.spacing(4)}} >{albumDetail?.["des_"+currentLang] || albumDetail?.des}</Typography>
-            <Box>
-            <Grid container spacing={2}>
-                {images.map((image, index) => (
-                    <Grid key={index} item xs={6} sm={6} md={4} lg={3}>
-                        <Card 
-                            sx={{
-                                width: '100%',
-                                height: 'auto',
-                                aspectRatio: 1,
-                                display: 'flex',
-                                flexDirection: 'column',
-                                position:'relative'
-                            }}
-                            onClick={()=>{
-                                setOpen(true)
-                                setCurrentId(index)
-                            }}
-                        >
-                                <CardMedia 
-                                    component="img"
-                                    alt={image?.["des_"+currentLang] || image?.des}
-                                    height="auto"
-                                    image={`${process.env.REACT_APP_HOST}/read_image/${image.link}`}
-                                    sx={{flex: 1, objectFit: 'cover'}}
-                                />
-                        </Card>
-                    </Grid>
-                ))}
-            </Grid>
 
-            <Box sx={{width:'100%', marginTop: theme.spacing(10), display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                <Pagination
-                    variant="outlined" 
-                    color="primary"
-                    count={totalPages}
-                    page={page}
-                    onChange={handlePageChange}
-                    boundaryCount={1} 
-                    siblingCount={1}
-                />
+    if(!albumDetail){
+        return <></>
+    }
+    return (
+            <Container 
+                maxWidth={'xl'} 
+                sx={{
+                    marginTop:theme.spacing(10),
+                    marginBottom:theme.spacing(10),
+                }} 
+            >
+                <Typography  variant='h5' textAlign={"center"} fontWeight={700} >{albumDetail?.["name_"+currentLang] || albumDetail?.name}</Typography>
+                <Typography sx={{marginBottom:theme.spacing(4)}} textAlign={"center"} fontWeight={600} fontSize={'13px'} color={theme.color.gray1}>{`${formatDateTime(albumDetail?.cre_date, '%d-%m-%Y')} - ${images?.length} ${t("items")}`}</Typography>
+                <Typography sx={{marginBottom:theme.spacing(4), padding:theme.spacing(4)}} >{albumDetail?.["des_"+currentLang] || albumDetail?.des}</Typography>
+                <Box>
+                <Grid container spacing={2}>
+                    {images.map((image, index) => (
+                        <Grid key={index} item xs={6} sm={6} md={4} lg={3}>
+                            <Card 
+                                sx={{
+                                    width: '100%',
+                                    height: 'auto',
+                                    aspectRatio: 1,
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    position:'relative'
+                                }}
+                                onClick={()=>{
+                                    setOpen(true)
+                                    setCurrentId(index)
+                                }}
+                            >
+                                    <CardMedia 
+                                        component="img"
+                                        alt={image?.["des_"+currentLang] || image?.des}
+                                        height="auto"
+                                        image={`${process.env.REACT_APP_HOST}/read_image/${image.link}`}
+                                        sx={{flex: 1, objectFit: 'cover'}}
+                                    />
+                            </Card>
+                        </Grid>
+                    ))}
+                </Grid>
+
+                <Box sx={{width:'100%', marginTop: theme.spacing(10), display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                    <Pagination
+                        variant="outlined" 
+                        color="primary"
+                        count={totalPages}
+                        page={page}
+                        onChange={handlePageChange}
+                        boundaryCount={1} 
+                        siblingCount={1}
+                    />
+                </Box>
+                {
+                    currentId !== null &&
+                    <ImageDialog currentId={currentId} images={images} open={open} setCurrentId={setCurrentId} setOpen={setOpen}/>
+                }
             </Box>
-            {
-                currentId !== null &&
-                <ImageDialog currentId={currentId} images={images} open={open} setCurrentId={setCurrentId} setOpen={setOpen}/>
-            }
-        </Box>
-        </Container>
-  );
-};
+            </Container>
+    )
+}
 
-export default AlbumItems;
+export default AlbumItems

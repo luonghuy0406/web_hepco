@@ -35,10 +35,10 @@ const CustomizedButton = styled(Button)(({ theme }) => ({
       outline: 'none', // Remove the default focus outline
       // boxShadow: `0 0 0 3px rgba(0, 123, 255, 0.3)`, // Add a custom focus border
   },
-}));
+}))
+
 export default function Question() {
-  
-  const {t, i18n} = useTranslation()
+  const {t,} = useTranslation()
   const [ques, setQues] = useState([])
   const pages = []
   const theme = useTheme()
@@ -108,7 +108,6 @@ export default function Question() {
 }
 
 const QuestionItem = ({index, q})=>{
-  
   const {t, i18n} = useTranslation()
   const currentLang = i18n.language == 'en' ? 'en' : ''
   const theme = useTheme()
@@ -117,7 +116,6 @@ const QuestionItem = ({index, q})=>{
         threshold: 0,
         deplay: 300
     });
-    
     useEffect(() => {
         if(inView){
             if (item.current) {

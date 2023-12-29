@@ -4,7 +4,6 @@ import { Box } from "@mui/material";
 import { BannerSlide } from "../sections/Home/BannerSlide";
 import { useRef } from "react";
 import { OurMission } from "../sections/Home/OurMission";
-import { CompanyInfo } from "../sections/Home/CompanyInfo";
 import { OurServices } from "../sections/Home/OurServices";
 import { News } from "../sections/Home/News";
 import { Customers } from "../sections/Home/Customers";

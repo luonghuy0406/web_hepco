@@ -1,6 +1,6 @@
 import { Box, styled } from '@mui/material'
 import React from 'react'
-import { keyframes, useTheme } from '@emotion/react'
+import { keyframes } from '@emotion/react'
 
 
 const pulseBorderAnimation = keyframes`
@@ -14,7 +14,7 @@ const pulseBorderAnimation = keyframes`
     opacity: 0;
   }
 `;
-const LoadingIcon = styled('div')(({theme})=>({
+const LoadingIcon = styled('div')(()=>({
     cursor: 'pointer',
     position: 'absolute',
     transform: 'translateX(-50%) translateY(-50%)',

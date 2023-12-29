@@ -36,7 +36,6 @@ const {t} = useTranslation()
             </HTMLFlipBook>
             <Box onClick={() => {book.current.pageFlip().flipPrev()}} className='button-next-image'
                 sx={{
-
                     transition: 'all .4s ease-in-out 0s',
                     opacity:'.3', 
                     marginLeft:'10px', 
@@ -57,23 +56,23 @@ const {t} = useTranslation()
                 <KeyboardArrowLeftIcon/>
             </Box>
             <Box onClick={() => {book.current.pageFlip().flipNext()}} className='button-next-image'
-            sx={{
-                transition: 'all .4s ease-in-out 0s',
-                opacity:'.3', 
-                marginRight:'10px', 
-                display:'flex',
-                cursor:'pointer', 
-                alignItems:'center',
-                justifyContent:'center',
-                width:'60px', 
-                color:'#fff', 
-                height:'60px', 
-                borderRadius:'50%', 
-                background: '#00000066', 
-                position:'absolute', 
-                right:0, 
-                bottom:'50%'
-                }}
+                sx={{
+                    transition: 'all .4s ease-in-out 0s',
+                    opacity:'.3', 
+                    marginRight:'10px', 
+                    display:'flex',
+                    cursor:'pointer', 
+                    alignItems:'center',
+                    justifyContent:'center',
+                    width:'60px', 
+                    color:'#fff', 
+                    height:'60px', 
+                    borderRadius:'50%', 
+                    background: '#00000066', 
+                    position:'absolute', 
+                    right:0, 
+                    bottom:'50%'
+                    }}
             >
                 <KeyboardArrowRightIcon/>
             </Box>

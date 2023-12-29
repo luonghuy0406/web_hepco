@@ -7,10 +7,10 @@ import StarIcon from '@mui/icons-material/Star';
 
 export default function FormationProcess() {
     const theme = useTheme()
-    
-  const {t, i18n} = useTranslation()
-  const currentLang = i18n.language == 'en' ? 'en' : ''
+        const {t, i18n} = useTranslation()
+    const currentLang = i18n.language == 'en' ? 'en' : ''
     const [data, setData] = useState([])
+    
     useEffect(()=>{
         fetch(`${process.env.REACT_APP_HOST}/history/list`)
         .then(response => response.text())
@@ -20,7 +20,9 @@ export default function FormationProcess() {
         })
         .catch(error => console.log('error', error));
     },[])
+
     if(!data) return <></>
+
     return (
         <Container 
             maxWidth={'100%'} 
@@ -30,7 +32,7 @@ export default function FormationProcess() {
                 backgroundPosition: 'left center'
             }}
         >
-            <Container maxWidth={'xl'} sx={{marginTop:theme.spacing(15)}}>
+            <Container maxWidth={'xl'} sx={{marginTop:theme.spacing(15),marginBottom:theme.spacing(10)}}>
                 <Typography sx={{marginBottom:theme.spacing(4)}} variant='h4' textAlign={"center"} fontWeight={700} color={theme.color.red}>{t('Quá trình hình thành và phát triển')}</Typography>
                 <VerticalTimeline lineColor="var(--green4)">
                     {

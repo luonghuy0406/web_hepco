@@ -41,8 +41,7 @@ export default function RelatedProjects({data}) {
                                         <Card 
                                             sx={{
                                                 width: '100%',
-                                                height: '100%',
-                                                // aspectRatio: '1',
+                                                height:'60px',
                                                 display: 'flex',
                                                 flexDirection: 'column',
                                                 position:'relative'

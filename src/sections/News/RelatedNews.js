@@ -41,11 +41,11 @@ export default function RelatedNews({data}) {
                                         <Card 
                                             sx={{
                                                 width: '100%',
-                                                height: '100%',
-                                                // aspectRatio: '1',
+                                                height:'60px',
                                                 display: 'flex',
                                                 flexDirection: 'column',
-                                                position:'relative'
+                                                position:'relative',
+                                                maxHeight:'70px'
                                             }}
                                         >
                                                 <CardMedia 
@@ -53,8 +53,10 @@ export default function RelatedNews({data}) {
                                                     alt={related?.["name_"+currentLang] || related?.name}
                                                     height="auto"
                                                     image={`${process.env.REACT_APP_HOST}/read_image/${related.image}`}
-                                                    sx={{flex: 1,
-                                                    objectFit: 'cover'}}
+                                                    sx={{
+                                                        flex: 1,
+                                                        objectFit: 'cover'
+                                                    }}
                                                 />
                                         </Card>
                                     </Grid>

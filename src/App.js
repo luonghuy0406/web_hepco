@@ -17,8 +17,6 @@ const App = (data) => {
       <HelmetProvider>
         <BrowserRouter>
           <ThemeProvider>
-            {/* <ScrollToTop />
-            <StyledChart /> */}
             <Router data={data}/>
           </ThemeProvider>
         </BrowserRouter>

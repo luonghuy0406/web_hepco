@@ -1,10 +1,9 @@
 
 import { useTheme } from "@emotion/react";
-import { Box, Button, Card, CardMedia, Container, Grid, Typography, styled } from "@mui/material";
+import { Box, Button, Container, Grid, Typography, styled } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { Image } from "semantic-ui-react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationDot, faMobile, faPhone, faFax, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { faFacebook, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -85,9 +84,9 @@ export default function Footer({company_data}){
                                 <Typography variant="h5" pl={3} color={theme.color.white} fontWeight={"bold"}>HEPCO</Typography>
                             </Box>
                         </Grid>
-                        <Grid item xs={12}>
+                        {/* <Grid item xs={12}>
                             <Typography fontWeight={500} color={theme.color.white}>We work with a passion of taking challenges and creating new ones in advertising sector.</Typography>
-                        </Grid>
+                        </Grid> */}
                         <Grid item xs={12}>
                             <Link to={`/${t('gioithieu')}`}>
                                 <CustomizedButton sx={{width:"150px"}} variant="contained">{t('Giới thiệu')}</CustomizedButton>
@@ -109,9 +108,6 @@ export default function Footer({company_data}){
                         <Grid item xs={12}><Typography fontWeight={500} color={theme.color.white}>{company_data[10]?.["data_"+currentLang] || company_data[10].data}</Typography></Grid>
 
                         <Grid item xs={12} container  spacing={1}>
-                            
-                            
-                            
                             <Grid item>
                                 <Link to={company_data[13]?.data} style={{textDecoration:'none'}} target={"_blank"}>
                                     <Image src='/assets/icons/ic_zalo.svg' alt="zalo icon" width="25" height="25"/>
@@ -178,15 +174,16 @@ const MiniGallery = ()=>{
                <Grid item xs={3} key={'gallery-'+id}>
                 <Link to={`/${t('gioithieu')}/${t("thuvien")}`}>
                     <Box 
-                    sx={{
-                        width:"100%", 
-                        height:"auto", 
-                        aspectRatio:"1", 
-                        backgroundImage:`url(${process.env.REACT_APP_HOST}/read_image/${image.link})`,
-                        backgroundSize:"cover",
-                        backgroundPosition:"center",
-                        backgroundRepeat:"no-repeat"
-                    }}>
+                        sx={{
+                            width:"100%", 
+                            height:"auto", 
+                            aspectRatio:"1", 
+                            backgroundImage:`url(${process.env.REACT_APP_HOST}/read_image/${image.link})`,
+                            backgroundSize:"cover",
+                            backgroundPosition:"center",
+                            backgroundRepeat:"no-repeat"
+                        }}
+                    >
 
                     </Box>
                 </Link>

@@ -50,6 +50,7 @@ export default function NewsNewest() {
                                         sx={{
                                             width: '100%',
                                             height: '100%',
+                                            height:'60px',
                                             display: 'flex',
                                             flexDirection: 'column',
                                             position:'relative'
@@ -60,8 +61,10 @@ export default function NewsNewest() {
                                                 alt={newest["name_"+currentLang] || newest.name}
                                                 height="auto"
                                                 image={`${process.env.REACT_APP_HOST}/read_image/${newest.image}`}
-                                                sx={{flex: 1,
-                                                objectFit: 'cover'}}
+                                                sx={{
+                                                    flex: 1,
+                                                    objectFit: 'cover'
+                                                }}
                                             />
                                     </Card>
                                 </Grid>
