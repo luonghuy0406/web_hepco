@@ -4,15 +4,11 @@ import MainLayout from './layouts/main/MainLayout';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
-import Projects from './pages/Projects';
-import Shareholder from './pages/Shareholder';
 import Question from './pages/Question';
 import Contact from './pages/Contact';
-import News from './pages/News';
 import { useTranslation } from 'react-i18next';
-import NewsItem from './pages/NewsItem';
-import ProjectsItem from './pages/ProjectsItem';
-import ShareholderItem from './pages/ShareHolderItems';
+import Post from './pages/Post';
+import PostItem from './sections/Posts/PostItem';
 
 export default function Router({data}) {
   const {t} = useTranslation()
@@ -36,25 +32,27 @@ export default function Router({data}) {
         { path: `${t('dichvu')}/${t('quantrang')}`, element: <Services page={t('quantrang')}/>},
         { path: `${t('dichvu')}/${t('kinhdoanhkhac')}`, element: <Services page={t('kinhdoanhkhac')}/>},
 
-        { path: t('duan'), element: <Projects page={'0'}/> },
-        { path: `${t('duan')}/${t('dautu')}`, element: <Projects page={'7'}/> },
-        { path: `${t('duan')}/${t('trongnuoc')}`, element: <Projects page={'8'}/> },
-        { path: `${t('duan')}/${t('nuocngoai')}`, element: <Projects page={'9'}/> },
-        { path: `${t('duan')}/:threadId`, element: <ProjectsItem /> },
-        { path: t('tintuc'), element: <News page={'0'}/> },
-        { path: `${t('tintuc')}/${t('hoatdong')}`, element: <News page={'1'}/> },
-        { path: `${t('tintuc')}/${t('dangdoan')}`, element: <News page={'2'}/> },
-        { path: `${t('tintuc')}/${t('phapluat')}`, element: <News page={'3'}/> },
-        { path: `${t('tintuc')}/${t('tinkhac')}`, element: <News page={'4'}/> },
-        { path: `${t('tintuc')}/:threadId`, element: <NewsItem/> },
-        { path: t('codong'), element: <Shareholder  page={'0'}/> },
-        { path: `${t('codong')}/${t('thongbao')}`, element: <Shareholder page={'5'}/> },
-        { path: `${t('codong')}/${t('baocao')}`, element: <Shareholder page={'6'}/> },
-        { path: `${t('codong')}/:threadId`, element: <ShareholderItem/> },
         { path: t('cauhoi'), element: <Question /> },
         { path: t('lienhe'), element: <Contact data={data}/> },
         { path: '404', element: <Navigate to="/" /> },
         { path: '*', element: <Navigate to="/" /> },
+
+
+        { path: t('tintuc'), element: <Post typePost={'post'} page={'0'}/> },
+        { path: `${t('tintuc')}/${t('hoatdong')}`, element: <Post typePost={'post'} page={'1'}/> },
+        { path: `${t('tintuc')}/${t('dangdoan')}`, element: <Post typePost={'post'} page={'2'}/> },
+        { path: `${t('tintuc')}/${t('phapluat')}`, element: <Post typePost={'post'} page={'3'}/> },
+        { path: `${t('tintuc')}/${t('tinkhac')}`, element: <Post typePost={'post'} page={'4'}/> },
+        { path: `${t('tintuc')}/:threadId`, element: <PostItem typePost={'post'}/> },        
+        { path: t('codong'), element: <Post typePost={'shareholder'}  page={'0'}/> },
+        { path: `${t('codong')}/${t('thongbao')}`, element: <Post typePost={'shareholder'} page={'5'}/> },
+        { path: `${t('codong')}/${t('baocao')}`, element: <Post typePost={'shareholder'} page={'6'}/> },
+        { path: `${t('codong')}/:threadId`, element: <PostItem typePost={'shareholder'}/> },
+        { path: t('duan'), element: <Post typePost={'project'} page={'0'}/> },
+        { path: `${t('duan')}/${t('dautu')}`, element: <Post typePost={'project'} page={'7'}/> },
+        { path: `${t('duan')}/${t('trongnuoc')}`, element: <Post typePost={'project'} page={'8'}/> },
+        { path: `${t('duan')}/${t('nuocngoai')}`, element: <Post typePost={'project'} page={'9'}/> },
+        { path: `${t('duan')}/:threadId`, element: <PostItem typePost={'project'}/> },
       ],
     },
     {

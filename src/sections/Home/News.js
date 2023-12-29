@@ -11,6 +11,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { faFontAwesome } from '@fortawesome/free-brands-svg-icons'
 import { formatDateTime } from '../../functions';
+import PostContentItem from '../Posts/PostContentItem';
 
 library.add(fas, faFontAwesome, faPlay)
 
@@ -84,9 +85,7 @@ const BlogButton = styled(Box)(({ theme }) => ({
 
 export const News = () => {
   const theme = useTheme()
-  
-  const {t, i18n} = useTranslation()
-  const currentLang = i18n.language == 'en' ? 'en' : ''
+  const {t} = useTranslation()
   const [news, setNews] = useState([])
   const categories = {
     '0': {name: t('Tất cả tin'), value:'0'},
@@ -94,7 +93,17 @@ export const News = () => {
     '2': {name: t('Đảng Đoàn thể'), value:'2'},
     '3': {name: t('Pháp luật môi trường'), value:'3'},
     '4': {name: t('Tin tức khác'), value:'4'},
+    '5': {name: t('Thông báo'), value:'5'},
+    '6': {name: t('Báo cáo'), value:'6'},
+    '7': {name: t('Dự án đầu tư'), value:'7'},
+    '8': {name: t('Hợp tác trong nước'), value:'8'},
+    '9': {name: t('Hợp tác nước ngoài'), value:'9'}
 }
+const type = {
+    'post' : {path: t('tintuc'), name : t("Tin tức")},
+    'project' : {path: t('duan'), name : t("Dự án")},
+    'shareholder' : {path: t('codong'), name : t("Cổ đông")},
+} 
   const newsRef = useRef(null)
   const { ref, inView } = useInView({
       /* Optional options */
@@ -135,65 +144,8 @@ export const News = () => {
                     </StyledTypography>
                     <StyledGrid container ref={newsRef} spacing={2} sx={{justifyContent:'center', padding: theme.spacing(2)}}>
                     {news.map((data) => {
-                      const normalizedTitle = (data["name_"+currentLang] || data.name).toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
                       return(
-                          <Grid key={data.id_post} item xs={12} sm={6} md={4}>
-                              <Link to={`/${t('tintuc')}/${normalizedTitle}.${data.id_post}`}>
-                                  <FeaturedNewstWrap>
-                                      <LazyLoad height={200} offset={100}>
-                                      <FeaturedNewstImage image={`${process.env.REACT_APP_HOST}/read_image/${data.image}`}>
-                                          <Box
-                                              sx={{
-                                                  px: theme.spacing(4),
-                                                  py:theme.spacing(1),
-                                                  background: theme.color.green1,
-                                                  position: 'absolute',
-                                                  borderRadius: '4px',
-                                                  textAlign:'center',
-                                                  bottom: '0',
-                                                  left: '50%',
-                                                  transform: 'translate(-50%, 20px)'
-                                              }}
-                                          >
-                                          <Typography 
-                                              className='news-date' 
-                                              fontFamily={theme.typography.MuktaMahee}
-                                              color={theme.color.white}
-                                              fontWeight={700}
-                                          >{formatDateTime(data.cre_date,'%d-%m-%Y')}</Typography>
-                                          </Box>
-                                      </FeaturedNewstImage>
-                                      </LazyLoad>
-                                      <Box
-                                          sx={{padding:theme.spacing(4)}}
-                                      >
-                                      <Grid container spacing={1}>
-                                          <Grid item xs={12} pb={1}>
-                                              <Typography variant="h6" color={theme.color.red} fontWeight={700}>{data["name_"+currentLang] || data.name}</Typography>
-                                          </Grid>
-                                          <Grid item xs={12}>
-                                              <Box sx={{display:'flex'}}>
-                                              <Typography paddingRight={1} color={theme.color.gray1} fontWeight={700}>{data.author}</Typography>
-                                              <Typography paddingRight={1} color={theme.color.gray1} fontWeight={700}>-</Typography>
-                                              <Typography color={theme.color.gray1} fontWeight={700} >{categories?.[data.type_id]?.name}</Typography>
-                                              </Box>
-                                          </Grid>
-                                          <Grid item xs={12}>
-                                              <Box className='ck-content' dangerouslySetInnerHTML={{__html:data["content_"+currentLang] || data.content}} sx={{overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical'}}/>
-                                          </Grid>
-                                          <Grid item>
-                                              <BlogButton>
-                                              <Link to={`/${t('tintuc')}/${normalizedTitle}.${data.id_post}`}>
-                                                  <Typography fontWeight={700} lineHeight={'1.5rem'}>{t("Read more")}</Typography>
-                                                  <Typography sx={{display:'inline', pl: '5px'}} className='arrow-news'><FontAwesomeIcon icon="fa-solid fa-arrow-right-long" /></Typography>
-                                              </Link>
-                                              </BlogButton>
-                                          </Grid>
-                                      </Grid>
-                                      </Box>
-                                  </FeaturedNewstWrap>
-                              </Link>
-                          </Grid>
+                          <PostContentItem key={data.id_post} post={data} categories={categories} typePost={'post'} type={type}/>
                       )
                     })}
                     </StyledGrid>
