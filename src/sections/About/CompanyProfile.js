@@ -1,6 +1,6 @@
 import { useTheme } from '@emotion/react';
 import { Box, Typography, Container } from '@mui/material';
-import React, { forwardRef, useRef } from 'react'
+import React, { forwardRef, useEffect, useRef, useState } from 'react'
 import HTMLFlipBook from 'react-pageflip';
 
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
@@ -8,10 +8,19 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { useTranslation } from 'react-i18next';
 
 export default function CompanyProfile() {
-const pages = ['0','end','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20']
+const [pages, setPages] = useState([])
 const book = useRef()
 const theme = useTheme()
 const {t} = useTranslation()
+useEffect(()=>{
+    fetch(`${process.env.REACT_APP_HOST}/album/detail/2`)
+        .then(response => response.text())
+        .then(result => {
+            const data = JSON.parse(result).result.images
+            setPages(data)
+        })
+        .catch(error => console.log('error', error));
+},[])
   return (
     <Container maxWidth='100%' sx={{marginTop:theme.spacing(10), marginBottom:theme.spacing(10)}}>
         <Typography sx={{marginBottom:theme.spacing(4)}} variant='h4' textAlign={"center"} fontWeight={700} color={theme.color.red}>{t('Hồ sơ năng lực')}</Typography>
@@ -28,7 +37,15 @@ const {t} = useTranslation()
                     pages.map((page)=>{
                         return (
                             <div className="page">
-                                <img src={`/assets/images/company_profile/${page}.jpeg`} alt={'company profile page'+page} style={{width:'100%', height:'100%'}}/>
+                                <img 
+                                    src={`${process.env.REACT_APP_HOST}/read_image/${page.link}`} 
+                                    alt={'company profile page' + page.cre_date} 
+                                    style={{width:'100%', height:'100%'}}
+                                    onError={({ currentTarget }) => {
+                                        currentTarget.onerror = null; // prevents looping
+                                        currentTarget.src='/assets/no_image2.jpeg'
+                                    }}
+                                />
                             </div>
                         )
                     })

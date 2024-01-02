@@ -92,9 +92,9 @@ export default function Footer({company_data}){
                                 <Typography variant="h5" pl={3} color={theme.color.white} fontWeight={"bold"}>HEPCO</Typography>
                             </Box>
                         </Grid>
-                        {/* <Grid item xs={12}>
+                        <Grid item xs={12}>
                             <Typography fontWeight={500} color={theme.color.white}>We work with a passion of taking challenges and creating new ones in advertising sector.</Typography>
-                        </Grid> */}
+                        </Grid>
                         <Grid item xs={12}>
                             <Link to={`/${t('gioithieu')}`}>
                                 <CustomizedButton sx={{width:"150px"}} variant="contained">{t('Giới thiệu')}</CustomizedButton>
@@ -177,6 +177,11 @@ const MiniGallery = ()=>{
         })
         .catch(error => console.log('error', error));
     },[])
+    const [imageError, setImageError] = useState(false);
+
+    const handleImageError = () => {
+      setImageError(true);
+    }
     return(
         images.map((image,id)=>{
             return(
@@ -187,13 +192,22 @@ const MiniGallery = ()=>{
                             width:"100%", 
                             height:"auto", 
                             aspectRatio:"1", 
-                            backgroundImage:`url(${process.env.REACT_APP_HOST}/read_image/${image.link})`,
+                            backgroundImage:imageError ? '/assets/no_image.jpeg' :`url(${process.env.REACT_APP_HOST}/read_image/${image.link})`,
                             backgroundSize:"cover",
                             backgroundPosition:"center",
                             backgroundRepeat:"no-repeat"
                         }}
                     >
-
+                            <img
+                                src={`${process.env.REACT_APP_HOST}/read_image/${image.link}`}
+                                alt="Image replace"
+                                onError={({ currentTarget }) => {
+                                    currentTarget.onerror = null; // prevents looping
+                                    currentTarget.src='/assets/no_image.jpeg'
+                                    handleImageError()
+                                }}
+                                style={{ display: 'none' }}
+                            />
                     </Box>
                 </Link>
                 </Grid> 

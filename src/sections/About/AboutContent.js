@@ -10,24 +10,32 @@ import AlbumItems from './AlbumItems'
 
 export default function AboutContent({page}) {
   const {t} = useTranslation()
-  if(page == t('sodo')){
-    return (
-        <Chart/>
-    )
-  }else if(page == t('chucnang')){
-    return <Mandates/>
-  }else if(page == t('nangluc')){
-    return <CompanyProfile/>
-  }else if(page == t('thanhtuu')){
-    return <Achievement/>
-  }else if( page== t('thuvien')){
-    return (
-      <Gallery/>
-    )
-  }else if( page== t('album')){
-    return (
-      <AlbumItems/>
-    )
+  switch (page) {
+    case t('sodo'):
+      return (
+          <Chart/>
+      )
+    case t('chucnang'):
+      return (
+          <Mandates/>
+      )
+    case t('nangluc'):
+      return (
+          <CompanyProfile/>
+      )
+    case t('thanhtuu'):
+      return (
+          <Achievement/>
+      )
+    case t('thuvien'):
+        return (
+            <Gallery/>
+        )
+    case t('album'):
+      return (
+          <AlbumItems/>
+      )
+    default:
+      return <About/>
   }
-  return <About/>
 }

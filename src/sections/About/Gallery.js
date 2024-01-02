@@ -135,6 +135,10 @@ const AllPhotos  = ({tab}) =>{
                                     height="auto"
                                     image={`${process.env.REACT_APP_HOST}/read_image/${image.link}`}
                                     sx={{flex: 1, objectFit: 'cover'}}
+                                    onError={({ currentTarget }) => {
+                                        currentTarget.onerror = null; // prevents looping
+                                        currentTarget.src='/assets/no_image2.jpeg'
+                                    }}
                                 />
                         </Card>
                     </Grid>
@@ -197,6 +201,10 @@ export const ImageDialog = ({currentId,images, open, setCurrentId, setOpen})=>{
                                     maxWidth: '100%',
                                     maxHeight:'700px',
                                     objectFit: 'contain'
+                                }}
+                                onError={({ currentTarget }) => {
+                                    currentTarget.onerror = null; // prevents looping
+                                    currentTarget.src='/assets/no_image2.jpeg'
                                 }}
                             />
                     </Box>
@@ -306,7 +314,9 @@ const AllAlbums  = ({tab}) =>{
             <Grid container spacing={2}>
                 {images.map((image, index) => {
                     const normalizedTitle = (image?.["name_"+currentLang] || image?.name).toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
-
+                    if(image.id_album == 1 || image.id_album == 2){
+                        return <></>
+                    }
                     return (
                         <Grid key={index} item xs={6} sm={6} md={4} lg={3}>
                             <Link to={`/${t('gioithieu')}/${t('thuvien')}/${normalizedTitle}.${image.id_album}`}> 
@@ -326,6 +336,10 @@ const AllAlbums  = ({tab}) =>{
                                             height="auto"
                                             image={`${process.env.REACT_APP_HOST}/read_image/${image.avatar}`}
                                             sx={{flex: 1,objectFit: 'cover', maxHeight:"200px"}}
+                                            onError={({ currentTarget }) => {
+                                                currentTarget.onerror = null; // prevents looping
+                                                currentTarget.src='/assets/no_image2.jpeg'
+                                            }}
                                         />
                                         <CardContent>
                                             <Typography variant='h7' fontWeight={700}>{image?.["name_"+currentLang] || image?.name}</Typography>

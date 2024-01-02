@@ -88,6 +88,10 @@ const AlbumItems = () => {
                                         height="auto"
                                         image={`${process.env.REACT_APP_HOST}/read_image/${image.link}`}
                                         sx={{flex: 1, objectFit: 'cover'}}
+                                        onError={({ currentTarget }) => {
+                                            currentTarget.onerror = null; // prevents looping
+                                            currentTarget.src='/assets/no_image2.jpeg'
+                                        }}
                                     />
                             </Card>
                         </Grid>
