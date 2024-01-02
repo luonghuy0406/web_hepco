@@ -172,7 +172,6 @@ export const ImageDialog = ({currentId,images, open, setCurrentId, setOpen})=>{
     const {t, i18n} = useTranslation()
     const currentLang = i18n.language == 'en' ? 'en' : ''
     let image = images[currentId]
-    console.log(currentId,image)
     return(
         <Dialog 
             open={open} 
