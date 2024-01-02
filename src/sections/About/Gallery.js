@@ -14,7 +14,6 @@ const Gallery = () => {
     const theme = useTheme()
     const {t} = useTranslation()
     const [tab, setTab] = useState(0);
-
     const handleChange = (event, newtab) => {
         setTab(newtab);
     };
@@ -84,6 +83,7 @@ function a11yProps(index) {
 const AllPhotos  = ({tab}) =>{
     const theme = useTheme()
     
+    window.scrollTo(0, 0)
     const {t, i18n} = useTranslation()
     const currentLang = i18n.language == 'en' ? 'en' : ''
     const [open,setOpen] = useState(false)
@@ -115,32 +115,35 @@ const AllPhotos  = ({tab}) =>{
             <Grid container spacing={2}>
                 {images.map((image, index) => (
                     <Grid key={index} item xs={6} sm={6} md={4} lg={3}>
-                        <Card 
-                            sx={{
-                                width: '100%',
-                                height: 'auto',
-                                aspectRatio: 1,
-                                display: 'flex',
-                                flexDirection: 'column',
-                                position:'relative'
-                            }}
-                            onClick={()=>{
-                                setOpen(true)
-                                setCurrentId(index)
-                            }}
-                        >
-                                <CardMedia 
-                                    component="img"
-                                    alt={image?.["des_"+currentLang] || image?.des}
-                                    height="auto"
-                                    image={`${process.env.REACT_APP_HOST}/read_image/${image.link}`}
-                                    sx={{flex: 1, objectFit: 'cover'}}
-                                    onError={({ currentTarget }) => {
-                                        currentTarget.onerror = null; // prevents looping
-                                        currentTarget.src='/assets/no_image2.jpeg'
-                                    }}
-                                />
-                        </Card>
+                        <LazyLoad height={200} offset={100}>
+
+                            <Card 
+                                sx={{
+                                    width: '100%',
+                                    height: 'auto',
+                                    aspectRatio: 1,
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    position:'relative'
+                                }}
+                                onClick={()=>{
+                                    setOpen(true)
+                                    setCurrentId(index)
+                                }}
+                            >
+                                    <CardMedia 
+                                        component="img"
+                                        alt={image?.["des_"+currentLang] || image?.des}
+                                        height="auto"
+                                        image={`${process.env.REACT_APP_HOST}/read_image/${image.link}`}
+                                        sx={{flex: 1, objectFit: 'cover'}}
+                                        onError={({ currentTarget }) => {
+                                            currentTarget.onerror = null; // prevents looping
+                                            currentTarget.src='/assets/no_image2.jpeg'
+                                        }}
+                                    />
+                            </Card>
+                        </LazyLoad>
                     </Grid>
                 ))}
             </Grid>

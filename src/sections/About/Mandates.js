@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useInView } from 'react-intersection-observer'
 import 'animate.css';
+import LazyLoad from 'react-lazyload';
 
 export default function Mandates() {
     const theme = useTheme()
@@ -85,19 +86,21 @@ const License = ({index, data})=>{
     }, [inView]);
     return(
         <Grid item xs={6} md={3} ref={ref}>
-            <Box 
-                ref={item}
-                sx={{
-                    width:'100%',
-                    // height:'100%',
-                    borderRadius:'10px',
-                    height:'350px',
-                    backgroundImage: `url(${process.env.REACT_APP_HOST}/read_image/${data.image})`,
-                    backgroundRepeat:'no-repeat',
-                    backgroundSize:'cover',
-                    backgroundPosition:'center'
-                }}
-            />
+            <LazyLoad height={200} offset={100}>
+                <Box 
+                    ref={item}
+                    sx={{
+                        width:'100%',
+                        // height:'100%',
+                        borderRadius:'10px',
+                        height:'350px',
+                        backgroundImage: `url(${process.env.REACT_APP_HOST}/read_image/${data.image})`,
+                        backgroundRepeat:'no-repeat',
+                        backgroundSize:'cover',
+                        backgroundPosition:'center'
+                    }}
+                />
+            </LazyLoad>
         </Grid>
     )
 }
