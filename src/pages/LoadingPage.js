@@ -65,16 +65,29 @@ const LoadingIcon = styled('div')(()=>({
 export default function LoadingPage() {
 
   return (
-    <Box 
+    <Box
+      sx={{
+        width:"100vw" ,
+        height:"100vh"
+      }}
+    >
+      <Box 
         sx={{
             width:"100vw" ,
             height:"100vh" ,
-            backgroundColor: "#39a03d40"
+            backgroundColor: "#39a03d40",
+            position:"fixed",
+            zIndex: "9999999",
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0
         }}
     >
         <LoadingIcon>
             <img src={'/assets/logo2.png'} alt='hepco logo' width={40} height={40} />    
         </LoadingIcon>
+    </Box>
     </Box>
   )
 }
