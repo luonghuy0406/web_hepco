@@ -48,7 +48,7 @@ export default function PostContent({pageParam, typePost, type, categories}) {
         }
         didMount.current = true
         return () => clearTimeout(timeOutId);
-      }, [keyword])
+    }, [keyword])
     useEffect(()=>{
         fetch(`${process.env.REACT_APP_HOST}/${typePost}/list?c=${itemsPerPage}&type_id=${pageParam}&title=${keyword}&p=${page-1}&lang=${currentLang || 'vi'}`)
         .then(response => response.text())

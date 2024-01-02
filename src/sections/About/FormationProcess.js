@@ -47,7 +47,7 @@ export default function FormationProcess() {
                                     icon={<StarIcon />}
                                     date={dt.time}
                                 >
-                                    <Typography variant="h5" textAlign={"center"} fontWeight={700} color={theme.color.green1} className="vertical-timeline-element-title">{dt.time}</Typography>
+                                    <Typography variant="h5" textAlign={"center"} fontWeight={700} color={ index%2==0 ? theme.color.red : theme.color.green1} className="vertical-timeline-element-title">{dt.time}</Typography>
                                     <Typography fontWeight={500} color={theme.color.black}>
                                         {dt?.["content_"+currentLang] || dt?.content}
                                     </Typography>

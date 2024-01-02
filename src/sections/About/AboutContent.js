@@ -8,7 +8,7 @@ import Mandates from './Mandates'
 import Achievement from './Achievement'
 import AlbumItems from './AlbumItems'
 
-export default function AboutContent({page}) {
+export default function AboutContent({page, data}) {
   const {t} = useTranslation()
   switch (page) {
     case t('sodo'):
@@ -36,6 +36,6 @@ export default function AboutContent({page}) {
           <AlbumItems/>
       )
     default:
-      return <About/>
+      return <About data={data}/>
   }
 }

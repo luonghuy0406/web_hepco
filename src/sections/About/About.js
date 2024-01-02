@@ -1,14 +1,16 @@
-import React from 'react'
-import {OurMission} from '../Home/OurMission'
-import FormationProcess from './FormationProcess'
-import AlleyLetter from './AlleyLetter'
+import React, { Suspense } from 'react';
+import LoadingPage from '../../pages/LoadingPage';
 
-export default function About() {
+const LazyAlleyLetter = React.lazy(() => import('./AlleyLetter'));
+const LazyFormationProcess = React.lazy(() => import('./FormationProcess'));
+const LazyOurMission = React.lazy(() => import('../Home/OurMission'));
+
+export default function About({data}) {
   return (
-    <>
-      <AlleyLetter/>
-      <FormationProcess/>
-      <OurMission about={true}/>
-    </>
+    <Suspense fallback={<LoadingPage/>}>
+      <LazyAlleyLetter />
+      <LazyFormationProcess />
+      <LazyOurMission about={true} mission={data.mission} video={data.video} coreVal={data.coreVal} />
+    </Suspense>
   )
 }

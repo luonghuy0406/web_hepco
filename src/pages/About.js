@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import Banner from '../sections/Banner';
 import AboutContent from '../sections/About/AboutContent';
 
-export default function About({page}) {
+export default function About({page, data}) {
   const { t } = useTranslation();
   const parentPath = `/${t('gioithieu')}`;
   const pages = [
@@ -28,7 +28,7 @@ export default function About({page}) {
         path={parentPath}
         pages={pages}
       />
-      <AboutContent page={page} />
+      <AboutContent page={page} data={data}/>
     </>
   );
 }

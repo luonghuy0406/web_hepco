@@ -195,7 +195,7 @@ const style = {
     border: 'unset'
   };
 
-export function OurMission({mission,video, coreVal}) {
+export default function OurMission({mission,video, coreVal}) {
     const {t, i18n} = useTranslation()
     const currentLang = i18n.language == 'en' ? 'en' : ''
     const theme= useTheme()

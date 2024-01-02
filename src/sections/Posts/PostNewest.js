@@ -26,7 +26,7 @@ export default function PostNewest({typePost, categories,type}) {
                 setNewest(data.data)
             })
             .catch(error => console.log('error', error));
-        },1000)
+        },2000)
     },[])
   return (
     <>
