@@ -37,7 +37,7 @@ export default function PostItem({typePost}) {
         'shareholder' : {path: t('codong'), name : t("Cổ đông")},
     } 
     
-    const [data,setData] = useState([])
+    const [data,setData] = useState()
     useEffect(()=>{
         fetch(`${process.env.REACT_APP_HOST}/${typePost}/detail/${idPart}`)
         .then(response => response.text())
@@ -54,7 +54,9 @@ export default function PostItem({typePost}) {
   const handleImageError = () => {
     setImageError(true);
   };
-
+    if(!data){
+        return <></>
+    }
   return (
     <>
         <Helmet>
@@ -84,9 +86,9 @@ export default function PostItem({typePost}) {
                     src={`${process.env.REACT_APP_HOST}/read_image/${data[0]?.image}`}
                     alt="Image"
                     onError={({ currentTarget }) => {
-                        handleImageError()
                         currentTarget.onerror = null; // prevents looping
                         currentTarget.src='/assets/no_image.jpeg'
+                        handleImageError()
                     }}
                     style={{ display: 'none' }}
                 />

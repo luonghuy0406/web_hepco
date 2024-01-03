@@ -2,7 +2,7 @@ import { Box, Divider, Stack, Typography, useTheme } from '@mui/material'
 import React from 'react'
 import { Link, useMatch } from 'react-router-dom'
 
-export default function Banner({name, image,path,pages}) {
+export default function Banner({name, image,path,pages, sub_name}) {
     const theme = useTheme()
     const current = useMatch(`${path}/:page`)
     const home = useMatch(path)
@@ -22,9 +22,20 @@ export default function Banner({name, image,path,pages}) {
                 position: 'relative'
             }}
         >
-            <Typography fontSize="52px" mt={"40px"} color={theme.color.white} fontWeight={"700"} className="animate__animated animate__fadeInDown">
-                {name}
-            </Typography>
+            <Box>
+                <Typography fontSize="52px" mt={"40px"} textAlign={"center"} color={theme.color.white} fontWeight={"700"} className="animate__animated animate__fadeInDown">
+                    {name}
+                </Typography>
+                {
+                    sub_name &&
+                    <Box>
+                        <Typography color={theme.color.white} textAlign={"center"}  className="animate__animated animate__fadeInDown">
+                            {sub_name}
+                        </Typography>
+                    </Box>
+                }
+            </Box>
+            
             {
                 pages.length > 0 &&
                 <Box

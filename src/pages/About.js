@@ -23,7 +23,8 @@ export default function About({page, data}) {
           <title> {t("Giới thiệu")} | {t("HEPCO - CÔNG TY CỔ PHẦN MÔI TRƯỜNG VÀ CÔNG TRÌNH ĐÔ THỊ HUẾ")} </title>
       </Helmet>
       <Banner
-        name={"Giới thiệu"}
+        name={t("Giới thiệu")}
+        sub_name={t("HEPCO - CÔNG TY CỔ PHẦN MÔI TRƯỜNG VÀ CÔNG TRÌNH ĐÔ THỊ HUees")}
         image="/assets/images/bg4.jpg"
         path={parentPath}
         pages={pages}
