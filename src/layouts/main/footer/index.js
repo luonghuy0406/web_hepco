@@ -93,7 +93,9 @@ export default function Footer({company_data}){
                             </Box>
                         </Grid>
                         <Grid item xs={12}>
-                            <Typography fontWeight={500} color={theme.color.white}>We work with a passion of taking challenges and creating new ones in advertising sector.</Typography>
+                            <Typography fontWeight={500} color={theme.color.white}>
+                                {t("Phát huy thế mạnh và đa dạng hoá lĩnh vực hoạt động để trở thành Công ty môi trường hàng đầu khu vực miền Trung - Tây Nguyên")}
+                            </Typography>
                         </Grid>
                         <Grid item xs={12}>
                             <Link to={`/${t('gioithieu')}`}>

@@ -86,7 +86,7 @@ const OrgnizationChart = () => {
       targetPosition: 'top',
       type: 'output',
       data: { label: t('PHÒNG TỔ CHỨC HÀNH CHÍNH') },
-      position: { x: -250, y: 500 },
+      position: { x: -130, y: 500 },
       style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'250px' }
     },
     {
@@ -94,7 +94,7 @@ const OrgnizationChart = () => {
       targetPosition: 'top',
       type: 'output',
       data: { label: t('PHÒNG KẾ HOẠCH') },
-      position: { x: 100, y: 500 },
+      position: { x: 140, y: 500 },
       style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'250px' }
     },
     {
@@ -102,7 +102,7 @@ const OrgnizationChart = () => {
       targetPosition: 'top',
       type: 'output',
       data: { label: t('PHÒNG KỸ THUẬT') },
-      position: { x: 450, y: 500 },
+      position: { x: 410, y: 500 },
       style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'250px' }
     },
     {
@@ -110,7 +110,15 @@ const OrgnizationChart = () => {
       targetPosition: 'top',
       type: 'output',
       data: { label: t('PHÒNG KẾ TOÁN - TÀI VỤ') },
-      position: { x: 800, y: 500 },
+      position: { x: 680, y: 500 },
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'250px' }
+    },
+    {
+      id: '9a',
+      targetPosition: 'top',
+      type: 'output',
+      data: { label: t('PHÒNG THÔNG TIN - TRUYỀN THÔNG') },
+      position: { x: 950, y: 500 },
       style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'250px' }
     },
     {
@@ -336,6 +344,17 @@ const OrgnizationChart = () => {
         style: { stroke: 'var(--red)'},
       },
       {
+        id: 'e4-9a',
+        source: '4',
+        type: 'straight',
+        target: '9a',
+        markerEnd: {
+            type: MarkerType.ArrowClosed,
+            color: '#F48123'
+        },
+        style: { stroke: 'var(--red)'},
+      },
+      {
         id: 'e4-4b',
         source: '4',
         type: 'straight',
@@ -514,13 +533,7 @@ const OrgnizationChart = () => {
           backgroundPosition: 'left bottom'
       }} 
     >
-      <Container maxWidth='xl'>
-        <Typography sx={{marginBottom:theme.spacing(4)}} variant='h4' textAlign={"center"} fontWeight={700} color={theme.color.green1}>{t('Giới thiệu bộ máy')}</Typography>
-        <Box className='ck-content' sx={{margin:theme.spacing(3)}} dangerouslySetInnerHTML={{__html:data?.["content_"+currentLang] || data?.content}}>
-
-        </Box>
-        <Typography sx={{marginBottom:theme.spacing(4)}} variant='h4' textAlign={"center"} fontWeight={700} color={theme.color.red}>{t('Sơ đồ tổ chức')}</Typography>
-      </Container>
+      <Typography sx={{marginBottom:theme.spacing(4)}} variant='h4' textAlign={"center"} fontWeight={700} color={theme.color.red}>{t('Sơ đồ tổ chức')}</Typography>
       <Box sx={{ height: '85vh', width: '100%', marginTop:'50px'}}>
         <ReactFlow
           nodes={initialNodes}
@@ -536,6 +549,13 @@ const OrgnizationChart = () => {
           </Box>
         </ReactFlow>
       </Box>
+      <Container maxWidth='xl'>
+        <Typography sx={{marginBottom:theme.spacing(4)}} variant='h4' textAlign={"center"} fontWeight={700} color={theme.color.green1}>{t('Giới thiệu bộ máy')}</Typography>
+        <Box className='ck-content' sx={{margin:theme.spacing(3)}} dangerouslySetInnerHTML={{__html:data?.["content_"+currentLang] || data?.content}}>
+
+        </Box>
+      </Container>
+      
     </Container>
   );
 };
