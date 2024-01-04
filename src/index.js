@@ -36,16 +36,17 @@ const Main = () => {
   useEffect(() => {
     const fetchDataAndRender = async () => {
       try {
-        const [banner, company_data, mission, video, coreVal] = await Promise.all([
+        const [banner, company_data, mission, video, coreVal, chart] = await Promise.all([
           getData('/banner/list'),
           getData('/company_data/list'),
           getData('/sharedtable/father/12'),
           getData('/company_data/detail/15'),
           getData('/sharedtable/father/13'),
+          getData('/sharedtable/father/23'),
         ]);
 
         // You can further process the data if needed
-        setData({ banner, company_data, mission, video, coreVal });
+        setData({ banner, company_data, mission, video, coreVal, chart });
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
@@ -79,6 +80,7 @@ const Main = () => {
         mission={data.mission}
         video={data.video}
         coreVal={data.coreVal}
+        chart = {data.chart}
       />
     </ThemeProvider>
   );

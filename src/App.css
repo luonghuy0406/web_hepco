@@ -316,3 +316,7 @@ ul.sub-menu li:hover{
 .button-next-image:hover{
     opacity: 1 !important;
 }
+
+.react-flow__node:hover {
+    z-index: 1 !important;
+  }

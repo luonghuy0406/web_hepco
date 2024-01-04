@@ -42,7 +42,7 @@ export default function Router({ data }) {
           path: `${t("gioithieu")}/${t("sodo")}`,
           element: (
             <Suspense fallback={<LoadingPage />}>
-              <About page={t("sodo")} />
+              <About page={t("sodo")} data_chart={data.chart}/>
             </Suspense>
           ),
         },

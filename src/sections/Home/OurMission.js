@@ -20,6 +20,7 @@ const ServicesIcon = styled('div')(({ theme }) => ({
 const IconImage = styled('img')(({ theme }) => ({
     width: "70px",
     zIndex: 2,
+    position: 'relative'
 }))
 
 const IconImageCore = styled('img')(({ theme }) => ({
@@ -250,7 +251,7 @@ export default function OurMission({mission,video, coreVal}) {
                             <Grid item xs={12} md={12} lg={2}>
                                 <ServicesIcon>
                                     <IconImage
-                                        src="/assets/images/ic1.png"
+                                        src="/assets/images/ic1.svg"
                                         alt="Rs-service"
                                     />
                                     <Background className="img-bg" />
@@ -268,7 +269,7 @@ export default function OurMission({mission,video, coreVal}) {
                             <Grid item xs={12} md={12} lg={2}>
                                 <ServicesIcon>
                                     <IconImage
-                                        src="/assets/images/ic2.png"
+                                        src="/assets/images/ic2.svg"
                                         alt="Rs-service"
                                     />
                                     <Background className="img-bg" />

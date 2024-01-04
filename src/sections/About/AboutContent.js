@@ -8,12 +8,12 @@ import Mandates from './Mandates'
 import Achievement from './Achievement'
 import AlbumItems from './AlbumItems'
 
-export default function AboutContent({page, data}) {
+export default function AboutContent({page, data, data_chart}) {
   const {t} = useTranslation()
   switch (page) {
     case t('sodo'):
       return (
-          <Chart/>
+          <Chart data_chart={data_chart}/>
       )
     case t('chucnang'):
       return (

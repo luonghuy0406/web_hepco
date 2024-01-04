@@ -1,8 +1,8 @@
 import React from 'react'
 import OrgnizationChart from './OrgnizationChart'
 
-export default function Chart() {
+export default function Chart({data_chart}) {
   return (
-    <OrgnizationChart/>
+    <OrgnizationChart data_chart={data_chart}/>
   )
 }
