@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Typography, useTheme } from '@mui/material'
+import { Box, Container, Grid, Link, Typography, useTheme } from '@mui/material'
 import React, { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useInView } from 'react-intersection-observer'
@@ -86,21 +86,23 @@ const License = ({index, data})=>{
     }, [inView]);
     return(
         <Grid item xs={6} md={3} ref={ref}>
-            <LazyLoad height={200} offset={100}>
-                <Box 
-                    ref={item}
-                    sx={{
-                        width:'100%',
-                        // height:'100%',
-                        borderRadius:'10px',
-                        height:'350px',
-                        backgroundImage: `url(${process.env.REACT_APP_HOST}/read_image/${data.image})`,
-                        backgroundRepeat:'no-repeat',
-                        backgroundSize:'cover',
-                        backgroundPosition:'center'
-                    }}
-                />
-            </LazyLoad>
+            <Link href={data.name || data.name_en} target='_blank'>
+                <LazyLoad height={200} offset={100}>
+                    <Box 
+                        ref={item}
+                        sx={{
+                            width:'100%',
+                            // height:'100%',
+                            borderRadius:'10px',
+                            height:'350px',
+                            backgroundImage: `url(${process.env.REACT_APP_HOST}/read_image/${data.image})`,
+                            backgroundRepeat:'no-repeat',
+                            backgroundSize:'cover',
+                            backgroundPosition:'center'
+                        }}
+                    />
+                </LazyLoad>
+            </Link>
         </Grid>
     )
 }
