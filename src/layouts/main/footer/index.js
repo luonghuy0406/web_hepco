@@ -169,7 +169,7 @@ export default function Footer({company_data}){
 
 const MiniGallery = ()=>{
     const {t} = useTranslation()
-    const [images, setImages] = useState([])
+    const [images, setImages] = useState()
     useEffect(()=>{
         fetch(`${process.env.REACT_APP_HOST}/library/list?p=0&c=8&id_album=0`)
         .then(response => response.text())
@@ -183,6 +183,9 @@ const MiniGallery = ()=>{
 
     const handleImageError = () => {
       setImageError(true);
+    }
+    if(!images){
+        return <></>
     }
     return(
         images.map((image,id)=>{
