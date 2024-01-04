@@ -20,16 +20,16 @@ export default function Post({page,typePost}) {
         '9': {name: t('Hợp tác nước ngoài'), value:'9'}
     }
     const type = {
-        'post' : {path: t('tintuc'), name : t("Tin tức")},
-        'project' : {path: t('duan'), name : t("Dự án")},
-        'shareholder' : {path: t('codong'), name : t("Cổ đông")},
+        'post' : {path: t('tintuc'), name : t("Tin tức"), sub_name : t("Bên cạnh hoạt động sản xuất kinh doanh, Hepco thường xuyên thực hiện các chương trình, chiến dịch, sự kiện tuyên truyền nâng cao ý thức của người dân về bảo vệ môi trường. Đảng ủy lãnh đạo chính quyền và các tổ chức chính trị xã hội trong Công ty thường xuyên tổ chức các chương trình hành động giáo dục tư tưởng chính trị, chăm lo đến đời sống cán bộ công nhân viên; các hoạt động vì cộng đồng, vì môi trường hướng đến sự phát triển bền vững")},
+        'project' : {path: t('duan'), name : t("Dự án"), sub_name : t("Với kinh nghiệm thực tiễn nhiều năm thực hiện công tác vệ sinh môi trường và thi công, quản lý, duy tu, bảo dưỡng hệ thống thoát nước, vỉa hè, hệ thống điện chiếu sáng công cộng và trang trí đường phố, chúng tôi không ngừng đào tạo và nâng cao kỹ năng cho đội ngũ nhân viên và xây dựng mạng lưới đối tác với các tổ chức, dự án trong ngoài nước để chia sẻ kinh nghiệm và học hỏi công nghệ. Luôn tìm kiếm cơ hội tham gia vào các dự án chỉnh trang đô thị làm đẹp cho bộ mặt thành phố cũng như các dự án phát triển bền vững và giáo dục hướng đến bảo vệ môi trường cho toàn cộng đồng.")},
+        'shareholder' : {path: t('codong'), name : t("Cổ đông"), sub_name : t("Hepco là doanh nghiệp có 51% vốn nhà nước, và 49% vốn cổ đông.")},
     } 
   return (
     <>
      <Helmet>
       <title> {type[typePost].name} | {t("HEPCO - CÔNG TY CỔ PHẦN MÔI TRƯỜNG VÀ CÔNG TRÌNH ĐÔ THỊ HUẾ")} </title>
      </Helmet>
-      <Banner name={type[typePost].name} image={'/assets/images/bg4.jpg'} path={`/${type[typePost].path}`} pages={[]}/>
+      <Banner name={type[typePost].name} sub_name={type[typePost].sub_name} image={'/assets/images/bg4.jpg'} path={`/${type[typePost].path}`} pages={[]}/>
       <PostContent pageParam={page} typePost={typePost} type={type} categories={categories}/>
     </>
   )

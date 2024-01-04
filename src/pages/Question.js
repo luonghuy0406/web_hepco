@@ -58,7 +58,13 @@ export default function Question() {
       <Helmet>
         <title> {t("Câu hỏi")} | {t("HEPCO - CÔNG TY CỔ PHẦN MÔI TRƯỜNG VÀ CÔNG TRÌNH ĐÔ THỊ HUẾ")} </title>
      </Helmet>
-      <Banner name={t("Câu hỏi")} image={'/assets/images/bg4.jpg'} path={`/${t('cauhoi')}`} pages={pages}/>
+      <Banner 
+        name={t("Câu hỏi")} 
+        image={'/assets/images/bg4.jpg'} 
+        path={`/${t('cauhoi')}`} 
+        pages={pages}
+        sub_name={t("Hepco cam kết mang đến trải nghiệm tốt nhất cho quý khách hàng và luôn sẵn lòng lắng nghe mọi ý kiến đóng góp, giải đáp tất cả những thắc mắc, phản ánh của quý khách hàng qua các kênh thông tin hotline, website, fanpage..một cách nhanh chóng và thỏa đáng nhất.")}
+      />
       <Container maxWidth='xl' sx={{py:theme.spacing(10)}}>
         <Grid container spacing={5}>
           {

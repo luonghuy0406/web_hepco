@@ -110,7 +110,13 @@ export default function Contact({data}) {
       <Helmet>
           <title> {t("Liên hệ")} | {t("HEPCO - CÔNG TY CỔ PHẦN MÔI TRƯỜNG VÀ CÔNG TRÌNH ĐÔ THỊ HUẾ")} </title>
       </Helmet>
-      <Banner name={t("Liên hệ")} image={'/assets/images/bg4.jpg'} path={`/${t('lienhe')}`} pages={pages}/>
+      <Banner 
+        name={t("Liên hệ")} 
+        image={'/assets/images/bg4.jpg'} 
+        path={`/${t('lienhe')}`} 
+        pages={pages}
+        sub_name={t("Với phương châm phục vụ tận tâm – uy tín – trách nhiệm, Hepco cam kết mang đến cho quý khách hàng các giải pháp tối ưu với mức giá hợp lý và cạnh tranh nhất. Hãy liên hệ với chúng tôi để trải nghiệm sự chuyên nghiệp và dịch vụ chất lượng. Sự hài lòng của quý khách hàng là chìa khóa cho sự thành công của chúng tôi.")}
+      />
       <Container maxWidth='xl'>
         <Grid container spacing={3} pb={5} pt={15}>
           <Grid item xs={6}>

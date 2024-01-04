@@ -93,7 +93,7 @@ const OrgnizationChart = () => {
       id: '7',
       targetPosition: 'top',
       type: 'output',
-      data: { label: t('PHÒNG KẾ HOẠCH') },
+      data: { label: t('PHÒNG THÔNG TIN - TRUYỀN THÔNG') },
       position: { x: 140, y: 500 },
       style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'250px' }
     },
@@ -103,47 +103,47 @@ const OrgnizationChart = () => {
       type: 'output',
       data: { label: t('PHÒNG KỸ THUẬT') },
       position: { x: 410, y: 500 },
-      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'250px' }
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'200px' }
     },
     {
       id: '9',
       targetPosition: 'top',
       type: 'output',
       data: { label: t('PHÒNG KẾ TOÁN - TÀI VỤ') },
-      position: { x: 680, y: 500 },
-      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'250px' }
+      position: { x: 630, y: 500 },
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'200px' }
     },
     {
       id: '9a',
       targetPosition: 'top',
       type: 'output',
-      data: { label: t('PHÒNG THÔNG TIN - TRUYỀN THÔNG') },
-      position: { x: 950, y: 500 },
-      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'250px' }
+      data: { label: t('PHÒNG KẾ HOẠCH') },
+      position: { x: 850, y: 500 },
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'200px' }
     },
     {
       id: '10',
       targetPosition: 'top',
       type: 'output',
       data: { label: t('XÍ NGHIỆP THOÁT NƯỚC') },
-      position: { x: -200, y: 620 },
-      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
+      position: { x: -270, y: 620 },
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'200px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
     },
     {
       id: '11',
       targetPosition: 'top',
       type: 'output',
       data: { label: t('XÍ NGHIỆP CƠ KHÍ - XÂY LẮP') },
-      position: { x: 0, y: 620 },
-      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
+      position: { x: -50, y: 620 },
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'200px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
     },
     {
       id: '12',
       targetPosition: 'top',
       type: 'output',
       data: { label: t('XÍ NGHIỆP MÔI TRƯỜNG BẮC SÔNG HƯƠNG') },
-      position: { x: 200, y: 620 },
-      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
+      position: { x: 170, y: 620 },
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'200px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
     },
 
     {
@@ -151,24 +151,24 @@ const OrgnizationChart = () => {
       targetPosition: 'top',
       type: 'output',
       data: { label: t('XÍ NGHIỆP MÔI TRƯỜNG NAM SÔNG HƯƠNG') },
-      position: { x: 450, y: 620 },
-      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
+      position: { x: 430, y: 620 },
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'200px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
     },
     {
       id: '14',
       targetPosition: 'top',
       type: 'output',
       data: { label: t('XÍ NGHIỆP VẬN CHUYỂN - XE MÁY') },
-      position: { x: 650, y: 620 },
-      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
+      position: { x: 690, y: 620 },
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'200px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
     },
     {
       id: '15',
       targetPosition: 'top',
       type: 'output',
       data: { label: t('XÍ NGHIỆP ĐIỆN CHIẾU SÁNG') },
-      position: { x: 850, y: 620 },
-      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
+      position: { x: 950, y: 620 },
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'200px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
     },
     ,
     {
@@ -176,24 +176,24 @@ const OrgnizationChart = () => {
       targetPosition: 'top',
       type: 'output',
       data: { label: t('XÍ NGHIỆP XÂY DỰNG SỐ 2') },
-      position: { x: -275, y: 750 },
-      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
+      position: { x: -360, y: 750 },
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'200px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
     },
     {
       id: '17',
       targetPosition: 'top',
       type: 'output',
       data: { label: t('XÍ NGHIỆP XÂY DỰNG SỐ 1') },
-      position: { x: -75, y: 750 },
-      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
+      position: { x: -140, y: 750 },
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'200px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
     },
     {
       id: '18',
       targetPosition: 'top',
       type: 'output',
       data: { label: t('BQL NGHĨA TRANG NHÂN DÂN') },
-      position: { x: 125, y: 750 },
-      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
+      position: { x: 80, y: 750 },
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'200px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
     },
 
     {
@@ -201,32 +201,32 @@ const OrgnizationChart = () => {
       targetPosition: 'top',
       type: 'output',
       data: { label: t('XÍ NGHIỆP XỬ LÝ CHẤT THẢI') },
-      position: { x: 325, y: 750 },
-      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
+      position: { x: 300, y: 750 },
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'200px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
     },
     {
       id: '20',
       targetPosition: 'top',
       type: 'output',
       data: { label: t('XÍ NGHIỆP MTĐT LĂNG CÔ') },
-      position: { x: 525, y: 750 },
-      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
+      position: { x: 530, y: 750 },
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'200px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
     },
     {
       id: '21',
       targetPosition: 'top',
       type: 'output',
       data: { label: t('XÍ NGHIỆP MT&CTĐT HƯƠNG TRÀ') },
-      position: { x: 725, y: 750 },
-      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
+      position: { x: 770, y: 750 },
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'200px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
     },
     {
       id: '22',
       targetPosition: 'top',
       type: 'output',
       data: { label: t('XÍ NGHIỆP MT&CTĐT HƯƠNG THUỶ') },
-      position: { x: 925, y: 750 },
-      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'150px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
+      position: { x: 1000, y: 750 },
+      style: { background:'var(--green1)', color:"#fff",textTransform: 'uppercase', padding: 10, border: '1px solid var(--green1)', fontWeight:700, width:'200px', minHeight:'80px', display:'flex', alignItems:'center', justifyContent:'center' }
     },
   ]
   const initialEdges = [

@@ -22,18 +22,29 @@ export default function Banner({name, image,path,pages, sub_name}) {
                 position: 'relative'
             }}
         >
-            <Box>
+            <Box
+                sx={{ 
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center', 
+                    flexDirection: 'column'
+                }}
+            >
                 <Typography fontSize="52px" mt={"40px"} textAlign={"center"} color={theme.color.white} fontWeight={"700"} className="animate__animated animate__fadeInDown">
                     {name}
                 </Typography>
-                {
-                    sub_name &&
-                    <Box>
-                        <Typography color={theme.color.white} textAlign={"center"}  className="animate__animated animate__fadeInDown">
-                            {sub_name}
-                        </Typography>
-                    </Box>
-                }
+                <Box
+                    sx={{ 
+                        display: {xs:'none', md:'block'},
+                        width: {xs:'100%', md:'70%'},
+                        minWidth: {xs:'100%', md:'600px'},
+                        padding: theme.spacing(2),
+                    }}
+                >
+                    <Typography color={theme.color.white} textAlign={"justify"}  className="animate__animated animate__fadeInDown">
+                        {sub_name}
+                    </Typography>
+                </Box>
             </Box>
             
             {
