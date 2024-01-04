@@ -101,7 +101,7 @@ export default function HazardousWaste({id}) {
                                                         backgroundColor:index%2 ==0 ? theme.color.green1 : theme.color.red, 
                                                         width: 'fit-content'
                                                     }}>
-                                                    <Typography variant="h6" color={theme.color.white} fontWeight={700}>{dataC["name_"+currentLang] || dataC.name}</Typography>
+                                                    <Typography variant="h7" color={theme.color.white} fontWeight={500}>{dataC["name_"+currentLang] || dataC.name}</Typography>
                                                 </Box>
                                                 <Box
                                                     sx={{
@@ -122,7 +122,7 @@ export default function HazardousWaste({id}) {
                                     <Grid item xs={12} md={6}>
                                         <Box sx={{padding: theme.spacing(2), display: 'flex', flexDirection: 'column', height: '100%'}}> 
                                             <Box sx={{flexGrow:1,padding: theme.spacing(2),marginLeft: 0, borderRadius: '20px 20px 0 0', backgroundColor:index==3? theme.color.green1: theme.color.red, width: '100%'}}>
-                                                <Typography variant="h6" color={theme.color.white} fontWeight={700}>{dataC["name_"+currentLang] || dataC.name}</Typography>
+                                                <Typography variant="h7" color={theme.color.white} fontWeight={500}>{dataC["name_"+currentLang] || dataC.name}</Typography>
                                             </Box>
                                             <Grid container sx={{backgroundColor: index==3? '#5CBC5C': '#ffa154', padding: theme.spacing(1), borderRadius: '0px 0px 20px 20px'}}>
                                                 <Grid item xs={12} sx={{padding: theme.spacing(2)}}>

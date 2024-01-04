@@ -100,7 +100,7 @@ export default function MechanicsConstruction({id}) {
                                                     backgroundColor:index%2 ==0 ? theme.color.green1 : theme.color.red, 
                                                     width: 'fit-content'
                                                 }}>
-                                                <Typography variant="h6" color={theme.color.white} fontWeight={700}>{dataC["name_"+currentLang] || dataC.name}</Typography>
+                                                <Typography variant="h7" color={theme.color.white} fontWeight={500}>{dataC["name_"+currentLang] || dataC.name}</Typography>
                                             </Box>
                                             <Box
                                                 sx={{
