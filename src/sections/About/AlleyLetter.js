@@ -63,7 +63,7 @@ export default function AlleyLetter() {
                                 height:'100%',
                                 // backgroundImage: data.image? `url(${process.env.REACT_APP_HOST}/read_image/${data.image})` : 'url(/assets/images/thungo.jpeg)',
                                 backgroundImage: 'url(/assets/images/thungo.jpeg)',
-                                backgroundPosition:'70%',
+                                backgroundPosition:'center',
                                 backgroundSize:'cover',
                                 backgroundRepeat: 'no-repeat',
                                 borderRadius:'10px'
