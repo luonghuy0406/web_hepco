@@ -153,8 +153,8 @@ export default function Footer({company_data}){
                         <Typography fontSize='14px' textAlign={"left"} color={theme.color.white}>{company_data[8]?.["data_"+currentLang] || company_data[8].data}</Typography>
                     </Grid>
                     <Grid item xs={4}>
-                        <Box onClick={()=>{window.open('http://flyaz.vn/', '_blank').focus()}} sx={{display:'flex',alignItems:'center', justifyContent:'center', cursor:'pointer'}}>
-                            {t('Thiết kế và xây dựng bởi')} <img style={{paddingLeft:'5px'}} src='/assets/flyaz.png' alt='logo flyaz' width={'auto'} height={'20'}/>
+                        <Box onClick={()=>{window.open('https://www.facebook.com/flyaz.vn', '_blank').focus()}} sx={{display:'flex',alignItems:'center', justifyContent:'center', cursor:'pointer'}}>
+                            {t('Thiết kế và xây dựng bởi')} <img style={{paddingLeft:'5px'}} src='/assets/flyaz.png' alt='logo flyaz' width={'auto'} height={'50'}/>
                         </Box>
                     </Grid>
                     <Grid item xs={4}>
