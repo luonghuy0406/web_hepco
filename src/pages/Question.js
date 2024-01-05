@@ -60,7 +60,7 @@ export default function Question() {
      </Helmet>
       <Banner 
         name={t("Câu hỏi")} 
-        image={'/assets/images/bg4.jpg'} 
+        image={'/assets/question.png'} 
         path={`/${t('cauhoi')}`} 
         pages={pages}
         sub_name={t("Hepco cam kết mang đến trải nghiệm tốt nhất cho quý khách hàng và luôn sẵn lòng lắng nghe mọi ý kiến đóng góp, giải đáp tất cả những thắc mắc, phản ánh của quý khách hàng qua các kênh thông tin hotline, website, fanpage..một cách nhanh chóng và thỏa đáng nhất.")}

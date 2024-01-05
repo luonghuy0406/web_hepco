@@ -22,7 +22,7 @@ export default function Services({page}) {
      </Helmet>
       <Banner 
         name={t("Dịch vụ")} 
-        image={'/assets/images/bg4.jpg'} 
+        image={'/assets/dichvu.png'} 
         path={`/${t('dichvu')}`} 
         pages={pages}
         sub_name={t("Với quá trình hình thành và phát triển, bề dày gần 50 năm trong lĩnh vực vệ sinh môi trường và công trình đô thị, cùng đội ngũ cán bộ quản lý giàu kinh nghiệm, đội ngũ nhân viên người lao động lành nghề và hệ thống cơ sở vật chất phương tiện thiết bị hiện đại chúng tôi đã đang và sẽ cung cấp đến quý khách hàng các dịch vụ với chất lượng tốt nhất, uy tín nhất. Cam kết luôn đồng hành cùng quý khách hàng trong hành trình bảo vệ môi trường và phát triển bền vững.")}

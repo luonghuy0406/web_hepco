@@ -355,7 +355,7 @@ const CoreValue = ({coreVal}) =>{
         <Container maxWidth='100%' sx={{py:theme.spacing(4), mb:theme.spacing(10),px:'0 !important'}}>
             <Box sx={{
                 py:theme.spacing(5),
-                backgroundImage:"url(/assets/images/bg1.jpg) !important",
+                backgroundImage:"url(/assets/images/giatri.jpeg) !important",
                 backgroundSize:"cover",
                 backgroundPosition:"center",
                 backgroundRepeat:"no-repeat",

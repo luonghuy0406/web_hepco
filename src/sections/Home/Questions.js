@@ -205,7 +205,7 @@ export function Questions() {
     <Container maxWidth='100%' sx={{pb:theme.spacing(5),px:'0 !important'}}>
         <Box sx={{
           py:theme.spacing(5),
-          backgroundImage:"url(/assets/images/bg2.jpg) !important",
+          backgroundImage:"url(/assets/cauhoiback.png) !important",
           backgroundSize:"cover",
           backgroundPosition:"center",
           backgroundRepeat:"no-repeat",
@@ -276,7 +276,7 @@ export function Questions() {
                         >
                             <Box
                                 sx={{
-                                    backgroundImage:"url(/assets/images/bg1.jpg) !important",
+                                    backgroundImage:"url(/assets/cauhoiback11.png) !important",
                                     backgroundSize:"cover",
                                     backgroundPosition:"center",
                                     backgroundRepeat:"no-repeat",

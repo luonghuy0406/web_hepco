@@ -154,7 +154,7 @@ export default function Footer({company_data}){
                     </Grid>
                     <Grid item xs={4}>
                         <Box onClick={()=>{window.open('https://www.facebook.com/flyaz.vn', '_blank').focus()}} sx={{display:'flex',alignItems:'center', justifyContent:'center', cursor:'pointer'}}>
-                            {t('Thiết kế và xây dựng bởi')} <img style={{paddingLeft:'5px'}} src='/assets/flyaz.png' alt='logo flyaz' width={'auto'} height={'50'}/>
+                            {t('Thiết kế và xây dựng bởi')} <img style={{paddingLeft:'5px'}} src='/assets/flyaz_white.png' alt='logo flyaz' width={'auto'} height={'30'}/>
                         </Box>
                     </Grid>
                     <Grid item xs={4}>
