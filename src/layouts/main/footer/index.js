@@ -197,7 +197,7 @@ const MiniGallery = ()=>{
                             width:"100%", 
                             height:"auto", 
                             aspectRatio:"1", 
-                            backgroundImage:imageError ? '/assets/no_image.jpeg' :`url(${process.env.REACT_APP_HOST}/read_image/${image.link})`,
+                            backgroundImage:imageError ? 'url(/assets/no_image.jpeg)' :`url(${process.env.REACT_APP_HOST}/read_image/${image.link})`,
                             backgroundSize:"cover",
                             backgroundPosition:"center",
                             backgroundRepeat:"no-repeat"
