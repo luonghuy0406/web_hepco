@@ -70,7 +70,7 @@ export function OurServices() {
                 <Grid item xs={0} md ={0} lg={4} sx={{p:theme.spacing(3), display:{xs: 'none', md:'none', lg:'block'}}}>
                     <Box sx={{
                         p:theme.spacing(6),
-                        backgroundImage:"url('/assets/images/service.png') !important",
+                        backgroundImage:"url('/assets/images/service.jpeg') !important",
                         backgroundSize:"cover",
                         backgroundPosition:"center",
                         backgroundRepeat:"no-repeat",
