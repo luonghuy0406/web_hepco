@@ -69,6 +69,7 @@ export default function Node({data, width}) {
       >
         <Typography fontWeight={"700"} dangerouslySetInnerHTML={{__html:data.value?.["name_"+currentLang] || data.value?.name}}></Typography>
       </Box>
+      </Box>
       {
         data.value?.["content_"+currentLang]?.trim()?.length > 0 || data.value?.content?.trim()?.length > 0 &&
 
@@ -93,7 +94,6 @@ export default function Node({data, width}) {
           dangerouslySetInnerHTML={{__html:data.value?.["content_"+currentLang] || data.value?.content}}
         />
       }
-      </Box>
     </Box>
   )
 }
