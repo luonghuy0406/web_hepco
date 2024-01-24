@@ -205,8 +205,7 @@ export default function OurMission({mission,video, coreVal}) {
     const handleClose = () => setOpen(false);
     const visionRef = useRef(null)
     const missonRef = useRef(null)
-    const videoLink = video
- 
+    const videoLink = video?.data
     const data = mission
 
     const { ref, inView } = useInView({
