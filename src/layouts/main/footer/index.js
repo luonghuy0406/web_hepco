@@ -197,14 +197,14 @@ const MiniGallery = ()=>{
                             width:"100%", 
                             height:"auto", 
                             aspectRatio:"1", 
-                            backgroundImage:imageError ? 'url(/assets/no_image.jpeg)' :`url(${process.env.REACT_APP_HOST}/read_image/${image.link?.replace(/%2f|%2F/g,'%252f')})`,
+                            backgroundImage:imageError ? 'url(/assets/no_image.jpeg)' :`url(${process.env.REACT_APP_HOST}/read_image/${image.link?.replace(/%2f|%2F/g,'%252F')})`,
                             backgroundSize:"cover",
                             backgroundPosition:"center",
                             backgroundRepeat:"no-repeat"
                         }}
                     >
                             <img
-                                src={`${process.env.REACT_APP_HOST}/read_image/${image.link?.replace(/%2f|%2F/g,'%252f')}`}
+                                src={`${process.env.REACT_APP_HOST}/read_image/${image.link?.replace(/%2f|%2F/g,'%252F')}`}
                                 alt="Image replace"
                                 onError={({ currentTarget }) => {
                                     currentTarget.onerror = null; // prevents looping

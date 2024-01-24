@@ -135,7 +135,7 @@ const AllPhotos  = ({tab}) =>{
                                         component="img"
                                         alt={image?.["des_"+currentLang] || image?.des}
                                         height="auto"
-                                        image={`${process.env.REACT_APP_HOST}/read_image/${image.link?.replace(/%2f|%2F/g,'%252f')}`}
+                                        image={`${process.env.REACT_APP_HOST}/read_image/${image.link?.replace(/%2f|%2F/g,'%252F')}`}
                                         sx={{flex: 1, objectFit: 'cover'}}
                                         onError={({ currentTarget }) => {
                                             currentTarget.onerror = null; // prevents looping
@@ -197,7 +197,7 @@ export const ImageDialog = ({currentId,images, open, setCurrentId, setOpen})=>{
                         }}
                     >
                             <img
-                                src={`${process.env.REACT_APP_HOST}/read_image/${image?.link?.replace(/%2f|%2F/g,'%252f')}`}
+                                src={`${process.env.REACT_APP_HOST}/read_image/${image?.link?.replace(/%2f|%2F/g,'%252F')}`}
                                 alt={image?.["des_"+currentLang] || image?.des}
                                 style={{
                                     maxWidth: '100%',
@@ -336,7 +336,7 @@ const AllAlbums  = ({tab}) =>{
                                             component="img"
                                             alt={image?.["name_"+currentLang] || image?.name}
                                             height="auto"
-                                            image={`${process.env.REACT_APP_HOST}/read_image/${image.avatar?.replace(/%2f|%2F/g,'%252f')}`}
+                                            image={`${process.env.REACT_APP_HOST}/read_image/${image.avatar?.replace(/%2f|%2F/g,'%252F')}`}
                                             sx={{flex: 1,objectFit: 'cover', maxHeight:"200px"}}
                                             onError={({ currentTarget }) => {
                                                 currentTarget.onerror = null; // prevents looping

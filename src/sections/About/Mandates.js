@@ -95,7 +95,7 @@ const License = ({index, data})=>{
                             // height:'100%',
                             borderRadius:'10px',
                             height:'350px',
-                            backgroundImage: `url(${process.env.REACT_APP_HOST}/read_image/${data.image?.replace(/%2f|%2F/g,'%252f')})`,
+                            backgroundImage: `url(${process.env.REACT_APP_HOST}/read_image/${data.image?.replace(/%2f|%2F/g,'%252F')})`,
                             backgroundRepeat:'no-repeat',
                             backgroundSize:'cover',
                             backgroundPosition:'center'
@@ -151,7 +151,7 @@ const MandatesItem = ({mandate, reverse}) =>{
                         width:'100%',
                         height:'100%',
                         minHeight:{xs: 0, md: '400px'},
-                        backgroundImage: `url(${process.env.REACT_APP_HOST}/read_image/${mandate.image?.replace(/%2f|%2F/g,'%252f')})`,
+                        backgroundImage: `url(${process.env.REACT_APP_HOST}/read_image/${mandate.image?.replace(/%2f|%2F/g,'%252F')})`,
                         backgroundPosition:'70%',
                         backgroundSize:'cover',
                         backgroundRepeat: 'no-repeat',

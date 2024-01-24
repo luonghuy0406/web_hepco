@@ -75,7 +75,7 @@ export default function PostItem({typePost}) {
                 sx={{ 
                     width: "100%", 
                     height: '400px', 
-                    backgroundImage: imageError ? 'url("/assets/no_image.jpeg")' : `url(${process.env.REACT_APP_HOST}/read_image/${data[0]?.image?.replace(/%2f|%2F/g,'%252f')})` ,
+                    backgroundImage: imageError ? 'url("/assets/no_image.jpeg")' : `url(${process.env.REACT_APP_HOST}/read_image/${data[0]?.image?.replace(/%2f|%2F/g,'%252F')})` ,
                     backgroundPosition:'center', 
                     backgroundSize:'cover',
                     backgroundRepeat:'no-repeat',
@@ -83,7 +83,7 @@ export default function PostItem({typePost}) {
                   }}
               >
                 <img
-                    src={`${process.env.REACT_APP_HOST}/read_image/${data[0]?.image?.replace(/%2f|%2F/g,'%252f')}`}
+                    src={`${process.env.REACT_APP_HOST}/read_image/${data[0]?.image?.replace(/%2f|%2F/g,'%252F')}`}
                     alt="Image"
                     onError={({ currentTarget }) => {
                         currentTarget.onerror = null; // prevents looping

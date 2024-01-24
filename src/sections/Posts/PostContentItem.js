@@ -47,9 +47,9 @@ export default function PostContentItem({post, categories, typePost, type}){
             <Link to={`/${type[typePost].path}/${normalizedTitle}.${post['id_'+typePost]}`}>
                 <FeaturedPosttWrap>
                     <LazyLoad height={200} offset={100}>
-                        <FeaturedPosttImage image={imageError ? '/assets/no_image.jpeg' :`${process.env.REACT_APP_HOST}/read_image/${post.image?.replace(/%2f|%2F/g,'%252f')}`}>
+                        <FeaturedPosttImage image={imageError ? '/assets/no_image.jpeg' :`${process.env.REACT_APP_HOST}/read_image/${post.image?.replace(/%2f|%2F/g,'%252F')}`}>
                             <img
-                                src={`${process.env.REACT_APP_HOST}/read_image/${post.image?.replace(/%2f|%2F/g,'%252f')}`}
+                                src={`${process.env.REACT_APP_HOST}/read_image/${post.image?.replace(/%2f|%2F/g,'%252F')}`}
                                 alt="Image replace"
                                 onError={({ currentTarget }) => {
                                     currentTarget.onerror = null; // prevents looping

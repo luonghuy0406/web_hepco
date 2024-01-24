@@ -60,7 +60,7 @@ export function BannerSlide({executeScroll,banner,info}){
                   width: "100%", 
                   height: {xs: '300px', sm: '400px', md:'550px', lg:'calc( 100vh - 10px )'}, 
                   maxHeight:'calc( 100vh - 10px )' , 
-                  backgroundImage: `url(${process.env.REACT_APP_HOST}/read_image/${banner.image?.replace(/%2f|%2F/g,'%252f')})`, 
+                  backgroundImage: `url(${process.env.REACT_APP_HOST}/read_image/${banner.image?.replace(/%2f|%2F/g,'%252F')})`, 
                   backgroundPosition:'center', 
                   backgroundSize:'cover',
                   backgroundRepeat:'no-repeat',

@@ -53,7 +53,7 @@ export default function PostRelated({data, typePost, categories,type}) {
                                                 component="img"
                                                 alt={related["name_"+currentLang] || related.name}
                                                 height="auto"
-                                                image={`${process.env.REACT_APP_HOST}/read_image/${related.image?.replace(/%2f|%2F/g,'%252f')}`}
+                                                image={`${process.env.REACT_APP_HOST}/read_image/${related.image?.replace(/%2f|%2F/g,'%252F')}`}
                                                 sx={{
                                                     flex: 1,
                                                     objectFit: 'cover'

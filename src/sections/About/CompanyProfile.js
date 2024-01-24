@@ -38,7 +38,7 @@ useEffect(()=>{
                         return (
                             <div className="page">
                                 <img 
-                                    src={`${process.env.REACT_APP_HOST}/read_image/${page.link?.replace(/%2f|%2F/g,'%252f')}`} 
+                                    src={`${process.env.REACT_APP_HOST}/read_image/${page.link?.replace(/%2f|%2F/g,'%252F')}`} 
                                     alt={'company profile page' + page.cre_date} 
                                     style={{width:'100%', height:'100%'}}
                                     onError={({ currentTarget }) => {
