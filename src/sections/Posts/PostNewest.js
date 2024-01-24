@@ -61,7 +61,7 @@ export default function PostNewest({typePost, categories,type}) {
                                                 component="img"
                                                 alt={newest["name_"+currentLang] || newest.name}
                                                 height="auto"
-                                                image={`${process.env.REACT_APP_HOST}/read_image/${newest.image}`}
+                                                image={`${process.env.REACT_APP_HOST}/read_image/${newest.image?.replace(/%2f|%2F/g,'%252f')}`}
                                                 sx={{
                                                     flex: 1,
                                                     objectFit: 'cover'

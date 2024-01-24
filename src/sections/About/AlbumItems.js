@@ -86,7 +86,7 @@ const AlbumItems = () => {
                                         component="img"
                                         alt={image?.["des_"+currentLang] || image?.des}
                                         height="auto"
-                                        image={`${process.env.REACT_APP_HOST}/read_image/${image.link}`}
+                                        image={`${process.env.REACT_APP_HOST}/read_image/${image.link?.replace(/%2f|%2F/g,'%252f')}`}
                                         sx={{flex: 1, objectFit: 'cover'}}
                                         onError={({ currentTarget }) => {
                                             currentTarget.onerror = null; // prevents looping

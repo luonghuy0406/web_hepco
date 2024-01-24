@@ -43,7 +43,7 @@ export default function CemeteryManagement({id}) {
                                 width:'100%',
                                 height:'100%',
                                 minHeight:{xs: 0, md: '400px'},
-                                backgroundImage: `url(${process.env.REACT_APP_HOST}/read_image/${data?.image})`,
+                                backgroundImage: `url(${process.env.REACT_APP_HOST}/read_image/${data?.image?.replace(/%2f|%2F/g,'%252f')})`,
                                 backgroundPosition:'70%',
                                 backgroundSize:'cover',
                                 backgroundRepeat: 'no-repeat',

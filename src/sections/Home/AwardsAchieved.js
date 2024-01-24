@@ -151,7 +151,7 @@ export const AdwardsAchieved = () => {
                                     position: 'relative'
                                 }}>
                                     <Box sx={{padding: theme.spacing(3), height: 'calc( 100% - 80px)', marginTop:'5px'}}>
-                                        <img  alt='logo' src={`${process.env.REACT_APP_HOST}/read_image/${award.image}`} width="100%"/>
+                                        <img  alt='logo' src={`${process.env.REACT_APP_HOST}/read_image/${award.image?.replace(/%2f|%2F/g,'%252f')}`} width="100%"/>
                                     </Box>
                                     <Box sx={{position:'absolute',marginBottom:'2px', left: 0, right: 0, bottom: 0, height:'80px', display:'flex', flexDirection:'column', justifyContent:'center'}}>
                                         <Typography className='ck-content' fontWeight={700} color={theme.color.white} dangerouslySetInnerHTML={{__html:award["name_"+currentLang] || award.name}}/>

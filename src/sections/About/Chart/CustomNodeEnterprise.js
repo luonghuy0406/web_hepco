@@ -43,7 +43,7 @@ function CustomNodeEnterprise({ data, isConnectable }) {
           data.value.image?.trim()?.length > 0 &&
           <Box
             sx={{
-                backgroundImage: `url(${process.env.REACT_APP_HOST}/read_image/${data.value.image})`,
+                backgroundImage: `url(${process.env.REACT_APP_HOST}/read_image/${data.value.image?.replace(/%2f|%2F/g,'%252f')})`,
                 backgroundPosition:'center',
                 backgroundSize:'cover',
                 backgroundRepeat: 'no-repeat',

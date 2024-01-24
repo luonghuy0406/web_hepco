@@ -291,7 +291,7 @@ export default function OurMission({mission,video, coreVal}) {
                                 <Box sx={{
                                     width:"100%", 
                                     height:"100%", 
-                                    backgroundImage:`url(${process.env.REACT_APP_HOST}/read_image/${data[0].image})`,
+                                    backgroundImage:`url(${process.env.REACT_APP_HOST}/read_image/${data[0].image?.replace(/%2f|%2F/g,'%252f')})`,
                                     backgroundPosition:'center',
                                     backgroundSize:'cover',
                                     backgroundRepeat:'no-repeat', 
@@ -302,7 +302,7 @@ export default function OurMission({mission,video, coreVal}) {
                                 <Box sx={{
                                     width:"100%", 
                                     height:{xs: "100%", md: "80%"}, 
-                                    backgroundImage:`url(${process.env.REACT_APP_HOST}/read_image/${data[1].image})`,
+                                    backgroundImage:`url(${process.env.REACT_APP_HOST}/read_image/${data[1].image?.replace(/%2f|%2F/g,'%252f')})`,
                                     backgroundPosition:'center',
                                     backgroundSize:'cover',
                                     backgroundRepeat:'no-repeat',

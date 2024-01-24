@@ -64,7 +64,7 @@ export default function OtherServices({id}) {
                                             sx={{
                                                 width:'100%',
                                                 minHeight:'200px',                                    
-                                                backgroundImage: `url(${process.env.REACT_APP_HOST}/read_image/${dataC.image})`,
+                                                backgroundImage: `url(${process.env.REACT_APP_HOST}/read_image/${dataC.image?.replace(/%2f|%2F/g,'%252f')})`,
                                                 backgroundPosition:'center',
                                                 backgroundSize:'cover',
                                                 backgroundRepeat: 'no-repeat',
