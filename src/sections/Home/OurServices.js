@@ -71,7 +71,7 @@ export function OurServices() {
                     <Box sx={{
                         p:theme.spacing(6),
                         backgroundImage:"url('/assets/images/service.png') !important",
-                        backgroundSize:"cover",
+                        backgroundSize:"contain",
                         backgroundPosition:"center",
                         backgroundRepeat:"no-repeat",
                         position:"relative",
@@ -140,18 +140,6 @@ const ServiceItem = ({data}) =>{
                         <Grid xs={12} >
                             <Typography variant='h5' className='text-service' textAlign="center" fontWeight={700} py={theme.spacing(2)} color={theme.color.white}>{data["name_"+currentLang] || data.name}</Typography>
                         </Grid>
-                        {/* <Grid xs={12} pb={theme.spacing(2)}>
-                            <Box
-                                sx={{
-                                    overflow: 'hidden',
-                                    display: '-webkit-box',
-                                    WebkitLineClamp: '4',
-                                    WebkitBoxOrient: 'vertical',
-                                }}
-                            >
-                                <Typography className='ck-content' textAlign={'justify'} fontWeight={500} color={theme.color.white} dangerouslySetInnerHTML={{__html: data["content_"+currentLang] || data.content}}/>
-                            </Box>
-                        </Grid> */}
                     </Grid>
                 </Box>
             </Link>

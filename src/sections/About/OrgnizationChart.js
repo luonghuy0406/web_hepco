@@ -19,34 +19,33 @@ const OrgnizationChart = ({data_chart}) => {
     return data_chart.filter((dt)=> dt.id_sharedtable == id)[0]
   }
   const initialNodes = [
-    { id: '43', type: 'nodeCus43', position: { x: -100, y: 0 }, data: { value: filterData('43') } },
-    { id: '44', type: 'nodeCus44', position: { x: -100, y: 150 }, data: { value: filterData('44') } },
-    { id: '45', type: 'nodeCus', position: { x: -100, y: 300 }, data: { value: filterData('45') } },
+    { draggable:false, id: '43', type: 'nodeCus43', position: { x: -100, y: 0 }, data: { value: filterData('43') } },
+    { draggable:false, id: '44', type: 'nodeCus44', position: { x: -100, y: 150 }, data: { value: filterData('44') } },
+    { draggable:false, id: '45', type: 'nodeCus', position: { x: -100, y: 300 }, data: { value: filterData('45') } },
 
-    { id: '46', type: 'nodeCus', position: { x: 400, y: 75 }, data: { value: filterData('46') } },
+    { draggable:false, id: '46', type: 'nodeCus', position: { x: 400, y: 75 }, data: { value: filterData('46') } },
 
-    { id: '47', type: 'nodeCusPlus', position: { x: -700, y: 500 }, data: { value: filterData('47') } },
-    { id: '48', type: 'nodeCusPlus', position: { x: -300, y: 500 }, data: { value: filterData('48') } },
-    { id: '49', type: 'nodeCusPlus', position: { x: 120, y: 500 }, data: { value: filterData('49') } },
-    { id: '50', type: 'nodeCusPlus', position: { x: 500, y: 500 }, data: { value: filterData('50') } },
-    { id: '51', type: 'nodeCusPlus', position: { x: 850, y: 500 }, data: { value: filterData('51') } },
-    { id: '52', type: 'nodeCusPlus', position: { x: -800, y: 620 }, data: { value: filterData('52') } },
+    { draggable:false, id: '47', type: 'nodeCusPlus', position: { x: -700, y: 500 }, data: { value: filterData('47') } },
+    { draggable:false, id: '48', type: 'nodeCusPlus', position: { x: -300, y: 500 }, data: { value: filterData('48') } },
+    { draggable:false, id: '49', type: 'nodeCusPlus', position: { x: 120, y: 500 }, data: { value: filterData('49') } },
+    { draggable:false, id: '50', type: 'nodeCusPlus', position: { x: 500, y: 500 }, data: { value: filterData('50') } },
+    { draggable:false, id: '51', type: 'nodeCusPlus', position: { x: 850, y: 500 }, data: { value: filterData('51') } },
+    { draggable:false, id: '52', type: 'nodeCusPlus', position: { x: -800, y: 620 }, data: { value: filterData('52') } },
 
-    { id: 'temp', type: 'nodeCusTemp', position: { x: 99, y: 650 }, data: { value: '' } },
+    { draggable:false, id: 'temp', type: 'nodeCusTemp', position: { x: 99, y: 650 }, data: { value: '' } },
 
-    { id: '53', type: 'nodeCusEnterprise', position: { x: -800, y: 750 }, data: { value: filterData('53') } },
-    { id: '54', type: 'nodeCusEnterprise', position: { x: -620, y: 750 }, data: { value: filterData('54') } },
-    { id: '55', type: 'nodeCusEnterprise', position: { x: -440, y: 750 }, data: { value: filterData('55') } },
-    { id: '56', type: 'nodeCusEnterprise', position: { x: -260, y: 750 }, data: { value: filterData('56') } },
-    { id: '57', type: 'nodeCusEnterprise', position: { x: -80, y: 750 }, data: { value: filterData('57') } },
-    { id: '58', type: 'nodeCusEnterprise', position: { x: 100, y: 750 }, data: { value: filterData('58') } },
-    { id: '59', type: 'nodeCusEnterprise', position: { x: 280, y: 750 }, data: { value: filterData('59') } },
-    { id: '60', type: 'nodeCusEnterprise', position: { x: 460, y: 750 }, data: { value: filterData('60') } },
-    { id: '61', type: 'nodeCusEnterprise', position: { x: 640, y: 750 }, data: { value: filterData('61') } },
-    { id: '62', type: 'nodeCusEnterprise', position: { x: 820, y: 750 }, data: { value: filterData('62') } },
-    { id: '63', type: 'nodeCusEnterprise', position: { x: 1000, y: 750 }, data: { value: filterData('63') } },
-    { id: '64', type: 'nodeCusEnterprise', position: { x: 1180, y: 750 }, data: { value: filterData('64') } },
-    // { id: '65', type: 'nodeCusEnterprise', position: { x: 1000, y: 750 }, data: { value: filterData('65') } },
+    { draggable:false, id: '53', type: 'nodeCusEnterprise', position: { x: -800, y: 750 }, data: { value: filterData('53') } },
+    { draggable:false, id: '54', type: 'nodeCusEnterprise', position: { x: -620, y: 750 }, data: { value: filterData('54') } },
+    { draggable:false, id: '55', type: 'nodeCusEnterprise', position: { x: -440, y: 750 }, data: { value: filterData('55') } },
+    { draggable:false, id: '56', type: 'nodeCusEnterprise', position: { x: -260, y: 750 }, data: { value: filterData('56') } },
+    { draggable:false, id: '57', type: 'nodeCusEnterprise', position: { x: -80, y: 750 }, data: { value: filterData('57') } },
+    { draggable:false, id: '58', type: 'nodeCusEnterprise', position: { x: 100, y: 750 }, data: { value: filterData('58') } },
+    { draggable:false, id: '59', type: 'nodeCusEnterprise', position: { x: 280, y: 750 }, data: { value: filterData('59') } },
+    { draggable:false, id: '60', type: 'nodeCusEnterprise', position: { x: 460, y: 750 }, data: { value: filterData('60') } },
+    { draggable:false, id: '61', type: 'nodeCusEnterprise', position: { x: 640, y: 750 }, data: { value: filterData('61') } },
+    { draggable:false, id: '62', type: 'nodeCusEnterprise', position: { x: 820, y: 750 }, data: { value: filterData('62') } },
+    { draggable:false, id: '63', type: 'nodeCusEnterprise', position: { x: 1000, y: 750 }, data: { value: filterData('63') } },
+    { draggable:false, id: '64', type: 'nodeCusEnterprise', position: { x: 1180, y: 750 }, data: { value: filterData('64') } },
     
   ]
   const initialEdges = [
@@ -548,9 +547,14 @@ const OrgnizationChart = ({data_chart}) => {
           selectNodesOnDrag={false}
           nodeTypes={nodeTypes}
         >
-          <Box xs={{zIndex:1,background:theme.color.white}}>
+          <Box sx={{zIndex:1,background:theme.color.white}}>
             <label className='line1' style={{display:'flex',alignItems:'center', color:'var(--green4)'}}>{t('Quan hệ trực tuyến')}</label>
             <label className='line2' style={{display:'flex',alignItems:'center', color:'var(--green4)'}}>{t('Quan hệ chức năng')}</label>
+          </Box>
+          <Box
+            sx={{position:'absolute',bottom:0,left:0,background:'#E0F4E5',width:'100px',height:'50px',zIndex:'9'}}
+          >
+
           </Box>
         </ReactFlow>
       </Box>
