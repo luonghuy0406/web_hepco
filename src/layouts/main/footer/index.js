@@ -149,16 +149,16 @@ export default function Footer({company_data}){
             </Container>
             <Container maxWidth='100%' sx={{padding:theme.spacing(2), pt: theme.spacing(10), fontSize:'14px', color:theme.color.white, display:'flex', justifyContent:'space-between'}}>
                 <Grid container>
-                    <Grid item xs={4} alignItems={"center"}>
-                        <Typography fontSize='14px' textAlign={"left"} color={theme.color.white}>{company_data[8]?.["data_"+currentLang] || company_data[8].data}</Typography>
+                    <Grid item xs={12} md={4} alignItems={"center"}>
+                        <Typography fontSize='14px' textAlign={{xs:"center",md: "left"}} color={theme.color.white}>{company_data[8]?.["data_"+currentLang] || company_data[8].data}</Typography>
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={12} md={4}>
                         <Box onClick={()=>{window.open('https://www.facebook.com/flyaz.vn', '_blank').focus()}} sx={{display:'flex',alignItems:'center', justifyContent:'center', cursor:'pointer'}}>
                             {t('Thiết kế và xây dựng bởi')} <img style={{paddingLeft:'5px'}} src='/assets/flyaz_white.png' alt='logo flyaz' width={'auto'} height={'30'}/>
                         </Box>
                     </Grid>
-                    <Grid item xs={4}>
-                        <Typography fontSize='14px' textAlign={"right"} color={theme.color.white}>{t('Copyright 2023 © CÔNG TY CỔ PHẦN MÔI TRƯỜNG VÀ CÔNG TRÌNH ĐÔ THỊ HUẾ - HEPCO')}</Typography>
+                    <Grid item xs={12} md={4}>
+                        <Typography fontSize='14px' textAlign={{xs:"center",md: "right"}} color={theme.color.white}>{t('Copyright 2023 © CÔNG TY CỔ PHẦN MÔI TRƯỜNG VÀ CÔNG TRÌNH ĐÔ THỊ HUẾ - HEPCO')}</Typography>
                     </Grid>
                 </Grid>
             </Container>
