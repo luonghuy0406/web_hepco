@@ -181,34 +181,34 @@ const Info = ({info}) =>{
   return(
     <Grid ref={ref} container sx={{zIndex:1, alignItems:'center', justifyContent:'center', position: 'absolute', bottom: '0', left: '0', right: '0', padding: theme.spacing(2)}} direction={"row"}>
           <Grid item xs={3}>
-              <Typography sx={{transition:"ease-in 0.1s", fontSize: {xs: '1.5rem', md:'2rem'}}} variant="h4"  fontWeight={700} color={theme.color.white} textAlign={"center"}>
+              <Typography sx={{transition:"ease-in 0.1s", fontSize: {xs: '1.3rem', md:'2rem'}}} variant="h4"  fontWeight={700} color={theme.color.white} textAlign={"center"}>
               {years}+
               </Typography>
-              <Typography variant="h6" fontWeight={700} sx={{transition:"ease-in 0.1s", fontSize: {xs: '0.8rem', md:'1.5rem'}}} color={theme.color.white} textAlign={"center"}>
+              <Typography variant="h6" fontWeight={700} sx={{transition:"ease-in 0.1s", fontSize: {xs: '0.6rem', md:'1.5rem'}}} color={theme.color.white} textAlign={"center"}>
                   {t("Năm kinh nghiệm")}
               </Typography>
           </Grid>
           <Grid item xs={3}>
-              <Typography sx={{transition:"ease-in 0.1s", fontSize: {xs: '1.5rem', md:'2rem'}}} variant="h4"  fontWeight={700} color={theme.color.white} textAlign={"center"}>
+              <Typography sx={{transition:"ease-in 0.1s", fontSize: {xs: '1.3rem', md:'2rem'}}} variant="h4"  fontWeight={700} color={theme.color.white} textAlign={"center"}>
                   {projects}+
               </Typography>
-              <Typography variant="h6" fontWeight={700} sx={{transition:"ease-in 0.1s", fontSize: {xs: '0.8rem', md:'1.5rem'}}} color={theme.color.white} textAlign={"center"}>
+              <Typography variant="h6" fontWeight={700} sx={{transition:"ease-in 0.1s", fontSize: {xs: '0.6rem', md:'1.5rem'}}} color={theme.color.white} textAlign={"center"}>
                   {t("Dự án")} 
               </Typography>
           </Grid>
           <Grid item xs={3}>
-              <Typography sx={{transition:"ease-in 0.1s", fontSize: {xs: '1.5rem', md:'2rem'}}} variant="h4"  fontWeight={700} color={theme.color.white} textAlign={"center"}>
+              <Typography sx={{transition:"ease-in 0.1s", fontSize: {xs: '1.3rem', md:'2rem'}}} variant="h4"  fontWeight={700} color={theme.color.white} textAlign={"center"}>
                   {customers}+
               </Typography>
-              <Typography variant="h6" fontWeight={700} sx={{transition:"ease-in 0.1s", fontSize: {xs: '0.8rem', md:'1.5rem'}}} color={theme.color.white} textAlign={"center"}>
+              <Typography variant="h6" fontWeight={700} sx={{transition:"ease-in 0.1s", fontSize: {xs: '0.6rem', md:'1.5rem'}}} color={theme.color.white} textAlign={"center"}>
                   {t("Khách hàng")}
               </Typography>
           </Grid>
           <Grid item xs={3}>
-              <Typography sx={{transition:"ease-in 0.1s", fontSize: {xs: '1.5rem', md:'2rem'}}} variant="h4"  fontWeight={700} color={theme.color.white} textAlign={"center"}>
+              <Typography sx={{transition:"ease-in 0.1s", fontSize: {xs: '1.3rem', md:'2rem'}}} variant="h4"  fontWeight={700} color={theme.color.white} textAlign={"center"}>
                   {members}+
               </Typography>
-              <Typography variant="h6" fontWeight={700} sx={{transition:"ease-in 0.1s", fontSize: {xs: '0.8rem', md:'1.5rem'}}} color={theme.color.white} textAlign={"center"}>
+              <Typography variant="h6" fontWeight={700} sx={{transition:"ease-in 0.1s", fontSize: {xs: '0.6rem', md:'1.5rem'}}} color={theme.color.white} textAlign={"center"}>
                   {t("Nhân sự")}
               </Typography>
           </Grid>

@@ -188,13 +188,6 @@ const CoreValuestWrap = styled(Box)(({ theme }) => ({
     
   }));
 
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    border: 'unset'
-  };
 
 export default function OurMission({mission,video, coreVal}) {
     const {t, i18n} = useTranslation()
@@ -207,7 +200,6 @@ export default function OurMission({mission,video, coreVal}) {
     const missonRef = useRef(null)
     const videoLink = video?.data
     const data = mission
-
     const { ref, inView } = useInView({
         /* Optional options */
         threshold: 0,
@@ -325,15 +317,23 @@ export default function OurMission({mission,video, coreVal}) {
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
         >
-            <Box sx={style}>
+            <Box sx={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                border: 'unset',
+                width:'100%',
+                height:600
+            }}>
             <iframe
-                width={900}
-                height={600}
+                // width={900}
+                // height={600}
+                style={{width:'100%',height:'100%'}}
                 src={videoLink}
-                title="THẦM LẶNG NỮ CÔNG NHÂN VỆ SINH MÔI TRƯỜNG"
                 frameBorder={0}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen=""
+                allowFullScreen={true}
             />
 
             </Box>

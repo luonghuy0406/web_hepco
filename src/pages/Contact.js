@@ -119,8 +119,8 @@ export default function Contact({data}) {
       />
       <Container maxWidth='xl'>
         <Grid container spacing={3} pb={5} pt={15}>
-          <Grid item xs={6}>
-            <Box sx={{padding: theme.spacing(2), width: "100%", height:"100%"}}>
+          <Grid item xs={12} md={6}>
+            <Box sx={{padding: theme.spacing(2), width: "100%", height:"100%", minHeight:'400px'}}>
               <iframe 
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3826.4181314318234!2d107.588855975588!3d16.45435218428236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3141a146b5a816c7%3A0xada6cb22654e37cc!2sHepco%20Inc!5e0!3m2!1sen!2s!4v1698745881314!5m2!1sen!2s" 
                   width="100%" 
@@ -133,7 +133,7 @@ export default function Contact({data}) {
               />
             </Box>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <Box sx={{backgroundColor:'#fafafa', padding: theme.spacing(5), borderRadius: "10px"}}>
               <Grid container spacing={4}>
               <Grid item xs={12}>
@@ -200,7 +200,7 @@ export default function Contact({data}) {
           </Grid>
         </Grid>
         <Grid container spacing={3} pt={5} pb={15}>
-          <Grid item xs={6} md={3} >
+          <Grid item xs={12} md={3} >
             <Box className='our-mission-wrap' sx={{width: "100%", height: "300px", backgroundColor:"#fafafa", borderRadius:"10px", padding: theme.spacing(4), display:'flex', alignItems:"center",flexDirection:"column"}}>
                 <Box
                   sx={{
@@ -220,7 +220,7 @@ export default function Contact({data}) {
                 <Typography textAlign="center" fontWeight={500}>{info?.[6].data}</Typography>
             </Box>
           </Grid>
-          <Grid item xs={6} md={3} >
+          <Grid item xs={12} md={3} >
             <Box className='our-mission-wrap' sx={{width: "100%", height: "300px", backgroundColor:"#fafafa", borderRadius:"10px", padding: theme.spacing(4), display:'flex', alignItems:"center",flexDirection:"column"}}>
               <Box
                   sx={{
@@ -239,7 +239,7 @@ export default function Contact({data}) {
                 <Typography textAlign="center" fontWeight={500}>{info?.[10].data}</Typography>
             </Box>
           </Grid>
-          <Grid item xs={6} md={3} >
+          <Grid item xs={12} md={3} >
             <Box className='our-mission-wrap' sx={{width: "100%", height: "300px", backgroundColor:"#fafafa", borderRadius:"10px", padding: theme.spacing(4), display:'flex', alignItems:"center",flexDirection:"column"}}>
             <Box
                   sx={{
@@ -258,7 +258,7 @@ export default function Contact({data}) {
                 <Typography textAlign="center" fontWeight={500} dangerouslySetInnerHTML={{__html: info?.[9]["data_"+currentLang] || info?.[9]?.data}}></Typography>
             </Box>
           </Grid>
-          <Grid item xs={6} md={3} >
+          <Grid item xs={12} md={3} >
             <Box className='our-mission-wrap' sx={{width: "100%", height: "300px", backgroundColor:"#fafafa", borderRadius:"10px", padding: theme.spacing(4), display:'flex', alignItems:"center",flexDirection:"column"}}>
               <Box
                   sx={{

@@ -107,7 +107,7 @@ export default function PostContentItem({post, categories, typePost, type}){
                             <Grid item xs={12}>
                                 <Box 
                                     className='ck-content' 
-                                    dangerouslySetInnerHTML={{__html:post["content_"+currentLang] || post.content}} 
+                                    dangerouslySetInnerHTML={{__html:post["content_"+currentLang]?.slice(0,150) || post.content?.slice(0,150)}} 
                                     sx={{overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical'}}
                                 />
                             </Grid>
