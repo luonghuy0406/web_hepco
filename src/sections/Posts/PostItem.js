@@ -32,11 +32,10 @@ export default function PostItem({typePost}) {
         '9': {path: t("nuocngoai"),name: t('Hợp tác nước ngoài'), value:'9'}
     }
     const type = {
-        'post' : {path: t('tintuc'), name : t("Tin tức")},
-        'project' : {path: t('duan'), name : t("Dự án")},
-        'shareholder' : {path: t('codong'), name : t("Cổ đông")},
+        'post' : {image: '/assets/tintuc.png',path: t('tintuc'), name : t("Tin tức")},
+        'project' : {image: '/assets/duan.png',path: t('duan'), name : t("Dự án")},
+        'shareholder' : {image: '/assets/codong.png',path: t('codong'), name : t("Cổ đông")},
     } 
-    
     const [data,setData] = useState()
     useEffect(()=>{
         fetch(`${process.env.REACT_APP_HOST}/${typePost}/detail/${idPart}`)
@@ -62,7 +61,7 @@ export default function PostItem({typePost}) {
         <Helmet>
           <title>{t("HEPCO - CÔNG TY CỔ PHẦN MÔI TRƯỜNG VÀ CÔNG TRÌNH ĐÔ THỊ HUẾ")} </title>
         </Helmet>
-      <Banner name={''} image={'/assets/images/bg4.jpg'} path={`/`} pages={[]}/>
+      <Banner name={''} image={type[typePost].image} path={`/`} pages={[]}/>
       <Container 
             maxWidth={'xl'} 
             sx={{
