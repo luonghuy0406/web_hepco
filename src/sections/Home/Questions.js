@@ -100,11 +100,11 @@ export function Questions() {
   const {t, i18n} = useTranslation()
   const currentLang = i18n.language == 'en' ? 'en' : ''
 
-  const { ref, inView } = useInView({
-    /* Optional options */
-    threshold: 0,
-    deplay: 300
-  });
+//   const { ref, inView } = useInView({
+//     /* Optional options */
+//     threshold: 0,
+//     deplay: 300
+//   });
   const theme= useTheme()
   const questionsRef = useRef(null) 
   const formQuesRef = useRef(null)
@@ -176,16 +176,16 @@ export function Questions() {
  
     
 
-  useEffect(() => {
-    if(inView){
-        if (questionsRef.current) {
-            questionsRef.current.classList.add('animate__animated','animate__rotateInDownLeft');
-        }
-        if (formQuesRef.current) {
-            formQuesRef.current.classList.add('animate__animated','animate__rotateInDownRight');
-        }
-    }
-  }, [inView])
+//   useEffect(() => {
+//     if(inView){
+//         if (questionsRef.current) {
+//             questionsRef.current.classList.add('animate__animated','animate__rotateInDownLeft');
+//         }
+//         if (formQuesRef.current) {
+//             formQuesRef.current.classList.add('animate__animated','animate__rotateInDownRight');
+//         }
+//     }
+//   }, [inView])
   
   useEffect(()=>{
     fetch(`${process.env.REACT_APP_HOST}/qna/highlight`)
@@ -214,7 +214,7 @@ export function Questions() {
           }}>
             <Box >
                 <Container maxWidth='xl'>
-                    <StyledTypography ref={ref} variant="h4" color={theme.color.white} fontWeight="bold" py={theme.spacing(10)} pb={theme.spacing(15)}>
+                    <StyledTypography variant="h4" color={theme.color.white} fontWeight="bold" py={theme.spacing(10)} pb={theme.spacing(15)}>
                         {t('Câu hỏi')}
                     </StyledTypography>
                     <Grid container>
@@ -237,7 +237,7 @@ export function Questions() {
                             >
                                 <Grid container spacing={4}>
                                     <Grid item xs={12}>
-                                        <Typography ref={ref} variant='h5' color={theme.color.black} fontWeight={700} textAlign="center">
+                                        <Typography variant='h5' color={theme.color.black} fontWeight={700} textAlign="center">
                                             {t('Câu hỏi thường gặp')}
                                         </Typography>
 

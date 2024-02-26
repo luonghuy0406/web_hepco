@@ -118,28 +118,28 @@ const QuestionItem = ({index, q})=>{
   const currentLang = i18n.language == 'en' ? 'en' : ''
   const theme = useTheme()
   const item = useRef(null)
-    const { ref, inView } = useInView({
-        threshold: 0,
-        deplay: 300
-    });
-    useEffect(() => {
-        if(inView){
-            if (item.current) {
-              if(index%2==0){
-                item.current.classList.add('animate__animated','animate__fadeInLeft')
-              }else{
-                item.current.classList.add('animate__animated','animate__fadeInRight')
-              }
-            }
-        }
-    }, [inView])
+    // const { ref, inView } = useInView({
+    //     threshold: 0,
+    //     deplay: 300
+    // });
+    // useEffect(() => {
+    //     if(inView){
+    //         if (item.current) {
+    //           if(index%2==0){
+    //             item.current.classList.add('animate__animated','animate__fadeInLeft')
+    //           }else{
+    //             item.current.classList.add('animate__animated','animate__fadeInRight')
+    //           }
+    //         }
+    //     }
+    // }, [inView])
   return(
     <Grid item xs={12} md={6}>
       <Box
         ref={item}
         sx={{border: '1px solid #eee',height: '100%',borderRadius: '5px', padding: theme.spacing(3)}}
       >
-        <Typography variant='h5' fontWeight={700} pb={theme.spacing(2)} ref={ref}>
+        <Typography variant='h5' fontWeight={700} pb={theme.spacing(2)} >
           {q["question_"+currentLang] || q.question}
         </Typography>
         <Typography px={theme.spacing(1)} className='ck-content' dangerouslySetInnerHTML={{__html: q["answer_"+currentLang] || q.answer}}/>

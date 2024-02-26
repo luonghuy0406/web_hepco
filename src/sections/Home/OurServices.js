@@ -33,21 +33,22 @@ export function OurServices() {
     const serviceImageRef = useRef(null)
     const serviceContentRef = useRef(null)
     const [serviceData, setServiceData] = useState([]) 
-    const { ref, inView } = useInView({
-        /* Optional options */
-        threshold: 0,
-        deplay: 1000
-    });
-    useEffect(() => {
-        if(inView){
-            if (serviceImageRef.current) {
-                serviceImageRef.current.classList.add('animate__animated','animate__fadeInLeft');
-            }
-            if (serviceContentRef.current) {
-                serviceContentRef.current.classList.add('animate__animated','animate__fadeInRight');
-            }
-        }
-    }, [inView])
+    
+    // const { ref, inView } = useInView({
+    //     /* Optional options */
+    //     threshold: 0,
+    //     deplay: 1000
+    // });
+    // useEffect(() => {
+    //     if(inView){
+    //         if (serviceImageRef.current) {
+    //             serviceImageRef.current.classList.add('animate__animated','animate__fadeInLeft');
+    //         }
+    //         if (serviceContentRef.current) {
+    //             serviceContentRef.current.classList.add('animate__animated','animate__fadeInRight');
+    //         }
+    //     }
+    // }, [inView])
     
     useEffect(()=>{
         fetch(`${process.env.REACT_APP_HOST}/service/list`)
@@ -58,6 +59,9 @@ export function OurServices() {
         })
         .catch(error => console.log('error', error));
     },[])
+    if(serviceData.length == 0){
+        return <></>
+    }
   return (  
     <Box
     sx={{
@@ -77,11 +81,12 @@ export function OurServices() {
                         position:"relative",
                         height:"100%",
                         minHeight:"400px",
-                        borderRadius: "10px"
+                        borderRadius: "10px",
+                        objectFit:'cover'
                     }}/>
                 </Grid>
                 <Grid ref={serviceContentRef} item conntainer xs={12} md={0} lg={8} sx={{position:'relative',p:theme.spacing(3)}}>
-                    <StyledTypography ref={ref} variant='h4'>
+                    <StyledTypography variant='h4'>
                         {t('Dịch vụ của chúng tôi')}
                     </StyledTypography>
                     <Box>
@@ -130,6 +135,7 @@ const ServiceItem = ({data}) =>{
                         display: "flex", 
                         alignItems: "flex-end",
                         minHeight: "350px",
+                        objectFit:'cover',
                         "&:hover" : {
                             backgroundImage : `linear-gradient(0deg, #f48123 0%, rgba(9,9,121,0.1) 70%, rgba(0,212,255,0)), url("${process.env.REACT_APP_HOST}/read_image/${data.image?.replace(/%2f|%2F/g,'%252F')}")`
                         }

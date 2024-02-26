@@ -105,18 +105,18 @@ const type = {
     'shareholder' : {path: t('codong'), name : t("Cổ đông")},
 } 
   const newsRef = useRef(null)
-  const { ref, inView } = useInView({
-      /* Optional options */
-      threshold: 0,
-      deplay: 1000
-  });
-  useEffect(() => {
-      if(inView){
-          if (newsRef.current) {
-              newsRef.current.classList.add('animate__animated','animate__fadeInDown');
-          }
-      }
-  }, [inView]);
+  // const { ref, inView } = useInView({
+  //     /* Optional options */
+  //     threshold: 0,
+  //     deplay: 1000
+  // });
+  // useEffect(() => {
+  //     if(inView){
+  //         if (newsRef.current) {
+  //             newsRef.current.classList.add('animate__animated','animate__fadeInDown');
+  //         }
+  //     }
+  // }, [inView]);
   useEffect(()=>{
     fetch(`${process.env.REACT_APP_HOST}/post/highlight`)
     .then(response => response.text())
@@ -139,7 +139,7 @@ const type = {
           }}>
             <StyledContainer>
               <Grid container >
-                    <StyledTypography ref={ref} variant="h4" color={theme.color.black} fontWeight="bold" pb={theme.spacing(5)}>
+                    <StyledTypography variant="h4" color={theme.color.black} fontWeight="bold" pb={theme.spacing(5)}>
                         {t('Tin tức nổi bật')}
                     </StyledTypography>
                     <StyledGrid container ref={newsRef} spacing={2} sx={{justifyContent:'center', padding: theme.spacing(2)}}>

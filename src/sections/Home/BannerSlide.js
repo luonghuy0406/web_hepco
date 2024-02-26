@@ -3,12 +3,10 @@ import "react-multi-carousel/lib/styles.css";
 import 'animate.css';
 import { Box, Grid, Typography } from "@mui/material"; 
 import { useTheme } from "@emotion/react";
-import LazyLoad from 'react-lazyload';
 import { useEffect, useState } from "react";
-import { useInView } from "react-intersection-observer";
 import { useTranslation } from "react-i18next";
 
-export function BannerSlide({executeScroll,banner,info}){
+export function BannerSlide({banner,info}){
   
   const {t, i18n} = useTranslation()
   const currentLang = i18n.language == 'en' ? 'en' : ''
@@ -55,14 +53,14 @@ export function BannerSlide({executeScroll,banner,info}){
       >
         {dataBanner.map((banner, index) => {
           return (
-            <LazyLoad height={200} offset={100} key={'banner-slide'+index}>
-              <Box sx={{ 
+              <Box key={'banner-slide'+index} sx={{ 
                   width: "100%", 
                   height: {xs: '300px', sm: '400px', md:'550px', lg:'calc( 100vh - 10px )'}, 
                   maxHeight:'calc( 100vh - 10px )' , 
                   backgroundImage: `url(${process.env.REACT_APP_HOST}/read_image/${banner.image?.replace(/%2f|%2F/g,'%252F')})`, 
                   backgroundPosition:'center', 
                   backgroundSize:'cover',
+                  objectFit: "cover",
                   backgroundRepeat:'no-repeat',
                   '&:before' : {
                     content: '""',
@@ -99,7 +97,6 @@ export function BannerSlide({executeScroll,banner,info}){
                     }
                 </Grid>
               </Box>
-            </LazyLoad>
           );
         })}
       </Carousel>
@@ -115,22 +112,23 @@ const Info = ({info}) =>{
   const [projects, setProjects] = useState(0)
   const [customers, setCustomers] = useState(0)
   const [members, setMembers] = useState(0)
-  const { ref, inView, entry } = useInView({
-    /* Optional options */
-    threshold: 0,
-    deplay: 100
-  });
-  useEffect(() => {
-    setYears(0)
-    setProjects(0)
-    setCustomers(0)
-    setMembers(0)
-  }, [inView])
+  // const { ref, inView, entry } = useInView({
+  //   /* Optional options */
+  //   threshold: 0,
+  //   deplay: 100
+  // });
+  // useEffect(() => {
+  //   setYears(0)
+  //   setProjects(0)
+  //   setCustomers(0)
+  //   setMembers(0)
+  // }, [inView])
   useEffect(() => {
     const timer = setInterval(() => {
       if (years < info[0].data) {
-        setYears(years + 1);
+        setYears(years + 5);
       } else {
+        setYears(info[0].data)
         clearInterval(timer);
       }
     }, info[0].data/1000);
@@ -142,8 +140,9 @@ const Info = ({info}) =>{
   useEffect(() => {
     const timer = setInterval(() => {
       if (projects < info[1].data) {
-        setProjects(projects + 1);
+        setProjects(projects + 10);
       } else {
+        setProjects(info[2].data)
         clearInterval(timer);
       }
     }, info[1].data/1000);
@@ -155,8 +154,9 @@ const Info = ({info}) =>{
   useEffect(() => {
     const timer = setInterval(() => {
       if (customers < info[2].data) {
-        setCustomers(customers + 1);
+        setCustomers(customers + 20);
       } else {
+        setCustomers(info[2].data)
         clearInterval(timer);
       }
     }, info[2].data/1000);
@@ -168,8 +168,9 @@ const Info = ({info}) =>{
   useEffect(() => {
     const timer = setInterval(() => {
       if (members < info[3].data) {
-        setMembers(members + 1);
+        setMembers(members + 20);
       } else {
+        setMembers(info[3].data)
         clearInterval(timer);
       }
     }, info[3].data/1000);
@@ -179,7 +180,21 @@ const Info = ({info}) =>{
     };
   }, [members])
   return(
-    <Grid ref={ref} container sx={{zIndex:1, alignItems:'center', justifyContent:'center', position: 'absolute', bottom: '0', left: '0', right: '0', padding: theme.spacing(2)}} direction={"row"}>
+    <Grid 
+      container 
+      sx={{
+        zIndex:1, 
+        alignItems:'center', 
+        justifyContent:'center', 
+        position: 'absolute', 
+        bottom: '0', 
+        left: '0', 
+        right: '0', 
+        padding: theme.spacing(2),
+        background: 'rgb(0,0,0)',
+        background: 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(2,78,50,0.7371323529411764) 100%)'
+
+      }} direction={"row"}>
           <Grid item xs={3}>
               <Typography sx={{transition:"ease-in 0.1s", fontSize: {xs: '1.3rem', md:'2rem'}}} variant="h4"  fontWeight={700} color={theme.color.white} textAlign={"center"}>
               {years}+

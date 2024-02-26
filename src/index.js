@@ -47,6 +47,7 @@ const Main = () => {
 
         // You can further process the data if needed
         setData({ banner, company_data, mission, video, coreVal, chart });
+        window.data = { banner, company_data, mission, video, coreVal, chart }
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
@@ -66,11 +67,10 @@ const Main = () => {
     );
   }
 
-  if (!data || !data.company_data) {
+  if (!data || !data.company_data || !window.data) {
     console.error('Invalid data structure:', data);
     return null; // or display an error message
   }
-
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />

@@ -15,16 +15,16 @@ const LayoutContainer = styled('div')({
   width: '100%'
 });
 
-export default function MainLayout({data}) {
+export default function MainLayout() {
     return (
       <>
-      <Header company_data={data.company_data}/>
+      <Header/>
       <LayoutRoot>
           <LayoutContainer>
             <Outlet />
           </LayoutContainer>
         </LayoutRoot>
-        <Footer company_data={data.company_data}/>
+        <Footer/>
       </>
     );
   }

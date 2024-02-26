@@ -116,31 +116,31 @@ const MandatesItem = ({mandate, reverse}) =>{
     const item1 = useRef(null)
     const item2 = useRef(null)
     
-    const { ref, inView } = useInView({
-        /* Optional options */
-        threshold: 0,
-        deplay: 300
-    });
+    // const { ref, inView } = useInView({
+    //     /* Optional options */
+    //     threshold: 0,
+    //     deplay: 300
+    // });
     
-    useEffect(() => {
-        if(inView){
-            if(reverse){
-                if (item1.current) {
-                    item1.current.classList.add('animate__animated','animate__fadeInRight')
-                }
-                if (item2.current) {
-                    item2.current.classList.add('animate__animated','animate__fadeInLeft')
-                }
-            }else{
-                if (item1.current) {
-                    item1.current.classList.add('animate__animated','animate__fadeInLeft')
-                }
-                if (item2.current) {
-                    item2.current.classList.add('animate__animated','animate__fadeInRight')
-                }
-            }
-        }
-    }, [inView]);
+    // useEffect(() => {
+    //     if(inView){
+    //         if(reverse){
+    //             if (item1.current) {
+    //                 item1.current.classList.add('animate__animated','animate__fadeInRight')
+    //             }
+    //             if (item2.current) {
+    //                 item2.current.classList.add('animate__animated','animate__fadeInLeft')
+    //             }
+    //         }else{
+    //             if (item1.current) {
+    //                 item1.current.classList.add('animate__animated','animate__fadeInLeft')
+    //             }
+    //             if (item2.current) {
+    //                 item2.current.classList.add('animate__animated','animate__fadeInRight')
+    //             }
+    //         }
+    //     }
+    // }, [inView]);
     
     return(
         <Grid item xs={12} container spacing={2} sx={{marginBottom:theme.spacing(4), flexDirection: reverse ? "row-reverse" : "row"}}>
@@ -161,7 +161,7 @@ const MandatesItem = ({mandate, reverse}) =>{
             </Grid>
             <Grid item xs={12} md={6} ref={item2}>
                 <Box sx={{padding: theme.spacing(2)}} >
-                    <Typography ref={ref} sx={{marginBottom:theme.spacing(3)}} variant='h5' fontWeight={700} color={theme.color.green1}>{mandate?.["name_"+currentLang] || mandate?.name}</Typography>
+                    <Typography sx={{marginBottom:theme.spacing(3)}} variant='h5' fontWeight={700} color={theme.color.green1}>{mandate?.["name_"+currentLang] || mandate?.name}</Typography>
                     <Box className='ck-content' dangerouslySetInnerHTML={{__html:mandate?.["content_"+currentLang] || mandate?.content}}/>
                             
                 </Box>

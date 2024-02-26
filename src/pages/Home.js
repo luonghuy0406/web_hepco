@@ -11,18 +11,20 @@ import { AdwardsAchieved } from "../sections/Home/AwardsAchieved";
 import { Questions } from "../sections/Home/Questions";
 import { useTranslation } from "react-i18next";
 
-const Home = ({data}) => {
+const Home = () => {
+  const data = window.data
   const myRef = useRef(null)
   const {t} = useTranslation()
   window.scrollTo(0, 0);
-  const executeScroll = () => myRef.current.scrollIntoView()  
+  // const executeScroll = () => myRef.current.scrollIntoView()  
   return (
     <Box>
       <Helmet>
           <title> {t("Trang chủ")} | {t("HEPCO - CÔNG TY CỔ PHẦN MÔI TRƯỜNG VÀ CÔNG TRÌNH ĐÔ THỊ HUẾ")} </title>
       </Helmet>
-      <BannerSlide executeScroll={executeScroll} banner={data.banner} info={data.company_data}/>
-      <Box ref={myRef}>
+      <BannerSlide banner={data.banner} info={data.company_data.data}/>
+      {/* <Box ref={myRef}> */}
+      <Box>
         <OurMission mission={data.mission} video={data.video} coreVal={data.coreVal}/>
         <OurServices/>
         <News/>

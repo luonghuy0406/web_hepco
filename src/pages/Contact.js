@@ -35,14 +35,14 @@ const CustomizedButton = styled(Button)(({ theme }) => ({
       // boxShadow: `0 0 0 3px rgba(0, 123, 255, 0.3)`, // Add a custom focus border
   },
 }));
-export default function Contact({data}) {
-  
+export default function Contact() {
+  const data = window.data
   const {t,i18n} = useTranslation()
   const currentLang = i18n.language == 'en' ? 'en' : ''
   const theme = useTheme()
   const pages = []
   window.scrollTo(0, 0);
-  const info = data.company_data
+  const info = data.company_data.data
 
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [sbContent, setSbContent] = useState({type:"info", content:t("Đang gửi email")})

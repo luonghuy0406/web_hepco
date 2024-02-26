@@ -54,7 +54,8 @@ const InvoiceBox = styled('div')(({ theme, sticky }) => ({
   },
 }));
 
-export default function Header({company_data}) {
+export default function Header() {
+    const company_data=window.data.company_data.data
     const {t} = useTranslation()
     const [openRight, setOpenRight] = useState(false);
     const toggleDrawer = (open) => (event) => {setOpenRight(open);};

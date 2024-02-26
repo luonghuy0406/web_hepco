@@ -44,11 +44,11 @@ export const AdwardsAchieved = () => {
   const awardData = achieveData?.slice(3) || []
   
   const awardsRef = useRef(null)
-  const { ref, inView } = useInView({
-      /* Optional options */
-      threshold: 0,
-      deplay: 1000
-  });
+//   const { ref, inView } = useInView({
+//       /* Optional options */
+//       threshold: 0,
+//       deplay: 1000
+//   });
 
   useEffect(()=>{
       fetch(`${process.env.REACT_APP_HOST}/achieve/list`)
@@ -59,16 +59,16 @@ export const AdwardsAchieved = () => {
       })
       .catch(error => console.log('error', error));
   },[])
-  useEffect(() => {
-      if(inView){
-          if (awardsRef.current) {
-              awardsRef.current.classList.add('animate__animated','animate__fadeInDown');
-          }
-      }
-  }, [inView]);
+//   useEffect(() => {
+//       if(inView){
+//           if (awardsRef.current) {
+//               awardsRef.current.classList.add('animate__animated','animate__fadeInDown');
+//           }
+//       }
+//   }, [inView]);
   return (
     <StyledContainer maxWidth="xl">
-      <StyledTypography ref={ref} variant="h4" color={theme.color.black} fontWeight="bold">
+      <StyledTypography variant="h4" color={theme.color.black} fontWeight="bold">
           {t('Thành tích & Khen thưởng')}
       </StyledTypography>
       <Box ref={awardsRef}>

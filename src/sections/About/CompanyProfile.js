@@ -34,9 +34,9 @@ useEffect(()=>{
                 mobileScrollSupport={true}
             >
                 {
-                    pages.map((page)=>{
+                    pages.map((page,index)=>{
                         return (
-                            <div className="page">
+                            <div className="page" key={"page"+index}>
                                 <img 
                                     src={`${process.env.REACT_APP_HOST}/read_image/${page.link?.replace(/%2f|%2F/g,'%252F')}`} 
                                     alt={'company profile page' + page.cre_date} 

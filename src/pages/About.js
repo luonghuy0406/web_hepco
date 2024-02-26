@@ -4,7 +4,9 @@ import { Helmet } from 'react-helmet-async';
 import Banner from '../sections/Banner';
 import AboutContent from '../sections/About/AboutContent';
 
-export default function About({page, data, data_chart}) {
+export default function About({page}) {
+  const data = window.data
+  const data_chart = window.data.chart
   const { t } = useTranslation();
   const parentPath = `/${t('gioithieu')}`;
   const pages = [

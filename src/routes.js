@@ -1,11 +1,12 @@
 import React, { Suspense } from "react";
-import { Navigate, useRoutes } from "react-router-dom";
+import { Navigate, Outlet, useRoutes } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import MainLayout from "./layouts/main/MainLayout";
+// import MainLayout from "./layouts/main/MainLayout";
 import LoadingPage from "./pages/LoadingPage";
 
 // Lazy load the pages
+const MainLayout = React.lazy(() => import("./layouts/main/MainLayout"));
 const Home = React.lazy(() => import("./pages/Home"));
 const About = React.lazy(() => import("./pages/About"));
 const Services = React.lazy(() => import("./pages/Services"));
@@ -14,19 +15,25 @@ const Contact = React.lazy(() => import("./pages/Contact"));
 const Post = React.lazy(() => import("./pages/Post"));
 const PostItem = React.lazy(() => import("./sections/Posts/PostItem"));
 
-export default function Router({ data }) {
+export default function Router({data}) {
   const { t } = useTranslation();
 
   const routes = useRoutes([
     {
       path: "/",
-      element: <MainLayout data={data} />,
+      element: <>
+        <MainLayout />
+        {/* <Outlet />
+        <Footer/> */}
+      </>
+      
+      ,
       children: [
         {
           path: "",
           element: (
             <Suspense fallback={<LoadingPage />}>
-              <Home data={data} />
+              <Home/>
             </Suspense>
           ),
         },
@@ -34,7 +41,7 @@ export default function Router({ data }) {
           path: t("gioithieu"),
           element: (
             <Suspense fallback={<LoadingPage />}>
-              <About data={data}/>
+              <About/>
             </Suspense>
           ),
         },
@@ -42,7 +49,7 @@ export default function Router({ data }) {
           path: `${t("gioithieu")}/${t("sodo")}`,
           element: (
             <Suspense fallback={<LoadingPage />}>
-              <About page={t("sodo")} data_chart={data.chart}/>
+              <About page={t("sodo")}/>
             </Suspense>
           ),
         },
@@ -147,7 +154,7 @@ export default function Router({ data }) {
           path: t("lienhe"),
           element: (
             <Suspense fallback={<LoadingPage />}>
-              <Contact data={data} />
+              <Contact />
             </Suspense>
           ),
         },

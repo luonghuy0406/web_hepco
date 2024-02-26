@@ -46,26 +46,27 @@ const CustomizedButton = styled(Button)(({ theme }) => ({
         // boxShadow: `0 0 0 3px rgba(0, 123, 255, 0.3)`, // Add a custom focus border
     },
 }));
-export default function Footer({company_data}){
+export default function Footer(){
     const {t, i18n} = useTranslation()
     const currentLang = i18n.language == 'en' ? 'en' : ''
     const theme = useTheme()
     const footerRef = useRef(null)
-    const { ref, inView } = useInView({
-        /* Optional options */
-        threshold: 0,
-        deplay: 1000
-    });
-    useEffect(() => {
-        if(inView){
-            if (footerRef.current) {
-                footerRef.current.classList.add('animate__animated','animate__fadeInUp');
-            }
-        }
-    }, [inView]);
+    // const { ref, inView } = useInView({
+    //     /* Optional options */
+    //     threshold: 0,
+    //     deplay: 1000
+    // });
+    // useEffect(() => {
+    //     if(inView){
+    //         if (footerRef.current) {
+    //             footerRef.current.classList.add('animate__animated','animate__fadeInUp');
+    //         }
+    //     }
+    // }, [inView]);
+    const company_data = window.data.company_data.data
     return(
         <Container 
-            ref={ref}
+            // ref={ref}
             maxWidth='100%' 
             p={0} 
             sx={{
@@ -194,13 +195,14 @@ const MiniGallery = ()=>{
                 <Link to={`/${t('gioithieu')}/${t("thuvien")}`}>
                     <Box 
                         sx={{
-                            width:"100%", 
+                            width:"80px", 
                             height:"auto", 
                             aspectRatio:"1", 
                             backgroundImage:imageError ? 'url(/assets/no_image.jpeg)' :`url(${process.env.REACT_APP_HOST}/read_image/${image.link?.replace(/%2f|%2F/g,'%252F')})`,
                             backgroundSize:"cover",
                             backgroundPosition:"center",
-                            backgroundRepeat:"no-repeat"
+                            backgroundRepeat:"no-repeat",
+                            objectFit: 'cover'
                         }}
                     >
                             <img

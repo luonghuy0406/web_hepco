@@ -11,22 +11,22 @@ export default function AlleyLetter() {
     const alleyLetter1 = useRef(null)
     const alleyLetter2 = useRef(null)
     const [data,setData] = useState(null)
-    const { ref, inView } = useInView({
-        /* Optional options */
-        threshold: 0,
-        deplay: 300
-    });
+    // const { ref, inView } = useInView({
+    //     /* Optional options */
+    //     threshold: 0,
+    //     deplay: 300
+    // });
     
-    useEffect(() => {
-        if(inView){
-            if (alleyLetter1.current) {
-                alleyLetter1.current.classList.add('animate__animated','animate__fadeInLeft');
-            }
-            if (alleyLetter2.current) {
-                alleyLetter2.current.classList.add('animate__animated','animate__fadeInRight');
-            }
-        }
-    }, [inView])
+    // useEffect(() => {
+    //     if(inView){
+    //         if (alleyLetter1.current) {
+    //             alleyLetter1.current.classList.add('animate__animated','animate__fadeInLeft');
+    //         }
+    //         if (alleyLetter2.current) {
+    //             alleyLetter2.current.classList.add('animate__animated','animate__fadeInRight');
+    //         }
+    //     }
+    // }, [inView])
 
     useEffect(()=>{
         fetch(`${process.env.REACT_APP_HOST}/sharedtable/detail/1`)
@@ -74,7 +74,7 @@ export default function AlleyLetter() {
                     </Grid>
                     <Grid ref={alleyLetter2} item xs={12} md={7} sm={12} lg={7}>
                         <Box>
-                            <Typography ref={ref} fontWeight={500}  variant="h2" fontFamily={"'Great Vibes', cursive"} color={theme.color.green1} textAlign={"center"}>{t('Thư ngỏ')}</Typography>
+                            <Typography fontWeight={500}  variant="h2" fontFamily={"'Great Vibes', cursive"} color={theme.color.green1} textAlign={"center"}>{t('Thư ngỏ')}</Typography>
                             <br/>
                             <Box className='ck-content' sx={{ backgroundColor: '#ffffff7d',fontWeight: '500'}} dangerouslySetInnerHTML={{__html:data?.["content_"+currentLang] || data?.content}}/>
                             

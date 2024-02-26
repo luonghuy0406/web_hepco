@@ -76,20 +76,20 @@ export default function Achievement() {
 const AchieveItem = ({award, currentLang})=>{
     const theme = useTheme()
     const item = useRef(null)
-    const { ref, inView } = useInView({
-        threshold: 0,
-        deplay: 300
-    });
+    // const { ref, inView } = useInView({
+    //     threshold: 0,
+    //     deplay: 300
+    // });
     
-    useEffect(() => {
-        if(inView){
-            if (item.current) {
-                item.current.classList.add('animate__animated','animate__fadeInRight');
-            }
-        }
-    }, [inView])
+    // useEffect(() => {
+    //     if(inView){
+    //         if (item.current) {
+    //             item.current.classList.add('animate__animated','animate__fadeInRight');
+    //         }
+    //     }
+    // }, [inView])
     return(
-        <Grid item xs={6} md={4} ref={ref}>
+        <Grid item xs={6} md={4}>
             <Box 
                 ref={item}
                 sx={{

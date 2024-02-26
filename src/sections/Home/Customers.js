@@ -43,18 +43,18 @@ export const Customers = () => {
   const {t} = useTranslation()
   const [customer, setCustomer] = useState([])
   const customersRef = useRef(null)
-  const { ref, inView } = useInView({
-      /* Optional options */
-      threshold: 0,
-      deplay: 1000
-  });
-  useEffect(() => {
-      if(inView){
-          if (customersRef.current) {
-              customersRef.current.classList.add('animate__animated','animate__fadeInDown');
-          }
-      }
-  }, [inView])
+  // const { ref, inView } = useInView({
+  //     /* Optional options */
+  //     threshold: 0,
+  //     deplay: 1000
+  // });
+  // useEffect(() => {
+  //     if(inView){
+  //         if (customersRef.current) {
+  //             customersRef.current.classList.add('animate__animated','animate__fadeInDown');
+  //         }
+  //     }
+  // }, [inView])
   
   useEffect(()=>{
     fetch(`${process.env.REACT_APP_HOST}/customer/list`)
@@ -67,7 +67,7 @@ export const Customers = () => {
 },[])
   return (
     <StyledContainer maxWidth="xl">
-      <StyledTypography ref={ref} variant="h4" color={theme.color.black} fontWeight="bold">
+      <StyledTypography variant="h4" color={theme.color.black} fontWeight="bold">
           {t('Đối tác & Khách hàng')}
       </StyledTypography>
       <Box ref={customersRef}>
@@ -129,11 +129,11 @@ export const Customers = () => {
               {
                 customer.map((cus,index)=>{
                   return(
-                    <LazyLoad key={"cus"+index} offset={100} style={{height:"100%"}}>
-                      <Box sx={{p:3, display:'flex', alignItems:"center", justifyContent:"center", height:"100%"}}>
+                      <Box key={"cus"+index} sx={{p:3, display:'flex', alignItems:"center", justifyContent:"center", height:"100%"}}>
                           <Image  alt={cus.name} src={`${process.env.REACT_APP_HOST}/read_image/${cus.logo?.replace(/%2f|%2F/g,'%252F')}`} width="100%"/>
                       </Box>
-                    </LazyLoad>
+                    // <LazyLoad key={"cus"+index} offset={100} style={{height:"100%"}}>
+                    // </LazyLoad>
                   )
                 })
               }

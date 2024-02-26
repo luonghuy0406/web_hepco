@@ -206,23 +206,22 @@ export default function OurMission({mission,video, coreVal}) {
         deplay: 300
     })
   
-    useEffect(() => {
-        if(inView){
-            if (visionRef.current) {
-                visionRef.current.classList.add('animate__animated','animate__rotateInDownLeft');
-            }
-            if (missonRef.current) {
-                missonRef.current.classList.add('animate__animated','animate__rotateInDownRight');
-            }
-        }
-    }, [inView])
-  
+    // useEffect(() => {
+    //     if(inView){
+    //         if (visionRef.current) {
+    //             visionRef.current.classList.add('animate__animated','animate__rotateInDownLeft');
+    //         }
+    //         if (missonRef.current) {
+    //             missonRef.current.classList.add('animate__animated','animate__rotateInDownRight');
+    //         }
+    //     }
+    // }, [inView])
   
   if(!data){
       return <></>
   }
   return (
-    <Box>
+    <Box >
         <Box 
             sx={{
                 backgroundImage: `url(/assets/images/bgg4.svg)`,
@@ -234,7 +233,7 @@ export default function OurMission({mission,video, coreVal}) {
             <Container maxWidth='xl' sx={{py: theme.spacing(10), px:0}}>
                 <Grid container sx={{px:3}}>
                     <Grid ref={visionRef} item xs={12} md={7} sx={{borderRadius: "4px 0 0 4px",backgroundColor: theme.color.white,boxShadow: '0 0 150px #eee',p:theme.spacing(3), py: theme.spacing(8)}}>
-                        <Typography ref={ref} variant={'h4'} color={theme.color.black} fontWeight={"bold"} className='type-line' pb={2}>
+                        <Typography variant={'h4'} color={theme.color.black} fontWeight={"bold"} className='type-line' pb={2}>
                             {t('Tầm nhìn - Sứ mệnh')}
                         </Typography> 
 
@@ -286,7 +285,8 @@ export default function OurMission({mission,video, coreVal}) {
                                     backgroundPosition:'center',
                                     backgroundSize:'cover',
                                     backgroundRepeat:'no-repeat', 
-                                    borderRadius: "0 4px 4px 0"
+                                    borderRadius: "0 4px 4px 0",
+                                    objectFit:"cover"
                                 }}/>
                             </Grid>
                             <Grid item xs={6} md={5} container alignItems={"center"}>
@@ -297,7 +297,8 @@ export default function OurMission({mission,video, coreVal}) {
                                     backgroundPosition:'center',
                                     backgroundSize:'cover',
                                     backgroundRepeat:'no-repeat',
-                                    borderRadius: '0 4px 4px 0'
+                                    borderRadius: '0 4px 4px 0',
+                                    objectFit:"cover"
                                 }}/>
                             </Grid>
                         </Grid>
@@ -390,20 +391,20 @@ const CoreItem = ({value, index})=>{
     const key = ['h','e','p','c','o']
     const theme = useTheme()
     const coreRef = useRef(null)
-    const { ref, inView } = useInView({
-        /* Optional options */
-        threshold: 0,
-        deplay: 1000
-    });
-    useEffect(() => {
-        if(inView){
-            if (coreRef.current) {
-                setTimeout(()=>{
-                    coreRef.current.classList.add('animate__animated','animate__flipInX');
-                },0)
-            }
-        }
-    }, [inView]);
+    // const { ref, inView } = useInView({
+    //     /* Optional options */
+    //     threshold: 0,
+    //     deplay: 1000
+    // });
+    // useEffect(() => {
+    //     if(inView){
+    //         if (coreRef.current) {
+    //             setTimeout(()=>{
+    //                 coreRef.current.classList.add('animate__animated','animate__flipInX');
+    //             },0)
+    //         }
+    //     }
+    // }, [inView]);
     return(
         <Grid item xs={12} sm={6} md={4} lg={ 2.4}>
             <CoreValuestWrap ref={coreRef}>
@@ -428,7 +429,7 @@ const CoreItem = ({value, index})=>{
                             alt="Rs-service"
                         />
                     </ServicesIcon>
-                    <Box ref={ref} className='core-value-title' fontSize={'18px'} py={2} sx={{height:'50px'}} fontWeight={"bold"} dangerouslySetInnerHTML={{__html:value?.["name_"+currentLang] || value?.name}}/>
+                    <Box className='core-value-title' fontSize={'18px'} py={2} sx={{height:'50px'}} fontWeight={"bold"} dangerouslySetInnerHTML={{__html:value?.["name_"+currentLang] || value?.name}}/>
                     <Box className='core-value-content' sx={{display:'none', position:'relative'}} fontWeight={600} dangerouslySetInnerHTML={{__html:value?.["content_"+currentLang] || value?.content}}/>
                 </Box>
             </CoreValuestWrap>
