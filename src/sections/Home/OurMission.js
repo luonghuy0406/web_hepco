@@ -7,7 +7,6 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { faFontAwesome } from '@fortawesome/free-brands-svg-icons'
 import { useTranslation } from 'react-i18next'
-import { useInView } from 'react-intersection-observer'
 import 'animate.css';
 
 
@@ -181,10 +180,6 @@ const CoreValuestWrap = styled(Box)(({ theme }) => ({
         left: '50%',
         transform: 'translate(-50%,-50%)',
     },
-    '&:hover .core-value-image img': {
-        // width: '100%',
-        // transition: 'all .4s ease-in-out 0s',
-    }
     
   }));
 
@@ -196,26 +191,29 @@ export default function OurMission({mission,video, coreVal}) {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-    const visionRef = useRef(null)
-    const missonRef = useRef(null)
     const videoLink = video?.data
     const data = mission
-    const { ref, inView } = useInView({
-        /* Optional options */
-        threshold: 0,
-        deplay: 300
-    })
-  
-    // useEffect(() => {
-    //     if(inView){
-    //         if (visionRef.current) {
-    //             visionRef.current.classList.add('animate__animated','animate__rotateInDownLeft');
-    //         }
-    //         if (missonRef.current) {
-    //             missonRef.current.classList.add('animate__animated','animate__rotateInDownRight');
-    //         }
-    //     }
-    // }, [inView])
+    const ref = useRef();
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+        ([entry]) => {
+            setIsVisible(entry.isIntersecting);
+        },
+        { threshold: 0.1 } // Adjust the threshold value as needed
+        );
+
+        if (ref.current) {
+        observer.observe(ref.current);
+        }
+
+        return () => {
+        if (ref.current) {
+            observer.unobserve(ref.current);
+        }
+        };
+    }, []);
   
   if(!data){
       return <></>
@@ -231,8 +229,8 @@ export default function OurMission({mission,video, coreVal}) {
             }}
         >
             <Container maxWidth='xl' sx={{py: theme.spacing(10), px:0}}>
-                <Grid container sx={{px:3}}>
-                    <Grid ref={visionRef} item xs={12} md={7} sx={{borderRadius: "4px 0 0 4px",backgroundColor: theme.color.white,boxShadow: '0 0 150px #eee',p:theme.spacing(3), py: theme.spacing(8)}}>
+                <Grid container sx={{px:3}} ref={ref} >
+                    <Grid  className={isVisible ? 'animate__animated animate__rotateInDownLeft' : 'hidden'} item xs={12} md={7} sx={{borderRadius: "4px 0 0 4px",backgroundColor: theme.color.white,boxShadow: '0 0 150px #eee',p:theme.spacing(3), py: theme.spacing(8)}}>
                         <Typography variant={'h4'} color={theme.color.black} fontWeight={"bold"} className='type-line' pb={2}>
                             {t('Tầm nhìn - Sứ mệnh')}
                         </Typography> 
@@ -275,7 +273,7 @@ export default function OurMission({mission,video, coreVal}) {
                             </Grid>
                         </Grid>
                     </Grid>
-                    <Grid ref={missonRef} item xs={12} md={5} sx={{position:'relative'}}>
+                    <Grid className={isVisible ? 'animate__animated animate__rotateInDownRight' : 'hidden'} item xs={12} md={5} sx={{position:'relative'}}>
                         <Grid container sx={{height:{xs: "400px", md:'100%'}}}>
                             <Grid item xs={6} md={7}>
                                 <Box sx={{
@@ -350,7 +348,6 @@ const CoreValue = ({coreVal}) =>{
     if(!data){
         return <></>
     }
-
     return(
         <Container maxWidth='100%' sx={{py:theme.spacing(4), mb:theme.spacing(10),px:'0 !important'}}>
             <Box sx={{
@@ -390,25 +387,33 @@ const CoreItem = ({value, index})=>{
 
     const key = ['h','e','p','c','o']
     const theme = useTheme()
-    const coreRef = useRef(null)
-    // const { ref, inView } = useInView({
-    //     /* Optional options */
-    //     threshold: 0,
-    //     deplay: 1000
-    // });
-    // useEffect(() => {
-    //     if(inView){
-    //         if (coreRef.current) {
-    //             setTimeout(()=>{
-    //                 coreRef.current.classList.add('animate__animated','animate__flipInX');
-    //             },0)
-    //         }
-    //     }
-    // }, [inView]);
+    
+    const ref = useRef();
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+        ([entry]) => {
+            setIsVisible(entry.isIntersecting);
+        },
+        { threshold: 0.1 } // Adjust the threshold value as needed
+        );
+
+        if (ref.current) {
+        observer.observe(ref.current);
+        }
+
+        return () => {
+        if (ref.current) {
+            observer.unobserve(ref.current);
+        }
+        };
+    }, []);
     return(
-        <Grid item xs={12} sm={6} md={4} lg={ 2.4}>
-            <CoreValuestWrap ref={coreRef}>
+        <Grid item xs={12} sm={6} md={4} lg={ 2.4} >
+            <CoreValuestWrap className={isVisible ? 'animate__animated animate__flipInX' : 'hidden'}>
                 <Box 
+                     ref={ref}
                     sx={{
                         position:'relative',
                         backgroundColor: theme.color.white,
