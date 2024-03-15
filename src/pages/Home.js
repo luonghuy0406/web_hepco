@@ -34,7 +34,7 @@ const Home = ({data}) => {
             backgroundSize: '70%',
           }}
         >
-          <Customers/>
+          <Customers customer={data.customer}/>
           <AdwardsAchieved/>
         </Box>
         <Questions/>

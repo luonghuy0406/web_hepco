@@ -125,7 +125,7 @@ const Info = ({info}) =>{
     setProjects(0)
     setCustomers(0)
     setMembers(0)
-  }, [inView])
+  }, [])
   useEffect(() => {
     const timer = setInterval(() => {
       if (years < info[0].data) {

@@ -38,10 +38,9 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
 }));
 
 
-export const Customers = () => {
+export const Customers = ({customer}) => {
   const theme = useTheme()
   const {t} = useTranslation()
-  const [customer, setCustomer] = useState([])
   const customersRef = useRef(null)
   const { ref, inView } = useInView({
       /* Optional options */
@@ -56,15 +55,7 @@ export const Customers = () => {
       }
   }, [inView])
   
-  useEffect(()=>{
-    fetch(`${process.env.REACT_APP_HOST}/customer/list`)
-    .then(response => response.text())
-    .then(result => {
-        const data = JSON.parse(result).data
-        setCustomer(data)
-    })
-    .catch(error => console.log('error', error));
-},[])
+  
   return (
     <StyledContainer maxWidth="xl">
       <StyledTypography ref={ref} variant="h4" color={theme.color.black} fontWeight="bold">

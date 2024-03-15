@@ -22,6 +22,9 @@ const getData = async (endpoint) => {
   try {
     const response = await fetch(`${process.env.REACT_APP_HOST}${endpoint}`);
     const result = await response.json();
+    if(endpoint.indexOf('customer')>-1){
+      return result.data
+    }
     return result.result; // Assuming the actual data is in the 'result' property
   } catch (error) {
     console.error('Error fetching data:', error);
@@ -36,7 +39,8 @@ const Main = () => {
   useEffect(() => {
     const fetchDataAndRender = async () => {
       try {
-        const [banner, company_data, mission, video, coreVal, chart] = await Promise.all([
+        const [customer, banner, company_data, mission, video, coreVal, chart] = await Promise.all([
+          getData('/customer/list'),
           getData('/banner/list'),
           getData('/company_data/list'),
           getData('/sharedtable/father/12'),
@@ -44,9 +48,8 @@ const Main = () => {
           getData('/sharedtable/father/13'),
           getData('/sharedtable/father/23'),
         ]);
-
         // You can further process the data if needed
-        setData({ banner, company_data, mission, video, coreVal, chart });
+        setData({ customer, banner, company_data, mission, video, coreVal, chart});
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
@@ -70,7 +73,6 @@ const Main = () => {
     console.error('Invalid data structure:', data);
     return null; // or display an error message
   }
-
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -81,6 +83,7 @@ const Main = () => {
         video={data.video}
         coreVal={data.coreVal}
         chart = {data.chart}
+        customer = {data.customer}
       />
     </ThemeProvider>
   );
