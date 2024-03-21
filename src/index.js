@@ -39,7 +39,8 @@ const Main = () => {
   useEffect(() => {
     const fetchDataAndRender = async () => {
       try {
-        const [customer, banner, company_data, mission, video, coreVal, chart] = await Promise.all([
+        const [home,customer, banner, company_data, mission, video, coreVal, chart] = await Promise.all([
+          getData('/home'),
           getData('/customer/list'),
           getData('/banner/list'),
           getData('/company_data/list'),
@@ -49,7 +50,7 @@ const Main = () => {
           getData('/sharedtable/father/23'),
         ]);
         // You can further process the data if needed
-        setData({ customer, banner, company_data, mission, video, coreVal, chart});
+        setData({ home,customer, banner, company_data, mission, video, coreVal, chart});
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
@@ -73,6 +74,7 @@ const Main = () => {
     console.error('Invalid data structure:', data);
     return null; // or display an error message
   }
+  console.log("data>>>",data)
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
