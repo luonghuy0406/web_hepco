@@ -1,7 +1,6 @@
-import {Box, Container, Grid, Typography, useTheme } from '@mui/material'
-import React, { useEffect, useRef, useState } from 'react'
+import { Box, Container, Grid, Typography, useTheme } from '@mui/material'
+import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useInView } from 'react-intersection-observer'
 
 export default function Achievement() {
     const theme = useTheme()
@@ -18,19 +17,6 @@ export default function Achievement() {
         })
         .catch(error => console.log('error', error));
     },[])
-    const item = useRef(null)
-    const { ref, inView } = useInView({
-        threshold: 0,
-        deplay: 300
-    });
-    
-    useEffect(() => {
-        if(inView){
-            if (item.current) {
-                item.current.classList.add('animate__animated','animate__fadeInUp')
-            }
-        }
-    }, [inView])
     return (
         <Container
             maxWidth='100%'
@@ -60,8 +46,8 @@ export default function Achievement() {
                         })
                     }
                 </Grid>
-                <Container maxWidth='lg' ref={item}>
-                    <Typography ref={ref} sx={{marginBottom:theme.spacing(4), marginTop:theme.spacing(4)}} variant='h5' textAlign={"center"} fontWeight={700} color={theme.color.green1}>{t('KHEN THƯỞNG BỘ, BAN NGÀNH, HỘI NGHỀ NGHIỆP TRUNG ƯƠNG')}</Typography>
+                <Container maxWidth='lg' className="wow animate__animated animate__fadeInUp">
+                    <Typography sx={{marginBottom:theme.spacing(4), marginTop:theme.spacing(4)}} variant='h5' textAlign={"center"} fontWeight={700} color={theme.color.green1}>{t('KHEN THƯỞNG BỘ, BAN NGÀNH, HỘI NGHỀ NGHIỆP TRUNG ƯƠNG')}</Typography>
                     <Box className='ck-content' dangerouslySetInnerHTML={{__html:achieveData?.[0]?.["content_"+currentLang] || achieveData?.[0]?.content}}/>
                     <Typography sx={{marginBottom:theme.spacing(4), marginTop:theme.spacing(4)}} variant='h5' textAlign={"center"} fontWeight={700} color={theme.color.green1}>{t('KHEN THƯỞNG CỦA UBND TỈNH VÀ CÁC CƠ QUAN CẤP TỈNH')}</Typography>
                     <Box className='ck-content' dangerouslySetInnerHTML={{__html:achieveData?.[1]?.["content_"+currentLang] || achieveData?.[1]?.content}}/>
@@ -75,23 +61,10 @@ export default function Achievement() {
 
 const AchieveItem = ({award, currentLang})=>{
     const theme = useTheme()
-    const item = useRef(null)
-    const { ref, inView } = useInView({
-        threshold: 0,
-        deplay: 300
-    });
-    
-    useEffect(() => {
-        if(inView){
-            if (item.current) {
-                item.current.classList.add('animate__animated','animate__fadeInRight');
-            }
-        }
-    }, [inView])
     return(
-        <Grid item xs={6} md={4} ref={ref}>
+        <Grid item xs={6} md={4}>
             <Box 
-                ref={item}
+                className="wow animate__animated animate__rotateInRight"
                 sx={{
                     margin: theme.spacing(2), 
                     display:'flex', 

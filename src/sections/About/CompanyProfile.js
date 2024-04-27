@@ -1,6 +1,6 @@
 import { useTheme } from '@emotion/react';
-import { Box, Typography, Container } from '@mui/material';
-import React, { forwardRef, useEffect, useRef, useState } from 'react'
+import { Box, Container, Typography } from '@mui/material';
+import React, { useEffect, useRef, useState } from 'react';
 import HTMLFlipBook from 'react-pageflip';
 
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';

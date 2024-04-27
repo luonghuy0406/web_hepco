@@ -1,6 +1,5 @@
 import { useTheme } from "@emotion/react";
 import { Box, Grid, Typography } from "@mui/material";
-import 'animate.css';
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import LazyLoad from 'react-lazyload';

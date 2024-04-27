@@ -1,8 +1,8 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
-import Banner from '../sections/Banner';
+import { useTranslation } from 'react-i18next';
 import AboutContent from '../sections/About/AboutContent';
+import Banner from '../sections/Banner';
 
 export default function About({page, data, data_chart}) {
   const { t } = useTranslation();

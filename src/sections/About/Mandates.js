@@ -1,8 +1,6 @@
-import { Box, Container, Grid, Link, Typography, useTheme } from '@mui/material'
-import React, { useEffect, useRef, useState } from 'react'
-import { useTranslation } from 'react-i18next'
-import { useInView } from 'react-intersection-observer'
-import 'animate.css';
+import { Box, Container, Grid, Link, Typography, useTheme } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import LazyLoad from 'react-lazyload';
 
 export default function Mandates() {
@@ -69,36 +67,21 @@ export default function Mandates() {
 }
 
 const License = ({index, data})=>{
-    const item = useRef(null)
-    const { ref, inView } = useInView({
-        threshold: 0,
-        deplay: 300
-    });
-    
-    useEffect(() => {
-        if(inView){
-            if (item.current) {
-                setTimeout(()=>{
-                    item.current.classList.add('animate__animated','animate__fadeInRight');
-                },index*200)
-            }
-        }
-    }, [inView]);
     return(
-        <Grid item xs={6} md={3} ref={ref}>
+        <Grid item xs={6} md={3} >
             <Link href={data.name || data.name_en} target='_blank'>
                 <LazyLoad height={200} offset={100}>
                     <Box 
-                        ref={item}
+                        className="wow animate__animated animate__fadeInRight"
                         sx={{
                             width:'100%',
-                            // height:'100%',
                             borderRadius:'10px',
                             height:'350px',
                             backgroundImage: `url(${process.env.REACT_APP_HOST}/read_image/${data.image?.replace(/%2f|%2F/g,'%252F')})`,
                             backgroundRepeat:'no-repeat',
                             backgroundSize:'cover',
-                            backgroundPosition:'center'
+                            backgroundPosition:'center',
+                            boxShadow: '2px 2px 11px rgba(0, 0, 0, 0.1)'
                         }}
                     />
                 </LazyLoad>
@@ -110,43 +93,13 @@ const License = ({index, data})=>{
 const MandatesItem = ({mandate, reverse}) =>{
     const theme = useTheme()
     const {t,i18n} = useTranslation()
-
     const currentLang = i18n.language == 'en' ? 'en' : ''
 
-    const item1 = useRef(null)
-    const item2 = useRef(null)
-    
-    const { ref, inView } = useInView({
-        /* Optional options */
-        threshold: 0,
-        deplay: 300
-    });
-    
-    useEffect(() => {
-        if(inView){
-            if(reverse){
-                if (item1.current) {
-                    item1.current.classList.add('animate__animated','animate__fadeInRight')
-                }
-                if (item2.current) {
-                    item2.current.classList.add('animate__animated','animate__fadeInLeft')
-                }
-            }else{
-                if (item1.current) {
-                    item1.current.classList.add('animate__animated','animate__fadeInLeft')
-                }
-                if (item2.current) {
-                    item2.current.classList.add('animate__animated','animate__fadeInRight')
-                }
-            }
-        }
-    }, [inView]);
-    
     return(
         <Grid item xs={12} container spacing={2} sx={{marginBottom:theme.spacing(4), flexDirection: reverse ? "row-reverse" : "row"}}>
             <Grid item xs={0} md={6} >
                 <Box
-                    ref={item1}
+                    className={"wow animate__animated " + (reverse ? "animate__fadeInRight" : "animate__fadeInLeft") }
                     sx={{
                         width:'100%',
                         height:'100%',
@@ -159,9 +112,9 @@ const MandatesItem = ({mandate, reverse}) =>{
                     }}
                 />
             </Grid>
-            <Grid item xs={12} md={6} ref={item2}>
+            <Grid item xs={12} md={6} className={"wow animate__animated " + (reverse ? "animate__fadeInLeft" : "animate__fadeInRight") }>
                 <Box sx={{padding: theme.spacing(2)}} >
-                    <Typography ref={ref} sx={{marginBottom:theme.spacing(3)}} variant='h5' fontWeight={700} color={theme.color.green1}>{mandate?.["name_"+currentLang] || mandate?.name}</Typography>
+                    <Typography sx={{marginBottom:theme.spacing(3)}} variant='h5' fontWeight={700} color={theme.color.green1}>{mandate?.["name_"+currentLang] || mandate?.name}</Typography>
                     <Box className='ck-content' dangerouslySetInnerHTML={{__html:mandate?.["content_"+currentLang] || mandate?.content}}/>
                             
                 </Box>
