@@ -43,13 +43,20 @@ export const AdwardsAchieved = () => {
   
 
   useEffect(()=>{
-      fetch(`${process.env.REACT_APP_HOST}/achieve/list`)
-      .then(response => response.text())
-      .then(result => {
-          const data = JSON.parse(result).result
-          setAchieveData(data)
-      })
-      .catch(error => console.log('error', error));
+    const dt = localStorage.getItem(`${process.env.REACT_APP_HOST}/achieve/list`)
+    if(dt){
+        const data = JSON.parse(dt)
+        setAchieveData(data)
+    }else{
+        fetch(`${process.env.REACT_APP_HOST}/achieve/list`)
+        .then(response => response.text())
+        .then(result => {
+            const data = JSON.parse(result).result
+            localStorage.setItem(`${process.env.REACT_APP_HOST}/achieve/list`,JSON.stringify(data))
+            setAchieveData(data)
+        })
+        .catch(error => console.log('error', error));
+    }
   },[])
   return (
     <StyledContainer maxWidth="xl">

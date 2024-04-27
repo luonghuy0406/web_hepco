@@ -119,7 +119,7 @@ const QuestionItem = ({index, q})=>{
   return(
     <Grid item xs={12} md={6}>
       <Box
-        className={"wow animate__animated " (index%2 === 0 ? "animate__fadeInLeft" : "animate__fadeInRight")}
+        className={"wow animate__animated " + (index%2 === 0 ? "animate__fadeInLeft" : "animate__fadeInRight")}
         sx={{border: '1px solid #eee',height: '100%',borderRadius: '5px', padding: theme.spacing(3)}}
       >
         <Typography variant='h5' fontWeight={700} pb={theme.spacing(2)}>

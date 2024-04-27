@@ -50,13 +50,20 @@ const type = {
     'shareholder' : {path: t('codong'), name : t("Cổ đông")},
 } 
   useEffect(()=>{
-    fetch(`${process.env.REACT_APP_HOST}/post/highlight`)
-    .then(response => response.text())
-    .then(result => {
-        const data = JSON.parse(result).data
+    const dt = localStorage.getItem(`${process.env.REACT_APP_HOST}/post/highlight`)
+    if(dt){
+        const data = JSON.parse(dt)
         setNews(data.slice(0,3))
-    })
-    .catch(error => console.log('error', error));
+    }else{
+      fetch(`${process.env.REACT_APP_HOST}/post/highlight`)
+      .then(response => response.text())
+      .then(result => {
+          const data = JSON.parse(result).data
+          localStorage.setItem(`${process.env.REACT_APP_HOST}/post/highlight`,JSON.stringify(data))
+          setNews(data.slice(0,3))
+      })
+      .catch(error => console.log('error', error));
+    }
   },[])
   
   return (

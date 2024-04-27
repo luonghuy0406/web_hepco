@@ -167,13 +167,20 @@ export function Questions() {
  
   
   useEffect(()=>{
-    fetch(`${process.env.REACT_APP_HOST}/qna/highlight`)
-    .then(response => response.text())
-    .then(result => {
-        const data = JSON.parse(result).data
+    const dt = localStorage.getItem(`${process.env.REACT_APP_HOST}/qna/highlight`)
+    if(dt){
+        const data = JSON.parse(dt)
         setQues(data.slice(0,5))
-    })
-    .catch(error => console.log('error', error));
+    }else{
+        fetch(`${process.env.REACT_APP_HOST}/qna/highlight`)
+        .then(response => response.text())
+        .then(result => {
+            const data = JSON.parse(result).data
+            localStorage.setItem(`${process.env.REACT_APP_HOST}/qna/highlight`,JSON.stringify(data))
+            setQues(data.slice(0,5))
+        })
+        .catch(error => console.log('error', error));
+    }
   },[])
   const [expanded, setExpanded] = React.useState('panel1');
 

@@ -50,6 +50,7 @@ const Main = () => {
           getData('/sharedtable/father/23'),
         ]);
         // You can further process the data if needed
+        localStorage.setItem('initData',JSON.stringify({ home,customer, banner, company_data, mission, video, coreVal, chart}))
         setData({ home,customer, banner, company_data, mission, video, coreVal, chart});
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -57,8 +58,13 @@ const Main = () => {
         setLoading(false);
       }
     };
-
-    fetchDataAndRender();
+    const initData = localStorage.getItem('initData')
+    if(initData){
+      setData(JSON.parse(initData))
+      setLoading(false);
+    }else{
+      fetchDataAndRender();
+    }
   }, []);
 
   if (loading) {

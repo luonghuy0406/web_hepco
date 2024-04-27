@@ -32,13 +32,20 @@ export function OurServices() {
     const [serviceData, setServiceData] = useState([]) 
     
     useEffect(()=>{
-        fetch(`${process.env.REACT_APP_HOST}/service/list`)
-        .then(response => response.text())
-        .then(result => {
-            const data = JSON.parse(result).result
+        const dt = localStorage.getItem(`${process.env.REACT_APP_HOST}/service/list`)
+        if(dt){
+            const data = JSON.parse(dt)
             setServiceData(data.slice(0,6))
-        })
-        .catch(error => console.log('error', error));
+        }else{
+            fetch(`${process.env.REACT_APP_HOST}/service/list`)
+            .then(response => response.text())
+            .then(result => {
+                const data = JSON.parse(result).result
+                localStorage.setItem(`${process.env.REACT_APP_HOST}/service/list`,JSON.stringify(data))
+                setServiceData(data.slice(0,6))
+            })
+            .catch(error => console.log('error', error));
+        }
     },[])
   return (  
     <Box

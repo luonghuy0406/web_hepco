@@ -154,13 +154,20 @@ const MiniGallery = ()=>{
     const {t} = useTranslation()
     const [images, setImages] = useState()
     useEffect(()=>{
-        fetch(`${process.env.REACT_APP_HOST}/library/list?p=0&c=8&id_album=0`)
-        .then(response => response.text())
-        .then(result => {
-            const data = JSON.parse(result).result
+        const dt = localStorage.getItem(`${process.env.REACT_APP_HOST}/library/list?p=0&c=8&id_album=0`)
+        if(dt){
+            const data = JSON.parse(dt)
             setImages(data.data)
-        })
-        .catch(error => console.log('error', error));
+        }else{
+            fetch(`${process.env.REACT_APP_HOST}/library/list?p=0&c=8&id_album=0`)
+            .then(response => response.text())
+            .then(result => {
+                const data = JSON.parse(result).result
+                localStorage.setItem(`${process.env.REACT_APP_HOST}/library/list?p=0&c=8&id_album=0`,JSON.stringify(data))
+                setImages(data.data)
+            })
+            .catch(error => console.log('error', error));
+        }
     },[])
     const [imageError, setImageError] = useState(false);
 
