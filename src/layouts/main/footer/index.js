@@ -56,13 +56,13 @@ export default function Footer({company_data}){
         threshold: 0,
         deplay: 1000
     });
-    useEffect(() => {
-        if(inView){
-            if (footerRef.current) {
-                footerRef.current.classList.add('animate__animated','animate__fadeInUp');
-            }
-        }
-    }, [inView]);
+    // useEffect(() => {
+    //     if(inView){
+    //         if (footerRef.current) {
+    //             footerRef.current.classList.add('animate__animated','animate__fadeInUp');
+    //         }
+    //     }
+    // }, [inView]);
     return(
         <Container 
             ref={ref}
