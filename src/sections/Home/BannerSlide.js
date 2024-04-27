@@ -1,12 +1,11 @@
+import { useTheme } from "@emotion/react";
+import { Box, Grid, Typography } from "@mui/material";
+import 'animate.css';
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import LazyLoad from 'react-lazyload';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import 'animate.css';
-import { Box, Grid, Typography } from "@mui/material"; 
-import { useTheme } from "@emotion/react";
-import LazyLoad from 'react-lazyload';
-import { useEffect, useState } from "react";
-import { useInView } from "react-intersection-observer";
-import { useTranslation } from "react-i18next";
 
 export function BannerSlide({executeScroll,banner,info}){
   
@@ -115,11 +114,6 @@ const Info = ({info}) =>{
   const [projects, setProjects] = useState(0)
   const [customers, setCustomers] = useState(0)
   const [members, setMembers] = useState(0)
-  const { ref, inView, entry } = useInView({
-    /* Optional options */
-    threshold: 0,
-    deplay: 100
-  });
   useEffect(() => {
     setYears(0)
     setProjects(0)
@@ -179,7 +173,7 @@ const Info = ({info}) =>{
     };
   }, [members])
   return(
-    <Grid ref={ref} container sx={{zIndex:1, alignItems:'center', justifyContent:'center', position: 'absolute', bottom: '0', left: '0', right: '0', padding: theme.spacing(2)}} direction={"row"}>
+    <Grid container sx={{zIndex:1, alignItems:'center', justifyContent:'center', position: 'absolute', bottom: '0', left: '0', right: '0', padding: theme.spacing(2)}} direction={"row"}>
           <Grid item xs={3}>
               <Typography sx={{transition:"ease-in 0.1s", fontSize: {xs: '1.3rem', md:'2rem'}}} variant="h4"  fontWeight={700} color={theme.color.white} textAlign={"center"}>
               {years}+

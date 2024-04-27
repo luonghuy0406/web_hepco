@@ -1,9 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react'
-import {  useTheme } from '@emotion/react'
-import { Box, Container, Grid, Typography, styled } from '@mui/material'
-import { useTranslation } from 'react-i18next'
+import { useTheme } from '@emotion/react';
+import { Box, Container, Grid, Typography, styled } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { useInView } from 'react-intersection-observer'
 
 
 const StyledTypography = styled(Typography)(({ theme }) => ({
@@ -30,24 +29,7 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
 export function OurServices() {
     const {t} = useTranslation()
     const theme = useTheme()
-    const serviceImageRef = useRef(null)
-    const serviceContentRef = useRef(null)
     const [serviceData, setServiceData] = useState([]) 
-    const { ref, inView } = useInView({
-        /* Optional options */
-        threshold: 0,
-        deplay: 1000
-    });
-    useEffect(() => {
-        if(inView){
-            if (serviceImageRef.current) {
-                serviceImageRef.current.classList.add('animate__animated','animate__fadeInLeft');
-            }
-            if (serviceContentRef.current) {
-                serviceContentRef.current.classList.add('animate__animated','animate__fadeInRight');
-            }
-        }
-    }, [inView])
     
     useEffect(()=>{
         fetch(`${process.env.REACT_APP_HOST}/service/list`)
@@ -66,8 +48,8 @@ export function OurServices() {
     }}
     >
         <Container maxWidth='100%%'sx={{mt:theme.spacing(5), py: theme.spacing(5)}}>
-            <Grid container ref={serviceImageRef}>
-                <Grid item xs={0} md ={0} lg={4} sx={{p:theme.spacing(3), display:{xs: 'none', md:'none', lg:'block'}}}>
+            <Grid container >
+                <Grid className="wow animate__animated animate__fadeInLeft" item xs={0} md ={0} lg={4} sx={{p:theme.spacing(3), display:{xs: 'none', md:'none', lg:'block'}}}>
                     <Box sx={{
                         p:theme.spacing(6),
                         backgroundImage:"url('/assets/images/service.png') !important",
@@ -80,8 +62,8 @@ export function OurServices() {
                         borderRadius: "10px"
                     }}/>
                 </Grid>
-                <Grid ref={serviceContentRef} item conntainer xs={12} md={0} lg={8} sx={{position:'relative',p:theme.spacing(3)}}>
-                    <StyledTypography ref={ref} variant='h4'>
+                <Grid className="wow animate__animated animate__fadeInRight" item conntainer xs={12} md={0} lg={8} sx={{position:'relative',p:theme.spacing(3)}}>
+                    <StyledTypography variant='h4'>
                         {t('Dịch vụ của chúng tôi')}
                     </StyledTypography>
                     <Box>

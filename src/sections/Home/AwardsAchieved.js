@@ -1,11 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Container, Typography, Box } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 import { styled, useTheme } from '@mui/material/styles';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Carousel from 'react-multi-carousel';
 import "react-multi-carousel/lib/styles.css";
-import 'animate.css';
-import { useInView } from 'react-intersection-observer';
 
 const StyledContainer = styled(Container)(({ theme }) => ({
   paddingTop: theme.spacing(5),
@@ -43,12 +41,6 @@ export const AdwardsAchieved = () => {
   const [achieveData,setAchieveData] = useState([])
   const awardData = achieveData?.slice(3) || []
   
-  const awardsRef = useRef(null)
-  const { ref, inView } = useInView({
-      /* Optional options */
-      threshold: 0,
-      deplay: 1000
-  });
 
   useEffect(()=>{
       fetch(`${process.env.REACT_APP_HOST}/achieve/list`)
@@ -59,19 +51,12 @@ export const AdwardsAchieved = () => {
       })
       .catch(error => console.log('error', error));
   },[])
-  useEffect(() => {
-      if(inView){
-          if (awardsRef.current) {
-              awardsRef.current.classList.add('animate__animated','animate__fadeInDown');
-          }
-      }
-  }, [inView]);
   return (
     <StyledContainer maxWidth="xl">
-      <StyledTypography ref={ref} variant="h4" color={theme.color.black} fontWeight="bold">
+      <StyledTypography variant="h4" color={theme.color.black} fontWeight="bold">
           {t('Thành tích & Khen thưởng')}
       </StyledTypography>
-      <Box ref={awardsRef}>
+      <Box className="wow animate__animated animate__fadeInDown">
         <Carousel
             additionalTransfrom={0}
             arrows={true}

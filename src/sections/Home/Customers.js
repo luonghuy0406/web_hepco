@@ -1,13 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Container, Typography, Box } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 import { styled, useTheme } from '@mui/material/styles';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
+import LazyLoad from 'react-lazyload';
 import Carousel from 'react-multi-carousel';
 import "react-multi-carousel/lib/styles.css";
-import 'animate.css';
 import { Image } from 'semantic-ui-react';
-import LazyLoad from 'react-lazyload';
-import { useInView } from 'react-intersection-observer';
 
 const StyledContainer = styled(Container)(({ theme }) => ({
   paddingTop: theme.spacing(5),
@@ -41,27 +39,14 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
 export const Customers = ({customer}) => {
   const theme = useTheme()
   const {t} = useTranslation()
-  const customersRef = useRef(null)
-  const { ref, inView } = useInView({
-      /* Optional options */
-      threshold: 0,
-      deplay: 1000
-  });
-  useEffect(() => {
-      if(inView){
-          if (customersRef.current) {
-              customersRef.current.classList.add('animate__animated','animate__fadeInDown');
-          }
-      }
-  }, [inView])
   
   
   return (
     <StyledContainer maxWidth="xl">
-      <StyledTypography ref={ref} variant="h4" color={theme.color.black} fontWeight="bold">
+      <StyledTypography  variant="h4" color={theme.color.black} fontWeight="bold">
           {t('Đối tác & Khách hàng')}
       </StyledTypography>
-      <Box ref={customersRef}>
+      <Box className="wow animate__animated animate__fadeInDown">
         <Carousel
             additionalTransfrom={0}
             arrows={true}

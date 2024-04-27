@@ -1,14 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react'
 import { keyframes, useTheme } from '@emotion/react'
-import { Box, Container, Grid, Modal, Typography, styled } from '@mui/material'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlay } from '@fortawesome/free-solid-svg-icons'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { fas } from '@fortawesome/free-solid-svg-icons'
 import { faFontAwesome } from '@fortawesome/free-brands-svg-icons'
+import { faPlay, fas } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Box, Container, Grid, Modal, Typography, styled } from '@mui/material'
+import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useInView } from 'react-intersection-observer'
-import 'animate.css';
 
 
 library.add(fas, faFontAwesome, faPlay)
@@ -196,28 +193,8 @@ export default function OurMission({mission,video, coreVal}) {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-    const visionRef = useRef(null)
-    const missonRef = useRef(null)
     const videoLink = video?.data
     const data = mission
-    const { ref, inView } = useInView({
-        /* Optional options */
-        threshold: 0,
-        deplay: 300
-    })
-  
-    useEffect(() => {
-        if(inView){
-            if (visionRef.current) {
-                visionRef.current.classList.add('animate__animated','animate__rotateInDownLeft');
-            }
-            if (missonRef.current) {
-                missonRef.current.classList.add('animate__animated','animate__rotateInDownRight');
-            }
-        }
-    }, [inView])
-  
-  
   if(!data){
       return <></>
   }
@@ -233,8 +210,8 @@ export default function OurMission({mission,video, coreVal}) {
         >
             <Container maxWidth='xl' sx={{py: theme.spacing(10), px:0}}>
                 <Grid container sx={{px:3}}>
-                    <Grid ref={visionRef} item xs={12} md={7} sx={{borderRadius: "4px 0 0 4px",backgroundColor: theme.color.white,boxShadow: '0 0 150px #eee',p:theme.spacing(3), py: theme.spacing(8)}}>
-                        <Typography ref={ref} variant={'h4'} color={theme.color.black} fontWeight={"bold"} className='type-line' pb={2}>
+                    <Grid className="wow animate__animated animate__rotateInDownLeft" item xs={12} md={7} sx={{borderRadius: "4px 0 0 4px",backgroundColor: theme.color.white,boxShadow: '0 0 150px #eee',p:theme.spacing(3), py: theme.spacing(8)}}>
+                        <Typography variant={'h4'} color={theme.color.black} fontWeight={"bold"} className='type-line' pb={2}>
                             {t('Tầm nhìn - Sứ mệnh')}
                         </Typography> 
 
@@ -276,7 +253,7 @@ export default function OurMission({mission,video, coreVal}) {
                             </Grid>
                         </Grid>
                     </Grid>
-                    <Grid ref={missonRef} item xs={12} md={5} sx={{position:'relative'}}>
+                    <Grid className="wow animate__animated animate__rotateInDownRight" item xs={12} md={5} sx={{position:'relative'}}>
                         <Grid container sx={{height:{xs: "400px", md:'100%'}}}>
                             <Grid item xs={6} md={7}>
                                 <Box sx={{
@@ -389,24 +366,9 @@ const CoreItem = ({value, index})=>{
 
     const key = ['h','e','p','c','o']
     const theme = useTheme()
-    const coreRef = useRef(null)
-    const { ref, inView } = useInView({
-        /* Optional options */
-        threshold: 0,
-        deplay: 1000
-    });
-    useEffect(() => {
-        if(inView){
-            if (coreRef.current) {
-                setTimeout(()=>{
-                    coreRef.current.classList.add('animate__animated','animate__flipInX');
-                },0)
-            }
-        }
-    }, [inView]);
     return(
         <Grid item xs={12} sm={6} md={4} lg={ 2.4}>
-            <CoreValuestWrap ref={coreRef}>
+            <CoreValuestWrap className="wow animate__animated animate__flipInX">
                 <Box 
                     sx={{
                         position:'relative',
@@ -428,7 +390,7 @@ const CoreItem = ({value, index})=>{
                             alt="Rs-service"
                         />
                     </ServicesIcon>
-                    <Box ref={ref} className='core-value-title' fontSize={'18px'} py={2} sx={{height:'50px'}} fontWeight={"bold"} dangerouslySetInnerHTML={{__html:value?.["name_"+currentLang] || value?.name}}/>
+                    <Box className='core-value-title' fontSize={'18px'} py={2} sx={{height:'50px'}} fontWeight={"bold"} dangerouslySetInnerHTML={{__html:value?.["name_"+currentLang] || value?.name}}/>
                     <Box className='core-value-content' sx={{display:'none', position:'relative'}} fontWeight={600} dangerouslySetInnerHTML={{__html:value?.["content_"+currentLang] || value?.content}}/>
                 </Box>
             </CoreValuestWrap>

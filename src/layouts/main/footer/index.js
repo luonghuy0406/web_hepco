@@ -1,16 +1,13 @@
 
 import { useTheme } from "@emotion/react";
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faFacebook, faFontAwesome, faYoutube } from "@fortawesome/free-brands-svg-icons";
+import { faEnvelope, faFax, faLocationDot, faMobile, faPhone, fas } from '@fortawesome/free-solid-svg-icons';
 import { Box, Button, Container, Grid, Typography, styled } from "@mui/material";
-import React, { useEffect, useRef, useState } from "react";
-import { useInView } from "react-intersection-observer";
-import { Image } from "semantic-ui-react";
-import { faLocationDot, faMobile, faPhone, faFax, faEnvelope } from '@fortawesome/free-solid-svg-icons'
-import { faFacebook, faYoutube } from "@fortawesome/free-brands-svg-icons";
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { faFontAwesome } from '@fortawesome/free-brands-svg-icons'
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
+import { Image } from "semantic-ui-react";
 
 
 library.add(fas, faFontAwesome, faLocationDot, faMobile, faPhone, faFax, faEnvelope, faFacebook, faYoutube)
@@ -50,22 +47,8 @@ export default function Footer({company_data}){
     const {t, i18n} = useTranslation()
     const currentLang = i18n.language == 'en' ? 'en' : ''
     const theme = useTheme()
-    const footerRef = useRef(null)
-    const { ref, inView } = useInView({
-        /* Optional options */
-        threshold: 0,
-        deplay: 1000
-    });
-    // useEffect(() => {
-    //     if(inView){
-    //         if (footerRef.current) {
-    //             footerRef.current.classList.add('animate__animated','animate__fadeInUp');
-    //         }
-    //     }
-    // }, [inView]);
     return(
         <Container 
-            ref={ref}
             maxWidth='100%' 
             p={0} 
             sx={{
@@ -83,7 +66,7 @@ export default function Footer({company_data}){
                 py:theme.spacing(5), pb:theme.spacing(2)
             }}
         >
-            <Container maxWidth='xl' sx={{padding:theme.spacing(4)}} ref={footerRef}>
+            <Container maxWidth='xl' sx={{padding:theme.spacing(4)}} className="wow animate__animated animate__fadeInUp">
                 <Grid container spacing={2}>
                     <Grid item xs={12} md={4} px={2} mb={3} container spacing={2}>
                         <Grid item xs={12}>

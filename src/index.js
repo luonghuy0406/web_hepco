@@ -74,7 +74,6 @@ const Main = () => {
     console.error('Invalid data structure:', data);
     return null; // or display an error message
   }
-  console.log("data>>>",data)
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />

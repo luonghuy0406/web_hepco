@@ -1,16 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Container, Grid, Typography, Box } from '@mui/material';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faFontAwesome } from '@fortawesome/free-brands-svg-icons';
+import { faPlay, fas } from '@fortawesome/free-solid-svg-icons';
+import { Box, Container, Grid, Typography } from '@mui/material';
 import { styled, useTheme } from '@mui/material/styles';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
-import LazyLoad from 'react-lazyload';
-import { useInView } from 'react-intersection-observer';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlay } from '@fortawesome/free-solid-svg-icons'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { faFontAwesome } from '@fortawesome/free-brands-svg-icons'
-import { formatDateTime } from '../../functions';
 import PostContentItem from '../Posts/PostContentItem';
 
 library.add(fas, faFontAwesome, faPlay)
@@ -33,55 +27,6 @@ const StyledGrid = styled(Grid)(({ theme }) => ({
   paddingLeft: theme.spacing(4),
 }));
 
-const FeaturedNewstWrap = styled(Box)(({ theme }) => ({
-  position: 'relative',
-  backgroundColor: theme.color.white,
-  borderRadius: '10px',
-  height:'100%',
-  boxShadow:'0 5px 20px rgba(34,34,34,.1)'
-}));
-
-const FeaturedNewstImage = styled(Box)(({ theme, image }) => ({
-  background: `url("${image}")`,
-  height: 'auto',
-  aspectRatio: 1.6,
-  width: '100%',
-  borderRadius: '10px 10px 0 0',
-  backgroundSize: 'cover',
-  backgroundPosition: 'center',
-  backgroundRepeat: 'no-repeat',
-  position: 'relative'
-}));
-const BlogButton = styled(Box)(({ theme }) => ({
-  a: {
-    color: theme.color.black,
-    background: 0,
-    border: 'none',
-    borderRadius: '25px',
-    paddingRight: '25px',
-    lineHeight: '30px',
-    display: 'inline-block',
-    transition: 'all .4s ease-in-out 0s',
-    position: 'relative',
-    fontSize: '16px',
-    fontWeight: 600,
-    textDecoration: 'none',
-    '&:hover': {
-      color: theme.color.red,
-      '.arrow-news': {
-        color: theme.color.red,
-        transform: 'translateX(20%)',
-      },
-    },
-  },
-  '.arrow-news': {
-    position: 'absolute',
-    top: 0,
-    right: 0,
-    transition: 'transform 0.5s ease',
-    lineHeight: '1.5rem',
-  },
-}));
 
 export const News = () => {
   const theme = useTheme()
@@ -104,19 +49,6 @@ const type = {
     'project' : {path: t('duan'), name : t("Dự án")},
     'shareholder' : {path: t('codong'), name : t("Cổ đông")},
 } 
-  const newsRef = useRef(null)
-  const { ref, inView } = useInView({
-      /* Optional options */
-      threshold: 0,
-      deplay: 1000
-  });
-  useEffect(() => {
-      if(inView){
-          if (newsRef.current) {
-              newsRef.current.classList.add('animate__animated','animate__fadeInDown');
-          }
-      }
-  }, [inView]);
   useEffect(()=>{
     fetch(`${process.env.REACT_APP_HOST}/post/highlight`)
     .then(response => response.text())
@@ -139,10 +71,10 @@ const type = {
           }}>
             <StyledContainer>
               <Grid container >
-                    <StyledTypography ref={ref} variant="h4" color={theme.color.black} fontWeight="bold" pb={theme.spacing(5)}>
+                    <StyledTypography variant="h4" color={theme.color.black} fontWeight="bold" pb={theme.spacing(5)}>
                         {t('Tin tức nổi bật')}
                     </StyledTypography>
-                    <StyledGrid container ref={newsRef} spacing={2} sx={{justifyContent:'center', padding: theme.spacing(2)}}>
+                    <StyledGrid container className="wow animate__animated animate__fadeInDown"spacing={2} sx={{justifyContent:'center', padding: theme.spacing(2)}}>
                     {news.map((data) => {
                       return(
                           <PostContentItem key={data.id_post} post={data} categories={categories} typePost={'post'} type={type}/>

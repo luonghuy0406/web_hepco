@@ -1,11 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { useTheme } from '@emotion/react'
-import { AccordionSummary, Alert, Box, Button, Container, Grid, Snackbar, TextField, Typography, styled } from '@mui/material'
+import { useTheme } from '@emotion/react';
+import { AccordionSummary, Alert, Box, Button, Container, Grid, Snackbar, TextField, Typography, styled } from '@mui/material';
 import MuiAccordion from '@mui/material/Accordion';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
-import { useTranslation } from 'react-i18next'
-import { useInView } from 'react-intersection-observer'
-import 'animate.css';
+import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import SendMail from '../SendMail';
@@ -100,14 +98,7 @@ export function Questions() {
   const {t, i18n} = useTranslation()
   const currentLang = i18n.language == 'en' ? 'en' : ''
 
-  const { ref, inView } = useInView({
-    /* Optional options */
-    threshold: 0,
-    deplay: 300
-  });
   const theme= useTheme()
-  const questionsRef = useRef(null) 
-  const formQuesRef = useRef(null)
   const [open, setOpen] = useState(false);
   const [ques, setQues] = useState([])
   const [openSnackbar, setOpenSnackbar] = useState(false);
@@ -174,18 +165,6 @@ export function Questions() {
         });
     }
  
-    
-
-  useEffect(() => {
-    if(inView){
-        if (questionsRef.current) {
-            questionsRef.current.classList.add('animate__animated','animate__rotateInDownLeft');
-        }
-        if (formQuesRef.current) {
-            formQuesRef.current.classList.add('animate__animated','animate__rotateInDownRight');
-        }
-    }
-  }, [inView])
   
   useEffect(()=>{
     fetch(`${process.env.REACT_APP_HOST}/qna/highlight`)
@@ -214,12 +193,12 @@ export function Questions() {
           }}>
             <Box >
                 <Container maxWidth='xl'>
-                    <StyledTypography ref={ref} variant="h4" color={theme.color.white} fontWeight="bold" py={theme.spacing(10)} pb={theme.spacing(15)}>
+                    <StyledTypography variant="h4" color={theme.color.white} fontWeight="bold" py={theme.spacing(10)} pb={theme.spacing(15)}>
                         {t('Câu hỏi')}
                     </StyledTypography>
                     <Grid container>
                         <Grid 
-                            ref={questionsRef} 
+                            className="wow animate__animated animate__rotateInDownLeft"
                             item xs={12} 
                             md={6} 
                             sx={{
@@ -237,7 +216,7 @@ export function Questions() {
                             >
                                 <Grid container spacing={4}>
                                     <Grid item xs={12}>
-                                        <Typography ref={ref} variant='h5' color={theme.color.black} fontWeight={700} textAlign="center">
+                                        <Typography variant='h5' color={theme.color.black} fontWeight={700} textAlign="center">
                                             {t('Câu hỏi thường gặp')}
                                         </Typography>
 
@@ -268,7 +247,7 @@ export function Questions() {
                             </Box>
                         </Grid>
                         <Grid 
-                            ref={formQuesRef} 
+                            className="wow animate__animated animate__rotateInDownRight"
                             item 
                             xs={0} 
                             md={6} 
